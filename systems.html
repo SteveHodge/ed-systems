@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Elite Dangerous Systems</title>
+	<link href="external/jquery-ui.css" rel="stylesheet">
+	<link href="trilateration.css" rel="stylesheet">
+	<script src="external/jquery-2.1.1.js"></script>
+	<script src="external/stupidtable.min.js"></script>
+	<script src="trilateration.js"></script>
+<script>
+var systems = null;
+var selected = null;
+
+$(document).ready(function () {
+	$.getJSON('systems.json', function(data) {
+		systems = data;
+
+		var table = document.createElement('table');
+		var row = document.createElement('tr');
+		$('<th data-sort="string-ins">System</th>').appendTo(row);
+		$('<th data-sort="float">X</th>').appendTo(row);
+		$('<th data-sort="float">Y</th>').appendTo(row);
+		$('<th data-sort="float">Z</th>').appendTo(row);
+		$('<th data-sort="float">Distance</th>').appendTo(row);
+		$('<thead/>').append(row).appendTo(table);
+		var tbody = document.createElement('tbody');
+		table.appendChild(tbody);
+
+		var d, i;
+		var sol;
+		for (i = 0; i < systems.length; i++) {
+			row = document.createElement('tr');
+			if (!sol) sol = row;
+			$(row).attr('system', i)
+					.click(function() {selectSystem(this)});
+			$('<td>').text(systems[i].name).appendTo(row);
+			$('<td>').text(systems[i].x/32.0).appendTo(row);
+			$('<td>').text(systems[i].y/32.0).appendTo(row);
+			$('<td>').text(systems[i].z/32.0).appendTo(row);
+			$('<td>').appendTo(row);
+			tbody.appendChild(row);
+		}
+		$('#tableDiv').append(table);
+		selectSystem(sol);
+		$(table).stupidtable().bind('aftertablesort', function(event, data) {
+			// data.column - the index of the column sorted after a click
+		    // data.direction - the sorting direction (either asc or desc)
+		
+		    var th = $(this).find("th");
+		    th.find(".arrow").remove();
+		    var arrow = data.direction === "asc" ? "↑" : "↓";
+		    th.eq(data.column).append('<span class="arrow">' + arrow +'</span>');
+		});
+	});
+});
+
+function selectSystem(row) {
+	if (selected === row) return;
+
+	if (selected) {
+		$(selected).removeClass('selected');
+	}
+	
+	selected = row;
+	$(selected).addClass('selected');
+	
+	// recalculate distances
+	if (!selected.hasAttribute('system')) return;
+	var s0 = systems[selected.getAttribute('system')];
+	$('#tableDiv tr').each(function(i, r) {
+		if (!r.hasAttribute('system')) {
+			$(r).children('th').last().text('Distance to '+s0.name);
+			return;
+		}
+		var s = systems[r.getAttribute('system')];
+		$(r).children('td').last().text((dist(s0, s)/32.0).toFixed(3));
+	});
+}
+
+</script>
+</head>
+<body>
+	<div class="ui-widget" id="tableDiv"></div>
+</body>
+</html>

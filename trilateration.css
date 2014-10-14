@@ -1,0 +1,16 @@
+table {
+	border-collapse: collapse;
+}
+th {
+	background-color: Lavender;
+}
+table, th, td {
+	border: 1px solid black;
+}
+td {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.selected {
+	background-color: red;
+}

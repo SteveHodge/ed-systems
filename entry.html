@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Elite Dangerous Systems</title>
+	<link href="external/jquery-ui.css" rel="stylesheet">
+	<link href="trilateration.css" rel="stylesheet">
+	<script src="external/jquery-2.1.1.js"></script>
+	<script src="external/stupidtable.min.js"></script>
+	<script src="trilateration.js"></script>
+<!--	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
+<script>
+var systems = null;
+
+$(document).ready(function () {
+	$.getJSON('systems.json', function(data) {
+		systems = data;
+
+		// hook the reference systems up to the data
+		$("#distances input").parent().prev().each(function(i, el) {
+			var i;
+			var name = $(el).text();
+			// find the system
+			for (i = 0; i < systems.length; i++) {
+				if (systems[i].name === name) {
+					$(el).parent().attr('system',i);
+					break;
+				}
+			}
+		});
+	
+		$("#distances").stupidtable().bind('aftertablesort', function(event, data) {
+			// data.column - the index of the column sorted after a click
+			// data.direction - the sorting direction (either asc or desc)
+			var th = $(this).find("th");
+			th.find(".arrow").remove();
+			var arrow = data.direction === "asc" ? "↑" : "↓";
+			th.eq(data.column).append('<span class="arrow">' + arrow +'</span>');
+		});
+
+		// add the event handlers
+		$("#distances input").change(updateCoords);
+	});
+});
+
+function updateCoords() {
+	var dists = [];
+	
+	$("#distances tr[system]").each(function(i, el) {
+		var dist = $(el).find("input").val();
+		var system = systems[el.getAttribute('system')];
+
+		if (dist !== undefined && dist.length > 0) {
+			dists.push({name: system.name, dist: dist*32, x: system.x, y: system.y, z: system.z});
+		}
+	});
+
+	// reset the calculated distances and errors.
+	$("#distances tr[system] td:nth-child(3)").text("").next().text("");
+	$("#output").html("");
+
+	if (dists.length >= 4) {
+		var bestCandidate = getBestCandidate(dists);
+		if (bestCandidate !== null) {
+			//console.log("best candidate: "+JSON.stringify(bestCandidate,2));
+			//console.log("calculated: ("+(bestCandidate.x/32.0)+", "+(bestCandidate.y/32.0)+", "+(bestCandidate.z/32.0)+")");
+
+			// round to 1/32 grid point (i.e. round the coordinate to an integer)
+			bestCandidate.x = Math.round(bestCandidate.x);
+			bestCandidate.y = Math.round(bestCandidate.y);
+			bestCandidate.z = Math.round(bestCandidate.z);
+
+			$("#distances tr[system]").each(function(i, el) {
+				var enteredDist = $(el).find("input").val();
+				if (enteredDist !== undefined && enteredDist.length > 0) {
+					var sys = systems[el.getAttribute('system')];
+					var calcDist = dist(sys, bestCandidate)/32.0;
+					var err = Math.abs(enteredDist - calcDist).toFixed(3);
+					if (sys.name === dists[bestCandidate.i1].name || sys.name === dists[bestCandidate.i2].name || sys.name === dists[bestCandidate.i3].name) {
+						err += " (ref)";
+					}
+					$(el).children("td:nth-child(3)").text(calcDist.toFixed(3))
+							.next().text(err);
+				}
+			});
+	
+			$("#output").html("<h3>Calculated</h3><p>Coordinates: "+vectorToString(scalarProd(1/32.0,bestCandidate))
+					+"<br/>RMS error: "+(Math.sqrt(bestCandidate.totalSqErr/(dists.length-3))/32.0).toFixed(3)+"</p>");
+		}
+	}
+}
+
+</script>
+</head>
+<body>
+	<div class="ui-widget">
+		<!--<label for="unknown">Name of new system: </label>
+		<input id="unknown"/>-->
+		<h3>Distances</h3>
+		<table id="distances">
+			<thead>
+				<tr>
+					<th data-sort="string-ins">System</th>
+					<th>Distance</th>
+					<th data-sort="float">Calculated</th>
+					<th data-sort="float">Error</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr><td>Sol</td><td><input></td><td/><td/></tr>
+				<tr><td>Flousop</td><td><input></td><td/><td/></tr>
+				<tr><td>Tring</td><td><input></td><td/><td/></tr>
+				<tr><td>Rahu</td><td><input></td><td/><td/></tr>
+				<tr><td>Parcae</td><td><input></td><td/><td/></tr>
+				<tr><td>Hepa</td><td><input></td><td/><td/></tr>
+				<tr><td>Poqomathi</td><td><input></td><td/><td/></tr>
+				<tr><td>Hyperion</td><td><input></td><td/><td/></tr>
+				<tr><td>Aulin</td><td><input></td><td/><td/></tr>
+			</tbody>
+		</table>
+		<div id="output"></div>
+	</div>
+</body>
+</html>
