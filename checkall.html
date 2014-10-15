@@ -9,23 +9,28 @@
 	<script src="external/stupidtable.min.js"></script>
 	<script src="trilateration.js"></script>
 <script>
-// number of decimal places for distances to calculate from
-var dp = 2;
+// default systems to use as references
+var refNames = [
+	{
+		'Sol': true,
+		'Flousop': true,
+		'Tring': true,
+		'Rahu': true,
+		'Parcae': true,
+		'Hepa': true,
+		'Poqomathi': true,
+		'Hyperion': true,
+		'Aulin': true
+	},
+	{
+		'h Draconis': true,
+		'Wyrd': true,
+		'LHS 2884': true,
+		'Keries': true
+	}
+];
 
-// systems to use as references
-var refNames = {
-	'Sol': true,
-	'Flousop': true,
-	'Tring': true,
-	'Rahu': true,
-	'Parcae': true,
-	'Hepa': true,
-	'Poqomathi': true,
-	'Hyperion': true,
-	'Aulin': true
-};
 var systems = null;
-var refSystems = [];
 
 $(document).ready(function () {
 	$.getJSON('systems.json', function(data) {
@@ -33,14 +38,15 @@ $(document).ready(function () {
 
 		var table = document.createElement('table');
 		var row = document.createElement('tr');
+		$('<th>Ref</th>').appendTo(row);
 		$('<th data-sort="string-ins">System</th>').appendTo(row);
 		$('<th data-sort="float">Real X</th>').appendTo(row);
 		$('<th data-sort="float">Real Y</th>').appendTo(row);
 		$('<th data-sort="float">Real Z</th>').appendTo(row);
-		$('<th data-sort="float">Calculated X</th>').appendTo(row);
-		$('<th data-sort="float">Calculated Y</th>').appendTo(row);
-		$('<th data-sort="float">Calculated Z</th>').appendTo(row);
-		$('<th data-sort="float">Error</th>').appendTo(row);
+		$('<th data-sort="optfloat">Calculated X</th>').appendTo(row);
+		$('<th data-sort="optfloat">Calculated Y</th>').appendTo(row);
+		$('<th data-sort="optfloat">Calculated Z</th>').appendTo(row);
+		$('<th data-sort="optfloat">Error</th>').appendTo(row);
 		$('<thead/>').append(row).appendTo(table);
 		var tbody = document.createElement('tbody');
 		table.appendChild(tbody);
@@ -48,89 +54,147 @@ $(document).ready(function () {
 		var d, i;
 		var sol;
 		for (i = 0; i < systems.length; i++) {
-			if (refNames[systems[i].name]) {
-				refSystems.push({name: systems[i].name, x: systems[i].x, y: systems[i].y, z: systems[i].z});
-			} else {
-				row = document.createElement('tr');
-				$(row).attr('system', i);
-				$('<td>').text(systems[i].name).appendTo(row);
-				$('<td>').text(systems[i].x/32.0).appendTo(row);
-				$('<td>').text(systems[i].y/32.0).appendTo(row);
-				$('<td>').text(systems[i].z/32.0).appendTo(row);
-				$('<td>').appendTo(row);
-				$('<td>').appendTo(row);
-				$('<td>').appendTo(row);
-				$('<td>').appendTo(row);
-				tbody.appendChild(row);
-			}
+			row = document.createElement('tr');
+			$(row).attr('system', i);
+			$('<td><input type="checkbox" name="'+systems[i].name+'"></td>').appendTo(row);
+			$('<td>').text(systems[i].name).appendTo(row);
+			$('<td>').text(systems[i].x/32.0).appendTo(row);
+			$('<td>').text(systems[i].y/32.0).appendTo(row);
+			$('<td>').text(systems[i].z/32.0).appendTo(row);
+			$('<td>').appendTo(row);
+			$('<td>').appendTo(row);
+			$('<td>').appendTo(row);
+			$('<td>').appendTo(row);
+			tbody.appendChild(row);
 		}
 		$('#tableDiv').append(table);
 
-		$(table).stupidtable().bind('aftertablesort', function(event, data) {
-			// data.column - the index of the column sorted after a click
-		    // data.direction - the sorting direction (either asc or desc)
-		
-		    var th = $(this).find("th");
-		    th.find(".arrow").remove();
-		    var arrow = data.direction === "asc" ? "↑" : "↓";
-		    th.eq(data.column).append('<span class="arrow">' + arrow +'</span>');
-		});
-
-		var errors = 0;
-		var start = new Date();
-		$('#tableDiv tr[system]').each(function() {
-			var system = systems[this.getAttribute('system')];
-			if (refNames[system.name]) return;
-
-			// build set of distances to the reference systems
-			for (var i = 0; i < refSystems.length; i++) {
-				// get the rounded distance
-				// we store distances as 1/32 Ly units but we want to round in Ly units so we have to scale the distance before and after rounding
-				var d = dist(system, refSystems[i])/32.0;
-				d = Math.round(d*Math.pow(10,dp))/Math.pow(10,dp);
-				refSystems[i].dist = d*32;
-			}
-			
-			if (system.name === 'Eranin') {
-				console.log(JSON.stringify(refSystems,2));
-			}
-
-			var bestCandidate = getBestCandidate(refSystems);
-			if (bestCandidate !== null) {
-				// round to 1/32 grid point (i.e. round the coordinate to an integer)
-				bestCandidate.x = Math.round(bestCandidate.x);
-				bestCandidate.y = Math.round(bestCandidate.y);
-				bestCandidate.z = Math.round(bestCandidate.z);
-
-				$(this).children("td:nth-child(5)").text(bestCandidate.x/32.0);
-				$(this).children("td:nth-child(6)").text(bestCandidate.y/32.0);
-				$(this).children("td:nth-child(7)").text(bestCandidate.z/32.0);
-				$(this).children("td:nth-child(8)").text((dist(system,bestCandidate)/32.0).toFixed(3));
-
-				if (bestCandidate.x !== system.x || bestCandidate.y !== system.y || bestCandidate.z !== system.z) {
-					$(this).addClass('selected');
-					errors++;
+		$(table).stupidtable({"optfloat": function(a,b) {
+					if (isNaN(parseFloat(a))) return 1;
+					if (isNaN(parseFloat(b))) return -1;
+					return parseFloat(a)-parseFloat(b);
 				}
-			}
-		});
+			}).bind('aftertablesort', function(event, data) {
+				// data.column - the index of the column sorted after a click
+			    // data.direction - the sorting direction (either asc or desc)
+			
+			    var th = $(this).find("th");
+			    th.find(".arrow").remove();
+			    var arrow = data.direction === "asc" ? "↑" : "↓";
+			    th.eq(data.column).append('<span class="arrow">' + arrow +'</span>');
+			});
 
-		var names = [];
-		for (var i = 0; i < refSystems.length; i++) {
-			names.push(refSystems[i].name);
-		}
-		names.sort();
-		$('#summary').html('Reference systems used: '+names.join(', ')+'<br/>'
-			+ 'Calculated using '+dp+' decimal places for distances<br/>'
-			+ 'Incorrectly calculated '+errors+' systems<br/>'
-			+ 'Took '+((new Date())-start)+'ms'
-		);
+		// if we don't already have the required number of reference systems then reset to the default for the current algorithm
+		var refs = 0;
+		$('#tableDiv input').each(function() {
+			if (this.checked) ref++;
+		});
+		if (refs < 4) resetRefs();
+
+
+		$('#run').click(runCheck);
+		$('#resetRefs').click(resetRefs);
+
+		runCheck();
 	});
 });
+
+function resetRefs() {
+	var names = refNames[$('#algorithm').prop('selectedIndex')];
+	$('#tableDiv input').each(function() {
+		this.checked = names[this.name] ? true : false;
+	});
+}
+
+function runCheck() {
+	var getCoords = $('#algorithm').prop('selectedIndex') == 0 ? getBestCandidate : tunamageCoords;
+	
+	var errors = 0;
+	var dp = parseInt($('#dp-input').val());
+	if (isNaN(dp)) {
+		dp = 3;
+		$('#dp-input').val(3);
+	}
+
+	var refSystems = [];
+	$('#tableDiv input').each(function() {
+		if (this.checked) {
+			var tr = $(this).parentsUntil('table','tr[system]');
+			var i = tr.attr('system');
+			refSystems.push({name: systems[i].name, x: systems[i].x, y: systems[i].y, z: systems[i].z});
+			tr.children("td:nth-child(6)").text("");
+			tr.children("td:nth-child(7)").text("");
+			tr.children("td:nth-child(8)").text("");
+			tr.children("td:nth-child(9)").text("Ref");
+		}
+	});
+	if (refSystems.length < 4) {
+		$('#summary').html("Please select at least four reference systems");
+		return;
+	}
+
+	var start = new Date();
+	$('#tableDiv tr[system]').each(function() {
+		if ($(this).find('input').prop('checked')) return;	// skip ref systems
+
+		var system = systems[this.getAttribute('system')];
+
+		// build set of distances to the reference systems
+		for (var i = 0; i < refSystems.length; i++) {
+			// get the rounded distance
+			// we store distances as 1/32 Ly units but we want to round in Ly units so we have to scale the distance before and after rounding
+			var d = dist(system, refSystems[i])/32.0;
+			d = Math.round(d*Math.pow(10,dp))/Math.pow(10,dp);
+			refSystems[i].dist = d*32;
+		}
+		
+		var bestCandidate = getCoords(refSystems);
+		if (bestCandidate !== null) {
+			// round to 1/32 grid point (i.e. round the coordinate to an integer)
+			bestCandidate.x = Math.round(bestCandidate.x);
+			bestCandidate.y = Math.round(bestCandidate.y);
+			bestCandidate.z = Math.round(bestCandidate.z);
+
+			$(this).children("td:nth-child(6)").text(bestCandidate.x/32.0);
+			$(this).children("td:nth-child(7)").text(bestCandidate.y/32.0);
+			$(this).children("td:nth-child(8)").text(bestCandidate.z/32.0);
+			$(this).children("td:nth-child(9)").text((dist(system,bestCandidate)/32.0).toFixed(3));
+
+			if (bestCandidate.x !== system.x || bestCandidate.y !== system.y || bestCandidate.z !== system.z) {
+				$(this).addClass('selected');
+				errors++;
+			} else {
+				$(this).removeClass('selected');
+			}
+		}
+	});
+
+	var names = [];
+	for (var i = 0; i < refSystems.length; i++) {
+		names.push(refSystems[i].name);
+	}
+	names.sort();
+	$('#summary').html(
+		'Algorithm: '+(getCoords === getBestCandidate ? 'RedWizzard' : 'Tunamage')+'<br/>'
+		+ 'Reference systems used: '+names.join(', ')+'<br/>'
+		+ 'Calculated using '+dp+' decimal places for distances<br/>'
+		+ 'Incorrectly calculated '+errors+' systems<br/>'
+		+ 'Took '+((new Date())-start)+'ms'
+	);
+}
 
 </script>
 </head>
 <body>
 	<div class="ui-widget">
+		<label for="algorithm">Algorithm:</label>
+		<select id="algorithm">
+			<option value="redwizzard">RedWizzard</option>
+			<option value="tunamage">Tunamage</option>
+		</select>
+		<button id="resetRefs" type="button">Reset Refs</button>
+	<br/><label for="dp-input">Decimals:</label><input id="dp-input" type="text" size="3" value="3">
+		<br/><button id="run" type="button">Run</button>
 		<h2>Checking all systems</h2>
 		<p id="summary"></p>
 		<div id="tableDiv"></div>

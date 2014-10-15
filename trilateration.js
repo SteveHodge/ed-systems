@@ -143,3 +143,26 @@ function sum(p1, p2) {
 		z: p1.z + p2.z
 	};
 }
+
+// dists is an array of four reference objects (properties x, y, z, dist)
+// returns coordinate object (properties x, y, z)
+function tunamageCoords(dists) {
+	var b = diff(dists[1], dists[0]);	// 2nd system relative to 1st system
+	var c = diff(dists[2], dists[0]);	// 3rd system relative to 1st system
+	var d = diff(dists[3], dists[0]);	// 4th system relative to 1st system
+
+	var ea = dists[0].dist*dists[0].dist;
+	var eb = dists[1].dist*dists[1].dist;
+	var ec = dists[2].dist*dists[2].dist;
+	var ed = dists[3].dist*dists[3].dist;
+
+	var p = (ea-eb+b.x*b.x+b.y*b.y+b.z*b.z)/2;
+	var q = (ea-ec+c.x*c.x+c.y*c.y+c.z*c.z)/2;
+	var r = (ea-ed+d.x*d.x+d.y*d.y+d.z*d.z)/2;
+
+	var ez =((p*d.x-r*b.x)*(b.y*c.x-c.y*b.x)/(b.y*d.x-d.y*b.x)-(p*c.x-q*b.x))/(((b.z*d.x-d.z*b.x)*(b.y*c.x-c.y*b.x)/(b.y*d.x-d.y*b.x))-(b.z*c.x-c.z*b.x));
+	var ey =((p*c.x-q*b.x)-ez*(b.z*c.x-c.z*b.x))/(b.y*c.x-c.y*b.x);
+	var ex =(p-ey*b.y-ez*b.z)/b.x;
+
+	return sum(dists[0], {x: ex, y: ey, z: ez});
+}
