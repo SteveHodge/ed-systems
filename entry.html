@@ -2,19 +2,29 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Elite Dangerous Systems</title>
+	<title>Elite Dangerous New System</title>
 	<link href="external/jquery-ui.css" rel="stylesheet">
 	<link href="trilateration.css" rel="stylesheet">
 	<script src="external/jquery-2.1.1.js"></script>
 	<script src="external/stupidtable.min.js"></script>
+	<script src="external/jquery-ui.js"></script>
 	<script src="trilateration.js"></script>
 <!--	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
 <script>
-var systems = null;
+var systems = null;		// reference system data
+var systemData = null;	// current system data
 
 $(document).ready(function () {
 	$.getJSON('systems.json', function(data) {
 		systems = data;
+
+		// set up the autocomplete
+		var names = [];
+		for (i = 0; i < systems.length; i++) {
+			names.push(systems[i].name);
+		}
+		names.sort();
+		$("#autocomplete").autocomplete({source: names});
 
 		// hook the reference systems up to the data
 		$("#distances input").parent().prev().each(function(i, el) {
@@ -29,29 +39,87 @@ $(document).ready(function () {
 			}
 		});
 	
-		$("#distances").stupidtable().bind('aftertablesort', function(event, data) {
-			// data.column - the index of the column sorted after a click
-			// data.direction - the sorting direction (either asc or desc)
-			var th = $(this).find("th");
-			th.find(".arrow").remove();
-			var arrow = data.direction === "asc" ? "↑" : "↓";
-			th.eq(data.column).append('<span class="arrow">' + arrow +'</span>');
-		});
+		// setup sorting on the distance table
+		$("#distances").stupidtable().bind('aftertablesort', updateSortArrow);
 
 		// add the event handlers
 		$("#distances input").change(updateCoords);
+		$("#toggle-json").click(function() {
+			$(this).text($("#json-output").is(":visible") ? "Show JSON" : "Hide JSON").attr("disabled", true);
+			$("#json-output").toggle("fast", function() {
+				$("#toggle-json").attr("disabled", false);
+			});
+		});
+		$("#json-output").click(function() {
+			if (window.getSelection) {
+				var selection = window.getSelection();            
+				var range = document.createRange();
+				range.selectNodeContents(this);
+				selection.removeAllRanges();
+				selection.addRange(range);
+			}
+		});
+		$("#done-button").click(function() {
+			if (systemData != null) {
+				$("#json-output").text(function(i,text) {
+					if (text && text.length > 0) text += ",\n";
+					return text + JSON.stringify(systemData, null, 2);
+				});
+			}
+			$("#cancel-button").click();
+		});
+		$("#cancel-button").click(function() {
+			$("#distances input.distance").val("");
+			$("#distances tr[system] td:nth-child(3)").text("").next().text("");
+			$("#output").html("");
+			$("#done-button").attr('disabled', true);
+			$("#unknown-name").val("").focus();
+		});
+		$('#unknown-name').change(function() {
+			if (systemData != null) {
+				systemData.name = this.value;
+				if (this.value && this.value.length > 0) $("#done-button").attr('disabled',false);
+			}
+		});
+		$('#autocomplete').change(function() {
+			for (i = 0; i < systems.length; i++) {
+				if (systems[i].name === this.value) {
+					// found the system
+					var otherRow = $(this).parentsUntil('table','tr');
+					// insert new table row above this one
+					var newRow = $('<tr system="'+i+'"><td>'+this.value+'</td><td><input class="distance"></td><td/><td/></tr>')
+						.insertBefore(otherRow);
+					// set focus to new row's distance input, copy any distance data from the "other" row
+					// if the "other" row has distance data then copy it into the new row and clear it
+					var otherDist = otherRow.find('input.distance');
+					newRow.find('input.distance').focus().change(updateCoords).val(otherDist.val());
+					// clear the "other" dropdown
+					this.value = "";
+					otherDist.val("");
+					return;
+				}
+			}
+		});
 	});
 });
 
 function updateCoords() {
 	var dists = [];
+	systemData = {name: $('#unknown-name').val()};
 	
 	$("#distances tr[system]").each(function(i, el) {
-		var dist = $(el).find("input").val();
+		var inp = $(el).find("input.distance");
+		var dist = inp.val();
 		var system = systems[el.getAttribute('system')];
 
 		if (dist !== undefined && dist.length > 0) {
-			dists.push({name: system.name, dist: dist*32, x: system.x, y: system.y, z: system.z});
+			if (isNaN(parseFloat(dist))) {
+				inp.val("");
+			} else {
+				var d = parseFloat(dist);
+				if (d !== (dist+0)) inp.val(d);
+				dists.push({name: system.name, dist: d*32, x: system.x, y: system.y, z: system.z});
+			}
 		}
 	});
 
@@ -84,18 +152,68 @@ function updateCoords() {
 				}
 			});
 	
-			$("#output").html("<h3>Calculated</h3><p>Coordinates: "+vectorToString(scalarProd(1/32.0,bestCandidate))
-					+"<br/>RMS error: "+(Math.sqrt(bestCandidate.totalSqErr/(dists.length-3))/32.0).toFixed(3)+"</p>");
+			$("#output").html("Coordinates: "+vectorToString(scalarProd(1/32.0,bestCandidate))
+					+"<br/>RMS error: "+(Math.sqrt(bestCandidate.totalSqErr/(dists.length-3))/32.0).toFixed(3)
+					+"<br/>Local Systems:");
+			$("#output").append(getLocalSystems(bestCandidate)).append('<br/>');
+			
+			// update stored system data
+			systemData.xCalculated = bestCandidate.x/32.0;
+			systemData.yCalculated = bestCandidate.y/32.0;
+			systemData.zCalculated = bestCandidate.z/32.0;
+			systemData.distances = [];
+			for (var i = 0; i < dists.length; i++) {
+				systemData.distances.push({
+					system: dists[i].name,
+					distance: dists[i].dist/32.0
+				});
+			}
+			if (systemData.name && systemData.name.length > 0) {
+				$('#done-button').attr('disabled',false);
+			} else {
+				$('#unknown-name').focus();
+			}
 		}
 	}
+}
+
+function getLocalSystems(coords) {
+	var table = document.createElement('table');
+	var row = document.createElement('tr');
+	$('<th data-sort="string-ins">System</th>').appendTo(row);
+	$('<th data-sort="float">X</th>').appendTo(row);
+	$('<th data-sort="float">Y</th>').appendTo(row);
+	$('<th data-sort="float">Z</th>').appendTo(row);
+	$('<th data-sort="float">Distance</th>').appendTo(row);
+	$('<thead/>').append(row).appendTo(table);
+	var tbody = document.createElement('tbody');
+	table.appendChild(tbody);
+
+	var locals = [];
+	for (i = 0; i < systems.length; i++) {
+		locals.push({system:systems[i], dist:dist(systems[i],coords)});
+	}
+	locals.sort(function(a,b) {return a.dist-b.dist;});
+
+	for (i = 0; i < 5 && i < locals.length; i++) {
+		row = document.createElement('tr');
+		$('<td>').text(locals[i].system.name).appendTo(row);
+		$('<td>').text(locals[i].system.x/32.0).appendTo(row);
+		$('<td>').text(locals[i].system.y/32.0).appendTo(row);
+		$('<td>').text(locals[i].system.z/32.0).appendTo(row);
+		$('<td>').text((locals[i].dist/32.0).toFixed(3)).appendTo(row);
+		tbody.appendChild(row);
+	}
+	$(table).stupidtable().bind('aftertablesort', updateSortArrow);
+	return table;
 }
 
 </script>
 </head>
 <body>
 	<div class="ui-widget">
-		<!--<label for="unknown">Name of new system: </label>
-		<input id="unknown"/>-->
+		<label for="unknown-name">Name of new system: </label>
+		<input id="unknown-name"/>
 		<h3>Distances</h3>
 		<table id="distances">
 			<thead>
@@ -107,18 +225,35 @@ function updateCoords() {
 				</tr>
 			</thead>
 			<tbody>
-				<tr><td>Sol</td><td><input></td><td/><td/></tr>
-				<tr><td>Flousop</td><td><input></td><td/><td/></tr>
-				<tr><td>Tring</td><td><input></td><td/><td/></tr>
-				<tr><td>Rahu</td><td><input></td><td/><td/></tr>
-				<tr><td>Parcae</td><td><input></td><td/><td/></tr>
-				<tr><td>Hepa</td><td><input></td><td/><td/></tr>
-				<tr><td>Poqomathi</td><td><input></td><td/><td/></tr>
-				<tr><td>Hyperion</td><td><input></td><td/><td/></tr>
-				<tr><td>Aulin</td><td><input></td><td/><td/></tr>
+				<!--
+				<tr><td>Flousop</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Tring</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Rahu</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Parcae</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Hepa</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Poqomathi</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Hyperion</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Aulin</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Sol</td><td><input class="distance"></td><td/><td/></tr>
+				-->
+				<tr><td>Sol</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Wolf 497</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Huokang</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Demeter</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Clotti</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Fu Haiting</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>San Guaralaru</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Haras</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td>Arabha</td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><label for="autocomplete">Other: </label><input id="autocomplete"></td><td><input class="distance"></td><td/><td/></tr>
 			</tbody>
 		</table>
+		<h3>Calculated</h3>
 		<div id="output"></div>
+		<button id="done-button" disabled="true">Done</button><button id="cancel-button">Cancel</button>
+		<h3>JSON Output</h3>
+		<button id="toggle-json">Show JSON</button>
+		<pre id="json-output" style="display:none"></pre>
 	</div>
 </body>
 </html>

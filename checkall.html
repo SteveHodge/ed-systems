@@ -69,20 +69,7 @@ $(document).ready(function () {
 		}
 		$('#tableDiv').append(table);
 
-		$(table).stupidtable({"optfloat": function(a,b) {
-					if (isNaN(parseFloat(a))) return 1;
-					if (isNaN(parseFloat(b))) return -1;
-					return parseFloat(a)-parseFloat(b);
-				}
-			}).bind('aftertablesort', function(event, data) {
-				// data.column - the index of the column sorted after a click
-			    // data.direction - the sorting direction (either asc or desc)
-			
-			    var th = $(this).find("th");
-			    th.find(".arrow").remove();
-			    var arrow = data.direction === "asc" ? "↑" : "↓";
-			    th.eq(data.column).append('<span class="arrow">' + arrow +'</span>');
-			});
+		$(table).stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
 
 		// if we don't already have the required number of reference systems then reset to the default for the current algorithm
 		var refs = 0;

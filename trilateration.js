@@ -166,3 +166,23 @@ function tunamageCoords(dists) {
 
 	return sum(dists[0], {x: ex, y: ey, z: ez});
 }
+
+//-----------------------------------------------------------------------------------------
+// Miscellaneous common functions
+//-----------------------------------------------------------------------------------------
+
+function updateSortArrow(event, data) {
+// data.column - the index of the column sorted after a click
+// data.direction - the sorting direction (either asc or desc)
+	var th = $(this).find("th");
+	th.find(".arrow").remove();
+	var arrow = data.direction === "asc" ? "?" : "?";
+	th.eq(data.column).append('<span class="arrow">' + arrow +'</span>');
+}
+
+// sort function that treats missing value (and values that can't be parsed as floats) as the largest values
+function sortOptionalFloat(a,b) {
+	if (isNaN(parseFloat(a))) return 1;
+	if (isNaN(parseFloat(b))) return -1;
+	return parseFloat(a)-parseFloat(b);
+}

@@ -14,3 +14,12 @@ td {
 .selected {
 	background-color: red;
 }
+pre {
+	border: 1px solid black;
+}
+.ui-autocomplete {
+	max-height: 190px;
+	overflow-y: auto;
+	/* prevent horizontal scrollbar */
+	overflow-x: hidden;
+}
