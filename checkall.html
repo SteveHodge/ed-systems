@@ -36,40 +36,24 @@ $(document).ready(function () {
 	$.getJSON('systems.json', function(data) {
 		systems = data;
 
-		var table = document.createElement('table');
-		var row = document.createElement('tr');
-		$('<th>Ref</th>').appendTo(row);
-		$('<th data-sort="string-ins">System</th>').appendTo(row);
-		$('<th data-sort="float">Real X</th>').appendTo(row);
-		$('<th data-sort="float">Real Y</th>').appendTo(row);
-		$('<th data-sort="float">Real Z</th>').appendTo(row);
-		$('<th data-sort="optfloat">Calculated X</th>').appendTo(row);
-		$('<th data-sort="optfloat">Calculated Y</th>').appendTo(row);
-		$('<th data-sort="optfloat">Calculated Z</th>').appendTo(row);
-		$('<th data-sort="optfloat">Error</th>').appendTo(row);
-		$('<thead/>').append(row).appendTo(table);
-		var tbody = document.createElement('tbody');
-		table.appendChild(tbody);
-
 		var d, i;
 		var sol;
 		for (i = 0; i < systems.length; i++) {
-			row = document.createElement('tr');
-			$(row).attr('system', i);
-			$('<td><input type="checkbox" name="'+systems[i].name+'"></td>').appendTo(row);
-			$('<td>').text(systems[i].name).appendTo(row);
-			$('<td>').text(systems[i].x/32.0).appendTo(row);
-			$('<td>').text(systems[i].y/32.0).appendTo(row);
-			$('<td>').text(systems[i].z/32.0).appendTo(row);
-			$('<td>').appendTo(row);
-			$('<td>').appendTo(row);
-			$('<td>').appendTo(row);
-			$('<td>').appendTo(row);
-			tbody.appendChild(row);
+			$('<tr>')
+				.attr('system', i)
+				.append($('<td><input type="checkbox" name="'+systems[i].name+'"></td>'))
+				.append($('<td>').text(systems[i].name))
+				.append($('<td>').text(systems[i].x))
+				.append($('<td>').text(systems[i].y))
+				.append($('<td>').text(systems[i].z))
+				.append($('<td>'))
+				.append($('<td>'))
+				.append($('<td>'))
+				.append($('<td>'))
+				.appendTo('#tableDiv tbody');
 		}
-		$('#tableDiv').append(table);
 
-		$(table).stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
+		$('#tableDiv table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
 
 		// if we don't already have the required number of reference systems then reset to the default for the current algorithm
 		var refs = 0;
@@ -113,6 +97,7 @@ function runCheck() {
 			tr.children("td:nth-child(7)").text("");
 			tr.children("td:nth-child(8)").text("");
 			tr.children("td:nth-child(9)").text("Ref");
+			tr.removeClass('error');
 		}
 	});
 	if (refSystems.length < 4) {
@@ -129,29 +114,26 @@ function runCheck() {
 		// build set of distances to the reference systems
 		for (var i = 0; i < refSystems.length; i++) {
 			// get the rounded distance
-			// we store distances as 1/32 Ly units but we want to round in Ly units so we have to scale the distance before and after rounding
-			var d = dist(system, refSystems[i])/32.0;
+			var d = dist(system, refSystems[i]);
 			d = Math.round(d*Math.pow(10,dp))/Math.pow(10,dp);
-			refSystems[i].dist = d*32;
+			refSystems[i].distance = d;
 		}
 		
 		var bestCandidate = getCoords(refSystems);
 		if (bestCandidate !== null) {
 			// round to 1/32 grid point (i.e. round the coordinate to an integer)
-			bestCandidate.x = Math.round(bestCandidate.x);
-			bestCandidate.y = Math.round(bestCandidate.y);
-			bestCandidate.z = Math.round(bestCandidate.z);
+			setVector(bestCandidate, gridLocation(bestCandidate));
 
-			$(this).children("td:nth-child(6)").text(bestCandidate.x/32.0);
-			$(this).children("td:nth-child(7)").text(bestCandidate.y/32.0);
-			$(this).children("td:nth-child(8)").text(bestCandidate.z/32.0);
-			$(this).children("td:nth-child(9)").text((dist(system,bestCandidate)/32.0).toFixed(3));
+			$(this).children("td:nth-child(6)").text(bestCandidate.x);
+			$(this).children("td:nth-child(7)").text(bestCandidate.y);
+			$(this).children("td:nth-child(8)").text(bestCandidate.z);
+			$(this).children("td:nth-child(9)").text(dist(system,bestCandidate).toFixed(3));
 
 			if (bestCandidate.x !== system.x || bestCandidate.y !== system.y || bestCandidate.z !== system.z) {
-				$(this).addClass('selected');
+				$(this).addClass('error');
 				errors++;
 			} else {
-				$(this).removeClass('selected');
+				$(this).removeClass('error');
 			}
 		}
 	});
@@ -184,7 +166,25 @@ function runCheck() {
 		<br/><button id="run" type="button">Run</button>
 		<h2>Checking all systems</h2>
 		<p id="summary"></p>
-		<div id="tableDiv"></div>
+		<div id="tableDiv">
+			<table>
+				<thead>
+					<tr>
+						<th>Ref</th>
+						<th data-sort="string-ins">System</th>
+						<th data-sort="float">Real X</th>
+						<th data-sort="float">Real Y</th>
+						<th data-sort="float">Real Z</th>
+						<th data-sort="optfloat">Calculated X</th>
+						<th data-sort="optfloat">Calculated Y</th>
+						<th data-sort="optfloat">Calculated Z</th>
+						<th data-sort="optfloat">Error</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

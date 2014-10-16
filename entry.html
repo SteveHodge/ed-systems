@@ -13,6 +13,8 @@
 <script>
 var systems = null;		// reference system data
 var systemData = null;	// current system data
+var jsonOutput = "";
+var sqlOutput = "";
 
 $(document).ready(function () {
 	$.getJSON('systems.json', function(data) {
@@ -59,12 +61,27 @@ $(document).ready(function () {
 				selection.addRange(range);
 			}
 		});
+		$("#toggle-sql").click(function() {
+			$(this).text($("#sql-output").is(":visible") ? "Show SQL" : "Hide SQL").attr("disabled", true);
+			$("#sql-output").toggle("fast", function() {
+				$("#toggle-sql").attr("disabled", false);
+			});
+		});
+		$("#sql-output").click(function() {
+			if (window.getSelection) {
+				var selection = window.getSelection();            
+				var range = document.createRange();
+				range.selectNodeContents(this);
+				selection.removeAllRanges();
+				selection.addRange(range);
+			}
+		});
 		$("#done-button").click(function() {
-			if (systemData != null) {
-				$("#json-output").text(function(i,text) {
-					if (text && text.length > 0) text += ",\n";
-					return text + JSON.stringify(systemData, null, 2);
-				});
+			if (systemData !== null) {
+				jsonOutput = JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput;
+				$("#json-output").text(jsonOutput);
+				sqlOutput = getSQL(systemData) + sqlOutput;
+				$("#sql-output").text(sqlOutput);
 			}
 			$("#cancel-button").click();
 		});
@@ -74,9 +91,11 @@ $(document).ready(function () {
 			$("#output").html("");
 			$("#done-button").attr('disabled', true);
 			$("#unknown-name").val("").focus();
+			$("#json-output").text(jsonOutput);
+			$("#sql-output").text(sqlOutput);
 		});
 		$('#unknown-name').change(function() {
-			if (systemData != null) {
+			if (systemData !== null) {
 				systemData.name = this.value;
 				if (this.value && this.value.length > 0) $("#done-button").attr('disabled',false);
 			}
@@ -118,7 +137,7 @@ function updateCoords() {
 			} else {
 				var d = parseFloat(dist);
 				if (d !== (dist+0)) inp.val(d);
-				dists.push({name: system.name, dist: d*32, x: system.x, y: system.y, z: system.z});
+				dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
 			}
 		}
 	});
@@ -130,19 +149,13 @@ function updateCoords() {
 	if (dists.length >= 4) {
 		var bestCandidate = getBestCandidate(dists);
 		if (bestCandidate !== null) {
-			//console.log("best candidate: "+JSON.stringify(bestCandidate,2));
-			//console.log("calculated: ("+(bestCandidate.x/32.0)+", "+(bestCandidate.y/32.0)+", "+(bestCandidate.z/32.0)+")");
-
-			// round to 1/32 grid point (i.e. round the coordinate to an integer)
-			bestCandidate.x = Math.round(bestCandidate.x);
-			bestCandidate.y = Math.round(bestCandidate.y);
-			bestCandidate.z = Math.round(bestCandidate.z);
+			setVector(bestCandidate,gridLocation(bestCandidate));	// round to grid location
 
 			$("#distances tr[system]").each(function(i, el) {
 				var enteredDist = $(el).find("input").val();
 				if (enteredDist !== undefined && enteredDist.length > 0) {
 					var sys = systems[el.getAttribute('system')];
-					var calcDist = dist(sys, bestCandidate)/32.0;
+					var calcDist = dist(sys, bestCandidate);
 					var err = Math.abs(enteredDist - calcDist).toFixed(3);
 					if (sys.name === dists[bestCandidate.i1].name || sys.name === dists[bestCandidate.i2].name || sys.name === dists[bestCandidate.i3].name) {
 						err += " (ref)";
@@ -152,22 +165,24 @@ function updateCoords() {
 				}
 			});
 	
-			$("#output").html("Coordinates: "+vectorToString(scalarProd(1/32.0,bestCandidate))
-					+"<br/>RMS error: "+(Math.sqrt(bestCandidate.totalSqErr/(dists.length-3))/32.0).toFixed(3)
+			$("#output").html("Coordinates: "+vectorToString(bestCandidate)
+					+"<br/>RMS error: "+(Math.sqrt(bestCandidate.totalSqErr/(dists.length-3))).toFixed(3)	// we use length-3 to discount the ref systems (which should always have very low error)
 					+"<br/>Local Systems:");
 			$("#output").append(getLocalSystems(bestCandidate)).append('<br/>');
 			
 			// update stored system data
-			systemData.xCalculated = bestCandidate.x/32.0;
-			systemData.yCalculated = bestCandidate.y/32.0;
-			systemData.zCalculated = bestCandidate.z/32.0;
+			setVector(systemData, bestCandidate);
+			systemData.calculated = true;
 			systemData.distances = [];
 			for (var i = 0; i < dists.length; i++) {
 				systemData.distances.push({
 					system: dists[i].name,
-					distance: dists[i].dist/32.0
+					distance: dists[i].distance
 				});
 			}
+			$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
+			$("#sql-output").text(getSQL(systemData) + sqlOutput);
+
 			if (systemData.name && systemData.name.length > 0) {
 				$('#done-button').attr('disabled',false);
 			} else {
@@ -191,17 +206,17 @@ function getLocalSystems(coords) {
 
 	var locals = [];
 	for (i = 0; i < systems.length; i++) {
-		locals.push({system:systems[i], dist:dist(systems[i],coords)});
+		locals.push({system:systems[i], distance:dist(systems[i],coords)});
 	}
-	locals.sort(function(a,b) {return a.dist-b.dist;});
+	locals.sort(function(a,b) {return a.distance-b.distance;});
 
 	for (i = 0; i < 5 && i < locals.length; i++) {
 		row = document.createElement('tr');
 		$('<td>').text(locals[i].system.name).appendTo(row);
-		$('<td>').text(locals[i].system.x/32.0).appendTo(row);
-		$('<td>').text(locals[i].system.y/32.0).appendTo(row);
-		$('<td>').text(locals[i].system.z/32.0).appendTo(row);
-		$('<td>').text((locals[i].dist/32.0).toFixed(3)).appendTo(row);
+		$('<td>').text(locals[i].system.x).appendTo(row);
+		$('<td>').text(locals[i].system.y).appendTo(row);
+		$('<td>').text(locals[i].system.z).appendTo(row);
+		$('<td>').text((locals[i].distance).toFixed(3)).appendTo(row);
 		tbody.appendChild(row);
 	}
 	$(table).stupidtable().bind('aftertablesort', updateSortArrow);
@@ -251,8 +266,9 @@ function getLocalSystems(coords) {
 		<h3>Calculated</h3>
 		<div id="output"></div>
 		<button id="done-button" disabled="true">Done</button><button id="cancel-button">Cancel</button>
-		<h3>JSON Output</h3>
-		<button id="toggle-json">Show JSON</button>
+		<h3>Structured Output</h3>
+		<button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
+		<pre id="sql-output" style="display:none"></pre>
 		<pre id="json-output" style="display:none"></pre>
 	</div>
 </body>

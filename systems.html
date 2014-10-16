@@ -16,34 +16,20 @@ $(document).ready(function () {
 	$.getJSON('systems.json', function(data) {
 		systems = data;
 
-		var table = document.createElement('table');
-		var row = document.createElement('tr');
-		$('<th data-sort="string-ins">System</th>').appendTo(row);
-		$('<th data-sort="float">X</th>').appendTo(row);
-		$('<th data-sort="float">Y</th>').appendTo(row);
-		$('<th data-sort="float">Z</th>').appendTo(row);
-		$('<th data-sort="float">Distance</th>').appendTo(row);
-		$('<thead/>').append(row).appendTo(table);
-		var tbody = document.createElement('tbody');
-		table.appendChild(tbody);
-
 		var d, i;
-		var sol;
 		for (i = 0; i < systems.length; i++) {
-			row = document.createElement('tr');
-			if (!sol) sol = row;
-			$(row).attr('system', i)
-					.click(function() {selectSystem(this)});
-			$('<td>').text(systems[i].name).appendTo(row);
-			$('<td>').text(systems[i].x/32.0).appendTo(row);
-			$('<td>').text(systems[i].y/32.0).appendTo(row);
-			$('<td>').text(systems[i].z/32.0).appendTo(row);
-			$('<td>').appendTo(row);
-			tbody.appendChild(row);
+			$('<tr>')
+				.attr('system', i)
+				.click(function() {selectSystem(this)})
+				.append($('<td>').text(systems[i].name))
+				.append($('<td>').text(systems[i].x))
+				.append($('<td>').text(systems[i].y))
+				.append($('<td>').text(systems[i].z))
+				.append($('<td>'))
+				.appendTo('#tableDiv tbody');
 		}
-		$('#tableDiv').append(table);
-		selectSystem(sol);
-		$(table).stupidtable().bind('aftertablesort', updateSortArrow);
+		$('#tableDiv table').stupidtable().bind('aftertablesort', updateSortArrow);
+		selectSystem($('#tableDiv tr[system]')[0]);
 	});
 });
 
@@ -66,13 +52,27 @@ function selectSystem(row) {
 			return;
 		}
 		var s = systems[r.getAttribute('system')];
-		$(r).children('td').last().text((dist(s0, s)/32.0).toFixed(3));
+		$(r).children('td').last().text((dist(s0, s)).toFixed(3));
 	});
 }
 
 </script>
 </head>
 <body>
-	<div class="ui-widget" id="tableDiv"></div>
+	<div class="ui-widget" id="tableDiv">
+		<table>
+			<thead>
+				<tr>
+					<th data-sort="string-ins">System</th>
+					<th data-sort="float">X</th>
+					<th data-sort="float">Y</th>
+					<th data-sort="float">Z</th>
+					<th data-sort="float">Distance</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>

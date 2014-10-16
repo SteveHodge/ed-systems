@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Elite Dangerous Bulk Locate</title>
+	<link href="external/jquery-ui.css" rel="stylesheet">
+	<link href="trilateration.css" rel="stylesheet">
+	<script src="external/jquery-2.1.1.js"></script>
+	<script src="external/stupidtable.min.js"></script>
+	<script src="trilateration.js"></script>
+<script>
+var systems = null;
+var distances = null;
+
+$(document).ready(function () {
+	$.getJSON('distances.json', function(data) {
+		distances = data;
+		if (systems) processDistances();
+	});
+	
+	$.getJSON('systems.json', function(data) {
+		systems = data;
+		if (distances) processDistances();
+	});
+
+	$("#toggle-json").click(function() {
+		$(this).text($("#json-output").is(":visible") ? "Show JSON" : "Hide JSON").attr("disabled", true);
+		$("#json-output").toggle("fast", function() {
+			$("#toggle-json").attr("disabled", false);
+		});
+	});
+	$("#json-output").click(function() {
+		if (window.getSelection) {
+			var selection = window.getSelection();            
+			var range = document.createRange();
+			range.selectNodeContents(this);
+			selection.removeAllRanges();
+			selection.addRange(range);
+		}
+	});
+	$("#toggle-sql").click(function() {
+		$(this).text($("#sql-output").is(":visible") ? "Show SQL" : "Hide SQL").attr("disabled", true);
+		$("#sql-output").toggle("fast", function() {
+			$("#toggle-sql").attr("disabled", false);
+		});
+	});
+	$("#sql-output").click(function() {
+		if (window.getSelection) {
+			var selection = window.getSelection();            
+			var range = document.createRange();
+			range.selectNodeContents(this);
+			selection.removeAllRanges();
+			selection.addRange(range);
+		}
+	});
+});
+
+var unknowns = null;
+
+function findSystem(name) {
+	var idx = -1;
+	$.each(systems, function(i, s) {
+		if ($.trim(name.toLowerCase()) === s.name.toLowerCase()) {
+			idx = i;
+			return false;
+		}
+	});
+	return idx;
+}
+
+function addDistance(unknownName, refID, distance) {
+	var un = unknownName.toLowerCase();
+	if (unknowns[un] === undefined) {
+		unknowns[un] = {};
+		unknowns[un].name = unknownName;
+		unknowns[un].distances = [];
+	} else {
+		unknowns[un].name = bestName(unknowns[un].name, unknownName);
+	}
+	
+	unknowns[un].distances.push({
+		name: systems[refID].name,
+		distance: distance,
+		x: systems[refID].x,
+		y: systems[refID].y,
+		z: systems[refID].z
+	});
+}
+
+// order of assumed correctness: mixed case, all caps, all lower
+// if both are the same level then prefer name1
+function bestName(name1, name2) {
+	if (name1 === name2) return name1;
+	if (name1.toLowerCase() !== name1 && name1.toUpperCase() !== name1) return name1;	// name1 mixed
+	if (name2.toLowerCase() !== name2 && name2.toUpperCase() !== name2) return name2;	// name2 mixed
+	if (name1.toUpperCase() === name1) return name1;	// name1 upper
+	if (name2.toUpperCase() === name2) return name1;	// name2 upper
+	return name1;	// must be both lower
+}
+
+function processDistances() {
+	var i, k;
+	var ref1, ref2;
+	var row;
+
+	if (unknowns !== null) return;
+	unknowns = {};
+	
+	// build list of unknown systems and their reference distances
+	for (i = 0; i < distances.length; i++) {
+		ref1 = findSystem(distances[i].system1);
+		ref2 = findSystem(distances[i].system2);
+		if (ref1 == -1 && ref2 >= 0) addDistance(distances[i].system1, ref2, distances[i].distance);
+		if (ref2 == -1 && ref1 >= 0) addDistance(distances[i].system2, ref1, distances[i].distance);
+	}
+
+	// process systems and populate table
+	$.each(unknowns, function(i, u) {
+		if (u.distances.length >= 4) {
+			var bestCandidate = getBestCandidate(u.distances);
+			if (bestCandidate !== null) {
+				var gridLoc = gridLocation(bestCandidate);
+				setVector(u, gridLoc);
+				u.errRMS = Math.sqrt(bestCandidate.totalSqErr/(u.distances.length-3)).toFixed(3);
+				
+				// clean version for JSON output
+				var s = {};
+				s.name = u.name;
+				s.calculated = true;
+				setVector(s, u);
+				s.distances = [];
+				$.each(u.distances, function() {
+					s.distances.push({system: this.name, distance: this.distance});
+				});
+				
+				// add to JSON output
+				$("#json-output").text(function(i,text) {
+					if (text && text.length > 0) text += ",\n";
+					return text + JSON.stringify(s, null, 2);
+				});
+				
+				// add to SQL output
+				$("#sql-output").text(function(i,text) {
+					return text + getSQL(s);
+				});
+			}
+
+			var tunaCoords = tunamageCoords(u.distances);
+			if (tunaCoords !== null) {
+				tunaLoc = gridLocation(tunaCoords);
+				if (gridLoc.x === tunaLoc.x && gridLoc.y === tunaLoc.y && gridLoc.z === tunaLoc.z) {
+					u.tunaMageInfo = "matches";
+				} else {
+					u.tunaMageInfo = vectorToString(tunaLoc);
+				}
+			}
+
+		} else {
+			u.x = "";
+			u.y = "";
+			u.z = "";
+			u.errRMS = "";
+		}
+
+		$('<tr>')
+			.append($('<td>').text(u.name))
+			.append($('<td>').text(u.distances.length))
+			.append($('<td>').text(u.x))
+			.append($('<td>').text(u.y))
+			.append($('<td>').text(u.z))
+			.append($('<td>').text(u.errRMS).addClass(!u.errRMS || u.errRMS==="0.000" ? "" : "error"))
+			.append($('<td>').text(u.tunaMageInfo))
+			.appendTo('#tableDiv tbody');
+	});
+
+	$('#tableDiv table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
+}
+
+</script>
+</head>
+<body>
+	<div class="ui-widget" id="tableDiv">
+		<table>
+			<thead>
+				<th data-sort="string-ins">System</th>
+				<th data-sort="int"># Distances</th>
+				<th data-sort="optfloat">X</th>
+				<th data-sort="optfloat">Y</th>
+				<th data-sort="optfloat">Z</th>
+				<th data-sort="optfloat">RMS Error</th>
+				<th>TunaMage result</th>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		<h3>Structured Output</h3>
+		<button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
+		<pre id="sql-output" style="display:none"></pre>
+		<pre id="json-output" style="display:none"></pre>
+	</div>
+</body>
+</html>

@@ -14,8 +14,12 @@ td {
 .selected {
 	background-color: red;
 }
+.error {
+	background-color: red;
+}
 pre {
 	border: 1px solid black;
+	min-height: 20px;
 }
 .ui-autocomplete {
 	max-height: 190px;
