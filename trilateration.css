@@ -12,7 +12,7 @@ td {
 	padding-right: 0.5em;
 }
 .selected {
-	background-color: red;
+	background-color: LightSkyBlue;
 }
 .error {
 	background-color: red;
@@ -26,4 +26,9 @@ pre {
 	overflow-y: auto;
 	/* prevent horizontal scrollbar */
 	overflow-x: hidden;
+}
+div.table-div {
+	width: 100%;
+	overflow:auto;
+	border:1px solid black;
 }

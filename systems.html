@@ -22,13 +22,15 @@ $(document).ready(function () {
 				.attr('system', i)
 				.click(function() {selectSystem(this)})
 				.append($('<td>').text(systems[i].name))
+				.append($('<td>').text(systems[i].calculated ? "Y" : "N"))
 				.append($('<td>').text(systems[i].x))
 				.append($('<td>').text(systems[i].y))
 				.append($('<td>').text(systems[i].z))
 				.append($('<td>'))
+				.append($('<td>'))
 				.appendTo('#tableDiv tbody');
 		}
-		$('#tableDiv table').stupidtable().bind('aftertablesort', updateSortArrow);
+		$('#tableDiv table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
 		selectSystem($('#tableDiv tr[system]')[0]);
 	});
 });
@@ -46,28 +48,37 @@ function selectSystem(row) {
 	// recalculate distances
 	if (!selected.hasAttribute('system')) return;
 	var s0 = systems[selected.getAttribute('system')];
+	var dists = {};
+	if ('distances' in s0) $.each(s0.distances, function() {
+		dists[this.system] = this.distance;
+	});
+
 	$('#tableDiv tr').each(function(i, r) {
 		if (!r.hasAttribute('system')) {
-			$(r).children('th').last().text('Distance to '+s0.name);
+			$(r).children('th:nth-last-child(2)').text('Distance to '+s0.name);
 			return;
 		}
 		var s = systems[r.getAttribute('system')];
-		$(r).children('td').last().text((dist(s0, s)).toFixed(3));
+		$(r).children('td:nth-last-child(2)').last().text((dist(s0, s)).toFixed(3));
+		$(r).children('td:nth-last-child(1)').last().text(dists[s.name]);
 	});
 }
 
 </script>
 </head>
-<body>
-	<div class="ui-widget" id="tableDiv">
+<body class="ui-widget">
+	<h2>Known Systems</h2>
+	<div class="table-div" id="tableDiv" style="height: 60vh;">
 		<table>
 			<thead>
 				<tr>
 					<th data-sort="string-ins">System</th>
+					<th data-sort="string">Derived?</th>
 					<th data-sort="float">X</th>
 					<th data-sort="float">Y</th>
 					<th data-sort="float">Z</th>
 					<th data-sort="float">Distance</th>
+					<th data-sort="optfloat">Crowdsourced Distance</th>
 				</tr>
 			</thead>
 			<tbody>

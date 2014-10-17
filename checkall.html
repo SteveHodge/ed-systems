@@ -78,7 +78,7 @@ function resetRefs() {
 }
 
 function runCheck() {
-	var getCoords = $('#algorithm').prop('selectedIndex') == 0 ? getBestCandidate : tunamageCoords;
+	var getCoords = $('#algorithm').prop('selectedIndex') == 0 ? getBestCandidate : tunaMageCoords;
 	
 	var errors = 0;
 	var dp = parseInt($('#dp-input').val());
@@ -119,6 +119,10 @@ function runCheck() {
 			refSystems[i].distance = d;
 		}
 		
+		if (system.name === 'Adepti') {
+			console.log(system.name);
+		}
+
 		var bestCandidate = getCoords(refSystems);
 		if (bestCandidate !== null) {
 			// round to 1/32 grid point (i.e. round the coordinate to an integer)
@@ -166,7 +170,7 @@ function runCheck() {
 		<br/><button id="run" type="button">Run</button>
 		<h2>Checking all systems</h2>
 		<p id="summary"></p>
-		<div id="tableDiv">
+		<div id="tableDiv" style="height:50%; overflow-y:auto">
 			<table>
 				<thead>
 					<tr>

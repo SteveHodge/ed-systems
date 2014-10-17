@@ -77,6 +77,18 @@ function getCandidates(dists, i1, i2, i3) {
 	}
 }
 
+// dists is an array of reference objects (properties x, y, z, distance)
+// p is a vector (properties x, y, z)
+// returns the RMS error between the distances as calculated from the coordinates and the distances supplied
+function getError(p, dists) {
+	var err = 0;
+	$.each(dists, function() {
+		var e = dist(this, p) - this.distance;
+		err += e*e;
+	});
+	return Math.sqrt(err/dists.length);
+}
+
 // returns a vector with the components of v rounded to 1/32
 function gridLocation(v) {
 	return {
@@ -158,7 +170,7 @@ function sum(p1, p2) {
 
 // dists is an array of four reference objects (properties x, y, z, distance)
 // returns coordinate object (properties x, y, z)
-function tunamageCoords(dists) {
+function tunaMageCoords(dists) {
 	var b = diff(dists[1], dists[0]);	// 2nd system relative to 1st system
 	var c = diff(dists[2], dists[0]);	// 3rd system relative to 1st system
 	var d = diff(dists[3], dists[0]);	// 4th system relative to 1st system

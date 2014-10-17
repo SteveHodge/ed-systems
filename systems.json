@@ -303,5 +303,634 @@
 	{"name":"Ori", "x":-26.28125, "y":56.09375, "z":2.4375},
 	{"name":"LHS 2948", "x":-21.6875, "y":60.4375, "z":15.09375},
 	{"name":"CE Bootis", "x":-5.40625, "y":29.375, "z":16.46875},
-	{"name":"LHS 2651", "x":-22.84375, "y":60.375, "z":-13.8125}
+	{"name":"LHS 2651", "x":-22.84375, "y":60.375, "z":-13.8125},
+	{
+	  "name": "Achenar",
+	  "calculated": true,
+	  "x": 67.5,
+	  "y": -119.46875,
+	  "z": 24.84375,
+	  "distances": [
+	    {"system": "Aulin", "distance": "176.513"},
+	    {"system": "Ross 905", "distance": "167.107"},
+	    {"system": "41 Gamma Serpentis", "distance": "165.847"},
+	    {"system": "Theta Draconis", "distance": "205.549"},
+	    {"system": "Tring", "distance": "243.178"}
+	  ]
+	},
+	{
+	  "name": "Etamin",
+	  "calculated": true,
+	  "x": -132.46875,
+	  "y": 74.875,
+	  "z": 25.53125,
+	  "distances": [
+	    {"system": "Aulin", "distance": "122.194"},
+	    {"system": "Ross 905", "distance": "147.201"},
+	    {"system": "41 Gamma Serpentis", "distance": "129.917"},
+	    {"system": "Theta Draconis", "distance": "91.351"},
+	    {"system": "Tring", "distance": "98.623"}
+	  ]
+	},
+	{
+	  "name": "Enif",
+	  "calculated": true,
+	  "x": -536.59375,
+	  "y": -363.03125,
+	  "z": 236.1875,
+	  "distances": [
+	    {"system": "Aulin", "distance": "690.904"},
+	    {"system": "Ross 905", "distance": "712.738"},
+	    {"system": "41 Gamma Serpentis", "distance": "686.961"},
+	    {"system": "Theta Draconis", "distance": "680.149"},
+	    {"system": "Tring", "distance": "623.398"},
+	    {"system": "Wyrd", "distance": "699.237"},
+	    {"system": "LHS 2884", "distance": "699.310"},
+	    {"system": "Keries", "distance": "685.777"},
+	    {"system": "h Draconis", "distance": "677.152"}
+	  ]
+	},
+	{
+	  "name": "Alpha Cygni",
+	  "calculated": true,
+	  "x": -1405,
+	  "y": 46.09375,
+	  "z": 132.5,
+	  "distances": [
+	    {"system": "Aulin", "distance": "1391.255"},
+	    {"system": "Ross 905", "distance": "1416.448"},
+	    {"system": "41 Gamma Serpentis", "distance": "1397.327"},
+	    {"system": "Theta Draconis", "distance": "1362.519"},
+	    {"system": "Tring", "distance": "1292.807"},
+	    {"system": "Wyrd", "distance": "1400.115"},
+	    {"system": "LHS 2884", "distance": "1389.166"},
+	    {"system": "Keries", "distance": "1391.399"},
+	    {"system": "h Draconis", "distance": "1372.054"}
+	  ]
+	},
+	{
+	  "name": "Polaris",
+	  "calculated": true,
+	  "x": -322.6875,
+	  "y": 194.59375,
+	  "z": -212.4375,
+	  "distances": [
+	    {"system": "Aulin", "distance": "406.439"},
+	    {"system": "Ross 905", "distance": "419.05"},
+	    {"system": "41 Gamma Serpentis", "distance": "424.553"},
+	    {"system": "Theta Draconis", "distance": "376.224"},
+	    {"system": "Tring", "distance": "316.61"},
+	    {"system": "Wyrd", "distance": "408.438"},
+	    {"system": "LHS 2884", "distance": "397.081"},
+	    {"system": "Keries", "distance": "413.445"},
+	    {"system": "h Draconis", "distance": "388.228"}
+	  ]
+	},
+	{
+	  "name": "Mirphak",
+	  "calculated": true,
+	  "x": -274.96875,
+	  "y": -47.625,
+	  "z": -422.65625,
+	  "distances": [
+	    {"system": "Aulin", "distance": "504.276"},
+	    {"system": "Ross 905", "distance": "506.955"},
+	    {"system": "41 Gamma Serpentis", "distance": "522.499"},
+	    {"system": "Theta Draconis", "distance": "488.791"},
+	    {"system": "Tring", "distance": "407.471"},
+	    {"system": "Wyrd", "distance": "500.940"},
+	    {"system": "LHS 2884", "distance": "503.351"},
+	    {"system": "Keries", "distance": "510.502"},
+	    {"system": "h Draconis", "distance": "486.409"}
+	  ]
+	},
+	{
+	  "name": "Alphard",
+	  "calculated": true,
+	  "x": 138.84375,
+	  "y": 88.46875,
+	  "z": -73.5,
+	  "distances": [
+	    {"system": "Aulin", "distance": "185.383"},
+	    {"system": "Ross 905", "distance": "160.143"},
+	    {"system": "41 Gamma Serpentis", "distance": "189.689"},
+	    {"system": "Theta Draconis", "distance": "205.667"},
+	    {"system": "SDSS J1416+1348", "distance": "174.753"},
+	    {"system": "Tring", "distance": "276.947"}
+	  ]
+	},
+	{
+	  "name": "Rigel",
+	  "calculated": true,
+	  "x": 385.78125,
+	  "y": -360.40625,
+	  "z": -682.53125,
+	  "distances": [
+	    {"system": "Aulin", "distance": "889.541"},
+	    {"system": "Ross 905", "distance": "869.126"},
+	    {"system": "41 Gamma Serpentis", "distance": "897.35"},
+	    {"system": "Theta Draconis", "distance": "906.501"},
+	    {"system": "Tring", "distance": "894.864"},
+	    {"system": "Wyrd", "distance": "878.656"},
+	    {"system": "LHS 2884", "distance": "895.375"},
+	    {"system": "Keries", "distance": "892.874"},
+	    {"system": "h Draconis", "distance": "890.934"}
+	  ]
+	},
+	{
+	  "name": "Veren's stop",
+	  "calculated": true,
+	  "x": -12.96875,
+	  "y": 21.96875,
+	  "z": 20.28125,
+	  "distances": [
+	    {"system": "41 Gamma Serpentis", "distance": "4.867"},
+	    {"system": "LHS 411", "distance": "2.326"},
+	    {"system": "SDSS J1416+1348", "distance": "15.695"},
+	    {"system": "Keries", "distance": "11.041"},
+	    {"system": "Eranin", "distance": "27.758"}
+	  ]
+	},
+	{
+	  "name": "OT Serpentis",
+	  "calculated": true,
+	  "x": -11.125,
+	  "y": 30.34375,
+	  "z": 18.40625,
+	  "distances": [
+	    {"system": "41 Gamma Serpentis", "distance": "6.312"},
+	    {"system": "SDSS J1416+1348", "distance": "12.655"},
+	    {"system": "Keries", "distance": "10.203"},
+	    {"system": "Eranin", "distance": "23.654"},
+	    {"system": "Basium", "distance": "79.755"}
+	  ]
+	},
+	{
+	  "name": "LHS 396",
+	  "calculated": true,
+	  "x": -9.875,
+	  "y": 30.84375,
+	  "z": 20.46875,
+	  "distances": [
+	    {"system": "41 Gamma Serpentis", "distance": "5.858"},
+	    {"system": "SDSS J1416+1348", "distance": "13.028"},
+	    {"system": "Keries", "distance": "12.519"},
+	    {"system": "Eranin", "distance": "25.875"},
+	    {"system": "Basium", "distance": "81.843"},
+	    {"system": "35 Draconis", "distance": "92.116"}
+	  ]
+	},
+	{
+	  "name": "Marcov's Point",
+	  "calculated": true,
+	  "x": -22.34375,
+	  "y": 14.625,
+	  "z": 17.65625,
+	  "distances": [
+	    {"system": "LHS 411", "distance": "12.898"},
+	    {"system": "SDSS J1416+1348", "distance": "25.652"},
+	    {"system": "Keries", "distance": "14.002"},
+	    {"system": "Eranin", "distance": "28.900"},
+	    {"system": "Basium", "distance": "76.983"}
+	  ]
+	},
+	{
+	  "name": "LP 625-34",
+	  "calculated": true,
+	  "x": -9.46875,
+	  "y": 17.8125,
+	  "z": 30.4375,
+	  "distances": [
+	    {"system": "LHS 411", "distance": "13.65"},
+	    {"system": "SDSS J1416+1348", "distance": "22.458"},
+	    {"system": "Keries", "distance": "22.270"},
+	    {"system": "Eranin", "distance": "39.108"},
+	    {"system": "Basium", "distance": "92.326"}
+	  ]
+	},
+	{
+	  "name": "Ross 52",
+	  "calculated": true,
+	  "x": -8.4375,
+	  "y": 29.15625,
+	  "z": 13.3125,
+	  "distances": [
+	    {"system": "LHS 411", "distance": "9.008"},
+	    {"system": "Rakapila", "distance": "8.908"},
+	    {"system": "Bolg", "distance": "12.505"},
+	    {"system": "CE Bootis", "distance": "4.382"},
+	    {"system": "LHS 2887", "distance": "8.031"},
+	    {"system": "Aulin", "distance": "14.572"},
+	    {"system": "SDSS J1416+1348", "distance": "8.111"}
+	  ]
+	},
+	{
+	  "name": "GD 356",
+	  "calculated": true,
+	  "x": -50.9375,
+	  "y": 44.15625,
+	  "z": 7.3125,
+	  "distances": [
+	    {"system": "Theta Draconis", "distance": "8.516"},
+	    {"system": "Taran", "distance": "13.389"},
+	    {"system": "Surya", "distance": "13.534"},
+	    {"system": "Demeter", "distance": "5.537"},
+	    {"system": "Hagalaz", "distance": "3.926"},
+	    {"system": "CR Draconis", "distance": "4.356"},
+	    {"system": "CR Draco", "distance": "4.642"}
+	  ]
+	},
+	{
+	  "name": "Taran",
+	  "calculated": true,
+	  "x": -42.5,
+	  "y": 45.46875,
+	  "z": -3,
+	  "distances": [
+	    {"system": "GD 356", "distance": "13.389"},
+	    {"system": "Hagalaz", "distance": "16.255"},
+	    {"system": "Ross 1051", "distance": "5.752"},
+	    {"system": "LHS 5287", "distance": "7.032"},
+	    {"system": "Surya", "distance": "11.207"},
+	    {"system": "Demeter", "distance": "17.269"},
+	    {"system": "Styx", "distance": "21.724"},
+	    {"system": "Theta Draconis", "distance": "7.584"},
+	    {"system": "CR Draco", "distance": "10.336"},
+	    {"system": "CR Draconis", "distance": "9.489"},
+	    {"system": "Rahu", "distance": "17.238"}
+	  ]
+	},
+	{
+	  "name": "Hagalaz",
+	  "calculated": true,
+	  "x": -50.59375,
+	  "y": 45.15625,
+	  "z": 11.09375,
+	  "distances": [
+	    {"system": "GD 356", "distance": "3.926"},
+	    {"system": "Demeter", "distance": "7.342"},
+	    {"system": "Theta Draconis", "distance": "11.565"},
+	    {"system": "Taran", "distance": "16.255"},
+	    {"system": "Surya", "distance": "14.637"},
+	    {"system": "Ao Qin", "distance": "15.674"},
+	    {"system": "Arcturus", "distance": "48.367"},
+	    {"system": "Aulin", "distance": "33.925"},
+	    {"system": "Sol", "distance": "68.716"}
+	  ]
+	},
+	{
+	  "name": "SDSS J1416+1348",
+	  "calculated": true,
+	  "x": -0.6875,
+	  "y": 27.15625,
+	  "z": 12,
+	  "distances": [
+	    {"system": "Ross 52", "distance": "8.111"},
+	    {"system": "Arcturus", "distance": "7.617"},
+	    {"system": "Chara", "distance": "17.296"},
+	    {"system": "Coelrind", "distance": "10.266"},
+	    {"system": "Alphard", "distance": "174.753"},
+	    {"system": "Sol", "distance": "29.697"},
+	    {"system": "Wyrd", "distance": "19.819"},
+	    {"system": "LHS 2884", "distance": "31.784"},
+	    {"system": "Keries", "distance": "18.229"},
+	    {"system": "h Draconis", "distance": "42.332"}
+	  ]
+	},
+	{
+	  "name": "NLTT 47491",
+	  "calculated": true,
+	  "x": -89,
+	  "y": 47.125,
+	  "z": -35.25,
+	  "distances": [
+	    {"system": "35 Draconis", "distance": "9.147"},
+	    {"system": "Bangati", "distance": "9.907"},
+	    {"system": "Eranin", "distance": "75.161"},
+	    {"system": "Basium", "distance": "18.653"},
+	    {"system": "Wyrd", "distance": "84.915"},
+	    {"system": "LHS 2884", "distance": "76.563"},
+	    {"system": "h Draconis", "distance": "60.887"}
+	  ]
+	},
+	{
+	  "name": "LDS 1503",
+	  "calculated": true,
+	  "x": -51.78125,
+	  "y": 19.90625,
+	  "z": -31.71875,
+	  "distances": [
+	    {"system": "Moros", "distance": "6.35"},
+	    {"system": "LP 1-52", "distance": "9.23"},
+	    {"system": "LHS 1065", "distance": "4.06"},
+	    {"system": "Keries", "distance": "55.658"},
+	    {"system": "Eranin", "distance": "45.232"}
+	  ]
+	},
+	{
+	  "name": "LP 180-17",
+	  "calculated": true,
+	  "x": -56.84375,
+	  "y": 37.71875,
+	  "z": 12.71875,
+	  "distances": [
+	    {"system": "Aulin", "distance": "38.333"},
+	    {"system": "Naraka", "distance": "31.351"},
+	    {"system": "Ross 1057", "distance": "36.981"},
+	    {"system": "HIP 113477", "distance": "93.485"},
+	    {"system": "Titicate", "distance": "86.849"},
+	    {"system": "Killke", "distance": "73.431"},
+	    {"system": "Gera", "distance": "62.004"}
+	  ]
+	},
+	{
+	  "name": "HIP 94802",
+	  "calculated": true,
+	  "x": -114.59375,
+	  "y": 51.40625,
+	  "z": -25.90625,
+	  "distances": [
+	    {"system": "Aulin", "distance": "101.476"},
+	    {"system": "Baga", "distance": "37.295"},
+	    {"system": "Gera", "distance": "47.972"},
+	    {"system": "Hepa", "distance": "98.938"},
+	    {"system": "Sumi", "distance": "66.283"},
+	    {"system": "Tyr", "distance": "46.184"}
+	  ]
+	},
+	{
+	  "name": "4 Cephei",
+	  "calculated": true,
+	  "x": -132.09375,
+	  "y": 35.5,
+	  "z": -27.875,
+	  "distances": [
+	    {"system": "Aulin", "distance": "117.079"},
+	    {"system": "Baga", "distance": "39.663"},
+	    {"system": "Gera", "distance": "49.729"},
+	    {"system": "Hepa", "distance": "113.931"},
+	    {"system": "Sumi", "distance": "75.664"},
+	    {"system": "Tyr", "distance": "54.442"}
+	  ]
+	},
+	{
+	  "name": "HIP 103014",
+	  "calculated": true,
+	  "x": -132.46875,
+	  "y": 33.25,
+	  "z": -28.5625,
+	  "distances": [
+	    {"system": "Aulin", "distance": "117.6"},
+	    {"system": "Baga", "distance": "39.432"},
+	    {"system": "Gera", "distance": "48.95"},
+	    {"system": "Hepa", "distance": "114.57"},
+	    {"system": "Sumi", "distance": "75.404"},
+	    {"system": "Tyr", "distance": "54.302"}
+	  ]
+	},
+	{
+	  "name": "HIP 109479",
+	  "calculated": true,
+	  "x": -127.5,
+	  "y": 29.875,
+	  "z": -48.5,
+	  "distances": [
+	    {"system": "Aulin", "distance": "120.279"},
+	    {"system": "Baga", "distance": "23.37"},
+	    {"system": "Gera", "distance": "45.274"},
+	    {"system": "Hepa", "distance": "120.589"},
+	    {"system": "Sumi", "distance": "70.123"},
+	    {"system": "Tyr", "distance": "53.997"}
+	  ]
+	},
+	{
+	  "name": "16 Cephei",
+	  "calculated": true,
+	  "x": -108,
+	  "y": 30.03125,
+	  "z": -42.25,
+	  "distances": [
+	    {"system": "Aulin", "distance": "100.076"},
+	    {"system": "Baga", "distance": "17.485"},
+	    {"system": "Gera", "distance": "27.921"},
+	    {"system": "Hepa", "distance": "101.291"},
+	    {"system": "Sumi", "distance": "50.545"},
+	    {"system": "Tyr", "distance": "34.317"}
+	  ]
+	},
+	{
+	  "name": "HIP 111494",
+	  "calculated": true,
+	  "x": -106.9375,
+	  "y": 30.0625,
+	  "z": -48.4375,
+	  "distances": [
+	    {"system": "Aulin", "distance": "102.217"},
+	    {"system": "Baga", "distance": "11.747"},
+	    {"system": "Gera", "distance": "29.774"},
+	    {"system": "Hepa", "distance": "104.505"},
+	    {"system": "Sumi", "distance": "50.483"},
+	    {"system": "Tyr", "distance": "37.014"}
+	  ]
+	},
+	{
+	  "name": "LP 229-17",
+	  "calculated": true,
+	  "x": -23.03125,
+	  "y": 9.03125,
+	  "z": 8.96875,
+	  "distances": [
+	    {"system": "Austern", "distance": "6.673"},
+	    {"system": "Keries", "distance": "18.998"},
+	    {"system": "Eranin", "distance": "29.316"},
+	    {"system": "Basium", "distance": "74.357"},
+	    {"system": "35 Draconis", "distance": "84.114"}
+	  ]
+	},
+	{
+	  "name": "Austern",
+	  "calculated": true,
+	  "x": -25.15625,
+	  "y": 15.34375,
+	  "z": 9.375,
+	  "distances": [
+	    {"system": "86 Mu Herculis", "distance": "8.762"},
+	    {"system": "Connla", "distance": "6.442"},
+	    {"system": "44 chi Draconis", "distance": "15.298"},
+	    {"system": "WISE 1647+5632", "distance": "8.745"},
+	    {"system": "Basium", "distance": "69.891"}
+	  ]
+	},
+	{
+	  "name": "LP 336-6",
+	  "calculated": true,
+	  "x": -23.46875,
+	  "y": 5.09375,
+	  "z": 11.4375,
+	  "distances": [
+	    {"system": "Austern", "distance": "10.591"},
+	    {"system": "Keries", "distance": "22.620"},
+	    {"system": "Eranin", "distance": "33.884"},
+	    {"system": "Basium", "distance": "77.612"},
+	    {"system": "35 Draconis", "distance": "86.967"}
+	  ]
+	},
+	{
+	  "name": "Culann",
+	  "calculated": true,
+	  "x": -36.0625,
+	  "y": 14.625,
+	  "z": 13.8125,
+	  "distances": [
+	    {"system": "Caer Bran", "distance": "4.792"},
+	    {"system": "NLTT 46621", "distance": "13.182"},
+	    {"system": "Malina", "distance": "14.748"},
+	    {"system": "V1090 Herculis", "distance": "24.015"},
+	    {"system": "Vaccimici", "distance": "22.921"}
+	  ]
+	},
+	{
+	  "name": "LHS 457",
+	  "calculated": true,
+	  "x": -31.75,
+	  "y": 16.65625,
+	  "z": 15.5,
+	  "distances": [
+	    {"system": "Caer Bran", "distance": "2.944"},
+	    {"system": "86 Mu Herculis", "distance": "13.294"},
+	    {"system": "72 Herculis", "distance": "10.531"},
+	    {"system": "Keries", "distance": "16.881"},
+	    {"system": "Eranin", "distance": "27.437"}
+	  ]
+	},
+	{
+	  "name": "Dziban",
+	  "calculated": true,
+	  "x": -62.15625,
+	  "y": 38.46875,
+	  "z": -14.3125,
+	  "distances": [
+	    {"system": "Sol", "distance": "74.486"},
+	    {"system": "Flousop", "distance": "66.846"},
+	    {"system": "Tring", "distance": "77.256"},
+	    {"system": "Rahu", "distance": "33.315"},
+	    {"system": "Parcae", "distance": "56.595"},
+	    {"system": "Hepa", "distance": "48.696"},
+	    {"system": "Poqomathi", "distance": "69.166"},
+	    {"system": "Hyperion", "distance": "32.942"},
+	    {"system": "Aulin", "distance": "46.908"},
+	    {"system": "Wyrd", "distance": "52.050"},
+	    {"system": "LHS 2884", "distance": "44.388"},
+	    {"system": "Keries", "distance": "52.164"},
+	    {"system": "h Draconis", "distance": "26.181"}
+	  ]
+	},
+	{
+	  "name": "NLTT 44050",
+	  "calculated": true,
+	  "x": -57.46875,
+	  "y": 38.8125,
+	  "z": -21.09375,
+	  "distances": [
+	    {"system": "Sol", "distance": "72.485"},
+	    {"system": "Flousop", "distance": "65.056"},
+	    {"system": "Tring", "distance": "78.694"},
+	    {"system": "Rahu", "distance": "34.35"},
+	    {"system": "Parcae", "distance": "52.121"},
+	    {"system": "Hepa", "distance": "51.201"},
+	    {"system": "Poqomathi", "distance": "66.934"},
+	    {"system": "Hyperion", "distance": "32.235"},
+	    {"system": "Aulin", "distance": "46.183"},
+	    {"system": "Wyrd", "distance": "49.487"},
+	    {"system": "LHS 2884", "distance": "43.282"},
+	    {"system": "Keries", "distance": "52.501"},
+	    {"system": "h Draconis", "distance": "26.299"}
+	  ]
+	},
+	{
+	  "name": "LHS 6354",
+	  "calculated": true,
+	  "x": -65.28125,
+	  "y": 27.34375,
+	  "z": -16.125,
+	  "distances": [
+	    {"system": "Sol", "distance": "72.59"},
+	    {"system": "Flousop", "distance": "67.587"},
+	    {"system": "Tring", "distance": "70.311"},
+	    {"system": "Rahu", "distance": "44.112"},
+	    {"system": "Parcae", "distance": "63.543"},
+	    {"system": "Hepa", "distance": "52.474"},
+	    {"system": "Poqomathi", "distance": "64.559"},
+	    {"system": "Hyperion", "distance": "24.347"},
+	    {"system": "Aulin", "distance": "50.429"},
+	    {"system": "Wyrd", "distance": "55.182"},
+	    {"system": "LHS 2884", "distance": "51.357"},
+	    {"system": "Keries", "distance": "54.547"},
+	    {"system": "h Draconis", "distance": "28.307"}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA XX-O B47-2",
+	  "calculated": true,
+	  "x": -116.4375,
+	  "y": 55.125,
+	  "z": -38.3125,
+	  "distances": [
+	    {"system": "Sol", "distance": "134.404"},
+	    {"system": "Flousop", "distance": "128.219"},
+	    {"system": "Tring", "distance": "47.484"},
+	    {"system": "Rahu", "distance": "82.348"},
+	    {"system": "Parcae", "distance": "110.389"},
+	    {"system": "Hepa", "distance": "107.596"},
+	    {"system": "Poqomathi", "distance": "46.161"},
+	    {"system": "Hyperion", "distance": "83.618"},
+	    {"system": "Aulin", "distance": "108.251"},
+	    {"system": "Wyrd", "distance": "112.801"},
+	    {"system": "LHS 2884", "distance": "102.816"},
+	    {"system": "Keries", "distance": "113.501"},
+	    {"system": "h Draconis", "distance": "87.771"}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA ZH-Q B46-3",
+	  "calculated": true,
+	  "x": -73.375,
+	  "y": 26.59375,
+	  "z": -55.09375,
+	  "distances": [
+	    {"system": "LP 29-188", "distance": "12.152"},
+	    {"system": "Jaoismonjin", "distance": "12.421"},
+	    {"system": "Keries", "distance": "86.884"},
+	    {"system": "Eranin", "distance": "74.552"},
+	    {"system": "Basium", "distance": "34.136"}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA YH-Q B46-3",
+	  "calculated": true,
+	  "x": -86.25,
+	  "y": 31.78125,
+	  "z": -61.875,
+	  "distances": [
+	    {"system": "47 Cassiopeiae", "distance": "4.737"},
+	    {"system": "HR 158", "distance": "8.508"},
+	    {"system": "Keries", "distance": "100.507"},
+	    {"system": "Eranin", "distance": "87.897"},
+	    {"system": "Basium", "distance": "39.427"}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA YH-Q B46-2",
+	  "calculated": true,
+	  "x": -98.125,
+	  "y": 32.5,
+	  "z": -61.1875,
+	  "distances": [
+	    {"system": "Baga", "distance": "9.945"},
+	    {"system": "Keries", "distance": "108.384"},
+	    {"system": "Eranin", "distance": "96.351"},
+	    {"system": "Basium", "distance": "44.533"},
+	    {"system": "35 Draconis", "distance": "40.202"}
+	  ]
+	}
 ]
