@@ -173,7 +173,7 @@ function updateCoords() {
 
 		if (isNaN(d)) {
 			inp.val("");
-		} else if (system !== undefined) {
+		} else if (system !== undefined && !system.calculated) {
 			if (d != (dist+0)) inp.val(d);	// parseFloat will parse anything starting with a valid float, so if that doesn't match the input then update the field
 			dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
 		}
@@ -191,7 +191,7 @@ function updateCoords() {
 
 			$("#distances tr[system]").each(function() {
 				var enteredDist = $(this).find("input.distance").val();
-				if (enteredDist !== undefined && enteredDist.length > 0) {
+				if (enteredDist.length > 0) {
 					var nameKey = this.getAttribute('system');
 					if (!(nameKey in systemsMap)) {
 						$(this).children("td:nth-child(3)").text("")
@@ -205,6 +205,7 @@ function updateCoords() {
 					if (sys.name === dists[bestCandidate.i1].name || sys.name === dists[bestCandidate.i2].name || sys.name === dists[bestCandidate.i3].name) {
 						err += " (ref)";
 					}
+					if (sys.calculated) err += " (derived star)";
 					$(this).children("td:nth-child(3)").text(calcDist.toFixed(3))
 							.next().text(err);
 				}
@@ -320,7 +321,7 @@ function getLocalSystems(coords) {
 		</table>
 		<div id="ref-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-			<strong>Warning:</strong> Need more distances to known systems!</p>
+			<strong>Warning:</strong> Need more distances to reference systems!</p>
 		</div>
 		<h3>Calculated</h3>
 		<div id="output"></div>
