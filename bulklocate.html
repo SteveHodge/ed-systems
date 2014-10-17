@@ -11,6 +11,14 @@
 <script>
 var systems = null;
 var distances = null;
+var selected = null;
+
+var tmPreferred = {	// preferred reference systems for TunaMage's algorithm
+	'h Draconis': true,
+	'Wyrd': true,
+	'LHS 2884': true,
+	'Keries': true
+};
 
 $(document).ready(function () {
 	$.getJSON('distances.json', function(data) {
@@ -110,8 +118,8 @@ function processDistances() {
 	for (i = 0; i < distances.length; i++) {
 		ref1 = findSystem(distances[i].system1);
 		ref2 = findSystem(distances[i].system2);
-		if (ref1 == -1 && ref2 >= 0) addDistance(distances[i].system1, ref2, distances[i].distance);
-		if (ref2 == -1 && ref1 >= 0) addDistance(distances[i].system2, ref1, distances[i].distance);
+		if ((ref1 == -1 || systems[ref1].calculated) && ref2 >= 0) addDistance(distances[i].system1, ref2, distances[i].distance);
+		if ((ref2 == -1 || systems[ref2].calculated) && ref1 >= 0) addDistance(distances[i].system2, ref1, distances[i].distance);
 	}
 
 	// process systems and populate table
@@ -121,7 +129,7 @@ function processDistances() {
 			if (bestCandidate !== null) {
 				var gridLoc = gridLocation(bestCandidate);
 				setVector(u, gridLoc);
-				u.errRMS = Math.sqrt(bestCandidate.totalSqErr/(u.distances.length-3)).toFixed(3);
+				u.errRMS = Math.sqrt(bestCandidate.totalSqErr/(u.distances.length)).toFixed(3);
 				
 				// clean version for JSON output
 				var s = {};
@@ -145,13 +153,30 @@ function processDistances() {
 				});
 			}
 
-			var tunaCoords = tunamageCoords(u.distances);
+			// try to find the preferred reference systems for tunaMageCoords
+			var tunaDist = [];
+			var nonPref = [];
+			$.each(u.distances, function() {
+				if (tmPreferred[this.name]) {
+					tunaDist.push(this);
+				} else {
+					nonPref.push(this);
+				}
+			});
+			var prefCount = tunaDist.length;
+			// fill in any remaining distances with other references
+			for (var j = 0; j < 4 - prefCount && j < nonPref.length; j++) {
+				tunaDist.push(nonPref[j]);
+			}
+			
+			var tunaCoords = tunaMageCoords(tunaDist);
 			if (tunaCoords !== null) {
 				tunaLoc = gridLocation(tunaCoords);
 				if (gridLoc.x === tunaLoc.x && gridLoc.y === tunaLoc.y && gridLoc.z === tunaLoc.z) {
 					u.tunaMageInfo = "matches";
 				} else {
-					u.tunaMageInfo = vectorToString(tunaLoc);
+					var err = getError(tunaCoords, u.distances);
+					u.tunaMageInfo = vectorToString(tunaLoc) + ", error = "+err.toFixed(3)+", preferred refs = "+prefCount;
 				}
 			}
 
@@ -163,6 +188,8 @@ function processDistances() {
 		}
 
 		$('<tr>')
+			.attr('system',u.name)
+			.click(function() {selectSystem(this)})
 			.append($('<td>').text(u.name))
 			.append($('<td>').text(u.distances.length))
 			.append($('<td>').text(u.x))
@@ -176,10 +203,36 @@ function processDistances() {
 	$('#tableDiv table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
 }
 
+function selectSystem(row) {
+	if (selected === row) return;
+
+	if (selected) {
+		$(selected).removeClass('selected');
+	}
+	
+	selected = row;
+	$(selected).addClass('selected');
+	
+	// populate detail table
+	$('#details-table tbody').empty();
+	if (!selected.hasAttribute('system')) return;
+	var s = unknowns[selected.getAttribute('system').toLowerCase()];
+	if (s) {
+		$.each(s.distances, function() {
+			$('<tr>')
+				.append($('<td>').text(this.name))
+				.append($('<td>').text(this.distance))
+				.append($('<td>').text(s.x === "" ? "" : dist(this,s).toFixed(3)))
+				.append($('<td>').text(s.x === "" ? "" : Math.abs(dist(this,s)-this.distance).toFixed(3)))
+				.appendTo('#details-table tbody');
+		});
+	}
+}
+
 </script>
 </head>
-<body>
-	<div class="ui-widget" id="tableDiv">
+<body class="ui-widget">
+	<div class="table-div" id="tableDiv" style="height:50vh">
 		<table>
 			<thead>
 				<th data-sort="string-ins">System</th>
@@ -193,10 +246,23 @@ function processDistances() {
 			<tbody>
 			</tbody>
 		</table>
-		<h3>Structured Output</h3>
-		<button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
-		<pre id="sql-output" style="display:none"></pre>
-		<pre id="json-output" style="display:none"></pre>
 	</div>
+	<h3>Details</h3>
+	<div class="table-div" id="details-table" style="height:25vh">
+		<table>
+			<thead>
+				<th data-sort="string-ins">System</th>
+				<th data-sort="float">Distance</th>
+				<th data-sort="float">Calculated Distance</th>
+				<th data-sort="float">Error</th>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+	<h3>Structured Output</h3>
+	<button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
+	<pre id="sql-output" style="display:none"></pre>
+	<pre id="json-output" style="display:none"></pre>
 </body>
 </html>
