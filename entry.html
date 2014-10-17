@@ -15,43 +15,44 @@ var systems = null;		// reference system data
 var systemData = null;	// current system data
 var jsonOutput = "";
 var sqlOutput = "";
+var systemsMap = {};
 
 $(document).ready(function () {
 	$.getJSON('systems.json', function(data) {
 		systems = data;
 
+		// generate system name map
+		$.each(systems, function() {
+			systemsMap[$.trim(this.name.toLowerCase())] = this;
+		});
+
 		// set up the autocomplete
 		var names = [];
-		for (i = 0; i < systems.length; i++) {
-			names.push(systems[i].name);
-		}
-		names.sort();
-		$("#autocomplete").autocomplete({source: names});
-
-		// hook the reference systems up to the data
-		$("#distances input").parent().prev().each(function(i, el) {
-			var i;
-			var name = $(el).text();
-			// find the system
-			for (i = 0; i < systems.length; i++) {
-				if (systems[i].name === name) {
-					$(el).parent().attr('system',i);
-					break;
-				}
-			}
+		$.each(systems, function() {
+			names.push(this.name);
 		});
+		names.sort();
+		$("input.system-name").autocomplete({source: names});
 	
 		// setup sorting on the distance table
 		$("#distances").stupidtable().bind('aftertablesort', updateSortArrow);
 
 		// add the event handlers
-		$("#distances input").change(updateCoords);
+		$('#cmdr-name').change(function() {
+			var cmdr = $.trim(this.value);
+			if (systemData !== null && cmdr.length > 0) {
+				systemData.contributer = cmdr;
+				$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
+			}
+		});
+
 		$("#toggle-json").click(function() {
 			$(this).text($("#json-output").is(":visible") ? "Show JSON" : "Hide JSON").attr("disabled", true);
 			$("#json-output").toggle("fast", function() {
 				$("#toggle-json").attr("disabled", false);
 			});
 		});
+
 		$("#json-output").click(function() {
 			if (window.getSelection) {
 				var selection = window.getSelection();            
@@ -61,12 +62,14 @@ $(document).ready(function () {
 				selection.addRange(range);
 			}
 		});
+
 		$("#toggle-sql").click(function() {
 			$(this).text($("#sql-output").is(":visible") ? "Show SQL" : "Hide SQL").attr("disabled", true);
 			$("#sql-output").toggle("fast", function() {
 				$("#toggle-sql").attr("disabled", false);
 			});
 		});
+
 		$("#sql-output").click(function() {
 			if (window.getSelection) {
 				var selection = window.getSelection();            
@@ -76,6 +79,7 @@ $(document).ready(function () {
 				selection.addRange(range);
 			}
 		});
+
 		$("#done-button").click(function() {
 			if (systemData !== null) {
 				jsonOutput = JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput;
@@ -85,101 +89,149 @@ $(document).ready(function () {
 			}
 			$("#cancel-button").click();
 		});
+
 		$("#cancel-button").click(function() {
 			$("#distances input.distance").val("");
-			$("#distances tr[system] td:nth-child(3)").text("").next().text("");
+			$("#distances tr:has(input.system-name) td:nth-child(3)").text("").next().text("");
 			$("#output").html("");
 			$("#done-button").attr('disabled', true);
 			$("#unknown-name").val("").focus();
 			$("#json-output").text(jsonOutput);
 			$("#sql-output").text(sqlOutput);
+			$('#ref-warning').hide();
 		});
+
 		$('#unknown-name').change(function() {
+			// check for duplicate name
+			var dupe = false;
+			if (this.value && this.value.length > 0) {
+				var lc = $.trim(this.value.toLowerCase());
+				$.each(systems, function() {
+					if (this.name.toLowerCase() === lc) {
+						dupe = true;
+						return false;
+					}
+				});
+			}
+			$('#dupe-warning').toggle(dupe);
+			
 			if (systemData !== null) {
 				systemData.name = this.value;
-				if (this.value && this.value.length > 0) $("#done-button").attr('disabled',false);
+				$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
+				$("#sql-output").text(getSQL(systemData) + sqlOutput);
+				if (this.value.length > 0) $("#done-button").attr('disabled',false);
 			}
 		});
-		$('#autocomplete').change(function() {
-			for (i = 0; i < systems.length; i++) {
-				if (systems[i].name === this.value) {
-					// found the system
-					var otherRow = $(this).parentsUntil('table','tr');
-					// insert new table row above this one
-					var newRow = $('<tr system="'+i+'"><td>'+this.value+'</td><td><input class="distance"></td><td/><td/></tr>')
-						.insertBefore(otherRow);
-					// set focus to new row's distance input, copy any distance data from the "other" row
-					// if the "other" row has distance data then copy it into the new row and clear it
-					var otherDist = otherRow.find('input.distance');
-					newRow.find('input.distance').focus().change(updateCoords).val(otherDist.val());
-					// clear the "other" dropdown
-					this.value = "";
-					otherDist.val("");
-					return;
-				}
-			}
-		});
+		
+		$("#distances input").change(updateCoords);
+		$('input.system-name').change(checkEmptyRow);
+
+		addSystemRow();
 	});
 });
+
+function checkEmptyRow() {
+	var empty = false;
+	$('input.system-name').each(function() {
+		if (!this.value || this.value.length === 0) {
+			empty = true
+			return false;
+		}
+	});
+	if (!empty) addSystemRow();
+}
+
+function addSystemRow() {
+	 var tr = $('<tr><td><input class="system-name"></td><td><input class="distance"></td><td/><td/></tr>')
+		.appendTo('#distances tbody');
+	tr.find('input').change(updateCoords);
+	tr.find('input.system-name').change(checkEmptyRow);
+}
 
 function updateCoords() {
 	var dists = [];
 	systemData = {name: $('#unknown-name').val()};
+	systemData.calculated = true;
+	var cmdr = $.trim($('#cmdr-name').val());
+	if (cmdr.length > 0) systemData.contributer = cmdr;
+	systemData.contributed = (new Date()).toJSON();
+	systemData.distances = [];
 	
-	$("#distances tr[system]").each(function(i, el) {
-		var inp = $(el).find("input.distance");
-		var dist = inp.val();
-		var system = systems[el.getAttribute('system')];
+	// hook the reference systems up to the data
+	$("#distances input.system-name").each(function() {
+		var n = $.trim(this.value.toLowerCase());
+		if (n.length > 0) $(this).parentsUntil('table','tr').attr('system', n);
+	});
 
-		if (dist !== undefined && dist.length > 0) {
-			if (isNaN(parseFloat(dist))) {
-				inp.val("");
-			} else {
-				var d = parseFloat(dist);
-				if (d !== (dist+0)) inp.val(d);
-				dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
-			}
+	// get the distances
+	$("#distances tr[system]").each(function() {
+		var inp = $(this).find("input.distance");
+		var dist = inp.val();
+		var nameKey = this.getAttribute('system');
+		var system = systemsMap[nameKey];
+		var d = parseFloat(dist);
+
+		if (isNaN(d)) {
+			inp.val("");
+		} else if (system !== undefined) {
+			if (d != (dist+0)) inp.val(d);	// parseFloat will parse anything starting with a valid float, so if that doesn't match the input then update the field
+			dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
 		}
 	});
 
 	// reset the calculated distances and errors.
-	$("#distances tr[system] td:nth-child(3)").text("").next().text("");
+	$("#distances tr:has(input.system-name) td:nth-child(3)").text("").next().text("");
 	$("#output").html("");
 
 	if (dists.length >= 4) {
 		var bestCandidate = getBestCandidate(dists);
 		if (bestCandidate !== null) {
+			$('#ref-warning').hide();
 			setVector(bestCandidate,gridLocation(bestCandidate));	// round to grid location
 
-			$("#distances tr[system]").each(function(i, el) {
-				var enteredDist = $(el).find("input").val();
+			$("#distances tr[system]").each(function() {
+				var enteredDist = $(this).find("input.distance").val();
 				if (enteredDist !== undefined && enteredDist.length > 0) {
-					var sys = systems[el.getAttribute('system')];
+					var nameKey = this.getAttribute('system');
+					if (!(nameKey in systemsMap)) {
+						$(this).children("td:nth-child(3)").text("")
+								.next().text("(unknown star)");
+						return;
+					}
+
+					var sys = systemsMap[nameKey];
 					var calcDist = dist(sys, bestCandidate);
 					var err = Math.abs(enteredDist - calcDist).toFixed(3);
 					if (sys.name === dists[bestCandidate.i1].name || sys.name === dists[bestCandidate.i2].name || sys.name === dists[bestCandidate.i3].name) {
 						err += " (ref)";
 					}
-					$(el).children("td:nth-child(3)").text(calcDist.toFixed(3))
+					$(this).children("td:nth-child(3)").text(calcDist.toFixed(3))
 							.next().text(err);
 				}
 			});
 	
 			$("#output").html("Coordinates: "+vectorToString(bestCandidate)
-					+"<br/>RMS error: "+(Math.sqrt(bestCandidate.totalSqErr/(dists.length-3))).toFixed(3)	// we use length-3 to discount the ref systems (which should always have very low error)
+					+"<br/>RMS error: "+(Math.sqrt(bestCandidate.totalSqErr/dists.length)).toFixed(3)
 					+"<br/>Local Systems:");
 			$("#output").append(getLocalSystems(bestCandidate)).append('<br/>');
 			
 			// update stored system data
 			setVector(systemData, bestCandidate);
-			systemData.calculated = true;
-			systemData.distances = [];
 			for (var i = 0; i < dists.length; i++) {
 				systemData.distances.push({
 					system: dists[i].name,
 					distance: dists[i].distance
 				});
 			}
+			// add any unknown star data
+			$("#distances tr[system]").each(function() {
+				var sys = $(this).find('input.system-name').val();
+				var dist = $(this).find('input.distance').val();
+				if (sys.length > 0 && dist.length > 0 && !(this.getAttribute('system') in systemsMap)) {
+					systemData.distances.push({system: sys, distance: dist});
+				}
+			});
+			
 			$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
 			$("#sql-output").text(getSQL(systemData) + sqlOutput);
 
@@ -188,7 +240,11 @@ function updateCoords() {
 			} else {
 				$('#unknown-name').focus();
 			}
+		} else {
+			$('#ref-warning').show();
 		}
+	} else {
+		$('#ref-warning').show();
 	}
 }
 
@@ -227,8 +283,18 @@ function getLocalSystems(coords) {
 </head>
 <body>
 	<div class="ui-widget">
+		<div style="float: right">
+			<label for="cdmr-name">Commander Name (optional): </label>
+			<input id="cmdr-name"/>
+		</div>
 		<label for="unknown-name">Name of new system: </label>
 		<input id="unknown-name"/>
+
+		<div id="dupe-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			<strong>Warning:</strong> A system with that name has already been entered!</p>
+		</div>
+
 		<h3>Distances</h3>
 		<table id="distances">
 			<thead>
@@ -240,29 +306,22 @@ function getLocalSystems(coords) {
 				</tr>
 			</thead>
 			<tbody>
-				<!--
-				<tr><td>Flousop</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Tring</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Rahu</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Parcae</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Hepa</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Poqomathi</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Hyperion</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Aulin</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Sol</td><td><input class="distance"></td><td/><td/></tr>
-				-->
-				<tr><td>Sol</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Wolf 497</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Huokang</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Demeter</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Clotti</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Fu Haiting</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>San Guaralaru</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Haras</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td>Arabha</td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><label for="autocomplete">Other: </label><input id="autocomplete"></td><td><input class="distance"></td><td/><td/></tr>
+				<!-- Flousop, Tring, Rahu, Parcae, Hepa, Poqomathi, Hyperion, Aulin, Sol -->
+				<tr><td><input class="system-name" value="Sol"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Wolf 497"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Huokang"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Demeter"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Clotti"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Fu Haiting"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="San Guaralaru"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Haras"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Arabha"></td><td><input class="distance"></td><td/><td/></tr>
 			</tbody>
 		</table>
+		<div id="ref-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			<strong>Warning:</strong> Need more distances to known systems!</p>
+		</div>
 		<h3>Calculated</h3>
 		<div id="output"></div>
 		<button id="done-button" disabled="true">Done</button><button id="cancel-button">Cancel</button>
