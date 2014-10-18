@@ -1052,22 +1052,6 @@
 	  ]	
 	},
 	{
-	  "name": "WREDGUIA AT-0 B47-1",
-	  "contributor": "wolverine2710",
-	  "calculated": true,
-	  "x": -96.71875,
-	  "y": 52.75,
-	  "z": -32.1875,
-	  "distances": [
-	    {"system": "NLTT 47491", "distance": "10.03"},
-	    {"system": "Sol", "distance": 114.774},
-	    {"system": "Flousop", "distance": 107.907},
-	    {"system": "Tring", "distance": 54.229},
-	    {"system": "Rahu", "distance": 62.58},
-	    {"system": "35 Draconis", "distance": 12.245}
-	  ]
-	},
-	{
 	  "name": "WREDGUIA ZS-0 B47-2",
 	  "contributor": "wolverine2710",
 	  "calculated": true,
@@ -1096,37 +1080,6 @@
 	    {"system": "Tring", "distance": 53.187},
 	    {"system": "Rahu", "distance": 61.14},
 	    {"system": "35 Draconis", "distance": 24.587}
-	  ]
-	},
-	{
-	  "name": "WREDGUIA AT-0 B47-3",
-	  "contributor": "wolverine2710",
-	  "calculated": true,
-	  "x": -97.1875,
-	  "y": 56.75,
-	  "z": -26.625,
-	  "distances": [
-	    {"system": "Sol", "distance": 115.65},
-	    {"system": "Flousop", "distance": 108.005},
-	    {"system": "Tring", "distance": 59.014},
-	    {"system": "Rahu", "distance": 59.835},
-	    {"system": "35 Draconis", "distance": 13.174}
-	  ]
-	},
-	{
-	  "name": "WREDGUIA AT-0 B47-2",
-	  "contributor": "wolverine2710",
-	  "calculated": true,
-	  "x": -97.96875,
-	  "y": 58.46875,
-	  "z": -28.65625,
-	  "distances": [
-	    {"system": "Sol", "distance": 117.634},
-	    {"system": "Flousop", "distance": 109.926},
-	    {"system": "Tring", "distance": 59.347},
-	    {"system": "Rahu", "distance": 61.31},
-	    {"system": "Parcae", "distance": 90.66},
-	    {"system": "35 Draconis", "distance": 14.498}
 	  ]
 	},
 	{
@@ -1560,7 +1513,7 @@
 	  ]
 	},
 	{
-	  "name": "Wregoe QA-Q B46-6",
+	  "name": "WREGOE QA-Q B46-6",
 	  "contributor": "Harbinger",
 	  "calculated": true,
 	  "x": "-54.34375",
@@ -1750,7 +1703,7 @@
 	  ]
 	},
 	{
-	  "name": " G 262-26",
+	  "name": "G 262-26",
 	  "contributor": "Harbinger",
 	  "calculated": true,
 	  "x": "-66.09375",
@@ -1765,7 +1718,12 @@
 	    {"system": "Fu Haiting", "distance": 40.805},
 	    {"system": "San Guaralaru", "distance": 80.494},
 	    {"system": "Haras", "distance": 53.575},
-	    {"system": "Arabha", "distance": 62.288}
+	    {"system": "Arabha", "distance": 62.288},
+	    {"system": "HIP 105906", "distance": 74.708},
+	    {"system": "HIP 91906", "distance": 62.917},
+	    {"system": "Loga", "distance": 39.282},
+	    {"system": "Jurua", "distance": 40.284},
+	    {"system": "Moros", "distance": 28.197}
 	  ]
 	},
 	{
@@ -2353,7 +2311,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia BT-0 B47-0",
+	  "name": "WREDGUIA BT-0 B47-0",
 	  "contributor": "Harbinger",
 	  "calculated": true,
 	  "x": "-64.5",
@@ -2372,7 +2330,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia DK-G C24-11",
+	  "name": "WREDGUIA DK-G C24-11",
 	  "contributor": "Harbinger",
 	  "calculated": true,
 	  "x": "-70.34375",
@@ -2391,7 +2349,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia DK-G C24-17",
+	  "name": "WREDGUIA DK-G C24-17",
 	  "contributor": "Harbinger",
 	  "calculated": true,
 	  "x": "-75.375",
@@ -2410,7 +2368,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia FZ-M B48-3",
+	  "name": "WREDGUIA FZ-M B48-3",
 	  "contributor": "Harbinger",
 	  "calculated": true,
 	  "x": "-65.8125",
@@ -2429,7 +2387,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia BT-0 B47-3",
+	  "name": "WREDGUIA BT-0 B47-3",
 	  "contributor": "Harbinger",
 	  "calculated": true,
 	  "x": "-75.90625",
@@ -2448,7 +2406,7 @@
 	  ]
 	},
 	{
-	  "name": "Wregoe MK-Q B46-2",
+	  "name": "WREGOE MK-Q B46-2",
 	  "contributor": "Harbinger",
 	  "calculated": true,
 	  "x": "-56",
@@ -2467,7 +2425,7 @@
 	  ]
 	},
 	{
-	  "name": "Wregoe WV-E D11-104",
+	  "name": "WREGOE WV-E D11-104",
 	  "contributor": "Harbinger",
 	  "calculated": true,
 	  "x": "-45.4375",
@@ -2524,7 +2482,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia XH-Q B46-1",
+	  "name": "WREDGUIA XH-Q B46-1",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -86.09375,
@@ -2599,7 +2557,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia YH-Q B46-4",
+	  "name": "WREDGUIA YH-Q B46-4",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -100.90625,
@@ -2614,7 +2572,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia DE-N B48-0",
+	  "name": "WREDGUIA DE-N B48-0",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -82.71875,
@@ -2629,7 +2587,7 @@
 	  ]
 	},
 	{
-	  "name": "STKM 1-1379",
+	  "name": "StKM 1-1379",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -81.84375,
@@ -2674,7 +2632,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia FF-G C24-19",
+	  "name": "WREDGUIA FF-G C24-19",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -101.90625,
@@ -2704,21 +2662,6 @@
 	  ]
 	},
 	{
-	  "name": "G 262-26",
-	  "contributor": "JesusFreke",
-	  "calculated": true,
-	  "x": -66.09375,
-	  "y": 15.8125,
-	  "z": -11.625,
-	  "distances": [
-	    {"system": "HIP 105906", "distance": 74.708},
-	    {"system": "HIP 91906", "distance": 62.917},
-	    {"system": "Loga", "distance": 39.282},
-	    {"system": "Jurua", "distance": 40.284},
-	    {"system": "Moros", "distance": 28.197}
-	  ]
-	},
-	{
 	  "name": "LHS 3075",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
@@ -2734,7 +2677,7 @@
 	  ]
 	},
 	{
-	  "name": "Wregoe SB-N B48-1",
+	  "name": "WREGOE SB-N B48-1",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -47.03125,
@@ -2749,7 +2692,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia EZ-M B48-2",
+	  "name": "WREDGUIA EZ-M B48-2",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -91.59375,
@@ -2779,7 +2722,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia XM-Q B46-2",
+	  "name": "WREDGUIA XM-Q B46-2",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -81.125,
@@ -2794,7 +2737,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia XM-Q B46-3",
+	  "name": "WREDGUIA XM-Q B46-3",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -78.71875,
@@ -2824,7 +2767,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia HP-M B48-0",
+	  "name": "WREDGUIA HP-M B48-0",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -112.4375,
@@ -2839,7 +2782,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia DO-O B47-3",
+	  "name": "WREDGUIA DO-O B47-3",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -72.5,
@@ -2869,7 +2812,7 @@
 	  ]
 	},
 	{
-	  "name": "Wredguia BT-O B47-1",
+	  "name": "WREDGUIA BT-O B47-1",
 	  "contributor": "JesusFreke",
 	  "calculated": true,
 	  "x": -68.09375,
@@ -2881,6 +2824,1534 @@
 	    {"system": "Loga", "distance": 22.642},
 	    {"system": "Jurua", "distance": 35.517},
 	    {"system": "Moros", "distance": 41.461}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA LW-E D11-125",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -50.40625,
+	  "y": 54.59375,
+	  "z": -11.09375,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 78.32},
+	    {"system": "HIP 91906", "distance": 61.974},
+	    {"system": "Loga", "distance": 46.349},
+	    {"system": "Jurua", "distance": 51.255},
+	    {"system": "Moros", "distance": 42.588},
+	    {"system": "35 Draconis", "distance": 38.886}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA WM-Q B46-0",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -100.15625,
+	  "y": 47.96875,
+	  "z": -62.75,
+	  "distances": [
+	    {"system": "HIP 91906", "distance": 31.592},
+	    {"system": "Loga", "distance": 31.208},
+	    {"system": "Jurua", "distance": 47.66},
+	    {"system": "Moros", "distance": 69.718},
+	    {"system": "35 Draconis", "distance": 37.708}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA VM-Q B46-3",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -108.3125,
+	  "y": 35.09375,
+	  "z": -56,
+	  "distances": [
+	    {"system": "HIP 91906", "distance": 31.468},
+	    {"system": "Loga", "distance": 31.786},
+	    {"system": "Jurua", "distance": 49.065},
+	    {"system": "Moros", "distance": 69.355},
+	    {"system": "35 Draconis", "distance": 39.727}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA LW-E D11-124",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -54.59375,
+	  "y": 51.15625,
+	  "z": -21.09375,
+	  "distances": [
+	    {"system": "HIP 91906", "distance": 55.271},
+	    {"system": "Loga", "distance": 35.889},
+	    {"system": "Jurua", "distance": 40.799},
+	    {"system": "Moros", "distance": 36.332},
+	    {"system": "35 Draconis", "distance": 31.393}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA AT-O B47-3",
+	  "contributor":"wolverine2710, JesusFreke",
+	  "calculated": true,
+	  "x": -97.1875,
+	  "y": 56.75,
+	  "z": -26.625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 34.573},
+	    {"system": "HIP 91906", "distance": 12.95},
+	    {"system": "Jurua", "distance": 54.642},
+	    {"system": "Moros", "distance": 64.774},
+	    {"system": "35 Draconis", "distance": 13.174},
+	    {"system": "Sol", "distance": 115.65},
+	    {"system": "Flousop", "distance": 108.005},
+	    {"system": "Tring", "distance": 59.014},
+	    {"system": "Rahu", "distance": 59.835},
+	    {"system": "35 Draconis", "distance": 13.174}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA AT-O B47-2",
+	  "contributor":"wolverine2710, JesusFreke",
+	  "calculated": true,
+	  "x": -97.96875,
+	  "y": 58.46875,
+	  "z": -28.65625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 32.781},
+	    {"system": "HIP 91906", "distance": 11.337},
+	    {"system": "Jurua", "distance": 55.365},
+	    {"system": "Moros", "distance": 66.331},
+	    {"system": "Sol", "distance": 117.634},
+	    {"system": "Flousop", "distance": 109.926},
+	    {"system": "Tring", "distance": 59.347},
+	    {"system": "Rahu", "distance": 61.31},
+	    {"system": "Parcae", "distance": 90.66},
+	    {"system": "35 Draconis", "distance": 14.498}
+	  ]
+	},
+	{
+	  "name": "Loucetios",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -21.4375,
+	  "y": 58.0625,
+	  "z": -10.15625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 103.926},
+	    {"system": "HIP 91906", "distance": 89.774},
+	    {"system": "Jurua", "distance": 66.118},
+	    {"system": "Moros", "distance": 52.008},
+	    {"system": "35 Draconis", "distance": 66.542}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA GU-M B48-2",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -88.0625,
+	  "y": 24.40625,
+	  "z": -13.25,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 57.107},
+	    {"system": "HIP 91906", "distance": 43.471},
+	    {"system": "Jurua", "distance": 46.34},
+	    {"system": "Moros", "distance": 46.342},
+	    {"system": "35 Draconis", "distance": 31.386}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA LW-E D11-126",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -54,
+	  "y": 56.09375,
+	  "z": 4.46875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 85.688},
+	    {"system": "HIP 91906", "distance": 66.152},
+	    {"system": "Jurua", "distance": 64.312},
+	    {"system": "Moros", "distance": 53.329},
+	    {"system": "35 Draconis", "distance": 45.457}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA XH-Q B46-2",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -82.34375,
+	  "y": 49.09375,
+	  "z": -42.09375,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 35.075},
+	    {"system": "HIP 91906", "distance": 28.299},
+	    {"system": "Jurua", "distance": 34.275},
+	    {"system": "Moros", "distance": 49.452},
+	    {"system": "35 Draconis", "distance": 14.248}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA DO-O B47-4",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -77.4375,
+	  "y": 19.125,
+	  "z": -27.21875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 56.959},
+	    {"system": "HIP 91906", "distance": 49.287},
+	    {"system": "Loga", "distance": 22.996},
+	    {"system": "Jurua", "distance": 29.178},
+	    {"system": "35 Draconis", "distance": 33.538}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA DO-O B47-1",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -69.71875,
+	  "y": 26.375,
+	  "z": -31.625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 56.778},
+	    {"system": "HIP 91906", "distance": 49.254},
+	    {"system": "Jurua", "distance": 21.235},
+	    {"system": "Moros", "distance": 25.4},
+	    {"system": "35 Draconis", "distance": 29.863}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA DO-O B47-2",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -68.96875,
+	  "y": 29.46875,
+	  "z": -31.8125,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 56.008},
+	    {"system": "HIP 91906", "distance": 47.982},
+	    {"system": "Jurua", "distance": 21.361},
+	    {"system": "Moros", "distance": 25.991},
+	    {"system": "35 Draconis", "distance": 27.736}
+	  ]
+	},
+	{
+	  "name": "IZ Bootis",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -23.625,
+	  "y": 61.71875,
+	  "z": 7.9375,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 111.587},
+	    {"system": "HIP 91906", "distance": 94.236},
+	    {"system": "Jurua", "distance": 79.145},
+	    {"system": "Moros", "distance": 63.294},
+	    {"system": "35 Draconis", "distance": 72.113}
+	  ]
+	},
+	{
+	  "name": "LHS 2459",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -11,
+	  "y": 10.78125,
+	  "z": -8.21875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 120.989},
+	    {"system": "HIP 91906", "distance": 110.565},
+	    {"system": "Jurua", "distance": 66.813},
+	    {"system": "Moros", "distance": 42.422},
+	    {"system": "35 Draconis", "distance": 87.059}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA DK-G C24-15",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -83.46875,
+	  "y": 35.28125,
+	  "z": -4.90625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 61.972},
+	    {"system": "HIP 91906", "distance": 43.695},
+	    {"system": "Jurua", "distance": 52.387},
+	    {"system": "Moros", "distance": 49.236},
+	    {"system": "35 Draconis", "distance": 28.718}
+	  ]
+	},
+	{
+	  "name": "LTT 14542",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -57.21875,
+	  "y": 57.84375,
+	  "z": -14.625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 70.951},
+	    {"system": "HIP 91906", "distance": 54.3},
+	    {"system": "Jurua", "distance": 49.741},
+	    {"system": "Moros", "distance": 45.197},
+	    {"system": "35 Draconis", "distance": 31.701}
+	  ]
+	},
+	{
+	  "name": "LTT 18528",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -99.375,
+	  "y": 17.6875,
+	  "z": -24.5625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 48.57},
+	    {"system": "HIP 91906", "distance": 41.447},
+	    {"system": "Jurua", "distance": 46.993},
+	    {"system": "Moros", "distance": 53.832},
+	    {"system": "35 Draconis", "distance": 37.119}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA BO-O B47-5",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -112.65625,
+	  "y": 22.03125,
+	  "z": -18.875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 47.471},
+	    {"system": "HIP 91906", "distance": 38.385},
+	    {"system": "Jurua", "distance": 60.859},
+	    {"system": "Moros", "distance": 67.997},
+	    {"system": "35 Draconis", "distance": 41.61}
+	  ]
+	},
+	{
+	  "name": "LB 2449",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -26.0625,
+	  "y": 51.625,
+	  "z": -17.40625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 96.456},
+	    {"system": "HIP 91906", "distance": 83.798},
+	    {"system": "Jurua", "distance": 55.618},
+	    {"system": "Moros", "distance": 41.985},
+	    {"system": "35 Draconis", "distance": 60.073}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA CO-O B47-3",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -87.46875,
+	  "y": 17.8125,
+	  "z": -23.46875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 54.043},
+	    {"system": "HIP 91906", "distance": 45.588},
+	    {"system": "Jurua", "distance": 38.594},
+	    {"system": "Moros", "distance": 42.237},
+	    {"system": "35 Draconis", "distance": 34.37}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA CO-O B47-1",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -93.6875,
+	  "y": 21.59375,
+	  "z": -23.59375,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 48.748},
+	    {"system": "HIP 91906", "distance": 39.679},
+	    {"system": "Jurua", "distance": 42.676},
+	    {"system": "Moros", "distance": 48.523},
+	    {"system": "35 Draconis", "distance": 31.711}
+	  ]
+	},
+	{
+	  "name": "HIP 4041",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -106.15625,
+	  "y": 36.40625,
+	  "z": -69.3125,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 21.61},
+	    {"system": "HIP 91906", "distance": 41.37},
+	    {"system": "Jurua", "distance": 50.553},
+	    {"system": "Moros", "distance": 73.68},
+	    {"system": "35 Draconis", "distance": 48.514}
+	  ]
+	},
+	{
+	  "name": "AGKR 199",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -87,
+	  "y": 35.5,
+	  "z": -53.875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 31.767},
+	    {"system": "HIP 91906", "distance": 36.423},
+	    {"system": "Jurua", "distance": 28.806},
+	    {"system": "Moros", "distance": 50.211},
+	    {"system": "35 Draconis", "distance": 30.296}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA ZS-O B47-2",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -107.78125,
+	  "y": 45.84375,
+	  "z": -24.90625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 32.395},
+	    {"system": "Jurua", "distance": 57.923},
+	    {"system": "Moros", "distance": 68.354},
+	    {"system": "35 Draconis", "distance": 23.669},
+	    {"system": "Keries", "distance": 98.244}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA ZS-O B47-0",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -120.40625,
+	  "y": 41.46875,
+	  "z": -37.90625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 21.603},
+	    {"system": "Jurua", "distance": 63.429},
+	    {"system": "Moros", "distance": 78.517},
+	    {"system": "35 Draconis", "distance": 37.965},
+	    {"system": "Keries", "distance": 114.261}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA ZS-O B47-1",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -111.53125,
+	  "y": 40.3125,
+	  "z": -25.21875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 32.963},
+	    {"system": "Jurua", "distance": 59.096},
+	    {"system": "Moros", "distance": 69.726},
+	    {"system": "35 Draconis", "distance": 28.949},
+	    {"system": "Keries", "distance": 100.899}
+	  ]
+	},
+	{
+	  "name": "LHS 455",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -16.90625,
+	  "y": 10.21875,
+	  "z": -3.4375,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 118.231},
+	    {"system": "Jurua", "distance": 65.99},
+	    {"system": "Moros", "distance": 40.901},
+	    {"system": "35 Draconis", "distance": 83.669},
+	    {"system": "Keries", "distance": 23.452}
+	  ]
+	},
+	{
+	  "name": "2Mass 1503+2525",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -6.1875,
+	  "y": 18,
+	  "z": 8.125,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 130.213},
+	    {"system": "Jurua", "distance": 80.546},
+	    {"system": "Moros", "distance": 56.02},
+	    {"system": "35 Draconis", "distance": 93.287},
+	    {"system": "Keries", "distance": 16.332}
+	  ]
+	},
+	{
+	  "name": "LHS 399",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -13.5625,
+	  "y": 36.15625,
+	  "z": 25.78125,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 130.808},
+	    {"system": "Jurua", "distance": 90.797},
+	    {"system": "Moros", "distance": 68.283},
+	    {"system": "35 Draconis", "distance": 91.089},
+	    {"system": "Keries", "distance": 16.803}
+	  ]
+	},
+	{
+	  "name": "Elphin",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -30.125,
+	  "y": 8.1875,
+	  "z": -17,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 102.479},
+	    {"system": "Jurua", "distance": 48.248},
+	    {"system": "Moros", "distance": 23.244},
+	    {"system": "35 Draconis", "distance": 71.078},
+	    {"system": "Keries", "distance": 36.93}
+	  ]
+	},
+	{
+	  "name": "DG Canum Venaticorum",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -3.125,
+	  "y": 25.53125,
+	  "z": 2.6875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 128.499},
+	    {"system": "Jurua", "distance": 78.676},
+	    {"system": "Moros", "distance": 55.3},
+	    {"system": "35 Draconis", "distance": 91.522},
+	    {"system": "Keries", "distance": 18.709}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA YS-O B47-4",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -135.59375,
+	  "y": 39.75,
+	  "z": -40.71875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 28.673},
+	    {"system": "Jurua", "distance": 77.079},
+	    {"system": "Moros", "distance": 92.853},
+	    {"system": "35 Draconis", "distance": 53.324},
+	    {"system": "Keries", "distance": 128.9}
+	  ]
+	},
+	{
+	  "name": "Bidmere",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -7.4375,
+	  "y": 13.21875,
+	  "z": 1.90625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 127.547},
+	    {"system": "Jurua", "distance": 75.748},
+	    {"system": "Moros", "distance": 51.043},
+	    {"system": "35 Draconis", "distance": 91.853},
+	    {"system": "Keries", "distance": 21.018}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA DJ-O B47-5",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -113.3125,
+	  "y": 14.65625,
+	  "z": -41.46875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 39.58},
+	    {"system": "Jurua", "distance": 54.07},
+	    {"system": "Moros", "distance": 68.16},
+	    {"system": "35 Draconis", "distance": 48.393},
+	    {"system": "Keries", "distance": 109.513}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA DJ-O B47-3",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -112,
+	  "y": 15.90625,
+	  "z": -38.75,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 39.597},
+	    {"system": "Jurua", "distance": 53.141},
+	    {"system": "Moros", "distance": 66.465},
+	    {"system": "35 Draconis", "distance": 45.986},
+	    {"system": "Keries", "distance": 106.914}
+	  ]
+	},
+	{
+	  "name": "59 Draconis",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -76.4375,
+	  "y": 38.21875,
+	  "z": -25.0625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 50.798},
+	    {"system": "Jurua", "distance": 33.311},
+	    {"system": "Moros", "distance": 37.442},
+	    {"system": "35 Draconis", "distance": 16.418},
+	    {"system": "Keries", "distance": 69.634}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA YC-Q B46-4",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -131.03125,
+	  "y": 16.125,
+	  "z": -55.28125,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 39.011},
+	    {"system": "Jurua", "distance": 70.756},
+	    {"system": "Moros", "distance": 88.384},
+	    {"system": "35 Draconis", "distance": 64.035},
+	    {"system": "Keries", "distance": 131.537}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA PC-D D12-74",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -116.46875,
+	  "y": 35.96875,
+	  "z": -19.3125,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 39.972},
+	    {"system": "Jurua", "distance": 65.034},
+	    {"system": "Moros", "distance": 73.892},
+	    {"system": "35 Draconis", "distance": 36.244},
+	    {"system": "Keries", "distance": 103.019}
+	  ]
+	},
+	{
+	  "name": "HIP 115777",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -107.125,
+	  "y": 32.28125,
+	  "z": -57.53125,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 20.512},
+	    {"system": "Jurua", "distance": 47.53},
+	    {"system": "Moros", "distance": 68.189},
+	    {"system": "35 Draconis", "distance": 41.39},
+	    {"system": "Keries", "distance": 112.808}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA YD-I C23-11",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -128.53125,
+	  "y": 15.84375,
+	  "z": -26.46875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 48.412},
+	    {"system": "Jurua", "distance": 72.355},
+	    {"system": "Moros", "distance": 82.719},
+	    {"system": "35 Draconis", "distance": 56.365},
+	    {"system": "Keries", "distance": 116.931}
+	  ]
+	},
+	{
+	  "name": "WISE 1405+5534",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -8.03125,
+	  "y": 13.4375,
+	  "z": -1.84375,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 125.314},
+	    {"system": "Jurua", "distance": 72.727},
+	    {"system": "Moros", "distance": 48.199},
+	    {"system": "35 Draconis", "distance": 90.084},
+	    {"system": "Keries", "distance": 22.729}
+	  ]
+	},
+	{
+	  "name": "WREGOE WV-E D11-120",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -14.28125,
+	  "y": 54.84375,
+	  "z": -20.8125,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 106.225},
+	    {"system": "Jurua", "distance": 63.445},
+	    {"system": "Moros", "distance": 50.182},
+	    {"system": "35 Draconis", "distance": 71.313},
+	    {"system": "Keries", "distance": 43.595}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA BO-O B47-2",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -107.46875,
+	  "y": 19.5625,
+	  "z": -30.21875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 41.633},
+	    {"system": "Jurua", "distance": 51.125},
+	    {"system": "Moros", "distance": 61.549},
+	    {"system": "35 Draconis", "distance": 39.226},
+	    {"system": "Keries", "distance": 98.665}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA BO-O B47-3",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -112.5,
+	  "y": 21.8125,
+	  "z": -30.40625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 39.254},
+	    {"system": "Jurua", "distance": 55.555},
+	    {"system": "Moros", "distance": 66.685},
+	    {"system": "35 Draconis", "distance": 40.617},
+	    {"system": "Keries", "distance": 103.141}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA BO-O B47-0",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -121.375,
+	  "y": 19.21875,
+	  "z": -37.3125,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 37.928},
+	    {"system": "Jurua", "distance": 62.177},
+	    {"system": "Moros", "distance": 75.667},
+	    {"system": "35 Draconis", "distance": 49.52},
+	    {"system": "Keries", "distance": 114.256}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA BO-O B47-1",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -114.90625,
+	  "y": 16.40625,
+	  "z": -33.6875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 41.578},
+	    {"system": "Jurua", "distance": 57.177},
+	    {"system": "Moros", "distance": 68.985},
+	    {"system": "35 Draconis", "distance": 46.522},
+	    {"system": "Keries", "distance": 107.121}
+	  ]
+	},
+	{
+	  "name": "LP 71-165",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -20.90625,
+	  "y": 11.09375,
+	  "z": -2.21875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 115.21},
+	    {"system": "Jurua", "distance": 64.131},
+	    {"system": "Moros", "distance": 38.911},
+	    {"system": "35 Draconis", "distance": 80.381},
+	    {"system": "Keries", "distance": 21.987}
+	  ]
+	},
+	{
+	  "name": "VW Cephi",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -79.6875,
+	  "y": 31.03125,
+	  "z": -28,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 49.108},
+	    {"system": "Jurua", "distance": 30.402},
+	    {"system": "Moros", "distance": 36.53},
+	    {"system": "35 Draconis", "distance": 21.424},
+	    {"system": "Keries", "distance": 73.19}
+	  ]
+	},
+	{
+	  "name": "LP 103-294",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -37.1875,
+	  "y": 19,
+	  "z": -0.1875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 100.707},
+	    {"system": "Jurua", "distance": 56.033},
+	    {"system": "Moros", "distance": 32.381},
+	    {"system": "35 Draconis", "distance": 64.538},
+	    {"system": "Keries", "distance": 23.772}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA WM-Q B46-2",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -90.1875,
+	  "y": 44.71875,
+	  "z": -55.84375,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 25.127},
+	    {"system": "Jurua", "distance": 36.37},
+	    {"system": "Moros", "distance": 57.487},
+	    {"system": "35 Draconis", "distance": 28.803},
+	    {"system": "Keries", "distance": 100.354}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA XH-Q B46-4",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -109.90625,
+	  "y": 30.6875,
+	  "z": -58.65625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 21.352},
+	    {"system": "Jurua", "distance": 50.164},
+	    {"system": "Moros", "distance": 70.802},
+	    {"system": "35 Draconis", "distance": 44.438},
+	    {"system": "Keries", "distance": 115.627}
+	  ]
+	},
+	{
+	  "name": "Nanauatzin",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -3.40625,
+	  "y": 51.65625,
+	  "z": 3.78125,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 126.134},
+	    {"system": "Jurua", "distance": 83.942},
+	    {"system": "Moros", "distance": 64.949},
+	    {"system": "35 Draconis", "distance": 87.818},
+	    {"system": "Keries", "distance": 30.251}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA WM-Q B46-1",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -94,
+	  "y": 46.96875,
+	  "z": -60.875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 21.417},
+	    {"system": "HIP 91906", "distance": 32.362},
+	    {"system": "Jurua", "distance": 41.673},
+	    {"system": "Moros", "distance": 63.692},
+	    {"system": "35 Draconis", "distance": 34.028},
+	    {"system": "Keries", "distance": 106.896}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA VM-Q B46-5",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -101,
+	  "y": 43.125,
+	  "z": -63.84375,
+	  "distances": [
+	    {"system": "HIP 91906", "distance": 34.105},
+	    {"system": "Jurua", "distance": 46.43},
+	    {"system": "Moros", "distance": 68.919},
+	    {"system": "35 Draconis", "distance": 39.805},
+	    {"system": "Keries", "distance": 113.292}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA VM-Q B46-4",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -103.21875,
+	  "y": 37.84375,
+	  "z": -61.96875,
+	  "distances": [
+	    {"system": "HIP 91906", "distance": 34.686},
+	    {"system": "Jurua", "distance": 46.016},
+	    {"system": "Moros", "distance": 68.091},
+	    {"system": "35 Draconis", "distance": 40.612},
+	    {"system": "Keries", "distance": 113.053}
+	  ]
+	},
+	{
+	  "name": "HIP 105557",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -113.53125,
+	  "y": 41.21875,
+	  "z": -45.6875,
+	  "distances": [
+	    {"system": "HIP 91906", "distance": 20.756},
+	    {"system": "Jurua", "distance": 55.709},
+	    {"system": "Moros", "distance": 73.074},
+	    {"system": "35 Draconis", "distance": 34.893},
+	    {"system": "Keries", "distance": 112.012}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA WM-Q B46-3",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -87.34375,
+	  "y": 45.8125,
+	  "z": -59,
+	  "distances": [
+	    {"system": "HIP 91906", "distance": 34.719},
+	    {"system": "Jurua", "distance": 35.397},
+	    {"system": "Moros", "distance": 57.334},
+	    {"system": "35 Draconis", "distance": 31.274},
+	    {"system": "Keries", "distance": 100.772}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA VM-Q B46-2",
+	  "contributor":"JesusFreke",
+	  "calculated": true,
+	  "x": -98.6875,
+	  "y": 51.4375,
+	  "z": -48.125,
+	  "distances": [
+	    {"system": "Loga", "distance": 24.827},
+	    {"system": "Jurua", "distance": 46.909},
+	    {"system": "Moros", "distance": 64.978},
+	    {"system": "35 Draconis", "distance": 23.96},
+	    {"system": "Keries", "distance": 103.142}
+	  ]
+	},
+	{
+	  "name": "LP 386-49",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -25.53125,
+	  "y": 33.375,
+	  "z": 26,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 122.345},
+	    {"system": "Jurua", "distance": 85.02},
+	    {"system": "35 Draconis", "distance": 82.739},
+	    {"system": "Keries", "distance": 16.172},
+	    {"system": "Wyrd", "distance": 33.061}
+	  ]
+	},
+	{
+	  "name": "Yinfu",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -39.9375,
+	  "y": 16.1875,
+	  "z": -10.6875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 94.077},
+	    {"system": "Jurua", "distance": 45.833},
+	    {"system": "35 Draconis", "distance": 60.162},
+	    {"system": "Keries", "distance": 33.257},
+	    {"system": "Wyrd", "distance": 32.903}
+	  ]
+	},
+	{
+	  "name": "DX 799",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -22.96875,
+	  "y": 12.3125,
+	  "z": -17.90625,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 106.535},
+	    {"system": "Jurua", "distance": 51.441},
+	    {"system": "35 Draconis", "distance": 74.353},
+	    {"system": "Keries", "distance": 34.19},
+	    {"system": "Wyrd", "distance": 26.328}
+	  ]
+	},
+	{
+	  "name": "BD+74 938",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -106.59375,
+	  "y": 33.78125,
+	  "z": -43.09375,
+	  "distances": [
+	    {"system": "HIP 91906", "distance": 25.305},
+	    {"system": "Jurua", "distance": 47.439},
+	    {"system": "35 Draconis", "distance": 31.629},
+	    {"system": "Keries", "distance": 104.083},
+	    {"system": "Wyrd", "distance": 102.749}
+	  ]
+	},
+	{
+	  "name": "LHS 362",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -3.21875,
+	  "y": 38.03125,
+	  "z": 8.40625,
+	  "distances": [
+	    {"system": "Jurua", "distance": 83.794},
+	    {"system": "Moros", "distance": 61.902},
+	    {"system": "35 Draconis", "distance": 90.828},
+	    {"system": "Keries", "distance": 19.508},
+	    {"system": "Wyrd", "distance": 16.288}
+	  ]
+	},
+	{
+	  "name": "LHS 3461",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -31.34375,
+	  "y": 14.71875,
+	  "z": -9.71875,
+	  "distances": [
+	    {"system": "Jurua", "distance": 51.352},
+	    {"system": "Moros", "distance": 26.215},
+	    {"system": "35 Draconis", "distance": 67.91},
+	    {"system": "Keries", "distance": 28.439},
+	    {"system": "Wyrd", "distance": 26.55}
+	  ]
+	},
+	{
+	  "name": "WREGOE AC-D D12-135",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -14.96875,
+	  "y": 54.1875,
+	  "z": -14.3125,
+	  "distances": [
+	    {"system": "Jurua", "distance": 65.977},
+	    {"system": "Moros", "distance": 51.041},
+	    {"system": "35 Draconis", "distance": 71.593},
+	    {"system": "Keries", "distance": 38.298},
+	    {"system": "Wyrd", "distance": 25.142}
+	  ]
+	},
+	{
+	  "name": "Devi",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -10.28125,
+	  "y": 52.1875,
+	  "z": 18.15625,
+	  "distances": [
+	    {"system": "Jurua", "distance": 90.044},
+	    {"system": "Moros", "distance": 70.233},
+	    {"system": "35 Draconis", "distance": 88.13},
+	    {"system": "Keries", "distance": 26.996},
+	    {"system": "Wyrd", "distance": 30.276}
+	  ]
+	},
+	{
+	  "name": "DE Bootis",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -7.4375,
+	  "y": 32.625,
+	  "z": 17,
+	  "distances": [
+	    {"system": "Jurua", "distance": 86.714},
+	    {"system": "Moros", "distance": 63.65},
+	    {"system": "35 Draconis", "distance": 91.978},
+	    {"system": "Keries", "distance": 13.423},
+	    {"system": "Wyrd", "distance": 21.38}
+	  ]
+	},
+	{
+	  "name": "G 203-51",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -15.875,
+	  "y": 12.03125,
+	  "z": 5.34375,
+	  "distances": [
+	    {"system": "Jurua", "distance": 72.858},
+	    {"system": "Moros", "distance": 47.727},
+	    {"system": "35 Draconis", "distance": 86.661},
+	    {"system": "Keries", "distance": 17.1},
+	    {"system": "Wyrd", "distance": 22.01}
+	  ]
+	},
+	{
+	  "name": "Ross 1008",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -8.71875,
+	  "y": 51.5625,
+	  "z": 1.5,
+	  "distances": [
+	    {"system": "Jurua", "distance": 78.838},
+	    {"system": "Moros", "distance": 60.274},
+	    {"system": "35 Draconis", "distance": 82.039},
+	    {"system": "Keries", "distance": 28.626},
+	    {"system": "Wyrd", "distance": 20.959}
+	  ]
+	},
+	{
+	  "name": "Ross 1007",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -8.34375,
+	  "y": 54.71875,
+	  "z": 1.9375,
+	  "distances": [
+	    {"system": "Jurua", "distance": 80.533},
+	    {"system": "Moros", "distance": 62.576},
+	    {"system": "35 Draconis", "distance": 82.602},
+	    {"system": "Keries", "distance": 31.327},
+	    {"system": "Wyrd", "distance": 24.144}
+	  ]
+	},
+	{
+	  "name": "LHS 3281",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -30.8125,
+	  "y": 22.5,
+	  "z": 13.25,
+	  "distances": [
+	    {"system": "Jurua", "distance": 70.708},
+	    {"system": "Moros", "distance": 47.348},
+	    {"system": "35 Draconis", "distance": 74.418},
+	    {"system": "Keries", "distance": 12.824},
+	    {"system": "Wyrd", "distance": 27.297}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA WH-Q B46-3",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -133.40625,
+	  "y": 24.96875,
+	  "z": -48.4375,
+	  "distances": [
+	    {"system": "Jurua", "distance": 72.608},
+	    {"system": "Moros", "distance": 89.422},
+	    {"system": "35 Draconis", "distance": 58.744},
+	    {"system": "Keries", "distance": 129.77},
+	    {"system": "Wyrd", "distance": 129.823}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA WH-Q B46-2",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -132.6875,
+	  "y": 26.46875,
+	  "z": -53,
+	  "distances": [
+	    {"system": "Jurua", "distance": 71.927},
+	    {"system": "Moros", "distance": 89.851},
+	    {"system": "35 Draconis", "distance": 59.226},
+	    {"system": "Keries", "distance": 131.337},
+	    {"system": "Wyrd", "distance": 130.724}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA BO-O B47-4",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -118.4375,
+	  "y": 22.21875,
+	  "z": -24.71875,
+	  "distances": [
+	    {"system": "Jurua", "distance": 63.224},
+	    {"system": "Moros", "distance": 72.929},
+	    {"system": "35 Draconis", "distance": 44.667},
+	    {"system": "Keries", "distance": 106.413},
+	    {"system": "Wyrd", "distance": 109.213}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA YD-I C23-12",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -110.03125,
+	  "y": 46.71875,
+	  "z": -45.625,
+	  "distances": [
+	    {"system": "Jurua", "distance": 54.488},
+	    {"system": "Moros", "distance": 71.902},
+	    {"system": "35 Draconis", "distance": 30.712},
+	    {"system": "Keries", "distance": 109.879},
+	    {"system": "Wyrd", "distance": 107.946}
+	  ]
+	},
+	{
+	  "name": "G 181-6",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -20.3125,
+	  "y": 20.3125,
+	  "z": 14.0625,
+	  "distances": [
+	    {"system": "Jurua", "distance": 76.524},
+	    {"system": "Moros", "distance": 52.209},
+	    {"system": "35 Draconis", "distance": 83.606},
+	    {"system": "Keries", "distance": 7.199},
+	    {"system": "Wyrd", "distance": 22.92}
+	  ]
+	},
+	{
+	  "name": "Avici",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -5.75,
+	  "y": 42.53125,
+	  "z": 8.28125,
+	  "distances": [
+	    {"system": "Jurua", "distance": 82.881},
+	    {"system": "Moros", "distance": 61.79},
+	    {"system": "35 Draconis", "distance": 87.915},
+	    {"system": "Keries", "distance": 20.644},
+	    {"system": "Wyrd", "distance": 17.459}
+	  ]
+	},
+	{
+	  "name": "LFT 898",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -8.6875,
+	  "y": 49.75,
+	  "z": -11.03125,
+	  "distances": [
+	    {"system": "Jurua", "distance": 70.491},
+	    {"system": "Moros", "distance": 53.379},
+	    {"system": "35 Draconis", "distance": 78.406},
+	    {"system": "Keries", "distance": 34.208},
+	    {"system": "Wyrd", "distance": 19.771}
+	  ]
+	},
+	{
+	  "name": "G 202-48",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -15.53125,
+	  "y": 14.375,
+	  "z": 1.875,
+	  "distances": [
+	    {"system": "Jurua", "distance": 70.088},
+	    {"system": "Moros", "distance": 45.131},
+	    {"system": "35 Draconis", "distance": 84.589},
+	    {"system": "Keries", "distance": 17.066},
+	    {"system": "Wyrd", "distance": 18.531}
+	  ]
+	},
+	{
+	  "name": "Ross 1019",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -15,
+	  "y": 55.03125,
+	  "z": 4.28125,
+	  "distances": [
+	    {"system": "Jurua", "distance": 78.12},
+	    {"system": "Moros", "distance": 60.365},
+	    {"system": "35 Draconis", "distance": 77.426},
+	    {"system": "Keries", "distance": 29.29},
+	    {"system": "Wyrd", "distance": 25.123}
+	  ]
+	},
+	{
+	  "name": "LHS 3558",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -24.8125,
+	  "y": 6.78125,
+	  "z": -4.4375,
+	  "distances": [
+	    {"system": "Jurua", "distance": 61.108},
+	    {"system": "Moros", "distance": 35.806},
+	    {"system": "35 Draconis", "distance": 78.948},
+	    {"system": "Keries", "distance": 27.251},
+	    {"system": "Wyrd", "distance": 28.049}
+	  ]
+	},
+	{
+	  "name": "Mormo",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -98.3125,
+	  "y": 43.1875,
+	  "z": -45.21875,
+	  "distances": [
+	    {"system": "Jurua", "distance": 42.529},
+	    {"system": "Moros", "distance": 59.996},
+	    {"system": "35 Draconis", "distance": 23.042},
+	    {"system": "Keries", "distance": 99.512},
+	    {"system": "Wyrd", "distance": 96.72}
+	  ]
+	},
+	{
+	  "name": "LP 438-8",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": 2,
+	  "y": 40.25,
+	  "z": 10.3125,
+	  "distances": [
+	    {"system": "Jurua", "distance": 89.147},
+	    {"system": "Moros", "distance": 67.505},
+	    {"system": "35 Draconis", "distance": 96.019},
+	    {"system": "Keries", "distance": 24.74},
+	    {"system": "Wyrd", "distance": 21.557}
+	  ]
+	},
+	{
+	  "name": "HIP 105992",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -121,
+	  "y": 21.375,
+	  "z": -28.59375,
+	  "distances": [
+	    {"system": "Jurua", "distance": 64.154},
+	    {"system": "Moros", "distance": 75.187},
+	    {"system": "35 Draconis", "distance": 47.007},
+	    {"system": "Keries", "distance": 110.244},
+	    {"system": "Wyrd", "distance": 112.579}
+	  ]
+	},
+	{
+	  "name": "Ross 837",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": 1.8125,
+	  "y": 39.9375,
+	  "z": 15.53125,
+	  "distances": [
+	    {"system": "Jurua", "distance": 92.618},
+	    {"system": "Moros", "distance": 70.615},
+	    {"system": "35 Draconis", "distance": 98.109},
+	    {"system": "Keries", "distance": 24.488},
+	    {"system": "Wyrd", "distance": 25.105}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA AT-O B47-0",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -103.125,
+	  "y": 41.9375,
+	  "z": -43.25,
+	  "distances": [
+	    {"system": "Jurua", "distance": 46.598},
+	    {"system": "Moros", "distance": 63.346},
+	    {"system": "35 Draconis", "distance": 25.329},
+	    {"system": "Keries", "distance": 102.117},
+	    {"system": "Wyrd", "distance": 100.13}
+	  ]
+	},
+	{
+	  "name": "HIP 106882",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -115.65625,
+	  "y": 49,
+	  "z": -55.5625,
+	  "distances": [
+	    {"system": "Jurua", "distance": 60.501},
+	    {"system": "Moros", "distance": 80.278},
+	    {"system": "35 Draconis", "distance": 40.974},
+	    {"system": "Keries", "distance": 120.334},
+	    {"system": "Wyrd", "distance": 117.443}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA BD-Q B46-3",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -71.875,
+	  "y": 13.5,
+	  "z": -49.5625,
+	  "distances": [
+	    {"system": "Jurua", "distance": 15.169},
+	    {"system": "Moros", "distance": 31.925},
+	    {"system": "35 Draconis", "distance": 45.69},
+	    {"system": "Keries", "distance": 82.809},
+	    {"system": "Wyrd", "distance": 77.697}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA YH-Q B46-1",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -78.875,
+	  "y": 27.9375,
+	  "z": -51.875,
+	  "distances": [
+	    {"system": "Jurua", "distance": 18.524},
+	    {"system": "Moros", "distance": 40.214},
+	    {"system": "35 Draconis", "distance": 34.035},
+	    {"system": "Keries", "distance": 88.051},
+	    {"system": "Wyrd", "distance": 82.665}
+	  ]
+	},
+	{
+	  "name": "LTT 10533",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -76.9375,
+	  "y": 34.65625,
+	  "z": -52.875,
+	  "distances": [
+	    {"system": "Jurua", "distance": 19.505},
+	    {"system": "Moros", "distance": 41.505},
+	    {"system": "35 Draconis", "distance": 30.975},
+	    {"system": "Keries", "distance": 87.801},
+	    {"system": "Wyrd", "distance": 81.672}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA BD-Q B46-2",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -71.875,
+	  "y": 10.6875,
+	  "z": -43.8125,
+	  "distances": [
+	    {"system": "Jurua", "distance": 18.518},
+	    {"system": "Moros", "distance": 29.531},
+	    {"system": "35 Draconis", "distance": 45.826},
+	    {"system": "Keries", "distance": 79.124},
+	    {"system": "Wyrd", "distance": 75.197}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA ZH-Q B46-1",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -72.03125,
+	  "y": 33.3125,
+	  "z": -57.65625,
+	  "distances": [
+	    {"system": "Jurua", "distance": 16.202},
+	    {"system": "Moros", "distance": 40.339},
+	    {"system": "35 Draconis", "distance": 36.997},
+	    {"system": "Keries", "distance": 88.286},
+	    {"system": "Wyrd", "distance": 80.857}
+	  ]
+	},
+	{
+	  "name": "LHS 535",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -46.625,
+	  "y": 6.84375,
+	  "z": -20.4375,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 88.621},
+	    {"system": "HIP 91906", "distance": 80.536},
+	    {"system": "Loga", "distance": 49.481},
+	    {"system": "Jurua", "distance": 37.55},
+	    {"system": "35 Draconis", "distance": 59.681},
+	    {"system": "Keries", "distance": 47.692},
+	    {"system": "Wyrd", "distance": 45.899}
+	  ]
+	},
+	{
+	  "name": "LHS 369",
+	  "calculated": true,
+	  "contributed": "2014-10-18T13:54:57.526Z",
+	  "distances": [
+	    {"system": "35 Draconis", "distance": 110.427},
+	    {"system": "Keries", "distance": 30.193},
+	    {"system": "Wyrd", "distance": 34.108},
+	    {"system": "Moros", "distance": 77.72},
+	    {"system": "HIP 91906", "distance": 133.937},
+	    {"system": "Loga", "distance": 110.626},
+	    {"system": "Jurua", "distance": 101.492}
+	  ],
+	  "x": 9.71875,
+	  "y": 26.34375,
+	  "z": 22.15625,
+	  "contributer": "JesusFreke, RedWizzard"
+	},
+	{
+	  "name": "WREDGUIA YD-I C23-13",
+	  "calculated": true,
+	  "contributer": "JesusFreke, RedWizzard",
+	  "contributed": "2014-10-18T14:26:46.368Z",
+	  "distances": [
+	    {"system": "Jurua", "distance": 50.817},
+	    {"system": "Moros", "distance": 66.999},
+	    {"system": "35 Draconis", "distance": 29.527},
+	    {"system": "Keries", "distance": 105.387},
+	    {"system": "Wyrd", "distance": 104.175},
+	    {"system": "LHS 2884", "distance": 97.142},
+	    {"system": "h Draconis", "distance": 78.902}
+	  ],
+	  "x": -108.375,
+	  "y": 39.40625,
+	  "z": -41.75
+	},
+	{
+	  "name": "LHS 3343",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -38.9375,
+	  "y": 21.5625,
+	  "z": 11.4375,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 105.598},
+	    {"system": "Jurua", "distance": 65.973},
+	    {"system": "35 Draconis", "distance": 68.041},
+	    {"system": "Keries", "distance": 20.847},
+	    {"system": "Wyrd", "distance": 32.89}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA AT-O B47-1",
+	  "contributor":"wolverine2710, JesusFreke",
+	  "calculated": true,
+	  "x": -96.71875,
+	  "y": 52.75,
+	  "z": -32.1875,
+	  "distances": [
+	    {"system": "HIP 105906", "distance": 29.794},
+	    {"system": "Jurua", "distance": 49.67},
+	    {"system": "Moros", "distance": 61.869},
+	    {"system": "35 Draconis", "distance": 12.245},
+	    {"system": "Wyrd", "distance": 92.137},
+	    {"system": "NLTT 47491", "distance": "10.03"},
+	    {"system": "Sol", "distance": 114.774},
+	    {"system": "Flousop", "distance": 107.907},
+	    {"system": "Tring", "distance": 54.229},
+	    {"system": "Rahu", "distance": 62.58}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA BT-O B47-3",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -75.90625,
+	  "y": 50.84375,
+	  "z": -23.5625,
+	  "distances": [
+	    {"system": "HIP 91906", "distance": 34.306},
+	    {"system": "Loga", "distance": 23.709},
+	    {"system": "Jurua", "distance": 41.171},
+	    {"system": "Moros", "distance": 45.568},
+	    {"system": "35 Draconis", "distance": 10.439},
+	    {"system": "Keries", "distance": 71.515},
+	    {"system": "Wyrd", "distance": 69.93}
+	  ]
+	},
+	{
+	  "name": "WREDGUIA EZ-M B48-0",
+	  "contributor":"JesusFreke, RedWizzard",
+	  "calculated": true,
+	  "x": -100.8125,
+	  "y": 42.71875,
+	  "z": -22,
+	  "distances": [
+	    {"system": "Loga", "distance": 29.717},
+	    {"system": "Jurua", "distance": 52.729},
+	    {"system": "Moros", "distance": 61.13},
+	    {"system": "35 Draconis", "distance": 19.191},
+	    {"system": "Keries", "distance": 90.253},
+	    {"system": "Wyrd", "distance": 91.683}
 	  ]
 	}
 ]
