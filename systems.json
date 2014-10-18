@@ -1024,7 +1024,7 @@
 	},
 	{
 	  "name": "NLTT 42620",
-	  "contributor": "wolverine2710",
+	  "contributor": "wolverine2710, Harbinger",
 	  "x": -61.78125,
 	  "y": 46.28125,
 	  "z": -21.53125,
@@ -1037,8 +1037,13 @@
 	    {"system": "Wyrd", "distance": 55.161},
 	    {"system": "LHS 2884", "distance": 46.158},
 	    {"system": "h Draconis", "distance": 32.732},
-	    {"system": "41 Gamma Serpentis", "distance": 69.635}
-	  ]
+	    {"system": "41 Gamma Serpentis", "distance": 69.635},
+	    {"system": "Sol", "distance": 80.14},
+	    {"system": "Fu Haiting", "distance": 31.736},
+	    {"system": "San Guaralaru", "distance": 73.957},
+	    {"system": "Haras", "distance": 65.28},
+	    {"system": "Arabha", "distance": 59.025}
+	  ]	
 	},
 	{
 	  "name": "WREDGUIA AT-0 B47-1",
@@ -2054,6 +2059,462 @@
 	    {"system": "h Draconis", "distance": 20.234},
 	    {"system": "Ross 1051", "distance": 12.465},
 	    {"system": "Demeter", "distance": 16.008}
+	  ]
+	},
+	{
+	  "name": "KUI 47",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-38.9375",
+	  "y": "43.5625",
+	  "z": "-38.96875",
+	  "distances": [
+	    {"system": "Sol", "distance": 70.231},
+	    {"system": "Wolf 497", "distance": 64.225},
+	    {"system": "Huokang", "distance": 31.119},
+	    {"system": "Demeter", "distance": 49.415},
+	    {"system": "Clotti", "distance": 59.161},
+	    {"system": "Fu Haiting", "distance": 34.075},
+	    {"system": "San Guaralaru", "distance": 88.15},
+	    {"system": "Haras", "distance": 86.767},
+	    {"system": "Arabha", "distance": 83.529}
+	  ]
+	},
+	{
+	  "name": "23 H. Camelopardalis",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-37",
+	  "y": "26.25",
+	  "z": "-36.625",
+	  "distances": [
+	    {"system": "Sol", "distance": 58.305},
+	    {"system": "Wolf 497", "distance": 63.018},
+	    {"system": "Huokang", "distance": 28.798},
+	    {"system": "Demeter", "distance": 50.011},
+	    {"system": "Clotti", "distance": 63.015},
+	    {"system": "Fu Haiting", "distance": 35.197},
+	    {"system": "San Guaralaru", "distance": 91.933},
+	    {"system": "Haras", "distance": 83.994},
+	    {"system": "Arabha", "distance": 86.785}
+	  ]
+	},
+	{
+	  "name": "Aktzin",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-51.78125",
+	  "y": "23.9375",
+	  "z": "-29.40625",
+	  "distances": [
+	    {"system": "Sol", "distance": 64.18},
+	    {"system": "Wolf 497", "distance": 68.655},
+	    {"system": "Huokang", "distance": 41.445},
+	    {"system": "Demeter", "distance": 40.794},
+	    {"system": "Clotti", "distance": 48.941},
+	    {"system": "Fu Haiting", "distance": 27.548},
+	    {"system": "San Guaralaru", "distance": 81.027},
+	    {"system": "Haras", "distance": 68.115},
+	    {"system": "Arabha", "distance": 72.135}
+	  ]
+	},
+	{
+	  "name": "Apep",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-42.8125",
+	  "y": "46.9375",
+	  "z": "-38",
+	  "distances": [
+	    {"system": "Sol", "distance": 74.027},
+	    {"system": "Wolf 497", "distance": 66.109},
+	    {"system": "Huokang", "distance": 35.088},
+	    {"system": "Demeter", "distance": 47.65},
+	    {"system": "Clotti", "distance": 55.307},
+	    {"system": "Fu Haiting", "distance": 32.376},
+	    {"system": "San Guaralaru", "distance": 84.792},
+	    {"system": "Haras", "distance": 84.262},
+	    {"system": "Arabha", "distance": 79.6}
+	  ]
+	},
+	{
+	  "name": "BD+81 297",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-47.03125",
+	  "y": "41.0625",
+	  "z": "-41.8125",
+	  "distances": [
+	    {"system": "Sol", "distance": 75.142},
+	    {"system": "Wolf 497", "distance": 71.528},
+	    {"system": "Huokang", "distance": 38.97},
+	    {"system": "Demeter", "distance": 50.07},
+	    {"system": "Clotti", "distance": 54.68},
+	    {"system": "Fu Haiting", "distance": 25.163},
+	    {"system": "San Guaralaru", "distance": 79.594},
+	    {"system": "Haras", "distance": 79.187},
+	    {"system": "Arabha", "distance": 76.351}
+	  ]
+	},
+	{
+	  "name": "Enlil",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-37.5625",
+	  "y": "39.09375",
+	  "z": "-39.40625",
+	  "distances": [
+	    {"system": "Sol", "distance": 67.023},
+	    {"system": "Wolf 497", "distance": 63.76},
+	    {"system": "Huokang", "distance": 29.267},
+	    {"system": "Demeter", "distance": 50.251},
+	    {"system": "Clotti", "distance": 60.977},
+	    {"system": "Fu Haiting", "distance": 34.003},
+	    {"system": "San Guaralaru", "distance": 89.401},
+	    {"system": "Haras", "distance": 86.746},
+	    {"system": "Arabha", "distance": 85.093}
+	  ]
+	},
+	{
+	  "name": "Jata",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-67.78125",
+	  "y": "58.3125",
+	  "z": "-28.8125",
+	  "distances": [
+	    {"system": "Sol", "distance": 93.94},
+	    {"system": "Wolf 497", "distance": 80.982},
+	    {"system": "Huokang", "distance": 60.208},
+	    {"system": "Demeter", "distance": 42.238},
+	    {"system": "Clotti", "distance": 32.359},
+	    {"system": "Fu Haiting", "distance": 33.032},
+	    {"system": "San Guaralaru", "distance": 67.004},
+	    {"system": "Haras", "distance": 67.679},
+	    {"system": "Arabha", "distance": 55.331}
+	  ]
+	},
+	{
+	  "name": "K Camelopardalis",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-45.21875",
+	  "y": "26.625",
+	  "z": "-43.46875",
+	  "distances": [
+	    {"system": "Sol", "distance": 68.141},
+	    {"system": "Wolf 497", "distance": 73.142},
+	    {"system": "Huokang", "distance": 38.731},
+	    {"system": "Demeter", "distance": 53.926},
+	    {"system": "Clotti", "distance": 60.398},
+	    {"system": "Fu Haiting", "distance": 25.447},
+	    {"system": "San Guaralaru", "distance": 82.395},
+	    {"system": "Haras", "distance": 77.736},
+	    {"system": "Arabha", "distance": 80.342}
+	  ]
+	},
+	{
+	  "name": "NLTT 46629",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-67.34375",
+	  "y": "38.21875",
+	  "z": "-25.9375",
+	  "distances": [
+	    {"system": "Sol", "distance": 81.662},
+	    {"system": "Wolf 497", "distance": 77.456},
+	    {"system": "Huokang", "distance": 55.229},
+	    {"system": "Demeter", "distance": 35.679},
+	    {"system": "Clotti", "distance": 29.995},
+	    {"system": "Fu Haiting", "distance": 23.828},
+	    {"system": "San Guaralaru", "distance": 66.87},
+	    {"system": "Haras", "distance": 56.835},
+	    {"system": "Arabha", "distance": 53.83}
+	  ]
+	},
+	{
+	  "name": "LHS 207",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-47.84375",
+	  "y": "28.65625",
+	  "z": "-45.8125",
+	  "distances": [
+	    {"system": "Sol", "distance": 72.173},
+	    {"system": "Wolf 497", "distance": 76.183},
+	    {"system": "Huokang", "distance": 41.705},
+	    {"system": "Demeter", "distance": 55.253},
+	    {"system": "Clotti", "distance": 59.423},
+	    {"system": "Fu Haiting", "distance": 22.115},
+	    {"system": "San Guaralaru", "distance": 79.041},
+	    {"system": "Haras", "distance": 76.331},
+	    {"system": "Arabha", "distance": 78.136}
+	  ]
+	},
+	{
+	  "name": "LHS 2610",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-41.3125",
+	  "y": "40.4375",
+	  "z": "-27.375",
+	  "distances": [
+	    {"system": "Sol", "distance": 63.963},
+	    {"system": "Wolf 497", "distance": 57.149},
+	    {"system": "Huokang", "distance": 29.62},
+	    {"system": "Demeter", "distance": 37.652},
+	    {"system": "Clotti", "distance": 51.754},
+	    {"system": "Fu Haiting", "distance": 36.388},
+	    {"system": "San Guaralaru", "distance": 89.487},
+	    {"system": "Haras", "distance": 81.913},
+	    {"system": "Arabha", "distance": 79.681}
+	  ]
+	},
+	{
+	  "name": "LP 4-258",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-46.875",
+	  "y": "32.1875",
+	  "z": "-37.21875",
+	  "distances": [
+	    {"system": "Sol", "distance": 67.96},
+	    {"system": "Wolf 497", "distance": 68.663},
+	    {"system": "Huokang", "distance": 36.831},
+	    {"system": "Demeter", "distance": 46.384},
+	    {"system": "Clotti", "distance": 53.7},
+	    {"system": "Fu Haiting", "distance": 25.423},
+	    {"system": "San Guaralaru", "distance": 81.525},
+	    {"system": "Haras", "distance": 75.711},
+	    {"system": "Arabha", "distance": 76.287}
+	  ]
+	},
+	{
+	  "name": "LP 5-110",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-51.5625",
+	  "y": "37.21875",
+	  "z": "-41.375",
+	  "distances": [
+	    {"system": "Sol", "distance": 75.867},
+	    {"system": "Wolf 497", "distance": 74.399},
+	    {"system": "Huokang", "distance": 42.573},
+	    {"system": "Demeter", "distance": 49.215},
+	    {"system": "Clotti", "distance": 51.669},
+	    {"system": "Fu Haiting", "distance": 20.071},
+	    {"system": "San Guaralaru", "distance": 75.448},
+	    {"system": "Haras", "distance": 73.711},
+	    {"system": "Arabha", "distance": 72.115}
+	  ]
+	},
+	{
+	  "name": "LTT 14761",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-72.3125",
+	  "y": "60.96875",
+	  "z": "-19.28125",
+	  "distances": [
+	    {"system": "Sol", "distance": 96.53},
+	    {"system": "Wolf 497", "distance": 81.265},
+	    {"system": "Huokang", "distance": 65.584},
+	    {"system": "Demeter", "distance": 37.614},
+	    {"system": "Clotti", "distance": 24.683},
+	    {"system": "Fu Haiting", "distance": 41.423},
+	    {"system": "San Guaralaru", "distance": 69.219},
+	    {"system": "Haras", "distance": 65.795},
+	    {"system": "Arabha", "distance": 51.475}
+	  ]
+	},
+	{
+	  "name": "LTT 18432",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-59.21875",
+	  "y": "44.84375",
+	  "z": "-22.6875",
+	  "distances": [
+	    {"system": "Sol", "distance": 77.669},
+	    {"system": "Wolf 497", "distance": 68.805},
+	    {"system": "Huokang", "distance": 48.027},
+	    {"system": "Demeter", "distance": 30.762},
+	    {"system": "Clotti", "distance": 33.301},
+	    {"system": "Fu Haiting", "distance": 30.864},
+	    {"system": "San Guaralaru", "distance": 75.477},
+	    {"system": "Haras", "distance": 66.873},
+	    {"system": "Arabha", "distance": 61.543}
+	  ]
+	},
+	{
+	  "name": "Wredguia BT-0 B47-0",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-64.5",
+	  "y": "38.75",
+	  "z": "-33.6875",
+	  "distances": [
+	    {"system": "Sol", "distance": 82.442},
+	    {"system": "Wolf 497", "distance": 79.172},
+	    {"system": "Huokang", "distance": 53.085},
+	    {"system": "Demeter", "distance": 42.304},
+	    {"system": "Clotti", "distance": 37.187},
+	    {"system": "Fu Haiting", "distance": 17.299},
+	    {"system": "San Guaralaru", "distance": 65.737},
+	    {"system": "Haras", "distance": 60.717},
+	    {"system": "Arabha", "distance": 57.646}
+	  ]
+	},
+	{
+	  "name": "Wredguia DK-G C24-11",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-70.34375",
+	  "y": "46.03125",
+	  "z": "-24.6875",
+	  "distances": [
+	    {"system": "Sol", "distance": 87.616},
+	    {"system": "Wolf 497", "distance": 79.563},
+	    {"system": "Huokang", "distance": 59.111},
+	    {"system": "Demeter", "distance": 35.949},
+	    {"system": "Clotti", "distance": 25.644},
+	    {"system": "Fu Haiting", "distance": 27.914},
+	    {"system": "San Guaralaru", "distance": 65.054},
+	    {"system": "Haras", "distance": 57.914},
+	    {"system": "Arabha", "distance": 50.521}
+	  ]
+	},
+	{
+	  "name": "Wredguia DK-G C24-17",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-75.375",
+	  "y": "54.5625",
+	  "z": "-13.78125",
+	  "distances": [
+	    {"system": "Sol", "distance": 94.066},
+	    {"system": "Wolf 497", "distance": 80.838},
+	    {"system": "Huokang", "distance": 67.004},
+	    {"system": "Demeter", "distance": 32.34},
+	    {"system": "Clotti", "distance": 16.514},
+	    {"system": "Fu Haiting", "distance": 42.07},
+	    {"system": "San Guaralaru", "distance": 69.019},
+	    {"system": "Haras", "distance": 59.599},
+	    {"system": "Arabha", "distance": 47.379}
+	  ]
+	},
+	{
+	  "name": "Wredguia FZ-M B48-3",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-65.8125",
+	  "y": "39.1875",
+	  "z": "-24.25",
+	  "distances": [
+	    {"system": "Sol", "distance": 80.343},
+	    {"system": "Wolf 497", "distance": 75.265},
+	    {"system": "Huokang", "distance": 53.764},
+	    {"system": "Demeter", "distance": 33.53},
+	    {"system": "Clotti", "distance": 29.75},
+	    {"system": "Fu Haiting", "distance": 25.877},
+	    {"system": "San Guaralaru", "distance": 69.013},
+	    {"system": "Haras", "distance": 58.52},
+	    {"system": "Arabha", "distance": 55.17}
+	  ]
+	},
+	{
+	  "name": "Wredguia BT-0 B47-3",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-75.90625",
+	  "y": "50.84375",
+	  "z": "-23.5625",
+	  "distances": [
+	    {"system": "Sol", "distance": 94.351},
+	    {"system": "Wolf 497", "distance": 84.446},
+	    {"system": "Huokang", "distance": 65.57},
+	    {"system": "Demeter", "distance": 38.629},
+	    {"system": "Clotti", "distance": 21.526},
+	    {"system": "Fu Haiting", "distance": 32.133},
+	    {"system": "San Guaralaru", "distance": 61.712},
+	    {"system": "Haras", "distance": 56.284},
+	    {"system": "Arabha", "distance": 45.419}
+	  ]
+	},
+	{
+	  "name": "Wregoe MK-Q B46-2",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-56",
+	  "y": "44.46875",
+	  "z": "-43.5625",
+	  "distances": [
+	    {"system": "Sol", "distance": 83.733},
+	    {"system": "Wolf 497", "distance": 79.011},
+	    {"system": "Huokang", "distance": 48.319},
+	    {"system": "Demeter", "distance": 51.26},
+	    {"system": "Clotti", "distance": 49.322},
+	    {"system": "Fu Haiting", "distance": 19.026},
+	    {"system": "San Guaralaru", "distance": 70.514},
+	    {"system": "Haras", "distance": 73.022},
+	    {"system": "Arabha", "distance": 68.21}
+	  ]
+	},
+	{
+	  "name": "Wregoe WV-E D11-104",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-45.4375",
+	  "y": "31.3125",
+	  "z": "-25.125",
+	  "distances": [
+	    {"system": "Sol", "distance": 60.633},
+	    {"system": "Wolf 497", "distance": 59.624},
+	    {"system": "Huokang", "distance": 33.509},
+	    {"system": "Demeter", "distance": 35.452},
+	    {"system": "Clotti", "distance": 49.255},
+	    {"system": "Fu Haiting", "distance": 33.797},
+	    {"system": "San Guaralaru", "distance": 87.197},
+	    {"system": "Haras", "distance": 75.328},
+	    {"system": "Arabha", "distance": 76.397}
+	  ]
+	},
+	{
+	  "name": "PI-1 Ursae Minoris",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-52.1875",
+	  "y": "39.75",
+	  "z": "-24.96875",
+	  "distances": [
+	    {"system": "Sol", "distance": 70.193},
+	    {"system": "Wolf 497", "distance": 64.062},
+	    {"system": "Huokang", "distance": 40.23},
+	    {"system": "Demeter", "distance": 32.701},
+	    {"system": "Clotti", "distance": 41.158},
+	    {"system": "Fu Haiting", "distance": 30.468},
+	    {"system": "San Guaralaru", "distance": 80.553},
+	    {"system": "Haras", "distance": 71.313},
+	    {"system": "Arabha", "distance": 68.74}
+	  ]
+	},
+	{
+	  "name": "NSV 4864",
+	  "contributor": "Harbinger",
+	  "calculated": true,
+	  "x": "-46.09375",
+	  "y": "38.625",
+	  "z": "-36.0625",
+	  "distances": [
+	    {"system": "Sol", "distance": 70.122},
+	    {"system": "Wolf 497", "distance": 66.718},
+	    {"system": "Huokang", "distance": 35.719},
+	    {"system": "Demeter", "distance": 44.648},
+	    {"system": "Clotti", "distance": 52.215},
+	    {"system": "Fu Haiting", "distance": 27.437},
+	    {"system": "San Guaralaru", "distance": 82.105},
+	    {"system": "Haras", "distance": 77.976},
+	    {"system": "Arabha", "distance": 76.121}
 	  ]
 	}
 ]
