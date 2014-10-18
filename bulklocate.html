@@ -12,6 +12,7 @@
 var systems = null;
 var distances = null;
 var selected = null;
+var unknowns = null;
 
 var tmPreferred = {	// preferred reference systems for TunaMage's algorithm
 	'h Draconis': true,
@@ -37,6 +38,7 @@ $(document).ready(function () {
 			$("#toggle-json").attr("disabled", false);
 		});
 	});
+
 	$("#json-output").click(function() {
 		if (window.getSelection) {
 			var selection = window.getSelection();            
@@ -46,12 +48,14 @@ $(document).ready(function () {
 			selection.addRange(range);
 		}
 	});
+
 	$("#toggle-sql").click(function() {
 		$(this).text($("#sql-output").is(":visible") ? "Show SQL" : "Hide SQL").attr("disabled", true);
 		$("#sql-output").toggle("fast", function() {
 			$("#toggle-sql").attr("disabled", false);
 		});
 	});
+
 	$("#sql-output").click(function() {
 		if (window.getSelection) {
 			var selection = window.getSelection();            
@@ -61,9 +65,15 @@ $(document).ready(function () {
 			selection.addRange(range);
 		}
 	});
-});
 
-var unknowns = null;
+	$('#include-derived').change(function() {
+		var incCalc = this.checked;
+		$('#tableDiv tr[system]').each(function() {
+			var u = unknowns[this.getAttribute('system').toLowerCase()];
+			$(this).toggle(!u.calculated || incCalc);
+		});
+	});
+});
 
 function findSystem(name) {
 	var idx = -1;
@@ -76,12 +86,13 @@ function findSystem(name) {
 	return idx;
 }
 
-function addDistance(unknownName, refID, distance) {
-	var un = unknownName.toLowerCase();
+function addDistance(unknownName, calculated, refID, distance) {
+	var un = $.trim(unknownName.toLowerCase());
 	if (unknowns[un] === undefined) {
 		unknowns[un] = {};
-		unknowns[un].name = unknownName;
+		unknowns[un].name = $.trim(unknownName);
 		unknowns[un].distances = [];
+		unknowns[un].calculated = calculated;
 	} else {
 		unknowns[un].name = bestName(unknowns[un].name, unknownName);
 	}
@@ -110,6 +121,7 @@ function processDistances() {
 	var i, k;
 	var ref1, ref2;
 	var row;
+	var incCalc = $('#include-derived:checked').length > 0;
 
 	if (unknowns !== null) return;
 	unknowns = {};
@@ -118,39 +130,27 @@ function processDistances() {
 	for (i = 0; i < distances.length; i++) {
 		ref1 = findSystem(distances[i].system1);
 		ref2 = findSystem(distances[i].system2);
-		if ((ref1 == -1 || systems[ref1].calculated) && ref2 >= 0) addDistance(distances[i].system1, ref2, distances[i].distance);
-		if ((ref2 == -1 || systems[ref2].calculated) && ref1 >= 0) addDistance(distances[i].system2, ref1, distances[i].distance);
+		if ((ref1 == -1 || systems[ref1].calculated) && ref2 >= 0) {
+			addDistance(distances[i].system1, ref1 !== -1, ref2, distances[i].distance);
+		}
+		if ((ref2 == -1 || systems[ref2].calculated) && ref1 >= 0) {
+			addDistance(distances[i].system2, ref2 !== -1, ref1, distances[i].distance);
+		}
 	}
 
 	// process systems and populate table
 	$.each(unknowns, function(i, u) {
+		u.x = "";
+		u.y = "";
+		u.z = "";
+		u.errRMS = "";
+
 		if (u.distances.length >= 4) {
 			var bestCandidate = getBestCandidate(u.distances);
 			if (bestCandidate !== null) {
 				var gridLoc = gridLocation(bestCandidate);
 				setVector(u, gridLoc);
 				u.errRMS = Math.sqrt(bestCandidate.totalSqErr/(u.distances.length)).toFixed(3);
-				
-				// clean version for JSON output
-				var s = {};
-				s.name = u.name;
-				s.calculated = true;
-				setVector(s, u);
-				s.distances = [];
-				$.each(u.distances, function() {
-					s.distances.push({system: this.name, distance: this.distance});
-				});
-				
-				// add to JSON output
-				$("#json-output").text(function(i,text) {
-					if (text && text.length > 0) text += ",\n";
-					return text + JSON.stringify(s, null, 2);
-				});
-				
-				// add to SQL output
-				$("#sql-output").text(function(i,text) {
-					return text + getSQL(s);
-				});
 			}
 
 			// try to find the preferred reference systems for tunaMageCoords
@@ -179,17 +179,14 @@ function processDistances() {
 					u.tunaMageInfo = vectorToString(tunaLoc) + ", error = "+err.toFixed(3)+", preferred refs = "+prefCount;
 				}
 			}
-
-		} else {
-			u.x = "";
-			u.y = "";
-			u.z = "";
-			u.errRMS = "";
 		}
 
 		$('<tr>')
 			.attr('system',u.name)
 			.click(function() {selectSystem(this)})
+			.toggle(!u.calculated || incCalc)
+			.append($('<td style="text-align: center">')
+					.append($('<input type="checkbox"'+(u.calculated||u.x==='' ? '' : ' checked')+'>').change(updateOutput)))
 			.append($('<td>').text(u.name))
 			.append($('<td>').text(u.distances.length))
 			.append($('<td>').text(u.x))
@@ -201,6 +198,35 @@ function processDistances() {
 	});
 
 	$('#tableDiv table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
+	
+	updateOutput();
+}
+
+function updateOutput() {
+	var json = "";
+	var sql = "";
+	$('#tableDiv tr[system]').each(function() {
+		var u = unknowns[this.getAttribute('system').toLowerCase()];
+		if (u.x !== "" && $(this).find('input:checked').length > 0) {
+			// clean version for JSON output
+			var s = {};
+			s.name = u.name;
+			s.calculated = true;
+			setVector(s, u);
+			s.distances = [];
+			$.each(u.distances, function() {
+				s.distances.push({system: this.name, distance: this.distance});
+			});
+			
+			if (json.length > 0) json += ",\n";
+			json += JSON.stringify(s, null, 2);
+
+			sql += getSQL(s);			
+		}
+	});
+
+	$("#json-output").text(json);
+	$("#sql-output").text(sql);
 }
 
 function selectSystem(row) {
@@ -231,10 +257,12 @@ function selectSystem(row) {
 
 </script>
 </head>
-<body class="ui-widget">
+<body class="ui-widget" style="font-size:100%">
+	<input id="include-derived" type="checkbox">Include known calculated systems</input>
 	<div class="table-div" id="tableDiv" style="height:50vh">
 		<table>
 			<thead>
+				<th>Output?</th>
 				<th data-sort="string-ins">System</th>
 				<th data-sort="int"># Distances</th>
 				<th data-sort="optfloat">X</th>
@@ -248,7 +276,7 @@ function selectSystem(row) {
 		</table>
 	</div>
 	<h3>Details</h3>
-	<div class="table-div" id="details-table" style="height:25vh">
+	<div class="table-div" id="details-table" style="height:15vh">
 		<table>
 			<thead>
 				<th data-sort="string-ins">System</th>
