@@ -32,6 +32,8 @@ $(document).ready(function () {
 		if (distances) processDistances();
 	});
 
+	$('#details-table table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
+
 	$("#toggle-json").click(function() {
 		$(this).text($("#json-output").is(":visible") ? "Show JSON" : "Hide JSON").attr("disabled", true);
 		$("#json-output").toggle("fast", function() {
@@ -96,14 +98,24 @@ function addDistance(unknownName, calculated, refID, distance) {
 	} else {
 		unknowns[un].name = bestName(unknowns[un].name, unknownName);
 	}
-	
-	unknowns[un].distances.push({
-		name: systems[refID].name,
-		distance: distance,
-		x: systems[refID].x,
-		y: systems[refID].y,
-		z: systems[refID].z
+
+	var found = false;
+	$.each(unknowns[un].distances, function() {
+		if (this.name === systems[refID].name) {
+			found = true;
+			return false;
+		}
 	});
+
+	if (!found) {
+		unknowns[un].distances.push({
+			name: systems[refID].name,
+			distance: distance,
+			x: systems[refID].x,
+			y: systems[refID].y,
+			z: systems[refID].z
+		});
+	}
 }
 
 // order of assumed correctness: mixed case, all caps, all lower
@@ -186,7 +198,7 @@ function processDistances() {
 			.click(function() {selectSystem(this)})
 			.toggle(!u.calculated || incCalc)
 			.append($('<td style="text-align: center">')
-					.append($('<input type="checkbox"'+(u.calculated||u.x==='' ? '' : ' checked')+'>').change(updateOutput)))
+					.append($('<input type="checkbox"'+(u.calculated||u.x===''||u.distances.length<5 ? '' : ' checked')+'>').change(updateOutput)))
 			.append($('<td>').text(u.name))
 			.append($('<td>').text(u.distances.length))
 			.append($('<td>').text(u.x))
