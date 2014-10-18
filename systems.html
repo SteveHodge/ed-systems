@@ -18,11 +18,13 @@ $(document).ready(function () {
 
 		var d, i;
 		for (i = 0; i < systems.length; i++) {
+			var contrib = systems[i].calculated ? 'anon' : 'FD';
+			if (systems[i].contributor && systems[i].contributor.length > 0) contrib = systems[i].contributor;
 			$('<tr>')
 				.attr('system', i)
 				.click(function() {selectSystem(this)})
 				.append($('<td>').text(systems[i].name))
-				.append($('<td>').text(systems[i].calculated ? "Y" : "N"))
+				.append($('<td>').text(contrib))
 				.append($('<td>').text(systems[i].x))
 				.append($('<td>').text(systems[i].y))
 				.append($('<td>').text(systems[i].z))
@@ -31,6 +33,7 @@ $(document).ready(function () {
 				.appendTo('#tableDiv tbody');
 		}
 		$('#tableDiv table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
+		$('#known-systems').text('Known Systems ('+systems.length+')');
 		selectSystem($('#tableDiv tr[system]')[0]);
 	});
 });
@@ -67,13 +70,13 @@ function selectSystem(row) {
 </script>
 </head>
 <body class="ui-widget">
-	<h2>Known Systems</h2>
-	<div class="table-div" id="tableDiv" style="height: 60vh;">
+	<h2 id="known-systems">Known Systems</h2>
+	<div class="table-div" id="tableDiv">
 		<table>
 			<thead>
 				<tr>
 					<th data-sort="string-ins">System</th>
-					<th data-sort="string">Derived?</th>
+					<th data-sort="string">Contributor</th>
 					<th data-sort="float">X</th>
 					<th data-sort="float">Y</th>
 					<th data-sort="float">Z</th>
