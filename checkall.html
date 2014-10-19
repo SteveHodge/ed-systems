@@ -118,10 +118,6 @@ function runCheck() {
 			d = Math.round(d*Math.pow(10,dp))/Math.pow(10,dp);
 			refSystems[i].distance = d;
 		}
-		
-		if (system.name === 'Adepti') {
-			console.log(system.name);
-		}
 
 		var bestCandidate = getCoords(refSystems);
 		if (bestCandidate !== null) {
