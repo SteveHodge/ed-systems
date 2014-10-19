@@ -317,11 +317,11 @@
 {"system1":"35 Draconis", "system2":"LP 229-17", "distance":"84.114"},
 {"system1":"35 Draconis", "system2":"LP 336-6", "distance":"86.967"},
 {"system1":"35 Draconis", "system2":"WREDGUIA YH-Q B46-2", "distance":"40.202"},
-{"system1":"WREDGUIA ZS-0 B47-2", "system2":"Sol", "distance": 119.745},
-{"system1":"WREDGUIA ZS-0 B47-2", "system2":"Flousop", "distance": 113.787},
-{"system1":"WREDGUIA ZS-0 B47-2", "system2":"Tring", "distance": 46.500},
-{"system1":"WREDGUIA ZS-0 B47-2", "system2":"Rahu", "distance": 70.564},
-{"system1":"WREDGUIA ZS-0 B47-2", "system2":"Parcae", "distance": 100.396},
+{"system1":"WREDGUIA ZS-O B47-2", "system2":"Sol", "distance": 119.745},
+{"system1":"WREDGUIA ZS-O B47-2", "system2":"Flousop", "distance": 113.787},
+{"system1":"WREDGUIA ZS-O B47-2", "system2":"Tring", "distance": 46.500},
+{"system1":"WREDGUIA ZS-O B47-2", "system2":"Rahu", "distance": 70.564},
+{"system1":"WREDGUIA ZS-O B47-2", "system2":"Parcae", "distance": 100.396},
 {"system1":"WREDGUIA EZ-M B48-3", "system2":"Sol", "distance": 107.050},
 {"system1":"WREDGUIA EZ-M B48-3", "system2":"Flousop", "distance": 101.134},
 {"system1":"WREDGUIA EZ-M B48-3", "system2":"Tring", "distance": 53.187},
@@ -357,7 +357,7 @@
 {"system1":"LP 378-541", "system2":"HARAS", "distance": 122.429},
 {"system1":"LP 378-541", "system2":"ARABHA", "distance": 126.489},
 {"system1":"35 Draconis", "system2":"NLTT 50716", "distance": 18.713},
-{"system1":"WREDGUIA ZS-0 B47-2", "system2":"35 Draconis", "distance": 23.669},
+{"system1":"WREDGUIA ZS-O B47-2", "system2":"35 Draconis", "distance": 23.669},
 {"system1":"WREDGUIA EZ-M B48-3", "system2":"35 Draconis", "distance": 24.587},
 {"system1":"WREDGUIA AT-O B47-3", "system2":"35 Draconis", "distance": 13.174},
 {"system1":"WREDGUIA AT-O B47-2", "system2":"35 Draconis", "distance": 14.498},
@@ -1333,5 +1333,6 @@
 {"system1":"Wyrd", "system2":"VW Cephi", "distance": 72.193},
 {"system1":"Wyrd", "system2":"Wise 1405+5534", "distance": 18.566},
 {"system1":"Wyrd", "system2":"Yinfu", "distance": 32.903},
-{"system1":"LHS 2884", "system2":"WREDGUIA YD-I C23-13", "distance": 97.142}
+{"system1":"LHS 2884", "system2":"WREDGUIA YD-I C23-13", "distance": 97.142},
+{"system1": "Sagittarius A*", "system2":"Ross 868", "distance": "25878.734"}
 ]

@@ -11,6 +11,9 @@
 	<script src="trilateration.js"></script>
 <!--	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
 <script>
+// TODO? prepopulate distances for dupe systems?
+// TODO webservice integration when ready
+
 var systems = null;		// reference system data
 var systemData = null;	// current system data
 var jsonOutput = "";
@@ -41,7 +44,7 @@ $(document).ready(function () {
 		$('#cmdr-name').change(function() {
 			var cmdr = $.trim(this.value);
 			if (systemData !== null && cmdr.length > 0) {
-				systemData.contributer = cmdr;
+				systemData.contributor = cmdr;
 				$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
 			}
 		});
@@ -155,7 +158,7 @@ function updateCoords() {
 	systemData = {name: $('#unknown-name').val()};
 	systemData.calculated = true;
 	var cmdr = $.trim($('#cmdr-name').val());
-	if (cmdr.length > 0) systemData.contributer = cmdr;
+	if (cmdr.length > 0) systemData.contributor = cmdr;
 	systemData.contributed = (new Date()).toJSON();
 	systemData.distances = [];
 	
