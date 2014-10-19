@@ -1227,7 +1227,15 @@
 	    {"system": "Fu Haiting", "distance": 56.513},
 	    {"system": "San Guaralaru", "distance": 112.623},
 	    {"system": "Haras", "distance": 100.391},
-	    {"system": "Arabha", "distance": 103.342}
+	    {"system": "Arabha", "distance": 103.342},
+	    {"system": "HIP 105906", "distance": 103.815},
+	    {"system": "Loga", "distance": 64.243},
+	    {"system": "Jurua", "distance": 49.553},
+	    {"system": "Moros", "distance": 29.061},
+	    {"system": "Chapoyo", "distance": 58.259},
+	    {"system": "Adepti", "distance": 58.359},
+	    {"system": "Andjeri", "distance": 68.179}
+
 	  ]
 	},
 	{
