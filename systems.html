@@ -33,6 +33,17 @@ $(document).ready(function () {
 				.appendTo('#tableDiv tbody');
 		}
 		$('#tableDiv table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
+		$('#generate-csv').click(generateCSV);
+		$('#remove-csv').click(function() {$('#csv-wrapper').hide();});
+		$('#csv-select').click(function() {
+			if (window.getSelection) {
+				var selection = window.getSelection();            
+				var range = document.createRange();
+				range.selectNodeContents($('#csv-output')[0]);
+				selection.removeAllRanges();
+				selection.addRange(range);
+			}
+		});
 		$('#known-systems').text('Known Systems ('+systems.length+')');
 		selectSystem($('#tableDiv tr[system]')[0]);
 	});
@@ -67,10 +78,29 @@ function selectSystem(row) {
 	});
 }
 
+function generateCSV() {
+	var csv = "";
+	$('#tableDiv tr[system]').each(function() {
+		var s = systems[this.getAttribute('system')];
+		var contrib = '';
+		if (s.contributed) {
+			contrib = s.contributed.substr(0,10)+' '+s.contributed.substr(11,8);
+		}
+		csv += "'"+s.name+"',"+s.x+","+s.y+","+s.z+",'"+s.contributor+"','"+contrib+"'\n"
+	});
+	$('#csv-output').text(csv);
+	$('#csv-wrapper').show();
+}
+
 </script>
 </head>
 <body class="ui-widget">
 	<h2 id="known-systems">Known Systems</h2>
+	<button id="generate-csv">Generate CSV</button>
+	<div id="csv-wrapper" style="display:none">
+		<button id="remove-csv">Remove CSV</button><button id="csv-select">Select All</button>
+		<pre id="csv-output" style="height:50vh; overflow:auto"></pre>
+	</div>
 	<div class="table-div" id="tableDiv">
 		<table>
 			<thead>
