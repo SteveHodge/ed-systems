@@ -463,7 +463,9 @@
 	    {"system": "LHS 411", "distance": "2.326"},
 	    {"system": "SDSS J1416+1348", "distance": "15.695"},
 	    {"system": "Keries", "distance": "11.041"},
-	    {"system": "Eranin", "distance": "27.758"}
+	    {"system": "Eranin", "distance": "27.758"},
+	    {"system": "Jurua", "distance": 85.679},
+	    {"system": "Moros", "distance": 61.417}
 	  ]
 	},
 	{
@@ -478,7 +480,9 @@
 	    {"system": "SDSS J1416+1348", "distance": "12.655"},
 	    {"system": "Keries", "distance": "10.203"},
 	    {"system": "Eranin", "distance": "23.654"},
-	    {"system": "Basium", "distance": "79.755"}
+	    {"system": "Basium", "distance": "79.755"},
+	    {"system": "Jurua", "distance": 85.421},
+	    {"system": "Moros", "distance": 62.082}
 	  ]
 	},
 	{
@@ -509,7 +513,9 @@
 	    {"system": "SDSS J1416+1348", "distance": "25.652"},
 	    {"system": "Keries", "distance": "14.002"},
 	    {"system": "Eranin", "distance": "28.900"},
-	    {"system": "Basium", "distance": "76.983"}
+	    {"system": "Basium", "distance": "76.983"},
+	    {"system": "Jurua", "distance": 79.036},
+	    {"system": "Moros", "distance": 54.439}
 	  ]
 	},
 	{
@@ -646,9 +652,6 @@
 	  "y": 19.90625,
 	  "z": -31.71875,
 	  "distances": [
-	    {"system": "Moros", "distance": "6.35"},
-	    {"system": "LP 1-52", "distance": "9.23"},
-	    {"system": "LHS 1065", "distance": "4.06"},
 	    {"system": "Keries", "distance": "55.658"},
 	    {"system": "Eranin", "distance": "45.232"},
 	    {"system": "Sol", "distance": 63.903},
@@ -796,7 +799,10 @@
 	    {"system": "Keries", "distance": "18.998"},
 	    {"system": "Eranin", "distance": "29.316"},
 	    {"system": "Basium", "distance": "74.357"},
-	    {"system": "35 Draconis", "distance": "84.114"}
+	    {"system": "35 Draconis", "distance": "84.114"},
+	    {"system": "HIP 105906", "distance": 119.926},
+	    {"system": "Jurua", "distance": 72.219},
+	    {"system": "Moros", "distance": 47.099}
 	  ]
 	},
 	{
@@ -841,7 +847,9 @@
 	    {"system": "NLTT 46621", "distance": "13.182"},
 	    {"system": "Malina", "distance": "14.748"},
 	    {"system": "V1090 Herculis", "distance": "24.015"},
-	    {"system": "Vaccimici", "distance": "22.921"}
+	    {"system": "Vaccimici", "distance": "22.921"},
+	    {"system": "LHS 457", "distance": "5.057"},
+	    {"system": "HIP 105906", "distance": 111.274}
 	  ]
 	},
 	{
@@ -979,7 +987,9 @@
 	    {"system": "Jaoismonjin", "distance": "12.421"},
 	    {"system": "Keries", "distance": "86.884"},
 	    {"system": "Eranin", "distance": "74.552"},
-	    {"system": "Basium", "distance": "34.136"}
+	    {"system": "Basium", "distance": "34.136"},
+	    {"system": "Jurua", "distance": 13.545},
+	    {"system": "Moros", "distance": 37.438}
 	  ]
 	},
 	{
@@ -1093,7 +1103,10 @@
 	    {"system": "Flousop", "distance": 117.218},
 	    {"system": "Tring", "distance": 54.854},
 	    {"system": "Rahu", "distance": 73.466},
-	    {"system": "35 Draconis", "distance": 25.364}
+	    {"system": "35 Draconis", "distance": 25.364},
+	    {"system": "HIP 91906", "distance": 19.17},
+	    {"system": "Jurua", "distance": 49.563},
+	    {"system": "Moros", "distance": 67.711}
 	  ]
 	},
 	{
@@ -3442,7 +3455,8 @@
 	    {"system": "Jurua", "distance": 72.727},
 	    {"system": "Moros", "distance": 48.199},
 	    {"system": "35 Draconis", "distance": 90.084},
-	    {"system": "Keries", "distance": 22.729}
+	    {"system": "Keries", "distance": 22.729},
+	    {"system": "Wyrd", "distance": 18.566}
 	  ]
 	},
 	{
@@ -3547,7 +3561,8 @@
 	    {"system": "Jurua", "distance": 30.402},
 	    {"system": "Moros", "distance": 36.53},
 	    {"system": "35 Draconis", "distance": 21.424},
-	    {"system": "Keries", "distance": 73.19}
+	    {"system": "Keries", "distance": 73.19},
+	    {"system": "Wyrd", "distance": 72.193}
 	  ]
 	},
 	{
@@ -3932,7 +3947,8 @@
 	    {"system": "Moros", "distance": 89.851},
 	    {"system": "35 Draconis", "distance": 59.226},
 	    {"system": "Keries", "distance": 131.337},
-	    {"system": "Wyrd", "distance": 130.724}
+	    {"system": "Wyrd", "distance": 130.724},
+	    {"system": "Kulkanabossongma", "distance": 28.194}
 	  ]
 	},
 	{
@@ -4886,6 +4902,103 @@
 	    {"system": "San Guaralaru", "distance": 47.661},
 	    {"system": "Haras", "distance": 59.537},
 	    {"system": "Arabha", "distance": 55.538}
+	  ]
+	},
+	{
+	  "name": "Wolf 483",
+	  "calculated": true,
+	  "contributor": "Red Wizzard",
+	  "contributed": "2014-10-20T09:28:05.232Z",
+	  "distances": [
+	    {"system": "Sol", "distance": 70.434},
+	    {"system": "Wolf 497", "distance": 46.065},
+	    {"system": "Huokang", "distance": 34.514},
+	    {"system": "Demeter", "distance": 37.088},
+	    {"system": "Clotti", "distance": 57.525},
+	    {"system": "Fu Haiting", "distance": 58.279},
+	    {"system": "San Guaralaru", "distance": 104.644},
+	    {"system": "Haras", "distance": 98.062},
+	    {"system": "Arabha", "distance": 90.067}
+	  ],
+	  "x": -32.6875,
+	  "y": 60.8125,
+	  "z": -13.9375
+	},
+	{
+	  "name": "LHS 2921",
+	  "calculated": true,
+	  "contributor": "Red Wizzard",
+	  "contributed": "2014-10-20T09:23:18.780Z",
+	  "distances": [
+	    {"system": "Sol", "distance": 72.454},
+	    {"system": "Wolf 497", "distance": 40.925},
+	    {"system": "Huokang", "distance": 45.815},
+	    {"system": "Demeter", "distance": 33.193},
+	    {"system": "Clotti", "distance": 58.957},
+	    {"system": "Fu Haiting", "distance": 71.912},
+	    {"system": "San Guaralaru", "distance": 114.369},
+	    {"system": "Haras", "distance": 102.836},
+	    {"system": "Arabha", "distance": 94.196}
+	  ],
+	  "x": -32.5625,
+	  "y": 64.625,
+	  "z": 3.59375
+	},
+	{
+	  "name": "LP 176-55",
+	  "calculated": true,
+	  "contributor": "Red Wizzard",
+	  "contributed": "2014-10-20T09:15:36.415Z",
+	  "distances": [
+	    {"system": "Sol", "distance": 63.95},
+	    {"system": "Wolf 497", "distance": 38.639},
+	    {"system": "Huokang", "distance": 46.058},
+	    {"system": "Demeter", "distance": 20.876},
+	    {"system": "Clotti", "distance": 53.422},
+	    {"system": "Fu Haiting", "distance": 69.774},
+	    {"system": "San Guaralaru", "distance": 112.597},
+	    {"system": "Haras", "distance": 94.69},
+	    {"system": "Arabha", "distance": 89.759}
+	  ],
+	  "x": -37.28125,
+	  "y": 50.96875,
+	  "z": 10.09375
+	},
+	{
+	  "name": "Grannus",
+	  "calculated": true,
+	  "contributor": "Red Wizzard",
+	  "contributed": "2014-10-20T08:54:52.044Z",
+	  "distances": [
+	    {"system": "Sol", "distance": 77.671},
+	    {"system": "Wolf 497", "distance": 73.67},
+	    {"system": "Huokang", "distance": 68.475},
+	    {"system": "Demeter", "distance": 21.141},
+	    {"system": "Clotti", "distance": 28.189},
+	    {"system": "Fu Haiting", "distance": 56.061},
+	    {"system": "San Guaralaru", "distance": 86.603},
+	    {"system": "Haras", "distance": 56.24},
+	    {"system": "Arabha", "distance": 58.829}
+	  ],
+	  "x": -72.125,
+	  "y": 27.96875,
+	  "z": 6.96875
+	},
+	{
+	  "name": "WREDGUIA LW-E D11-129",
+	  "calculated": true,
+	  "contributor": "Red Wizzard",
+	  "contributed": "2014-10-20T08:54:52.044Z",
+	  "x": -110.09375,
+	  "y": 21.53125,
+	  "z": -70.40625,
+	  "distances": [
+	    {"system": "Kulkanabossongma", "distance": "13.352"},
+	    {"system": "Lugiu Bezelana", "distance": "46.623"},
+	    {"system": "Pata Thewi", "distance": "52.813"},
+	    {"system": "LTT 15294", "distance": "74.595"},
+	    {"system": "LP 102-320", "distance": "89.736"},
+	    {"system": "Ross 1051", "distance": "100.539"}
 	  ]
 	}
 ]
