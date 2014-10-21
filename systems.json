@@ -5281,23 +5281,24 @@
 	  "z": -47.46875
 	},
 	{
-	  "name": "Matask",
+	  "name": "Wredguia IF-L b49-3",
 	  "calculated": true,
 	  "contributor": "Red Wizzard",
-	  "contributed": "2014-10-21T05:24:15.246Z",
+	  "contributed": "2014-10-21T12:43:12.599Z",
 	  "distances": [
-	    {"system": "Sol", "distance": 98.957},
-	    {"system": "Wolf 497", "distance": 92.612},
-	    {"system": "Huokang", "distance": 64.076},
-	    {"system": "Demeter", "distance": 57.923},
-	    {"system": "Clotti", "distance": 45.141},
-	    {"system": "Fu Haiting", "distance": 18.975},
-	    {"system": "San Guaralaru", "distance": 56.451},
-	    {"system": "Haras", "distance": 66.128},
-	    {"system": "Arabha", "distance": 56.966}
+	    {"system": "Sol", "distance": 95.288},
+	    {"system": "Wolf 497", "distance": 90.133},
+	    {"system": "Huokang", "distance": 79.104},
+	    {"system": "Demeter", "distance": 35.412},
+	    {"system": "Clotti", "distance": 11.982},
+	    {"system": "Fu Haiting", "distance": 48.806},
+	    {"system": "San Guaralaru", "distance": 67.467},
+	    {"system": "Haras", "distance": 40.824},
+	    {"system": "Arabha", "distance": 38.037}
 	  ],
-	  "x": -70.25,
-	  "y": 51.03125,
-	  "z": -47.46875
+	  "x": -88.375,
+	  "y": 35.40625,
+	  "z": -4
 	}
+
 ]
