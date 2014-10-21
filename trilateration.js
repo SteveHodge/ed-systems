@@ -224,3 +224,15 @@ function getSQL(s) {
 	var d = (new Date()).toISOString().replace('T',' ').substr(0,19);
 	return "INSERT INTO \"System\" VALUES(,'"+quotedName+"',"+s.x+","+s.y+","+s.z+",'"+d+"');\n";
 }
+
+// selects the contents of the current node (this)
+// should be called in the context of the node to be selected (i.e. this === the node)
+function selectAll() {
+	if (window.getSelection) {
+		var selection = window.getSelection();            
+		var range = document.createRange();
+		range.selectNodeContents(this);
+		selection.removeAllRanges();
+		selection.addRange(range);
+	}
+}

@@ -9,6 +9,8 @@
 	<script src="external/stupidtable.min.js"></script>
 	<script src="trilateration.js"></script>
 <script>
+// TODO when discarding duplicate distance data, should warn if distances are inconsistent
+
 var systems = null;
 var distances = null;
 var selected = null;
@@ -41,15 +43,8 @@ $(document).ready(function () {
 		});
 	});
 
-	$("#json-output").click(function() {
-		if (window.getSelection) {
-			var selection = window.getSelection();            
-			var range = document.createRange();
-			range.selectNodeContents(this);
-			selection.removeAllRanges();
-			selection.addRange(range);
-		}
-	});
+	$("#json-output").click(selectAll);
+//	$("#json-distances").click(selectAll);
 
 	$("#toggle-sql").click(function() {
 		$(this).text($("#sql-output").is(":visible") ? "Show SQL" : "Hide SQL").attr("disabled", true);
@@ -58,15 +53,7 @@ $(document).ready(function () {
 		});
 	});
 
-	$("#sql-output").click(function() {
-		if (window.getSelection) {
-			var selection = window.getSelection();            
-			var range = document.createRange();
-			range.selectNodeContents(this);
-			selection.removeAllRanges();
-			selection.addRange(range);
-		}
-	});
+	$("#sql-output").click(selectAll);
 
 	$('#include-derived').change(function() {
 		var incCalc = this.checked;
@@ -88,14 +75,16 @@ function findSystem(name) {
 	return idx;
 }
 
-function addDistance(unknownName, calculated, refID, distance) {
+function addDistance(unknownName, refID, distance) {
 	var un = $.trim(unknownName.toLowerCase());
 	if (unknowns[un] === undefined) {
 		unknowns[un] = {};
 		unknowns[un].name = $.trim(unknownName);
 		unknowns[un].distances = [];
-		unknowns[un].calculated = calculated;
-	} else {
+		unknowns[un].calculated = false;
+		unknowns[un].acceptedDistances = 0;
+	} else if (!unknowns[un].calculated) {
+		// update the name if this one is better
 		unknowns[un].name = bestName(unknowns[un].name, unknownName);
 	}
 
@@ -113,7 +102,8 @@ function addDistance(unknownName, calculated, refID, distance) {
 			distance: distance,
 			x: systems[refID].x,
 			y: systems[refID].y,
-			z: systems[refID].z
+			z: systems[refID].z,
+			accepted: false
 		});
 	}
 }
@@ -137,16 +127,48 @@ function processDistances() {
 
 	if (unknowns !== null) return;
 	unknowns = {};
+
+	// add all calculated systems to the list of 'unknowns'
+	$.each(systems, function() {
+		if (!this.calculated) return;
+
+		var un = $.trim(this.name.toLowerCase());
+		if (un in unknowns) {
+			// dupe system is systems.json
+			// TODO better notification
+			alert("duplicate system "+this.name+" found in systems.json");
+		}
+		unknowns[un] = {};
+		unknowns[un].name = this.name;
+		unknowns[un].distances = [];
+		unknowns[un].calculated = true;
+		unknowns[un].acceptedDistances = this.distances.length;	// number of distances in systems.json for this system
+		unknowns[un].acceptedX = this.x;
+		unknowns[un].acceptedY = this.y;
+		unknowns[un].acceptedZ = this.z;
+		
+		$.each(this.distances, function() {
+			var ref = findSystem(this.system);
+			unknowns[un].distances.push({
+				name: systems[ref].name,
+				distance: this.distance,
+				x: systems[ref].x,
+				y: systems[ref].y,
+				z: systems[ref].z,
+				accepted: true	// distance is from systems.json
+			});
+		});
+	});
 	
-	// build list of unknown systems and their reference distances
+	// add additional systems and distances from distance.json
 	for (i = 0; i < distances.length; i++) {
 		ref1 = findSystem(distances[i].system1);
 		ref2 = findSystem(distances[i].system2);
 		if ((ref1 == -1 || systems[ref1].calculated) && ref2 >= 0) {
-			addDistance(distances[i].system1, ref1 !== -1, ref2, distances[i].distance);
+			addDistance(distances[i].system1, ref2, distances[i].distance);
 		}
 		if ((ref2 == -1 || systems[ref2].calculated) && ref1 >= 0) {
-			addDistance(distances[i].system2, ref2 !== -1, ref1, distances[i].distance);
+			addDistance(distances[i].system2, ref1, distances[i].distance);
 		}
 	}
 
@@ -155,26 +177,33 @@ function processDistances() {
 		u.x = "";
 		u.y = "";
 		u.z = "";
-		u.errRMS = "";
+		u.totalErr = "";
 
 		if (u.distances.length >= 4) {
 			var bestCandidate = getBestCandidate(u.distances);
 			if (bestCandidate !== null) {
 				var gridLoc = gridLocation(bestCandidate);
 				setVector(u, gridLoc);
-				u.errRMS = Math.sqrt(bestCandidate.totalSqErr/(u.distances.length)).toFixed(3);
 			}
 
 			// try to find the preferred reference systems for tunaMageCoords
+			// also calculate total error
 			var tunaDist = [];
 			var nonPref = [];
+			u.totalErr = 0;
 			$.each(u.distances, function() {
 				if (tmPreferred[this.name]) {
 					tunaDist.push(this);
 				} else {
 					nonPref.push(this);
 				}
+				
+				// visible error is the different between the supplied distance and the calculated distance rounded to 3dp
+				//var edDist =  Math.round((Math.round(dist(u, this)*1024)/1024) * 1000)/1000;
+				var edDist = Math.round(dist(u, this)*1000)/1000;
+				u.totalErr += Math.abs(edDist - this.distance);
 			});
+			u.totalErr = u.totalErr.toFixed(3);
 			var prefCount = tunaDist.length;
 			// fill in any remaining distances with other references
 			for (var j = 0; j < 4 - prefCount && j < nonPref.length; j++) {
@@ -188,11 +217,19 @@ function processDistances() {
 					u.tunaMageInfo = "matches";
 				} else {
 					var err = getError(tunaCoords, u.distances);
-					u.tunaMageInfo = vectorToString(tunaLoc) + ", error = "+err.toFixed(3)+", preferred refs = "+prefCount;
+					u.tunaMageInfo = vectorToString(tunaLoc) + ",<br>error = "+err.toFixed(3)+", preferred refs = "+prefCount;
 				}
 			}
 		}
 
+		var dists = u.distances.length;
+		if (u.acceptedDistances < dists && u.calculated) dists += ' ('+(dists - u.acceptedDistances)+' new)';
+		var outX = u.x;
+		if ('acceptedX' in u && u.x !== u.acceptedX) outX += '<br>(was '+u.acceptedX+')';
+		var outY = u.y;
+		if ('acceptedY' in u && u.y !== u.acceptedY) outY += '<br>(was '+u.acceptedY+')';
+		var outZ = u.z;
+		if ('acceptedZ' in u && u.z !== u.acceptedZ) outZ += '<br>(was '+u.acceptedZ+')';
 		$('<tr>')
 			.attr('system',u.name)
 			.click(function() {selectSystem(this)})
@@ -200,12 +237,13 @@ function processDistances() {
 			.append($('<td style="text-align: center">')
 					.append($('<input type="checkbox"'+(u.calculated||u.x===''||u.distances.length<5 ? '' : ' checked')+'>').change(updateOutput)))
 			.append($('<td>').text(u.name))
-			.append($('<td>').text(u.distances.length))
-			.append($('<td>').text(u.x))
-			.append($('<td>').text(u.y))
-			.append($('<td>').text(u.z))
-			.append($('<td>').text(u.errRMS).addClass(!u.errRMS || u.errRMS==="0.000" ? "" : "error"))
-			.append($('<td>').text(u.tunaMageInfo))
+			.append($('<td>').text(u.calculated ? 'N' : 'Y'))
+			.append($('<td>').text(dists))
+			.append($('<td>').html(outX).addClass(outX === u.x ? '' : 'error'))
+			.append($('<td>').html(outY).addClass(outY === u.y ? '' : 'error'))
+			.append($('<td>').html(outZ).addClass(outZ === u.z ? '' : 'error'))
+			.append($('<td>').text(u.totalErr).addClass(!u.totalErr || u.totalErr==="0.000" ? "" : "error"))
+			.append($('<td>').html(u.tunaMageInfo))
 			.appendTo('#tableDiv tbody');
 	});
 
@@ -241,6 +279,12 @@ function updateOutput() {
 	$("#sql-output").text(sql);
 }
 
+function edDist(v1,v2) {
+	var a = ((v1.x-v2.x)*(v1.x-v2.x)*1024)+((v1.y-v2.y)*(v1.y-v2.y)*1024)+((v1.z-v2.z)*(v1.z-v2.z)*1024);
+	var b = Math.sqrt(a)*32;
+	return Math.floor(b)/1024;
+}
+
 function selectSystem(row) {
 	if (selected === row) return;
 
@@ -254,17 +298,25 @@ function selectSystem(row) {
 	// populate detail table
 	$('#details-table tbody').empty();
 	if (!selected.hasAttribute('system')) return;
+	var newDists = '';
 	var s = unknowns[selected.getAttribute('system').toLowerCase()];
 	if (s) {
 		$.each(s.distances, function() {
+			var d = dist(this,s);
+			if (!this.accepted) {
+				newDists += '	    {"system": "'+this.name+'", "distance": '+this.distance+'},\n'
+			}
 			$('<tr>')
 				.append($('<td>').text(this.name))
+				.append($('<td>').text(this.accepted ? 'N' : 'Y'))
 				.append($('<td>').text(this.distance))
-				.append($('<td>').text(s.x === "" ? "" : dist(this,s).toFixed(3)))
-				.append($('<td>').text(s.x === "" ? "" : Math.abs(dist(this,s)-this.distance).toFixed(3)))
+				.append($('<td>').text(s.x === "" ? "" : d.toFixed(3)))
+				.append($('<td>').text(s.x === "" ? "" : Math.abs(d-this.distance).toFixed(3)))
 				.appendTo('#details-table tbody');
 		});
 	}
+
+//	$('#json-distances').text(newDists);
 }
 
 </script>
@@ -276,11 +328,12 @@ function selectSystem(row) {
 			<thead>
 				<th>Output?</th>
 				<th data-sort="string-ins">System</th>
+				<th data-sort="string">New?</th>
 				<th data-sort="int"># Distances</th>
 				<th data-sort="optfloat">X</th>
 				<th data-sort="optfloat">Y</th>
 				<th data-sort="optfloat">Z</th>
-				<th data-sort="optfloat">RMS Error</th>
+				<th data-sort="optfloat">Total Error</th>
 				<th>TunaMage result</th>
 			</thead>
 			<tbody>
@@ -292,6 +345,7 @@ function selectSystem(row) {
 		<table>
 			<thead>
 				<th data-sort="string-ins">System</th>
+				<th data-sort="string">New?</th>
 				<th data-sort="float">Distance</th>
 				<th data-sort="float">Calculated Distance</th>
 				<th data-sort="float">Error</th>
@@ -301,6 +355,7 @@ function selectSystem(row) {
 		</table>
 	</div>
 	<h3>Structured Output</h3>
+<!--	<pre id="json-distances"></pre>-->
 	<button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
 	<pre id="sql-output" style="display:none"></pre>
 	<pre id="json-output" style="display:none"></pre>
