@@ -5299,6 +5299,25 @@
 	  "x": -88.375,
 	  "y": 35.40625,
 	  "z": -4
+	},
+	{
+	  "name": "Wredgoe MK-Q b46-1",
+	  "calculated": true,
+	  "contributor": "Harbinger",
+	  "contributed": "2014-10-21T19:14:00.000Z",
+	  "distances": [
+	    {"system": "Sol", "distance": 69.44},
+	    {"system": "Wolf 497", "distance": 48.848},
+	    {"system": "Huokang", "distance": 29.531},
+	    {"system": "Demeter", "distance": 42.313},
+	    {"system": "Clotti", "distance": 60.556},
+	    {"system": "Fu Haiting", "distance": 53.955},
+	    {"system": "San Guaralaru", "distance": 102.69},
+	    {"system": "Haras", "distance": 98.417},
+	    {"system": "Arabha", "distance": 91.253}
+	  ],
+	  "x": -30.65625,
+	  "y": 58.28125,
+	  "z": -22.03125
 	}
-
 ]
