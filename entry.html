@@ -6,7 +6,7 @@
 	<link href="external/jquery-ui.css" rel="stylesheet">
 	<link href="trilateration.css" rel="stylesheet">
 	<script src="external/jquery-2.1.1.js"></script>
-	<script src="external/stupidtable.min.js"></script>
+	<script src="external/stupidtable.js"></script>
 	<script src="external/jquery-ui.js"></script>
 	<script src="trilateration.js"></script>
 <!--	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
@@ -38,50 +38,27 @@ $(document).ready(function () {
 		$("input.system-name").autocomplete({source: names});
 	
 		// setup sorting on the distance table
-		$("#distances").stupidtable().bind('aftertablesort', updateSortArrow);
+		$('#distances').stupidtable({'optfloat': sortOptionalFloat})
+			.bind('aftertablesort', postSortDistances)
+			.bind('beforetablesort', preSortDistances);
 
 		// add the event handlers
 		$('#cmdr-name').change(function() {
 			var cmdr = $.trim(this.value);
-			if (systemData !== null && cmdr.length > 0) {
-				systemData.contributor = cmdr;
-				$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
+			if (systemData) {
+				if (cmdr.length > 0) {
+					systemData.contributor = cmdr;
+				} else {
+					delete systemData.contributor;
+				}
+				updateJSON();
 			}
 		});
 
-		$("#toggle-json").click(function() {
-			$(this).text($("#json-output").is(":visible") ? "Show JSON" : "Hide JSON").attr("disabled", true);
-			$("#json-output").toggle("fast", function() {
-				$("#toggle-json").attr("disabled", false);
-			});
-		});
-
-		$("#json-output").click(function() {
-			if (window.getSelection) {
-				var selection = window.getSelection();            
-				var range = document.createRange();
-				range.selectNodeContents(this);
-				selection.removeAllRanges();
-				selection.addRange(range);
-			}
-		});
-
-		$("#toggle-sql").click(function() {
-			$(this).text($("#sql-output").is(":visible") ? "Show SQL" : "Hide SQL").attr("disabled", true);
-			$("#sql-output").toggle("fast", function() {
-				$("#toggle-sql").attr("disabled", false);
-			});
-		});
-
-		$("#sql-output").click(function() {
-			if (window.getSelection) {
-				var selection = window.getSelection();            
-				var range = document.createRange();
-				range.selectNodeContents(this);
-				selection.removeAllRanges();
-				selection.addRange(range);
-			}
-		});
+		$("#toggle-json").click(getToggle(document.getElementById('json-output'),'Hide JSON','Visible JSON'));
+		$("#json-output").click(selectAll);
+		$("#toggle-sql").click(getToggle(document.getElementById('sql-output'),'Hide SQL','Visible SQL'));
+		$("#sql-output").click(selectAll);
 
 		$("#done-button").click(function() {
 			if (systemData !== null) {
@@ -102,6 +79,8 @@ $(document).ready(function () {
 			$("#json-output").text(jsonOutput);
 			$("#sql-output").text(sqlOutput);
 			$('#ref-warning').hide();
+			$('#no-name-warning').hide();
+			systemData = null;
 		});
 
 		$('#unknown-name').change(function() {
@@ -115,14 +94,18 @@ $(document).ready(function () {
 						return false;
 					}
 				});
+				$('#no-name-warning').hide();
 			}
 			$('#dupe-warning').toggle(dupe);
 			
 			if (systemData !== null) {
 				systemData.name = this.value;
-				$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
+				updateJSON();
 				$("#sql-output").text(getSQL(systemData) + sqlOutput);
-				if (this.value.length > 0) $("#done-button").attr('disabled',false);
+				$("#done-button").attr('disabled',this.value.length === 0);
+				if (this.value.length === 0) {
+					$('#no-name-warning').show();
+				}
 			}
 		});
 		
@@ -132,6 +115,46 @@ $(document).ready(function () {
 		addSystemRow();
 	});
 });
+
+// setup sort values for the system column
+function preSortDistances(event, data) {
+	$('#distances td').has('input.system-name').each(function() {
+		$(this).data('sort-value', $(this).find('input.system-name').val());
+	});
+}
+
+// update the arrows and force any blank systems to the bottom
+function postSortDistances(event, data) {
+	var th = $(this).find("th");
+	th.find(".arrow").remove();
+	var arrow = data.direction === "asc" ? "\u2191" : "\u2193";
+	th.eq(data.column).append('<span class="arrow">' + arrow +'</span>');
+
+	// Move all top row blanks to the bottom.
+	var rowsObjs = $(this).find("tbody tr");
+	var rows = rowsObjs.slice(0);
+	var numBlank = 0;  
+	$(rows).children("td:nth-child(1)").each(function(){
+		if($(this).find('input.system-name').val() === "")
+			numBlank++;
+		else
+			return false;
+	});
+	for(j=0; j<numBlank; j++){
+		var tmp = rows[0];
+		for(i=0; i<rows.length-1; i++){
+			rows[i] = rows[i+1];   
+		}
+		rows[rows.length-1] = tmp;
+	}
+	$(this).children("tbody").append($(rows));
+}
+
+function updateJSON() {
+	if (systemData) {
+		$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
+	}
+}
 
 function checkEmptyRow() {
 	var empty = false;
@@ -165,7 +188,10 @@ function updateCoords() {
 	// hook the reference systems up to the data
 	$("#distances input.system-name").each(function() {
 		var n = $.trim(this.value.toLowerCase());
-		if (n.length > 0) $(this).parentsUntil('table','tr').attr('system', n);
+		if (n.length > 0) {
+			$(this).parentsUntil('table','tr').attr('system', n);
+			if ((n in systemsMap) && systemsMap[n].name !== this.value) $(this).val(systemsMap[n].name);
+		}
 	});
 
 	// get the distances
@@ -233,7 +259,8 @@ function updateCoords() {
 			$("#distances tr[system]").each(function() {
 				var sys = $(this).find('input.system-name').val();
 				var dist = $(this).find('input.distance').val();
-				if (sys.length > 0 && dist.length > 0 && !(this.getAttribute('system') in systemsMap)) {
+				var syskey = this.getAttribute('system');
+				if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].calculated)) {
 					systemData.distances.push({system: sys, distance: dist});
 				}
 			});
@@ -244,7 +271,7 @@ function updateCoords() {
 			if (systemData.name && systemData.name.length > 0) {
 				$('#done-button').attr('disabled',false);
 			} else {
-				$('#unknown-name').focus();
+				$('#no-name-warning').show();
 			}
 		} else {
 			$('#ref-warning').show();
@@ -300,15 +327,19 @@ function getLocalSystems(coords) {
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
 			<strong>Warning:</strong> A system with that name has already been entered!</p>
 		</div>
+		<div id="no-name-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			<strong>Warning:</strong> Please enter a name for this system!</p>
+		</div>
 
 		<h3>Distances</h3>
 		<table id="distances">
 			<thead>
 				<tr>
-					<th data-sort="string-ins">System</th>
+					<th data-sort="string-ins" data-sort-desc="string-ins">System</th>
 					<th>Distance</th>
-					<th data-sort="float">Calculated</th>
-					<th data-sort="float">Error</th>
+					<th data-sort="optfloat">Calculated</th>
+					<th data-sort="optfloat">Error</th>
 				</tr>
 			</thead>
 			<tbody>
