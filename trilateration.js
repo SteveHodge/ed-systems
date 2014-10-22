@@ -206,14 +206,20 @@ function updateSortArrow(event, data) {
 
 // sort function that treats missing value (and values that can't be parsed as floats) as the largest values
 function sortOptionalFloat(a,b) {
-	if (isNaN(parseFloat(a))) return 1;
+	if (isNaN(parseFloat(a))) {
+		if (isNaN(parseFloat(b))) return 0;
+		return 1;
+	}
 	if (isNaN(parseFloat(b))) return -1;
 	return parseFloat(a)-parseFloat(b);
 }
 
 // sort function that treats missing value (and values that can't be parsed as integers) as the largest values
 function sortOptionalInt(a,b) {
-	if (isNaN(parseInt(a))) return 1;
+	if (isNaN(parseInt(a))) {
+		if (isNaN(parseInt(b))) return 0;
+		return 1;
+	}
 	if (isNaN(parseInt(b))) return -1;
 	return parseInt(a)-parseInt(b);
 }
@@ -235,4 +241,17 @@ function selectAll() {
 		selection.removeAllRanges();
 		selection.addRange(range);
 	}
+}
+
+// returns a function that toggles the specified target element and changes the text of the
+// this element based on the the current visibility of the target.
+// the returned function can be set as a jQuery event handler
+function getToggle(target, visibleText, hiddenText) {
+	return function() {
+		var $ctrl = $(this);
+		$ctrl.text($(target).is(":visible") ? hiddenText : visibleText).attr("disabled", true);
+		$(target).toggle("fast", function() {
+			$ctrl.attr("disabled", false);
+		});
+	};
 }

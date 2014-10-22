@@ -18,8 +18,8 @@ $(document).ready(function () {
 
 		var d, i;
 		for (i = 0; i < systems.length; i++) {
-			var contrib = systems[i].calculated ? 'anon' : 'FD';
-			if (systems[i].contributor && systems[i].contributor.length > 0) contrib = systems[i].contributor;
+			var contrib = systems[i].region;
+			if (!systems[i].calculated) contrib += ' (ref)';
 			$('<tr>')
 				.attr('system', i)
 				.click(function() {selectSystem(this)})
@@ -79,16 +79,20 @@ function selectSystem(row) {
 }
 
 function generateCSV() {
-	var csv = "";
+	var csv = [];
 	$('#tableDiv tr[system]').each(function() {
 		var s = systems[this.getAttribute('system')];
+		var added = s.region;
+		if (s.calculated) added += '-Inferred';
+		if (s.region === 'Beyond The Pill') added = 'Not Present';
 		var contrib = '';
 		if (s.contributed) {
 			contrib = s.contributed.substr(0,10)+' '+s.contributed.substr(11,8);
 		}
-		csv += "'"+s.name+"',"+s.x+","+s.y+","+s.z+",'"+s.contributor+"','"+contrib+"'\n"
+		csv.push("'"+s.name.replace("'","''")+"',"+s.x+","+s.y+","+s.z+",'"+added+"','"+contrib+"'");
 	});
-	$('#csv-output').text(csv);
+	csv.sort(function(a,b) {return a.localeCompare(b, 'en', {'sensitivity': 'base'});});
+	$('#csv-output').text('name,pos_x,pos_y,pos_z,name@Added.added_id,modified\n' + csv.join('\n'));
 	$('#csv-wrapper').show();
 }
 
@@ -106,7 +110,7 @@ function generateCSV() {
 			<thead>
 				<tr>
 					<th data-sort="string-ins">System</th>
-					<th data-sort="string">Contributor</th>
+					<th data-sort="string">Region</th>
 					<th data-sort="float">X</th>
 					<th data-sort="float">Y</th>
 					<th data-sort="float">Z</th>
