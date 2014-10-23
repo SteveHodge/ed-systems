@@ -1348,5 +1348,18 @@
 {"system1": "LHS 2948", "system2":"Sagittarius A*", "distance": 25885.045},
 {"system1": "LHS 2921", "system2":"Sagittarius A*", "distance": 25896.580},
 {"system1": "LTT 14761", "system2":"Sagittarius A*", "distance": 25919.563},
-{"system1": "HIP 93119", "system2":"Sagittarius A*", "distance": 25934.396}
+{"system1": "HIP 93119", "system2":"Sagittarius A*", "distance": 25934.396},
+{"system1":"Sagittarius A*", "system2": "Tun", "distance": 25917.637},
+{"system1":"Sagittarius A*", "system2": "LP 1-52", "distance": 25933.406},
+{"system1":"Sagittarius A*", "system2": "Sumi", "distance": 25937.820},
+{"system1":"Sagittarius A*", "system2": "LHS 3877", "distance": 25931.023},
+{"system1":"Sagittarius A*", "system2": "Gera", "distance": 25933.834},
+{"system1":"Sagittarius A*", "system2": "Hsini", "distance": 25946.996},
+{"system1":"Sagittarius A*", "system2": "LTT 16979", "distance": 25952.859},
+{"system1":"Sagittarius A*", "system2": "Baga", "distance": 25959.213},
+{"system1":"Sagittarius A*", "system2": "HR 158", "distance": 25955.365},
+{"system1":"Sagittarius A*", "system2": "BD+87 118", "distance": 25937.928},
+{"system1":"Sagittarius A*", "system2": "Aeolus", "distance": 25931.656},
+{"system1":"Sagittarius A*", "system2": "LHS 140", "distance": 25923.125},
+{"system1":"Sagittarius A*", "system2": "Hyperion", "distance": 25916.816}
 ]

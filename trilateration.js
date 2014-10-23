@@ -18,9 +18,9 @@ function getBestCandidate(dists) {
 					candidates[1].totalSqErr = 0;
 					
 		 			for (i4 = 0; i4 < dists.length; i4++) {
-						var err = Math.abs(dist(candidates[0], dists[i4]) - dists[i4].distance);
+						var err = Math.abs(distf(candidates[0], dists[i4]) - dists[i4].distance);
 		 				candidates[0].totalSqErr += err*err;
-		 				err = Math.abs(dist(candidates[1], dists[i4]) - dists[i4].distance);
+		 				err = Math.abs(distf(candidates[1], dists[i4]) - dists[i4].distance);
 		 				candidates[1].totalSqErr += err*err;
 		 			}
 					if (bestCandidate === null || bestCandidate.totalSqErr > candidates[0].totalSqErr) {
@@ -83,7 +83,7 @@ function getCandidates(dists, i1, i2, i3) {
 function getError(p, dists) {
 	var err = 0;
 	$.each(dists, function() {
-		var e = dist(this, p) - this.distance;
+		var e = distf(this, p) - this.distance;
 		err += e*e;
 	});
 	return Math.sqrt(err/dists.length);
@@ -159,7 +159,7 @@ function distf(p1, p2) {
 // v is a vector obejct with x, y, and z properties
 // returns the length of v
 function lengthf(v) {
-	return fround(Math.sqrt(v.x*v.x + v.y*v.y + v.z*v.z));
+	return fround(Math.sqrt(fround(fround(v.x*v.x) + fround(v.y*v.y) + fround(v.z*v.z))));
 }
 
 // p1 and p2 are objects that have x, y, and z properties
