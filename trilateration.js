@@ -148,8 +148,22 @@ function length(v) {
 	return Math.sqrt(v.x*v.x + v.y*v.y + v.z*v.z);
 }
 
+var fround = Math.fround || function(x) { return x };
+
 // p1 and p2 are objects that have x, y, and z properties
-// returns the difference p1 - p2 as a vector object (with x, y, z properties)
+// returns the distance between p1 and p2, calculated as single precision (as ED does)
+function distf(p1, p2) {
+	return lengthf(diff(p2,p1));
+}
+
+// v is a vector obejct with x, y, and z properties
+// returns the length of v
+function lengthf(v) {
+	return fround(Math.sqrt(v.x*v.x + v.y*v.y + v.z*v.z));
+}
+
+// p1 and p2 are objects that have x, y, and z properties
+// returns the difference p1 - p2 as a vector object (with x, y, z properties), calculated as single precision (as ED does)
 function diff(p1, p2) {
 	return {
 		x: p1.x - p2.x,

@@ -73,7 +73,7 @@ function selectSystem(row) {
 			return;
 		}
 		var s = systems[r.getAttribute('system')];
-		$(r).children('td:nth-last-child(2)').last().text((dist(s0, s)).toFixed(3));
+		$(r).children('td:nth-last-child(2)').last().text((distf(s0, s)).toFixed(3));
 		$(r).children('td:nth-last-child(1)').last().text(dists[s.name]);
 	});
 }

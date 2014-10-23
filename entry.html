@@ -231,7 +231,7 @@ function updateCoords() {
 					}
 
 					var sys = systemsMap[nameKey];
-					var calcDist = dist(sys, bestCandidate);
+					var calcDist = distf(sys, bestCandidate);
 					var err = Math.abs(enteredDist - calcDist).toFixed(3);
 					if (sys.name === dists[bestCandidate.i1].name || sys.name === dists[bestCandidate.i2].name || sys.name === dists[bestCandidate.i3].name) {
 						err += " (ref)";
@@ -295,7 +295,7 @@ function getLocalSystems(coords) {
 
 	var locals = [];
 	for (i = 0; i < systems.length; i++) {
-		locals.push({system:systems[i], distance:dist(systems[i],coords)});
+		locals.push({system:systems[i], distance:distf(systems[i],coords)});
 	}
 	locals.sort(function(a,b) {return a.distance-b.distance;});
 

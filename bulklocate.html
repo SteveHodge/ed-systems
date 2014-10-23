@@ -199,8 +199,7 @@ function processDistances() {
 				}
 				
 				// visible error is the different between the supplied distance and the calculated distance rounded to 3dp
-				//var edDist =  Math.round((Math.round(dist(u, this)*1024)/1024) * 1000)/1000;
-				var edDist = Math.round(dist(u, this)*1000)/1000;
+				var edDist = Math.round(distf(u, this)*1000)/1000;
 				u.totalErr += Math.abs(edDist - this.distance);
 			});
 			u.totalErr = u.totalErr.toFixed(3);
@@ -279,12 +278,6 @@ function updateOutput() {
 	$("#sql-output").text(sql);
 }
 
-function edDist(v1,v2) {
-	var a = ((v1.x-v2.x)*(v1.x-v2.x)*1024)+((v1.y-v2.y)*(v1.y-v2.y)*1024)+((v1.z-v2.z)*(v1.z-v2.z)*1024);
-	var b = Math.sqrt(a)*32;
-	return Math.floor(b)/1024;
-}
-
 function selectSystem(row) {
 	if (selected === row) return;
 
@@ -302,7 +295,7 @@ function selectSystem(row) {
 	var s = unknowns[selected.getAttribute('system').toLowerCase()];
 	if (s) {
 		$.each(s.distances, function() {
-			var d = dist(this,s);
+			var d = distf(this,s);
 			if (!this.accepted) {
 				newDists += '	    {"system": "'+this.name+'", "distance": '+this.distance+'},\n'
 			}
