@@ -1361,5 +1361,21 @@
 {"system1":"Sagittarius A*", "system2": "BD+87 118", "distance": 25937.928},
 {"system1":"Sagittarius A*", "system2": "Aeolus", "distance": 25931.656},
 {"system1":"Sagittarius A*", "system2": "LHS 140", "distance": 25923.125},
-{"system1":"Sagittarius A*", "system2": "Hyperion", "distance": 25916.816}
+{"system1":"Sagittarius A*", "system2": "Hyperion", "distance": 25916.816},
+{"system1":"Alpha Cygni", "system2": "Wolf 497", "distance": 1410.293},
+{"system1":"Alpha Cygni", "system2": "Huokang", "distance": 1401.761},
+{"system1":"Alpha Cygni", "system2": "Demeter", "distance": 1355.437},
+{"system1":"Alpha Cygni", "system2": "Clotti", "distance": 1324.248},
+{"system1":"Alpha Cygni", "system2": "San Guaralaru", "distance": 1295.157},
+{"system1":"Alpha Cygni", "system2": "Haras", "distance": 1295.813},
+{"system1":"Alpha Cygni", "system2": "Arabha", "distance": 1293.527},
+{"system1":"Alpha Cygni", "system2": "Wyrd", "distance": 1400.115},
+{"system1":"Alpha Cygni", "system2": "Keries", "distance": 1391.399},
+{"system1":"Alpha Cygni", "system2": "LHS 2884", "distance": 1389.166},
+{"system1":"Alpha Cygni", "system2": "Theta Draconis", "distance": 1362.519},
+{"system1":"Alpha Cygni", "system2": "h Draconis", "distance": 1372.054},
+{"system1":"Alpha Cygni", "system2": "Aulin", "distance": 1391.255},
+{"system1":"Alpha Cygni", "system2": "Ross 905", "distance": 1416.448},
+{"system1":"Alpha Cygni", "system2": "41 Gamma Serpentis", "distance": 1397.327},
+{"system1":"Alpha Cygni", "system2": "Tring", "distance": 1292.807}
 ]
