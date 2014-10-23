@@ -33,7 +33,8 @@ $(document).ready(function () {
 				.appendTo('#tableDiv tbody');
 		}
 		$('#tableDiv table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
-		$('#generate-csv').click(generateCSV);
+		$('#generate-csv').click(function() {generateCSV(false)});
+		$('#sort-csv').click(function() {generateCSV(true)});
 		$('#remove-csv').click(function() {$('#csv-wrapper').hide();});
 		$('#csv-select').click(function() {
 			if (window.getSelection) {
@@ -78,7 +79,7 @@ function selectSystem(row) {
 	});
 }
 
-function generateCSV() {
+function generateCSV(sort) {
 	var csv = [];
 	$('#tableDiv tr[system]').each(function() {
 		var s = systems[this.getAttribute('system')];
@@ -91,7 +92,7 @@ function generateCSV() {
 		}
 		csv.push("'"+s.name.replace("'","''")+"',"+s.x+","+s.y+","+s.z+",'"+added+"','"+contrib+"'");
 	});
-	csv.sort(function(a,b) {return a.localeCompare(b, 'en', {'sensitivity': 'base'});});
+	if (sort) csv.sort(function(a,b) {return a.localeCompare(b, 'en', {'sensitivity': 'base'});});
 	$('#csv-output').text('name,pos_x,pos_y,pos_z,name@Added.added_id,modified\n' + csv.join('\n'));
 	$('#csv-wrapper').show();
 }
@@ -102,7 +103,9 @@ function generateCSV() {
 	<h2 id="known-systems">Known Systems</h2>
 	<button id="generate-csv">Generate CSV</button>
 	<div id="csv-wrapper" style="display:none">
-		<button id="remove-csv">Remove CSV</button><button id="csv-select">Select All</button>
+		<button id="remove-csv">Remove CSV</button>
+		<button id="csv-select">Select All</button>
+		<button id="sort-csv">Sort Alphabetically</button>
 		<pre id="csv-output" style="height:50vh; overflow:auto"></pre>
 	</div>
 	<div class="table-div" id="tableDiv">
