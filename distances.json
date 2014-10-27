@@ -1,5 +1,4 @@
 [
-{"system1":"26 Draconis", "system2":"Aulin", "distance":"21.51"},
 {"system1":"Aulin", "system2":"Achenar", "distance":"176.513"},
 {"system1":"Aulin", "system2":"Sol", "distance":"38.453"},
 {"system1":"Aulin", "system2":"Etamin", "distance":"122.194"},
@@ -28,7 +27,7 @@
 {"system1":"Ross 905", "system2":"41 Gamma Serpentis", "distance":"34.875"},
 {"system1":"Ross 905", "system2":"Flousop", "distance":"19.793"},
 {"system1":"Ross 905", "system2":"Rahu", "distance":"57.505"},
-{"system1":"41 Gamma Serpentis", "system2":"Aulin", "distance":"20.474"},
+{"system1":"41 Gamma Serpentis", "system2":"Aulin", "distance":"20.747"},
 {"system1":"41 Gamma Serpentis", "system2":"Sol", "distance":"36.692"},
 {"system1":"41 Gamma Serpentis", "system2":"Achenar", "distance":"165.847"},
 {"system1":"41 Gamma Serpentis", "system2":"Etamin", "distance":"129.917"},
@@ -75,8 +74,6 @@
 {"system1":"Ross 52", "system2":"CE Bootis", "distance":"4.382"},
 {"system1":"Ross 52", "system2":"LHS 2887", "distance":"8.031"},
 {"system1":"Ross 52", "system2":"Aulin", "distance":"14.572"},
-{"system1":"LHS 391", "system2":"Eranin", "distance":"10"},
-{"system1":"Aulin", "system2":"i bootis", "distance":"7.16"},
 {"system1":"GD 356", "system2":"Theta Draconis", "distance":"8.516"},
 {"system1":"GD 356", "system2":"Taran", "distance":"13.389"},
 {"system1":"GD 356", "system2":"Surya", "distance":"13.534"},
