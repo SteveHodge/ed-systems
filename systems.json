@@ -996,7 +996,25 @@
     "y": 33.125,
     "z": 13.46875,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Carey Colony",
+        "distance": 73
+      },
+      {
+        "station": "Ryumin Terminal",
+        "distance": 134
+      },
+      {
+        "station": "Smeaton Port",
+        "distance": 2537
+      },
+      {
+        "station": "Kaku Station",
+        "distance": 2671
+      }
+    ]
   },
   {
     "name": "14 Herculis",
@@ -1023,7 +1041,17 @@
     "y": 39.71875,
     "z": 12.78125,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Gorbatko Reserve",
+        "distance": 901
+      },
+      {
+        "station": "Gemar Orbital",
+        "distance": 901
+      }
+    ]
   },
   {
     "name": "Ackycha",
@@ -1275,7 +1303,17 @@
     "y": 40.875,
     "z": -1.34375,
     "region": "Alpha4",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Foster Research Lab",
+        "distance": 169
+      },
+      {
+        "station": "Beagle 2 Landing",
+        "distance": 1263
+      }
+    ]
   },
   {
     "name": "Perendi",
@@ -1293,7 +1331,17 @@
     "y": 35.15625,
     "z": 14.8125,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Abe Works",
+        "distance": 377
+      },
+      {
+        "station": "Bradfield Orbital",
+        "distance": 377
+      }
+    ]
   },
   {
     "name": "Vetr",
@@ -1473,7 +1521,21 @@
     "y": 36.53125,
     "z": -1.1875,
     "region": "Alpha4",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Azeban Orbital",
+        "distance": 298
+      },
+      {
+        "station": "Azeban City",
+        "distance": 298
+      },
+      {
+        "station": "Eranin 4 Survey",
+        "distance": 2022
+      }
+    ]
   },
   {
     "name": "V1090 Herculis",
@@ -1554,7 +1616,17 @@
     "y": 41.78125,
     "z": -3.1875,
     "region": "Alpha4",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Dahan Gateway",
+        "distance": 468
+      },
+      {
+        "station": "Dahan 3 Metalworks",
+        "distance": 1853
+      }
+    ]
   },
   {
     "name": "Wolf 654",
@@ -1635,7 +1707,17 @@
     "y": 37.03125,
     "z": -4.59375,
     "region": "Alpha4",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Freeport",
+        "distance": 183
+      },
+      {
+        "station": "Prospect Five",
+        "distance": 390
+      }
+    ]
   },
   {
     "name": "Belobog",
@@ -1671,7 +1753,17 @@
     "y": 34.84375,
     "z": 4,
     "region": "Alpha4",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Chango Dock",
+        "distance": 1100
+      },
+      {
+        "station": "Maher Stellar Research",
+        "distance": 20927
+      }
+    ]
   },
   {
     "name": "Wyrd",
@@ -1752,7 +1844,17 @@
     "z": -7.21875,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Morukov Platform",
+        "distance": 16.6
+      },
+      {
+        "station": "Xing Dock",
+        "distance": 943
+      }
+    ]
   },
   {
     "name": "LHS 283",
@@ -1779,7 +1881,21 @@
     "y": 35.25,
     "z": 9.28125,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Meikle Point",
+        "distance": 1371
+      },
+      {
+        "station": "Onizuka's Hold",
+        "distance": 1458
+      },
+      {
+        "station": "Romanenko Estate",
+        "distance": 1460
+      }
+    ]
   },
   {
     "name": "CM Draco",
@@ -1860,7 +1976,17 @@
     "y": 22.3125,
     "z": 10.125,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Keeler Rest",
+        "distance": 197
+      },
+      {
+        "station": "Maunder's Hope",
+        "distance": 197
+      }
+    ]
   },
   {
     "name": "Keries",
@@ -1869,7 +1995,13 @@
     "y": 27.21875,
     "z": 12.59375,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Derrickson's Escape",
+        "distance": 270
+      }
+    ]
   },
   {
     "name": "Ithaca",
@@ -1995,7 +2127,21 @@
     "y": 36.15625,
     "z": 15.5,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Xiaoguan Hub",
+        "distance": 131
+      },
+      {
+        "station": "Garriott Outpost",
+        "distance": 333
+      },
+      {
+        "station": "Trumpler Dock",
+        "distance": 4541
+      }
+    ]
   },
   {
     "name": "Ross 130",
@@ -2076,7 +2222,13 @@
     "z": 16.25,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Shepherd Ring",
+        "distance": 8171
+      }
+    ]
   },
   {
     "name": "LHS 2764a",
@@ -2094,7 +2246,13 @@
     "y": 39.53125,
     "z": -2.25,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Romanek's Folly",
+        "distance": 917
+      }
+    ]
   },
   {
     "name": "Hera",
@@ -2112,7 +2270,17 @@
     "y": 37.75,
     "z": 6.03125,
     "region": "Premium Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Gerst Port",
+        "distance": 68.6
+      },
+      {
+        "station": "Chi Hub",
+        "distance": 652
+      }
+    ]
   },
   {
     "name": "LHS 6282",
@@ -2139,7 +2307,21 @@
     "z": 19.03125,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Alexandria Gateway",
+        "distance": 8.59
+      },
+      {
+        "station": "Rozhdestvensky Ring",
+        "distance": 13.9
+      },
+      {
+        "station": "Allen Ring",
+        "distance": 27.1
+      }
+    ]
   },
   {
     "name": "Ross 860",
@@ -2393,7 +2575,6 @@
     "contributed": "2014-11-01T06:36:37.633Z",
     "region": "Beta3"
   },
-
   {
     "name": "Chara",
     "x": -4.84375,
@@ -3337,7 +3518,21 @@
     "z": -3.5,
     "contributor": "FD",
     "contributed": "2014-11-01T06:36:37.633Z",
-    "region": "Beta3"
+    "region": "Beta3",
+    "stations": [
+      {
+        "station": "Volkov Dock",
+        "distance": 567
+      },
+      {
+        "station": "Chomsky Point",
+        "distance": 1379
+      },
+      {
+        "station": "Chamitoff Point",
+        "distance": 7485
+      }
+    ]
   },
   {
     "name": "Dierfar",
@@ -3607,7 +3802,17 @@
     "z": 14.0625,
     "contributor": "FD",
     "contributed": "2014-11-01T06:36:37.633Z",
-    "region": "Beta3"
+    "region": "Beta3",
+    "stations": [
+      {
+        "station": "Thomas Installation",
+        "distance": 483
+      },
+      {
+        "station": "Dezhurov Platform",
+        "distance": 21362
+      }
+    ]
   },
   {
     "name": "G 250-34",
@@ -6658,7 +6863,29 @@
     "z": -12.46875,
     "contributor": "FD",
     "contributed": "2014-11-01T06:36:37.633Z",
-    "region": "Beta3"
+    "region": "Beta3",
+    "stations": [
+      {
+        "station": "Garan Survey",
+        "distance": 3082
+      },
+      {
+        "station": "Haxel Station",
+        "distance": 3082
+      },
+      {
+        "station": "Phillips Hub",
+        "distance": 3111
+      },
+      {
+        "station": "Korniyenko Dock",
+        "distance": 3111
+      },
+      {
+        "station": "Zhen Port",
+        "distance": 3138
+      }
+    ]
   },
   {
     "name": "Theta Cygni",
@@ -6766,7 +6993,17 @@
     "z": -27.8125,
     "contributor": "FD",
     "contributed": "2014-11-01T06:36:37.633Z",
-    "region": "Beta3"
+    "region": "Beta3",
+    "stations": [
+      {
+        "station": "Vinogradov Installation",
+        "distance": 2077
+      },
+      {
+        "station": "Laval City",
+        "distance": 3411
+      }
+    ]
   },
   {
     "name": "Tsohodiae",
@@ -7099,7 +7336,29 @@
     "z": -13.9375,
     "contributor": "FD",
     "contributed": "2014-11-01T06:36:37.633Z",
-    "region": "Beta3"
+    "region": "Beta3",
+    "stations": [
+      {
+        "station": "Kaku Terminal",
+        "distance": 54.6
+      },
+      {
+        "station": "Kovalyonok City",
+        "distance": 62.4
+      },
+      {
+        "station": "Burbank Settlement",
+        "distance": 79.5
+      },
+      {
+        "station": "Onufrienko Settlement",
+        "distance": 91
+      },
+      {
+        "station": "Agnesi Refinery",
+        "distance": 125
+      }
+    ]
   },
   {
     "name": "Wu Gondru",
@@ -7610,154 +7869,154 @@
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
   },
-    {
-        "name": "Veren's Stop",
-        "calculated": true,
-        "contributor": "anon via Codec, RedWizzard, Harbinger",
-        "contributed": "2014-11-01T15:42:55.000Z",
-        "distances": [
-            {
-                "system": "41 Gamma Serpentis",
-                "distance": "4.867"
-            },
-            {
-                "system": "LHS 411",
-                "distance": "2.326"
-            },
-            {
-                "system": "SDSS J1416+1348",
-                "distance": "15.695"
-            },
-            {
-                "system": "Keries",
-                "distance": "11.041"
-            },
-            {
-                "system": "Eranin",
-                "distance": "27.758"
-            },
-            {
-                "system": "Moros",
-                "distance": 61.417
-            },
-            {
-                "system": "Ammapa",
-                "distance": 125.73
-            },
-            {
-                "system": "Wanggu",
-                "distance": 134.19
-            },
-            {
-                "system": "Piran",
-                "distance": 117.89
-            },
-            {
-                "system": "Yakan",
-                "distance": 134.18
-            },
-            {
-                "system": "Suraci",
-                "distance": 115.55
-            },
-            {
-                "system": "Gera",
-                "distance": 93.6
-            },
-            {
-                "system": "Arin",
-                "distance": 37.17
-            },
-            {
-                "system": "Pollux",
-                "distance": 54.74
-            },
-            {
-                "system": "Amun",
-                "distance": 80.72
-            }
-        ],
-        "x": -12.96875,
-        "y": 21.96875,
-        "z": 20.28125,
-        "region": "Beta2"
-    },
-    {
-        "name": "LHS 396",
-        "calculated": true,
-        "contributor": "RedWizzard, Harbinger",
-        "contributed": "2014-11-01T16:31:08.000Z",
-        "distances": [
-            {
-                "system": "41 Gamma Serpentis",
-                "distance": "5.858"
-            },
-            {
-                "system": "SDSS J1416+1348",
-                "distance": "13.028"
-            },
-            {
-                "system": "Keries",
-                "distance": "12.519"
-            },
-            {
-                "system": "Eranin",
-                "distance": "25.875"
-            },
-            {
-                "system": "Basium",
-                "distance": "81.843"
-            },
-            {
-                "system": "35 Draconis",
-                "distance": "92.116"
-            },
-            {
-                "system": "Moros",
-                "distance": 64.54
-            },
-            {
-                "system": "Ammapa",
-                "distance": 126.14
-            },
-            {
-                "system": "Wanggu",
-                "distance": 136.74
-            },
-            {
-                "system": "Piran",
-                "distance": 119.91
-            },
-            {
-                "system": "Yakan",
-                "distance": 135.9
-            },
-            {
-                "system": "Suraci",
-                "distance": 119.35
-            },
-            {
-                "system": "Gera",
-                "distance": 97.57
-            },
-            {
-                "system": "Arin",
-                "distance": 41.42
-            },
-            {
-                "system": "Pollux",
-                "distance": 55.93
-            },
-            {
-                "system": "Amun",
-                "distance": 77.73
-            }
-        ],
-        "x": -9.875,
-        "y": 30.84375,
-        "z": 20.46875,
-        "region": "Beta2"
-    },
+  {
+    "name": "Veren's Stop",
+    "calculated": true,
+    "contributor": "anon via Codec, RedWizzard, Harbinger",
+    "contributed": "2014-11-01T15:42:55.000Z",
+    "distances": [
+      {
+        "system": "41 Gamma Serpentis",
+        "distance": "4.867"
+      },
+      {
+        "system": "LHS 411",
+        "distance": "2.326"
+      },
+      {
+        "system": "SDSS J1416+1348",
+        "distance": "15.695"
+      },
+      {
+        "system": "Keries",
+        "distance": "11.041"
+      },
+      {
+        "system": "Eranin",
+        "distance": "27.758"
+      },
+      {
+        "system": "Moros",
+        "distance": 61.417
+      },
+      {
+        "system": "Ammapa",
+        "distance": 125.73
+      },
+      {
+        "system": "Wanggu",
+        "distance": 134.19
+      },
+      {
+        "system": "Piran",
+        "distance": 117.89
+      },
+      {
+        "system": "Yakan",
+        "distance": 134.18
+      },
+      {
+        "system": "Suraci",
+        "distance": 115.55
+      },
+      {
+        "system": "Gera",
+        "distance": 93.6
+      },
+      {
+        "system": "Arin",
+        "distance": 37.17
+      },
+      {
+        "system": "Pollux",
+        "distance": 54.74
+      },
+      {
+        "system": "Amun",
+        "distance": 80.72
+      }
+    ],
+    "x": -12.96875,
+    "y": 21.96875,
+    "z": 20.28125,
+    "region": "Beta2"
+  },
+  {
+    "name": "LHS 396",
+    "calculated": true,
+    "contributor": "RedWizzard, Harbinger",
+    "contributed": "2014-11-01T16:31:08.000Z",
+    "distances": [
+      {
+        "system": "41 Gamma Serpentis",
+        "distance": "5.858"
+      },
+      {
+        "system": "SDSS J1416+1348",
+        "distance": "13.028"
+      },
+      {
+        "system": "Keries",
+        "distance": "12.519"
+      },
+      {
+        "system": "Eranin",
+        "distance": "25.875"
+      },
+      {
+        "system": "Basium",
+        "distance": "81.843"
+      },
+      {
+        "system": "35 Draconis",
+        "distance": "92.116"
+      },
+      {
+        "system": "Moros",
+        "distance": 64.54
+      },
+      {
+        "system": "Ammapa",
+        "distance": 126.14
+      },
+      {
+        "system": "Wanggu",
+        "distance": 136.74
+      },
+      {
+        "system": "Piran",
+        "distance": 119.91
+      },
+      {
+        "system": "Yakan",
+        "distance": 135.9
+      },
+      {
+        "system": "Suraci",
+        "distance": 119.35
+      },
+      {
+        "system": "Gera",
+        "distance": 97.57
+      },
+      {
+        "system": "Arin",
+        "distance": 41.42
+      },
+      {
+        "system": "Pollux",
+        "distance": 55.93
+      },
+      {
+        "system": "Amun",
+        "distance": 77.73
+      }
+    ],
+    "x": -9.875,
+    "y": 30.84375,
+    "z": 20.46875,
+    "region": "Beta2"
+  },
   {
     "name": "Marcov's Point",
     "contributor": "RedWizzard",
@@ -7826,86 +8085,86 @@
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
   },
-    {
-        "name": "Ross 52",
-        "calculated": true,
-        "contributor": "anon via Codec, Harbinger",
-        "contributed": "2014-11-01T17:05:35.000Z",
-        "distances": [
-            {
-                "system": "LHS 411",
-                "distance": "9.008"
-            },
-            {
-                "system": "Rakapila",
-                "distance": "8.908"
-            },
-            {
-                "system": "Bolg",
-                "distance": "12.505"
-            },
-            {
-                "system": "CE Bootis",
-                "distance": "4.382"
-            },
-            {
-                "system": "LHS 2887",
-                "distance": "8.031"
-            },
-            {
-                "system": "Aulin",
-                "distance": "14.572"
-            },
-            {
-                "system": "SDSS J1416+1348",
-                "distance": "8.111"
-            },
-            {
-                "system": "Moros",
-                "distance": 59.488
-            },
-            {
-                "system": "Ammapa",
-                "distance": 124.3
-            },
-            {
-                "system": "Wanggu",
-                "distance": 135.09
-            },
-            {
-                "system": "Piran",
-                "distance": 119.58
-            },
-            {
-                "system": "Yakan",
-                "distance": 135.94
-            },
-            {
-                "system": "Suraci",
-                "distance": 116.03
-            },
-            {
-                "system": "Gera",
-                "distance": 94.69
-            },
-            {
-                "system": "Arin",
-                "distance": 35.03
-            },
-            {
-                "system": "Pollux",
-                "distance": 48.53
-            },
-            {
-                "system": "Amun",
-                "distance": 72.42
-            }
-        ],
-        "x": -8.4375,
-        "y": 29.15625,
-        "z": 13.3125,
-        "region": "Beta2"
-    },
+  {
+    "name": "Ross 52",
+    "calculated": true,
+    "contributor": "anon via Codec, Harbinger",
+    "contributed": "2014-11-01T17:05:35.000Z",
+    "distances": [
+      {
+        "system": "LHS 411",
+        "distance": "9.008"
+      },
+      {
+        "system": "Rakapila",
+        "distance": "8.908"
+      },
+      {
+        "system": "Bolg",
+        "distance": "12.505"
+      },
+      {
+        "system": "CE Bootis",
+        "distance": "4.382"
+      },
+      {
+        "system": "LHS 2887",
+        "distance": "8.031"
+      },
+      {
+        "system": "Aulin",
+        "distance": "14.572"
+      },
+      {
+        "system": "SDSS J1416+1348",
+        "distance": "8.111"
+      },
+      {
+        "system": "Moros",
+        "distance": 59.488
+      },
+      {
+        "system": "Ammapa",
+        "distance": 124.3
+      },
+      {
+        "system": "Wanggu",
+        "distance": 135.09
+      },
+      {
+        "system": "Piran",
+        "distance": 119.58
+      },
+      {
+        "system": "Yakan",
+        "distance": 135.94
+      },
+      {
+        "system": "Suraci",
+        "distance": 116.03
+      },
+      {
+        "system": "Gera",
+        "distance": 94.69
+      },
+      {
+        "system": "Arin",
+        "distance": 35.03
+      },
+      {
+        "system": "Pollux",
+        "distance": 48.53
+      },
+      {
+        "system": "Amun",
+        "distance": 72.42
+      }
+    ],
+    "x": -8.4375,
+    "y": 29.15625,
+    "z": 13.3125,
+    "region": "Beta2"
+  },
   {
     "name": "GD 356",
     "contributor": "anon via Codec",
@@ -8132,11 +8391,9 @@
   },
   {
     "name": "LDS 1503",
-    "contributor": "anon via Codec, RedWizzard, Harbinger",
     "calculated": true,
-    "x": -51.78125,
-    "y": 19.90625,
-    "z": -31.71875,
+    "contributor": "anon via Codec, RedWizzard, Harbinger",
+    "contributed": "2014-11-01T23:33:17.000Z",
     "distances": [
       {
         "system": "Moros",
@@ -8181,10 +8438,64 @@
       {
         "system": "Loga",
         "distance": 34.167
+      },
+      {
+        "system": "Ammapa",
+        "distance": 74.98
+      },
+      {
+        "system": "Wanggu",
+        "distance": 82.07
+      },
+      {
+        "system": "Piran",
+        "distance": 77.29
+      },
+      {
+        "system": "Yakan",
+        "distance": 94.75
+      },
+      {
+        "system": "Suraci",
+        "distance": 55.53
+      },
+      {
+        "system": "Gera",
+        "distance": 37.98
+      },
+      {
+        "system": "Arin",
+        "distance": 59.71
+      },
+      {
+        "system": "Pollux",
+        "distance": 58.85
+      },
+      {
+        "system": "Amun",
+        "distance": 104.17
+      },
+      {
+        "system": "Chini",
+        "distance": 107.2
+      },
+      {
+        "system": "Alcor",
+        "distance": 56.98
+      },
+      {
+        "system": "Blata",
+        "distance": 102.92
+      },
+      {
+        "system": "Eme",
+        "distance": 92.89
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -51.78125,
+    "y": 19.90625,
+    "z": -31.71875,
+    "region": "Beta2"
   },
   {
     "name": "LP 180-17",
@@ -9252,11 +9563,9 @@
   },
   {
     "name": "LP 378-541",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": 1.1875,
-    "y": 20.71875,
-    "z": 2.34375,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-01T21:35:32.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -9293,18 +9602,54 @@
       {
         "system": "35 Draconis",
         "distance": 96.729
+      },
+      {
+        "system": "Ammapa",
+        "distance": 130.53
+      },
+      {
+        "system": "Wanggu",
+        "distance": 140.69
+      },
+      {
+        "system": "Piran",
+        "distance": 128.03
+      },
+      {
+        "system": "Yakan",
+        "distance": 145.02
+      },
+      {
+        "system": "Suraci",
+        "distance": 117.47
+      },
+      {
+        "system": "Gera",
+        "distance": 97.33
+      },
+      {
+        "system": "Arin",
+        "distance": 20.31
+      },
+      {
+        "system": "Pollux",
+        "distance": 33.67
+      },
+      {
+        "system": "Amun",
+        "distance": 59.48
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": 1.1875,
+    "y": 20.71875,
+    "z": 2.34375,
+    "region": "Beta2"
   },
   {
     "name": "BD+69 45",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -58.59375,
-    "y": 9.625,
-    "z": -38.15625,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T00:23:18.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -9329,178 +9674,238 @@
       {
         "system": "Moros",
         "distance": 16.318
+      },
+      {
+        "system": "Ammapa",
+        "distance": 74.76
+      },
+      {
+        "system": "Wanggu",
+        "distance": 77.15
+      },
+      {
+        "system": "Piran",
+        "distance": 76.22
+      },
+      {
+        "system": "Yakan",
+        "distance": 93.49
+      },
+      {
+        "system": "Suraci",
+        "distance": 45.96
+      },
+      {
+        "system": "Gera",
+        "distance": 30.63
+      },
+      {
+        "system": "Arin",
+        "distance": 66.65
+      },
+      {
+        "system": "Pollux",
+        "distance": 65.93
+      },
+      {
+        "system": "Amun",
+        "distance": 112.98
+      },
+      {
+        "system": "Eranin",
+        "distance": 58.04
+      },
+      {
+        "system": "Chini",
+        "distance": 116.62
+      },
+      {
+        "system": "Alcor",
+        "distance": 70.32
+      },
+      {
+        "system": "Blata",
+        "distance": 98.44
+      },
+      {
+        "system": "Eme",
+        "distance": 102.84
+      },
+      {
+        "system": "Loga",
+        "distance": 34.47
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -58.59375,
+    "y": 9.625,
+    "z": -38.15625,
+    "region": "Beta2"
   },
-    {
-        "name": "Beurex",
-        "calculated": true,
-        "contributor": "Harbinger",
-        "contributed": "2014-11-01T17:58:42.000Z",
-        "distances": [
-            {
-                "system": "Sol",
-                "distance": 29.636
-            },
-            {
-                "system": "Wolf 497",
-                "distance": 23.729
-            },
-            {
-                "system": "Huokang",
-                "distance": 21.52
-            },
-            {
-                "system": "Demeter",
-                "distance": 57.189
-            },
-            {
-                "system": "Fu Haiting",
-                "distance": 79.341
-            },
-            {
-                "system": "HIP 105906",
-                "distance": 124.767
-            },
-            {
-                "system": "HIP 91906",
-                "distance": 113.195
-            },
-            {
-                "system": "Moros",
-                "distance": 51.37
-            },
-            {
-                "system": "Ammapa",
-                "distance": 122.62
-            },
-            {
-                "system": "Wanggu",
-                "distance": 134.88
-            },
-            {
-                "system": "Piran",
-                "distance": 123.39
-            },
-            {
-                "system": "Yakan",
-                "distance": 140.35
-            },
-            {
-                "system": "Suraci",
-                "distance": 111.63
-            },
-            {
-                "system": "Gera",
-                "distance": 92.43
-            },
-            {
-                "system": "Arin",
-                "distance": 24.83
-            },
-            {
-                "system": "Pollux",
-                "distance": 28.04
-            },
-            {
-                "system": "Amun",
-                "distance": 56.72
-            }
-        ],
-        "x": -1.65625,
-        "y": 28.53125,
-        "z": -7.84375,
-        "region": "Beta2"
-    },
-    {
-        "name": "G 148-13",
-        "calculated": true,
-        "contributor": "Harbinger",
-        "contributed": "2014-11-01T17:25:28.000Z",
-        "distances": [
-            {
-                "system": "Sol",
-                "distance": 28.002
-            },
-            {
-                "system": "Wolf 497",
-                "distance": 23.856
-            },
-            {
-                "system": "Huokang",
-                "distance": 23.256
-            },
-            {
-                "system": "Demeter",
-                "distance": 58.483
-            },
-            {
-                "system": "Fu Haiting",
-                "distance": 80.89
-            },
-            {
-                "system": "HIP 105906",
-                "distance": 126.468
-            },
-            {
-                "system": "HIP 91906",
-                "distance": 114.918
-            },
-            {
-                "system": "Moros",
-                "distance": 52.521
-            },
-            {
-                "system": "Ammapa",
-                "distance": 124.35
-            },
-            {
-                "system": "Wanggu",
-                "distance": 136.31
-            },
-            {
-                "system": "Piran",
-                "distance": 124.81
-            },
-            {
-                "system": "Yakan",
-                "distance": 141.8
-            },
-            {
-                "system": "Suraci",
-                "distance": 112.83
-            },
-            {
-                "system": "Gera",
-                "distance": 93.58
-            },
-            {
-                "system": "Arin",
-                "distance": 23.35
-            },
-            {
-                "system": "Pollux",
-                "distance": 27.6
-            },
-            {
-                "system": "Amun",
-                "distance": 55.94
-            }
-        ],
-        "x": -0.40625,
-        "y": 27.09375,
-        "z": -7.0625,
-        "region": "Beta2"
-    },
+  {
+    "name": "Beurex",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-01T17:58:42.000Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 29.636
+      },
+      {
+        "system": "Wolf 497",
+        "distance": 23.729
+      },
+      {
+        "system": "Huokang",
+        "distance": 21.52
+      },
+      {
+        "system": "Demeter",
+        "distance": 57.189
+      },
+      {
+        "system": "Fu Haiting",
+        "distance": 79.341
+      },
+      {
+        "system": "HIP 105906",
+        "distance": 124.767
+      },
+      {
+        "system": "HIP 91906",
+        "distance": 113.195
+      },
+      {
+        "system": "Moros",
+        "distance": 51.37
+      },
+      {
+        "system": "Ammapa",
+        "distance": 122.62
+      },
+      {
+        "system": "Wanggu",
+        "distance": 134.88
+      },
+      {
+        "system": "Piran",
+        "distance": 123.39
+      },
+      {
+        "system": "Yakan",
+        "distance": 140.35
+      },
+      {
+        "system": "Suraci",
+        "distance": 111.63
+      },
+      {
+        "system": "Gera",
+        "distance": 92.43
+      },
+      {
+        "system": "Arin",
+        "distance": 24.83
+      },
+      {
+        "system": "Pollux",
+        "distance": 28.04
+      },
+      {
+        "system": "Amun",
+        "distance": 56.72
+      }
+    ],
+    "x": -1.65625,
+    "y": 28.53125,
+    "z": -7.84375,
+    "region": "Beta2"
+  },
+  {
+    "name": "G 148-13",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-01T17:25:28.000Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 28.002
+      },
+      {
+        "system": "Wolf 497",
+        "distance": 23.856
+      },
+      {
+        "system": "Huokang",
+        "distance": 23.256
+      },
+      {
+        "system": "Demeter",
+        "distance": 58.483
+      },
+      {
+        "system": "Fu Haiting",
+        "distance": 80.89
+      },
+      {
+        "system": "HIP 105906",
+        "distance": 126.468
+      },
+      {
+        "system": "HIP 91906",
+        "distance": 114.918
+      },
+      {
+        "system": "Moros",
+        "distance": 52.521
+      },
+      {
+        "system": "Ammapa",
+        "distance": 124.35
+      },
+      {
+        "system": "Wanggu",
+        "distance": 136.31
+      },
+      {
+        "system": "Piran",
+        "distance": 124.81
+      },
+      {
+        "system": "Yakan",
+        "distance": 141.8
+      },
+      {
+        "system": "Suraci",
+        "distance": 112.83
+      },
+      {
+        "system": "Gera",
+        "distance": 93.58
+      },
+      {
+        "system": "Arin",
+        "distance": 23.35
+      },
+      {
+        "system": "Pollux",
+        "distance": 27.6
+      },
+      {
+        "system": "Amun",
+        "distance": 55.94
+      }
+    ],
+    "x": -0.40625,
+    "y": 27.09375,
+    "z": -7.0625,
+    "region": "Beta2"
+  },
   {
     "name": "LDS 1503A",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -43.46875,
-    "y": 16.4375,
-    "z": -26.46875,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-01T23:26:53.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -9533,10 +9938,72 @@
       {
         "system": "Moros",
         "distance": 5.531
+      },
+      {
+        "system": "Ammapa",
+        "distance": 84.69
+      },
+      {
+        "system": "Wanggu",
+        "distance": 91.37
+      },
+      {
+        "system": "Piran",
+        "distance": 85.08
+      },
+      {
+        "system": "Yakan",
+        "distance": 102.7
+      },
+      {
+        "system": "Suraci",
+        "distance": 64.59
+      },
+      {
+        "system": "Gera",
+        "distance": 46.15
+      },
+      {
+        "system": "Arin",
+        "distance": 49.46
+      },
+      {
+        "system": "Pollux",
+        "distance": 50.39
+      },
+      {
+        "system": "Amun",
+        "distance": 96.33
+      },
+      {
+        "system": "Eranin",
+        "distance": 38.32
+      },
+      {
+        "system": "Chini",
+        "distance": 100.12
+      },
+      {
+        "system": "Alcor",
+        "distance": 57.22
+      },
+      {
+        "system": "Blata",
+        "distance": 110.43
+      },
+      {
+        "system": "Eme",
+        "distance": 83.57
+      },
+      {
+        "system": "Loga",
+        "distance": 44.33
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -43.46875,
+    "y": 16.4375,
+    "z": -26.46875,
+    "region": "Beta2"
   },
   {
     "name": "LFT 19",
@@ -9806,86 +10273,86 @@
     "region": "Beta2 (unverified)",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
-    {
-        "name": "LHS 316",
-        "calculated": true,
-        "contributor": "Harbinger",
-        "contributed": "2014-11-01T17:41:30.000Z",
-        "distances": [
-            {
-                "system": "Sol",
-                "distance": 26.786
-            },
-            {
-                "system": "Wolf 497",
-                "distance": 27.953
-            },
-            {
-                "system": "Huokang",
-                "distance": 20.402
-            },
-            {
-                "system": "Demeter",
-                "distance": 54.792
-            },
-            {
-                "system": "Fu Haiting",
-                "distance": 75.276
-            },
-            {
-                "system": "HIP 105906",
-                "distance": 121.229
-            },
-            {
-                "system": "HIP 91906",
-                "distance": 110.052
-            },
-            {
-                "system": "Moros",
-                "distance": 46.256
-            },
-            {
-                "system": "Ammapa",
-                "distance": 119.38
-            },
-            {
-                "system": "Wanggu",
-                "distance": 130.57
-            },
-            {
-                "system": "Piran",
-                "distance": 119.58
-            },
-            {
-                "system": "Yakan",
-                "distance": 136.71
-            },
-            {
-                "system": "Suraci",
-                "distance": 106.57
-            },
-            {
-                "system": "Gera",
-                "distance": 87.34
-            },
-            {
-                "system": "Arin",
-                "distance": 21.67
-            },
-            {
-                "system": "Pollux",
-                "distance": 26.55
-            },
-            {
-                "system": "Amun",
-                "distance": 60.63
-            }
-        ],
-        "x": -5.875,
-        "y": 24.40625,
-        "z": -9.34375,
-        "region": "Beta2"
-    },
+  {
+    "name": "LHS 316",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-01T17:41:30.000Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 26.786
+      },
+      {
+        "system": "Wolf 497",
+        "distance": 27.953
+      },
+      {
+        "system": "Huokang",
+        "distance": 20.402
+      },
+      {
+        "system": "Demeter",
+        "distance": 54.792
+      },
+      {
+        "system": "Fu Haiting",
+        "distance": 75.276
+      },
+      {
+        "system": "HIP 105906",
+        "distance": 121.229
+      },
+      {
+        "system": "HIP 91906",
+        "distance": 110.052
+      },
+      {
+        "system": "Moros",
+        "distance": 46.256
+      },
+      {
+        "system": "Ammapa",
+        "distance": 119.38
+      },
+      {
+        "system": "Wanggu",
+        "distance": 130.57
+      },
+      {
+        "system": "Piran",
+        "distance": 119.58
+      },
+      {
+        "system": "Yakan",
+        "distance": 136.71
+      },
+      {
+        "system": "Suraci",
+        "distance": 106.57
+      },
+      {
+        "system": "Gera",
+        "distance": 87.34
+      },
+      {
+        "system": "Arin",
+        "distance": 21.67
+      },
+      {
+        "system": "Pollux",
+        "distance": 26.55
+      },
+      {
+        "system": "Amun",
+        "distance": 60.63
+      }
+    ],
+    "x": -5.875,
+    "y": 24.40625,
+    "z": -9.34375,
+    "region": "Beta2"
+  },
   {
     "name": "LHS 534",
     "contributor": "Harbinger",
@@ -10294,74 +10761,74 @@
     "region": "Beta2 (unverified)",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
-    {
-        "name": "Gweir",
-        "calculated": true,
-        "contributor": "Harbinger",
-        "contributed": "2014-11-01T18:28:44.000Z",
-        "distances": [
-            {
-                "system": "Sol",
-                "distance": 33.955
-            },
-            {
-                "system": "Wolf 497",
-                "distance": 25.693
-            },
-            {
-                "system": "Huokang",
-                "distance": 20.852
-            },
-            {
-                "system": "Demeter",
-                "distance": 62.2
-            },
-            {
-                "system": "Fu Haiting",
-                "distance": 81.594
-            },
-            {
-                "system": "Ammapa",
-                "distance": 125.34
-            },
-            {
-                "system": "Wanggu",
-                "distance": 138.7
-            },
-            {
-                "system": "Piran",
-                "distance": 127.79
-            },
-            {
-                "system": "Yakan",
-                "distance": 144.67
-            },
-            {
-                "system": "Suraci",
-                "distance": 115.18
-            },
-            {
-                "system": "Gera",
-                "distance": 96.63
-            },
-            {
-                "system": "Arin",
-                "distance": 28.07
-            },
-            {
-                "system": "Pollux",
-                "distance": 26.08
-            },
-            {
-                "system": "Amun",
-                "distance": 50.86
-            }
-        ],
-        "x": 3.125,
-        "y": 31.75,
-        "z": -11.625,
-        "region": "Beta2"
-    },
+  {
+    "name": "Gweir",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-01T18:28:44.000Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 33.955
+      },
+      {
+        "system": "Wolf 497",
+        "distance": 25.693
+      },
+      {
+        "system": "Huokang",
+        "distance": 20.852
+      },
+      {
+        "system": "Demeter",
+        "distance": 62.2
+      },
+      {
+        "system": "Fu Haiting",
+        "distance": 81.594
+      },
+      {
+        "system": "Ammapa",
+        "distance": 125.34
+      },
+      {
+        "system": "Wanggu",
+        "distance": 138.7
+      },
+      {
+        "system": "Piran",
+        "distance": 127.79
+      },
+      {
+        "system": "Yakan",
+        "distance": 144.67
+      },
+      {
+        "system": "Suraci",
+        "distance": 115.18
+      },
+      {
+        "system": "Gera",
+        "distance": 96.63
+      },
+      {
+        "system": "Arin",
+        "distance": 28.07
+      },
+      {
+        "system": "Pollux",
+        "distance": 26.08
+      },
+      {
+        "system": "Amun",
+        "distance": 50.86
+      }
+    ],
+    "x": 3.125,
+    "y": 31.75,
+    "z": -11.625,
+    "region": "Beta2"
+  },
   {
     "name": "Taranis",
     "contributor": "Harbinger",
@@ -10612,11 +11079,9 @@
   },
   {
     "name": "G 262-26",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -66.09375,
-    "y": 15.8125,
-    "z": -11.625,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T01:18:30.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -10653,10 +11118,68 @@
       {
         "system": "Moros",
         "distance": 28.197
+      },
+      {
+        "system": "Ammapa",
+        "distance": 72.17
+      },
+      {
+        "system": "Wanggu",
+        "distance": 73.83
+      },
+      {
+        "system": "Piran",
+        "distance": 62.98
+      },
+      {
+        "system": "Yakan",
+        "distance": 80.6
+      },
+      {
+        "system": "Suraci",
+        "distance": 54.49
+      },
+      {
+        "system": "Gera",
+        "distance": 31.87
+      },
+      {
+        "system": "Arin",
+        "distance": 68.26
+      },
+      {
+        "system": "Pollux",
+        "distance": 75.16
+      },
+      {
+        "system": "Amun",
+        "distance": 119.8
+      },
+      {
+        "system": "Eranin",
+        "distance": 49.08
+      },
+      {
+        "system": "Chini",
+        "distance": 123.66
+      },
+      {
+        "system": "Alcor",
+        "distance": 63.73
+      },
+      {
+        "system": "Blata",
+        "distance": 87.02
+      },
+      {
+        "system": "Eme",
+        "distance": 101.57
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -66.09375,
+    "y": 15.8125,
+    "z": -11.625,
+    "region": "Beta2"
   },
   {
     "name": "Hemsut",
@@ -11199,54 +11722,6 @@
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
-    "name": "Wredguia DK-G c24-18",
-    "contributor": "Harbinger",
-    "calculated": true,
-    "x": -65.8125,
-    "y": 23.375,
-    "z": -8.53125,
-    "distances": [
-      {
-        "system": "Sol",
-        "distance": 70.359
-      },
-      {
-        "system": "Wolf 497",
-        "distance": 71.382
-      },
-      {
-        "system": "Huokang",
-        "distance": 57.467
-      },
-      {
-        "system": "Demeter",
-        "distance": 25.936
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 41.443
-      },
-      {
-        "system": "HIP 105906",
-        "distance": 73.568
-      },
-      {
-        "system": "HIP 91906",
-        "distance": 59.658
-      },
-      {
-        "system": "Loga",
-        "distance": 38.634
-      },
-      {
-        "system": "Moros",
-        "distance": 30.802
-      }
-    ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
-  },
-  {
     "name": "Perkwunos",
     "contributor": "anon via Codec",
     "calculated": true,
@@ -11328,11 +11803,9 @@
   },
   {
     "name": "23 H. Camelopardalis",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -37,
-    "y": 26.25,
-    "z": -36.625,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-01T23:44:25.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -11361,18 +11834,78 @@
       {
         "system": "Moros",
         "distance": 13.69
+      },
+      {
+        "system": "Ammapa",
+        "distance": 84.75
+      },
+      {
+        "system": "Wanggu",
+        "distance": 95.88
+      },
+      {
+        "system": "Piran",
+        "distance": 91.26
+      },
+      {
+        "system": "Yakan",
+        "distance": 108.4
+      },
+      {
+        "system": "Suraci",
+        "distance": 69.32
+      },
+      {
+        "system": "Gera",
+        "distance": 53.91
+      },
+      {
+        "system": "Arin",
+        "distance": 52.08
+      },
+      {
+        "system": "Pollux",
+        "distance": 45.94
+      },
+      {
+        "system": "Amun",
+        "distance": 89.27
+      },
+      {
+        "system": "Eranin",
+        "distance": 39.52
+      },
+      {
+        "system": "Chini",
+        "distance": 91.57
+      },
+      {
+        "system": "Alcor",
+        "distance": 50.7
+      },
+      {
+        "system": "Blata",
+        "distance": 118.44
+      },
+      {
+        "system": "Eme",
+        "distance": 81.57
+      },
+      {
+        "system": "Loga",
+        "distance": 44.33
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -37,
+    "y": 26.25,
+    "z": -36.625,
+    "region": "Beta2"
   },
   {
     "name": "Aktzin",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -51.78125,
-    "y": 23.9375,
-    "z": -29.40625,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T00:13:34.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -11401,10 +11934,72 @@
       {
         "system": "Moros",
         "distance": 8.971
+      },
+      {
+        "system": "Ammapa",
+        "distance": 73.41
+      },
+      {
+        "system": "Wanggu",
+        "distance": 81.88
+      },
+      {
+        "system": "Piran",
+        "distance": 75.86
+      },
+      {
+        "system": "Yakan",
+        "distance": 93.28
+      },
+      {
+        "system": "Suraci",
+        "distance": 57.29
+      },
+      {
+        "system": "Gera",
+        "distance": 39.23
+      },
+      {
+        "system": "Arin",
+        "distance": 60.09
+      },
+      {
+        "system": "Pollux",
+        "distance": 59.39
+      },
+      {
+        "system": "Amun",
+        "distance": 103.7
+      },
+      {
+        "system": "Eranin",
+        "distance": 42.34
+      },
+      {
+        "system": "Chini",
+        "distance": 106.39
+      },
+      {
+        "system": "Alcor",
+        "distance": 52.63
+      },
+      {
+        "system": "Blata",
+        "distance": 102.52
+      },
+      {
+        "system": "Eme",
+        "distance": 91.83
+      },
+      {
+        "system": "Loga",
+        "distance": 33.21
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -51.78125,
+    "y": 23.9375,
+    "z": -29.40625,
+    "region": "Beta2"
   },
   {
     "name": "Apep",
@@ -12583,34 +13178,6 @@
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
-    "name": "Wredguia DO-O b47-3",
-    "contributor": "JesusFreke",
-    "calculated": true,
-    "x": -72.5,
-    "y": 24.5,
-    "z": -33.6875,
-    "distances": [
-      {
-        "system": "HIP 105906",
-        "distance": 54.622
-      },
-      {
-        "system": "HIP 91906",
-        "distance": 48.326
-      },
-      {
-        "system": "Loga",
-        "distance": 16.368
-      },
-      {
-        "system": "Moros",
-        "distance": 27.574
-      }
-    ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
-  },
-  {
     "name": "MCC 813",
     "contributor": "JesusFreke",
     "calculated": true,
@@ -12983,62 +13550,6 @@
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
-    "name": "Wredguia DO-O b47-4",
-    "contributor": "JesusFreke",
-    "calculated": true,
-    "x": -77.4375,
-    "y": 19.125,
-    "z": -27.21875,
-    "distances": [
-      {
-        "system": "HIP 105906",
-        "distance": 56.959
-      },
-      {
-        "system": "HIP 91906",
-        "distance": 49.287
-      },
-      {
-        "system": "Loga",
-        "distance": 22.996
-      },
-      {
-        "system": "35 Draconis",
-        "distance": 33.538
-      }
-    ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
-  },
-  {
-    "name": "Wredguia DO-O b47-1",
-    "contributor": "JesusFreke",
-    "calculated": true,
-    "x": -69.71875,
-    "y": 26.375,
-    "z": -31.625,
-    "distances": [
-      {
-        "system": "HIP 105906",
-        "distance": 56.778
-      },
-      {
-        "system": "HIP 91906",
-        "distance": 49.254
-      },
-      {
-        "system": "Moros",
-        "distance": 25.4
-      },
-      {
-        "system": "35 Draconis",
-        "distance": 29.863
-      }
-    ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
-  },
-  {
     "name": "Wredguia DO-O b47-2",
     "contributor": "JesusFreke",
     "calculated": true,
@@ -13096,11 +13607,9 @@
   },
   {
     "name": "LHS 2459",
-    "contributor": "JesusFreke",
     "calculated": true,
-    "x": -11,
-    "y": 10.78125,
-    "z": -8.21875,
+    "contributor": "JesusFreke, Harbinger",
+    "contributed": "2014-11-01T23:11:19.000Z",
     "distances": [
       {
         "system": "HIP 105906",
@@ -13117,10 +13626,72 @@
       {
         "system": "35 Draconis",
         "distance": 87.059
+      },
+      {
+        "system": "Ammapa",
+        "distance": 119.75
+      },
+      {
+        "system": "Wanggu",
+        "distance": 127.31
+      },
+      {
+        "system": "Piran",
+        "distance": 117.13
+      },
+      {
+        "system": "Yakan",
+        "distance": 134.59
+      },
+      {
+        "system": "Suraci",
+        "distance": 101.31
+      },
+      {
+        "system": "Gera",
+        "distance": 81.85
+      },
+      {
+        "system": "Arin",
+        "distance": 13.92
+      },
+      {
+        "system": "Pollux",
+        "distance": 28.33
+      },
+      {
+        "system": "Amun",
+        "distance": 68.77
+      },
+      {
+        "system": "Eranin",
+        "distance": 29.2
+      },
+      {
+        "system": "Chini",
+        "distance": 75.4
+      },
+      {
+        "system": "Alcor",
+        "distance": 66.35
+      },
+      {
+        "system": "Blata",
+        "distance": 142.4
+      },
+      {
+        "system": "Eme",
+        "distance": 48.87
+      },
+      {
+        "system": "Loga",
+        "distance": 80.87
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -11,
+    "y": 10.78125,
+    "z": -8.21875,
+    "region": "Beta2"
   },
   {
     "name": "Wredguia DK-G c24-15",
@@ -13257,34 +13828,6 @@
       {
         "system": "35 Draconis",
         "distance": 60.073
-      }
-    ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
-  },
-  {
-    "name": "Wredguia CO-O b47-3",
-    "contributor": "JesusFreke",
-    "calculated": true,
-    "x": -87.46875,
-    "y": 17.8125,
-    "z": -23.46875,
-    "distances": [
-      {
-        "system": "HIP 105906",
-        "distance": 54.043
-      },
-      {
-        "system": "HIP 91906",
-        "distance": 45.588
-      },
-      {
-        "system": "Moros",
-        "distance": 42.237
-      },
-      {
-        "system": "35 Draconis",
-        "distance": 34.37
       }
     ],
     "region": "Beta2 (unverified)",
@@ -13503,12 +14046,10 @@
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
-    "name": "2Mass 1503+2525",
-    "contributor": "JesusFreke",
+    "name": "2MASS 1503+2525",
     "calculated": true,
-    "x": -6.1875,
-    "y": 18,
-    "z": 8.125,
+    "contributor": "JesusFreke, Harbinger",
+    "contributed": "2014-11-01T22:30:08.000Z",
     "distances": [
       {
         "system": "HIP 105906",
@@ -13525,10 +14066,72 @@
       {
         "system": "Keries",
         "distance": 16.332
+      },
+      {
+        "system": "Ammapa",
+        "distance": 127.07
+      },
+      {
+        "system": "Wanggu",
+        "distance": 135.85
+      },
+      {
+        "system": "Piran",
+        "distance": 122.17
+      },
+      {
+        "system": "Yakan",
+        "distance": 139.07
+      },
+      {
+        "system": "Suraci",
+        "distance": 113.7
+      },
+      {
+        "system": "Gera",
+        "distance": 92.77
+      },
+      {
+        "system": "Arin",
+        "distance": 23.35
+      },
+      {
+        "system": "Pollux",
+        "distance": 40.6
+      },
+      {
+        "system": "Amun",
+        "distance": 69.13
+      },
+      {
+        "system": "Eranin",
+        "distance": 26.6
+      },
+      {
+        "system": "Chini",
+        "distance": 75.5
+      },
+      {
+        "system": "Alcor",
+        "distance": 65.66
+      },
+      {
+        "system": "Blata",
+        "distance": 148.23
+      },
+      {
+        "system": "Eme",
+        "distance": 40.95
+      },
+      {
+        "system": "Loga",
+        "distance": 90.98
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -6.1875,
+    "y": 18,
+    "z": 8.125,
+    "region": "Beta2"
   },
   {
     "name": "LHS 399",
@@ -13560,11 +14163,9 @@
   },
   {
     "name": "Elphin",
-    "contributor": "JesusFreke",
     "calculated": true,
-    "x": -30.125,
-    "y": 8.1875,
-    "z": -17,
+    "contributor": "JesusFreke, Harbinger",
+    "contributed": "2014-11-01T23:19:31.000Z",
     "distances": [
       {
         "system": "HIP 105906",
@@ -13581,18 +14182,78 @@
       {
         "system": "Keries",
         "distance": 36.93
+      },
+      {
+        "system": "Ammapa",
+        "distance": 102.13
+      },
+      {
+        "system": "Wanggu",
+        "distance": 107.49
+      },
+      {
+        "system": "Piran",
+        "distance": 99.39
+      },
+      {
+        "system": "Yakan",
+        "distance": 117.06
+      },
+      {
+        "system": "Suraci",
+        "distance": 80.27
+      },
+      {
+        "system": "Gera",
+        "distance": 61.09
+      },
+      {
+        "system": "Arin",
+        "distance": 32.48
+      },
+      {
+        "system": "Pollux",
+        "distance": 39.5
+      },
+      {
+        "system": "Amun",
+        "distance": 85.74
+      },
+      {
+        "system": "Eranin",
+        "distance": 33.26
+      },
+      {
+        "system": "Chini",
+        "distance": 91.3
+      },
+      {
+        "system": "Alcor",
+        "distance": 64.03
+      },
+      {
+        "system": "Blata",
+        "distance": 123.6
+      },
+      {
+        "system": "Eme",
+        "distance": 69.6
+      },
+      {
+        "system": "Loga",
+        "distance": 62.43
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -30.125,
+    "y": 8.1875,
+    "z": -17,
+    "region": "Beta2"
   },
   {
     "name": "DG Canum Venaticorum",
-    "contributor": "JesusFreke",
     "calculated": true,
-    "x": -3.125,
-    "y": 25.53125,
-    "z": 2.6875,
+    "contributor": "JesusFreke, Harbinger",
+    "contributed": "2014-11-01T21:59:46.000Z",
     "distances": [
       {
         "system": "HIP 105906",
@@ -13609,10 +14270,72 @@
       {
         "system": "Keries",
         "distance": 18.709
+      },
+      {
+        "system": "Ammapa",
+        "distance": 125.49
+      },
+      {
+        "system": "Wanggu",
+        "distance": 136.43
+      },
+      {
+        "system": "Piran",
+        "distance": 123.21
+      },
+      {
+        "system": "Yakan",
+        "distance": 140.05
+      },
+      {
+        "system": "Suraci",
+        "distance": 114.43
+      },
+      {
+        "system": "Gera",
+        "distance": 94.08
+      },
+      {
+        "system": "Arin",
+        "distance": 24.96
+      },
+      {
+        "system": "Pollux",
+        "distance": 36.24
+      },
+      {
+        "system": "Amun",
+        "distance": 62.64
+      },
+      {
+        "system": "Eranin",
+        "distance": 22.91
+      },
+      {
+        "system": "Chini",
+        "distance": 67.95
+      },
+      {
+        "system": "Alcor",
+        "distance": 59.41
+      },
+      {
+        "system": "Blata",
+        "distance": 150.62
+      },
+      {
+        "system": "Eme",
+        "distance": 36.87
+      },
+      {
+        "system": "Loga",
+        "distance": 89.44
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -3.125,
+    "y": 25.53125,
+    "z": 2.6875,
+    "region": "Beta2"
   },
   {
     "name": "Wredguia YS-O b47-4",
@@ -13644,11 +14367,9 @@
   },
   {
     "name": "Bidmere",
-    "contributor": "JesusFreke",
     "calculated": true,
-    "x": -7.4375,
-    "y": 13.21875,
-    "z": 1.90625,
+    "contributor": "JesusFreke, Harbinger",
+    "contributed": "2014-11-01T22:41:53.000Z",
     "distances": [
       {
         "system": "HIP 105906",
@@ -13665,10 +14386,72 @@
       {
         "system": "Keries",
         "distance": 21.018
+      },
+      {
+        "system": "Ammapa",
+        "distance": 125.23
+      },
+      {
+        "system": "Wanggu",
+        "distance": 133.16
+      },
+      {
+        "system": "Piran",
+        "distance": 120.93
+      },
+      {
+        "system": "Yakan",
+        "distance": 138.12
+      },
+      {
+        "system": "Suraci",
+        "distance": 109.19
+      },
+      {
+        "system": "Gera",
+        "distance": 88.79
+      },
+      {
+        "system": "Arin",
+        "distance": 16.69
+      },
+      {
+        "system": "Pollux",
+        "distance": 35.02
+      },
+      {
+        "system": "Amun",
+        "distance": 68.44
+      },
+      {
+        "system": "Eranin",
+        "distance": 28.11
+      },
+      {
+        "system": "Chini",
+        "distance": 75.25
+      },
+      {
+        "system": "Alcor",
+        "distance": 67.32
+      },
+      {
+        "system": "Blata",
+        "distance": 146.45
+      },
+      {
+        "system": "Eme",
+        "distance": 43.21
+      },
+      {
+        "system": "Loga",
+        "distance": 87.81
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -7.4375,
+    "y": 13.21875,
+    "z": 1.90625,
+    "region": "Beta2"
   },
   {
     "name": "Wredguia DJ-O b47-5",
@@ -14570,85 +15353,83 @@
     "region": "Beta2 (unverified)",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
-    {
-        "name": "DE Bootis",
-        "calculated": true,
-        "contributor": "JesusFreke, RedWizzard, Harbinger",
-        "contributed": "2014-11-01T16:53:08.000Z",
-        "distances": [
-            {
-                "system": "Moros",
-                "distance": 63.65
-            },
-            {
-                "system": "35 Draconis",
-                "distance": 91.978
-            },
-            {
-                "system": "Keries",
-                "distance": 13.423
-            },
-            {
-                "system": "Wyrd",
-                "distance": 21.38
-            },
-            {
-                "system": "Ammapa",
-                "distance": 126.13
-            },
-            {
-                "system": "Wanggu",
-                "distance": 137.48
-            },
-            {
-                "system": "Piran",
-                "distance": 121.19
-            },
-            {
-                "system": "Yakan",
-                "distance": 137.28
-            },
-            {
-                "system": "Suraci",
-                "distance": 119.56
-            },
-            {
-                "system": "Gera",
-                "distance": 98.08
-            },
-            {
-                "system": "Arin",
-                "distance": 39.68
-            },
-            {
-                "system": "Pollux",
-                "distance": 52.71
-            },
-            {
-                "system": "Amun",
-                "distance": 73.68
-            },
-            {
-                "system": "Eranin",
-                "distance": 24.15
-            },
-            {
-                "system": "Chini",
-                "distance": 78.06
-            }
-        ],
-        "x": -7.4375,
-        "y": 32.625,
-        "z": 17,
-        "region": "Beta2"
-    },
+  {
+    "name": "DE Bootis",
+    "calculated": true,
+    "contributor": "JesusFreke, RedWizzard, Harbinger",
+    "contributed": "2014-11-01T16:53:08.000Z",
+    "distances": [
+      {
+        "system": "Moros",
+        "distance": 63.65
+      },
+      {
+        "system": "35 Draconis",
+        "distance": 91.978
+      },
+      {
+        "system": "Keries",
+        "distance": 13.423
+      },
+      {
+        "system": "Wyrd",
+        "distance": 21.38
+      },
+      {
+        "system": "Ammapa",
+        "distance": 126.13
+      },
+      {
+        "system": "Wanggu",
+        "distance": 137.48
+      },
+      {
+        "system": "Piran",
+        "distance": 121.19
+      },
+      {
+        "system": "Yakan",
+        "distance": 137.28
+      },
+      {
+        "system": "Suraci",
+        "distance": 119.56
+      },
+      {
+        "system": "Gera",
+        "distance": 98.08
+      },
+      {
+        "system": "Arin",
+        "distance": 39.68
+      },
+      {
+        "system": "Pollux",
+        "distance": 52.71
+      },
+      {
+        "system": "Amun",
+        "distance": 73.68
+      },
+      {
+        "system": "Eranin",
+        "distance": 24.15
+      },
+      {
+        "system": "Chini",
+        "distance": 78.06
+      }
+    ],
+    "x": -7.4375,
+    "y": 32.625,
+    "z": 17,
+    "region": "Beta2"
+  },
   {
     "name": "G 203-51",
-    "contributor": "JesusFreke, RedWizzard",
     "calculated": true,
-    "x": -15.875,
-    "y": 12.03125,
-    "z": 5.34375,
+    "contributor": "JesusFreke, RedWizzard, Harbinger",
+    "contributed": "2014-11-01T23:00:07.000Z",
     "distances": [
       {
         "system": "Moros",
@@ -14665,10 +15446,72 @@
       {
         "system": "Wyrd",
         "distance": 22.01
+      },
+      {
+        "system": "Ammapa",
+        "distance": 119.85
+      },
+      {
+        "system": "Wanggu",
+        "distance": 126.61
+      },
+      {
+        "system": "Piran",
+        "distance": 113.61
+      },
+      {
+        "system": "Yakan",
+        "distance": 130.71
+      },
+      {
+        "system": "Suraci",
+        "distance": 103.74
+      },
+      {
+        "system": "Gera",
+        "distance": 82.68
+      },
+      {
+        "system": "Arin",
+        "distance": 23.65
+      },
+      {
+        "system": "Pollux",
+        "distance": 42.09
+      },
+      {
+        "system": "Amun",
+        "distance": 77.51
+      },
+      {
+        "system": "Eranin",
+        "distance": 26.3
+      },
+      {
+        "system": "Chini",
+        "distance": 84.05
+      },
+      {
+        "system": "Alcor",
+        "distance": 66.24
+      },
+      {
+        "system": "Blata",
+        "distance": 138.55
+      },
+      {
+        "system": "Eme",
+        "distance": 51.6
+      },
+      {
+        "system": "Loga",
+        "distance": 83.26
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -15.875,
+    "y": 12.03125,
+    "z": 5.34375,
+    "region": "Beta2"
   },
   {
     "name": "Ross 1008",
@@ -14924,11 +15767,9 @@
   },
   {
     "name": "G 202-48",
-    "contributor": "JesusFreke, RedWizzard",
     "calculated": true,
-    "x": -15.53125,
-    "y": 14.375,
-    "z": 1.875,
+    "contributor": "JesusFreke, RedWizzard, Harbinger",
+    "contributed": "2014-11-01T22:51:43.000Z",
     "distances": [
       {
         "system": "Moros",
@@ -14945,10 +15786,72 @@
       {
         "system": "Wyrd",
         "distance": 18.531
+      },
+      {
+        "system": "Ammapa",
+        "distance": 117.89
+      },
+      {
+        "system": "Wanggu",
+        "distance": 125.41
+      },
+      {
+        "system": "Piran",
+        "distance": 112.85
+      },
+      {
+        "system": "Yakan",
+        "distance": 130.03
+      },
+      {
+        "system": "Suraci",
+        "distance": 102.26
+      },
+      {
+        "system": "Gera",
+        "distance": 81.46
+      },
+      {
+        "system": "Arin",
+        "distance": 22.45
+      },
+      {
+        "system": "Pollux",
+        "distance": 38.98
+      },
+      {
+        "system": "Amun",
+        "distance": 75.23
+      },
+      {
+        "system": "Eranin",
+        "distance": 23.53
+      },
+      {
+        "system": "Chini",
+        "distance": 81.43
+      },
+      {
+        "system": "Alcor",
+        "distance": 63.25
+      },
+      {
+        "system": "Blata",
+        "distance": 138.34
+      },
+      {
+        "system": "Eme",
+        "distance": 50.7
+      },
+      {
+        "system": "Loga",
+        "distance": 80.93
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -15.53125,
+    "y": 14.375,
+    "z": 1.875,
+    "region": "Beta2"
   },
   {
     "name": "Ross 1019",
@@ -15253,34 +16156,6 @@
       {
         "system": "Wyrd",
         "distance": 81.672
-      }
-    ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
-  },
-  {
-    "name": "Wredguia BD-Q b46-2",
-    "contributor": "JesusFreke, RedWizzard",
-    "calculated": true,
-    "x": -71.875,
-    "y": 10.6875,
-    "z": -43.8125,
-    "distances": [
-      {
-        "system": "Moros",
-        "distance": 29.531
-      },
-      {
-        "system": "35 Draconis",
-        "distance": 45.826
-      },
-      {
-        "system": "Keries",
-        "distance": 79.124
-      },
-      {
-        "system": "Wyrd",
-        "distance": 75.197
       }
     ],
     "region": "Beta2 (unverified)",
@@ -15867,38 +16742,6 @@
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
-    "name": "Wredguia EJ-O b47-3",
-    "contributor": "Harbinger",
-    "calculated": true,
-    "x": -89.4375,
-    "y": 8.5,
-    "z": -33.28125,
-    "distances": [
-      {
-        "system": "Sol",
-        "distance": 95.807
-      },
-      {
-        "system": "Wolf 497",
-        "distance": 105.622
-      },
-      {
-        "system": "Huokang",
-        "distance": 82.212
-      },
-      {
-        "system": "Demeter",
-        "distance": 62.247
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 34.642
-      }
-    ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
-  },
-  {
     "name": "Wredguia EJ-O b47-1",
     "contributor": "Harbinger",
     "calculated": true,
@@ -15963,38 +16806,6 @@
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
-    "name": "Wredguia BZ-H c23-24",
-    "contributor": "Harbinger",
-    "calculated": true,
-    "x": -82.59375,
-    "y": 8.75,
-    "z": -31.5,
-    "distances": [
-      {
-        "system": "Sol",
-        "distance": 88.829
-      },
-      {
-        "system": "Wolf 497",
-        "distance": 99.007
-      },
-      {
-        "system": "Huokang",
-        "distance": 75.562
-      },
-      {
-        "system": "Demeter",
-        "distance": 57.415
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 31.946
-      }
-    ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
-  },
-  {
     "name": "Wredguia AZ-H c23-29",
     "contributor": "Harbinger",
     "calculated": true,
@@ -16021,38 +16832,6 @@
       {
         "system": "Fu Haiting",
         "distance": 49.623
-      }
-    ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
-  },
-  {
-    "name": "Wredguia EJ-O b47-5",
-    "contributor": "Harbinger",
-    "calculated": true,
-    "x": -90.09375,
-    "y": 6.875,
-    "z": -37.875,
-    "distances": [
-      {
-        "system": "Sol",
-        "distance": 97.973
-      },
-      {
-        "system": "Wolf 497",
-        "distance": 108.722
-      },
-      {
-        "system": "Huokang",
-        "distance": 83.938
-      },
-      {
-        "system": "Demeter",
-        "distance": 66.512
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 34.409
       }
     ],
     "region": "Beta2 (unverified)",
@@ -16818,204 +17597,204 @@
       }
     ]
   },
-    {
-        "name": "Shudun Sector AA-A d142",
-        "calculated": true,
-        "contributor": "Harbinger",
-        "contributed": "2014-11-01T18:08:43.000Z",
-        "distances": [
-            {
-                "system": "Ammapa",
-                "distance": 121.85
-            },
-            {
-                "system": "Wanggu",
-                "distance": 135.45
-            },
-            {
-                "system": "Piran",
-                "distance": 123.51
-            },
-            {
-                "system": "Yakan",
-                "distance": 140.24
-            },
-            {
-                "system": "Suraci",
-                "distance": 113.36
-            },
-            {
-                "system": "Gera",
-                "distance": 94.24
-            },
-            {
-                "system": "Arin",
-                "distance": 30.77
-            },
-            {
-                "system": "Pollux",
-                "distance": 31.67
-            },
-            {
-                "system": "Amun",
-                "distance": 56.27
-            },
-            {
-                "system": "Eranin",
-                "distance": 22.7
-            }
-        ],
-        "x": -1.15625,
-        "y": 34.53125,
-        "z": -7.59375,
-        "region": "Beta3"
-    },
-    {
-        "name": "Charick Drift",
-        "calculated": true,
-        "contributor": "Harbinger",
-        "contributed": "2014-11-01T18:54:06.000Z",
-        "distances": [
-            {
-                "system": "Ammapa",
-                "distance": 132.7
-            },
-            {
-                "system": "Wanggu",
-                "distance": 144.9
-            },
-            {
-                "system": "Piran",
-                "distance": 133.44
-            },
-            {
-                "system": "Yakan",
-                "distance": 150.4
-            },
-            {
-                "system": "Suraci",
-                "distance": 120.98
-            },
-            {
-                "system": "Gera",
-                "distance": 101.95
-            },
-            {
-                "system": "Arin",
-                "distance": 24.11
-            },
-            {
-                "system": "Pollux",
-                "distance": 27.39
-            },
-            {
-                "system": "Amun",
-                "distance": 48.53
-            }
-        ],
-        "x": 8.1875,
-        "y": 26.71875,
-        "z": -6.0625,
-        "region": "Beta3"
-    },
-    {
-        "name": "DS Leonis",
-        "calculated": true,
-        "contributor": "Harbinger",
-        "contributed": "2014-11-01T19:16:11.000Z",
-        "distances": [
-            {
-                "system": "Ammapa",
-                "distance": 131.33
-            },
-            {
-                "system": "Wanggu",
-                "distance": 145.59
-            },
-            {
-                "system": "Piran",
-                "distance": 134.75
-            },
-            {
-                "system": "Yakan",
-                "distance": 151.5
-            },
-            {
-                "system": "Suraci",
-                "distance": 122.12
-            },
-            {
-                "system": "Gera",
-                "distance": 103.94
-            },
-            {
-                "system": "Arin",
-                "distance": 32.51
-            },
-            {
-                "system": "Pollux",
-                "distance": 27.86
-            },
-            {
-                "system": "Amun",
-                "distance": 43.96
-            },
-            {
-                "system": "Eranin",
-                "distance": 34.96
-            }
-        ],
-        "x": 10.25,
-        "y": 34.875,
-        "z": -12.34375,
-        "region": "Beta3"
-    },
-    {
-        "name": "DX 1217",
-        "calculated": true,
-        "contributor": "Harbinger",
-        "contributed": "2014-11-01T19:38:41.000Z",
-        "distances": [
-            {
-                "system": "Ammapa",
-                "distance": 132.52
-            },
-            {
-                "system": "Wanggu",
-                "distance": 145.53
-            },
-            {
-                "system": "Piran",
-                "distance": 132.78
-            },
-            {
-                "system": "Yakan",
-                "distance": 149.46
-            },
-            {
-                "system": "Suraci",
-                "distance": 123.38
-            },
-            {
-                "system": "Gera",
-                "distance": 103.82
-            },
-            {
-                "system": "Arin",
-                "distance": 30.15
-            },
-            {
-                "system": "Pollux",
-                "distance": 34.75
-            },
-            {
-                "system": "Amun",
-                "distance": 51.4
-            }
-        ],
-        "x": 7.5,
-        "y": 32.125,
-        "z": -0.65625,
-        "region": "Beta3"
-    }
+  {
+    "name": "Shudun Sector AA-A d142",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-01T18:08:43.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 121.85
+      },
+      {
+        "system": "Wanggu",
+        "distance": 135.45
+      },
+      {
+        "system": "Piran",
+        "distance": 123.51
+      },
+      {
+        "system": "Yakan",
+        "distance": 140.24
+      },
+      {
+        "system": "Suraci",
+        "distance": 113.36
+      },
+      {
+        "system": "Gera",
+        "distance": 94.24
+      },
+      {
+        "system": "Arin",
+        "distance": 30.77
+      },
+      {
+        "system": "Pollux",
+        "distance": 31.67
+      },
+      {
+        "system": "Amun",
+        "distance": 56.27
+      },
+      {
+        "system": "Eranin",
+        "distance": 22.7
+      }
+    ],
+    "x": -1.15625,
+    "y": 34.53125,
+    "z": -7.59375,
+    "region": "Beta3"
+  },
+  {
+    "name": "Charick Drift",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-01T18:54:06.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 132.7
+      },
+      {
+        "system": "Wanggu",
+        "distance": 144.9
+      },
+      {
+        "system": "Piran",
+        "distance": 133.44
+      },
+      {
+        "system": "Yakan",
+        "distance": 150.4
+      },
+      {
+        "system": "Suraci",
+        "distance": 120.98
+      },
+      {
+        "system": "Gera",
+        "distance": 101.95
+      },
+      {
+        "system": "Arin",
+        "distance": 24.11
+      },
+      {
+        "system": "Pollux",
+        "distance": 27.39
+      },
+      {
+        "system": "Amun",
+        "distance": 48.53
+      }
+    ],
+    "x": 8.1875,
+    "y": 26.71875,
+    "z": -6.0625,
+    "region": "Beta3"
+  },
+  {
+    "name": "DS Leonis",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-01T19:16:11.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 131.33
+      },
+      {
+        "system": "Wanggu",
+        "distance": 145.59
+      },
+      {
+        "system": "Piran",
+        "distance": 134.75
+      },
+      {
+        "system": "Yakan",
+        "distance": 151.5
+      },
+      {
+        "system": "Suraci",
+        "distance": 122.12
+      },
+      {
+        "system": "Gera",
+        "distance": 103.94
+      },
+      {
+        "system": "Arin",
+        "distance": 32.51
+      },
+      {
+        "system": "Pollux",
+        "distance": 27.86
+      },
+      {
+        "system": "Amun",
+        "distance": 43.96
+      },
+      {
+        "system": "Eranin",
+        "distance": 34.96
+      }
+    ],
+    "x": 10.25,
+    "y": 34.875,
+    "z": -12.34375,
+    "region": "Beta3"
+  },
+  {
+    "name": "DX 1217",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-01T19:38:41.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 132.52
+      },
+      {
+        "system": "Wanggu",
+        "distance": 145.53
+      },
+      {
+        "system": "Piran",
+        "distance": 132.78
+      },
+      {
+        "system": "Yakan",
+        "distance": 149.46
+      },
+      {
+        "system": "Suraci",
+        "distance": 123.38
+      },
+      {
+        "system": "Gera",
+        "distance": 103.82
+      },
+      {
+        "system": "Arin",
+        "distance": 30.15
+      },
+      {
+        "system": "Pollux",
+        "distance": 34.75
+      },
+      {
+        "system": "Amun",
+        "distance": 51.4
+      }
+    ],
+    "x": 7.5,
+    "y": 32.125,
+    "z": -0.65625,
+    "region": "Beta3"
+  }
 ]
