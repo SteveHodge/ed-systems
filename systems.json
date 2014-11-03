@@ -1000,19 +1000,39 @@
     "stations": [
       {
         "station": "Carey Colony",
-        "distance": 73
+        "distance": 73,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Ryumin Terminal",
-        "distance": 134
+        "distance": 134,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Smeaton Port",
-        "distance": 2537
+        "distance": 2537,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Kaku Station",
-        "distance": 2671
+        "distance": 2671,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -1045,11 +1065,21 @@
     "stations": [
       {
         "station": "Gorbatko Reserve",
-        "distance": 901
+        "distance": 901,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Gemar Orbital",
-        "distance": 901
+        "distance": 901,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -1307,11 +1337,21 @@
     "stations": [
       {
         "station": "Foster Research Lab",
-        "distance": 169
+        "distance": 169,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Beagle 2 Landing",
-        "distance": 1263
+        "distance": 1263,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -1335,11 +1375,21 @@
     "stations": [
       {
         "station": "Abe Works",
-        "distance": 377
+        "distance": 379,
+        "type": "Coriolis Starport",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true
       },
       {
         "station": "Bradfield Orbital",
-        "distance": 377
+        "distance": 377,
+        "type": "Orbis Starport",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true
       }
     ]
   },
@@ -1525,15 +1575,30 @@
     "stations": [
       {
         "station": "Azeban Orbital",
-        "distance": 298
+        "distance": 294,
+        "type": "Civilian Outpost",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true
       },
       {
         "station": "Azeban City",
-        "distance": 298
+        "distance": 295,
+        "type": "Coriolis Starport",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true
       },
       {
         "station": "Eranin 4 Survey",
-        "distance": 2022
+        "distance": 2024,
+        "type": "Scientific Outpost",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true
       }
     ]
   },
@@ -1580,7 +1645,27 @@
     "y": 34.71875,
     "z": 2.125,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Moxon's Mojo",
+        "distance": 935,
+        "type": "Orbis Starport",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true
+      },
+      {
+        "station": "Payette Platform",
+        "distance": 1835,
+        "type": "Civilian Outpost",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": true
+      }
+    ]
   },
   {
     "name": "Malina",
@@ -1620,11 +1705,21 @@
     "stations": [
       {
         "station": "Dahan Gateway",
-        "distance": 468
+        "distance": 468,
+        "type": "Coriolis Starport",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true
       },
       {
         "station": "Dahan 3 Metalworks",
-        "distance": 1853
+        "distance": 1854,
+        "type": "Industrial Outpost",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": true
       }
     ]
   },
@@ -1711,11 +1806,21 @@
     "stations": [
       {
         "station": "Freeport",
-        "distance": 183
+        "distance": 184,
+        "type": "Coriolis Starport",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true
       },
       {
         "station": "Prospect Five",
-        "distance": 390
+        "distance": 389,
+        "type": "Industrial Outpost",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": true
       }
     ]
   },
@@ -1757,11 +1862,21 @@
     "stations": [
       {
         "station": "Chango Dock",
-        "distance": 1100
+        "distance": 1098,
+        "type": "Coriolis Starport",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true
       },
       {
         "station": "Maher Stellar Research",
-        "distance": 20927
+        "distance": 20929,
+        "type": "Scientific Outpost",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": true
       }
     ]
   },
@@ -1772,7 +1887,36 @@
     "y": 31.53125,
     "z": -3.9375,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Vonarburg Co-operative",
+        "distance": 161,
+        "type": "Orbis Starport",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true
+      },
+      {
+        "station": "Bokeili Station",
+        "distance": 849,
+        "type": "Orbis Starport",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true
+      },
+      {
+        "station": "Gareth Edwards Park",
+        "distance": 849,
+        "type": "Orbis Starport",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true
+      }
+    ]
   },
   {
     "name": "LP 5-88",
@@ -1835,7 +1979,36 @@
     "y": 32.6875,
     "z": 4.75,
     "region": "Premium Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Yurchikhin Gateway",
+        "distance": 60.2,
+        "type": "Scientific Outpost",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false
+      },
+      {
+        "station": "Aulin Enterprise",
+        "distance": 117,
+        "type": "Orbis Starport",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true
+      },
+      {
+        "station": "Binnie City",
+        "distance": 347,
+        "type": "Scientific Outpost",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false
+      }
+    ]
   },
   {
     "name": "Ross 905",
@@ -1848,11 +2021,21 @@
     "stations": [
       {
         "station": "Morukov Platform",
-        "distance": 16.6
+        "distance": 16.6,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Xing Dock",
-        "distance": 943
+        "distance": 943,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -1885,15 +2068,30 @@
     "stations": [
       {
         "station": "Meikle Point",
-        "distance": 1371
+        "distance": 1371,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Onizuka's Hold",
-        "distance": 1458
+        "distance": 1458,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Romanenko Estate",
-        "distance": 1460
+        "distance": 1460,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -1980,11 +2178,21 @@
     "stations": [
       {
         "station": "Keeler Rest",
-        "distance": 197
+        "distance": 197,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Maunder's Hope",
-        "distance": 197
+        "distance": 197,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -1999,7 +2207,12 @@
     "stations": [
       {
         "station": "Derrickson's Escape",
-        "distance": 270
+        "distance": 270,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -2131,15 +2344,30 @@
     "stations": [
       {
         "station": "Xiaoguan Hub",
-        "distance": 131
+        "distance": 131,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Garriott Outpost",
-        "distance": 333
+        "distance": 333,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Trumpler Dock",
-        "distance": 4541
+        "distance": 4541,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -2226,7 +2454,12 @@
     "stations": [
       {
         "station": "Shepherd Ring",
-        "distance": 8171
+        "distance": 8171,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -2250,7 +2483,12 @@
     "stations": [
       {
         "station": "Romanek's Folly",
-        "distance": 917
+        "distance": 917,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -2274,11 +2512,21 @@
     "stations": [
       {
         "station": "Gerst Port",
-        "distance": 68.6
+        "distance": 68.6,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Chi Hub",
-        "distance": 652
+        "distance": 652,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -2311,15 +2559,30 @@
     "stations": [
       {
         "station": "Alexandria Gateway",
-        "distance": 8.59
+        "distance": 8.59,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Rozhdestvensky Ring",
-        "distance": 13.9
+        "distance": 13.9,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Allen Ring",
-        "distance": 27.1
+        "distance": 27.1,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -2357,7 +2620,18 @@
     "y": 33.46875,
     "z": -0.40625,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Olivas Settlement",
+        "distance": 230,
+        "type": "Coriolis Starport",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true
+      }
+    ]
   },
   {
     "name": "Meliae",
@@ -2582,7 +2856,18 @@
     "z": -4.78125,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "stations": [
+      {
+        "station": "Reilly Refinery",
+        "distance": 11738,
+        "type": "Industrial Outpost",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false
+      }
+    ]
   },
   {
     "name": "54 G. Antlia",
@@ -3522,15 +3807,30 @@
     "stations": [
       {
         "station": "Volkov Dock",
-        "distance": 567
+        "distance": 567,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Chomsky Point",
-        "distance": 1379
+        "distance": 1379,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Chamitoff Point",
-        "distance": 7485
+        "distance": 7485,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -3806,11 +4106,21 @@
     "stations": [
       {
         "station": "Thomas Installation",
-        "distance": 483
+        "distance": 483,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Dezhurov Platform",
-        "distance": 21362
+        "distance": 21362,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -6867,23 +7177,48 @@
     "stations": [
       {
         "station": "Garan Survey",
-        "distance": 3082
+        "distance": 3082,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Haxel Station",
-        "distance": 3082
+        "distance": 3082,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Phillips Hub",
-        "distance": 3111
+        "distance": 3111,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Korniyenko Dock",
-        "distance": 3111
+        "distance": 3111,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Zhen Port",
-        "distance": 3138
+        "distance": 3138,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -6924,7 +7259,7 @@
     "region": "Beta3"
   },
   {
-    "name": "Thottacahuan",
+    "name": "Thottacahuan Wang",
     "x": 12.4375,
     "y": 30.90625,
     "z": 9.15625,
@@ -6997,11 +7332,21 @@
     "stations": [
       {
         "station": "Vinogradov Installation",
-        "distance": 2077
+        "distance": 2077,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Laval City",
-        "distance": 3411
+        "distance": 3411,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -7340,23 +7685,48 @@
     "stations": [
       {
         "station": "Kaku Terminal",
-        "distance": 54.6
+        "distance": 54.6,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Kovalyonok City",
-        "distance": 62.4
+        "distance": 62.4,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Burbank Settlement",
-        "distance": 79.5
+        "distance": 79.5,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Onufrienko Settlement",
-        "distance": 91
+        "distance": 91,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       },
       {
         "station": "Agnesi Refinery",
-        "distance": 125
+        "distance": 125,
+        "type": "unknown",
+        "commodities_market": "unknown",
+        "black_market": "unknown",
+        "shipyard": "unknown",
+        "outfitting": "unknown"
       }
     ]
   },
@@ -10451,11 +10821,9 @@
   },
   {
     "name": "ADS 10329",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -61.53125,
-    "y": 45.78125,
-    "z": 1.5,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T16:48:10.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -10484,18 +10852,78 @@
       {
         "system": "Moros",
         "distance": 46.106
+      },
+      {
+        "system": "Ammapa",
+        "distance": 71.02
+      },
+      {
+        "system": "Wanggu",
+        "distance": 83.52
+      },
+      {
+        "system": "Piran",
+        "distance": 65.05
+      },
+      {
+        "system": "Yakan",
+        "distance": 80.54
+      },
+      {
+        "system": "Suraci",
+        "distance": 76.36
+      },
+      {
+        "system": "Gera",
+        "distance": 56.02
+      },
+      {
+        "system": "Arin",
+        "distance": 76.05
+      },
+      {
+        "system": "Pollux",
+        "distance": 81.77
+      },
+      {
+        "system": "Amun",
+        "distance": 117.45
+      },
+      {
+        "system": "Eranin",
+        "distance": 39.87
+      },
+      {
+        "system": "Chini",
+        "distance": 118.96
+      },
+      {
+        "system": "Alcor",
+        "distance": 39.92
+      },
+      {
+        "system": "Blata",
+        "distance": 95.55
+      },
+      {
+        "system": "Eme",
+        "distance": 97.27
+      },
+      {
+        "system": "Loga",
+        "distance": 48.13
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -61.53125,
+    "y": 45.78125,
+    "z": 1.5,
+    "region": "Beta2"
   },
   {
     "name": "BY Draconis",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -48.3125,
-    "y": 21.1875,
-    "z": 7.9375,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T16:08:43.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -10512,10 +10940,72 @@
       {
         "system": "Demeter",
         "distance": 20.85
+      },
+      {
+        "system": "Ammapa",
+        "distance": 92.02
+      },
+      {
+        "system": "Wanggu",
+        "distance": 97.36
+      },
+      {
+        "system": "Piran",
+        "distance": 81.27
+      },
+      {
+        "system": "Yakan",
+        "distance": 97.95
+      },
+      {
+        "system": "Suraci",
+        "distance": 81.41
+      },
+      {
+        "system": "Gera",
+        "distance": 58.78
+      },
+      {
+        "system": "Arin",
+        "distance": 55
+      },
+      {
+        "system": "Pollux",
+        "distance": 67.33
+      },
+      {
+        "system": "Amun",
+        "distance": 106.42
+      },
+      {
+        "system": "Eranin",
+        "distance": 31.1
+      },
+      {
+        "system": "Chini",
+        "distance": 110.78
+      },
+      {
+        "system": "Alcor",
+        "distance": 56.85
+      },
+      {
+        "system": "Blata",
+        "distance": 106.61
+      },
+      {
+        "system": "Eme",
+        "distance": 82.28
+      },
+      {
+        "system": "Loga",
+        "distance": 61.04
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -48.3125,
+    "y": 21.1875,
+    "z": 7.9375,
+    "region": "Beta2"
   },
   {
     "name": "G 205-38",
@@ -10647,11 +11137,9 @@
   },
   {
     "name": "Hemsut",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -53.875,
-    "y": 16.6875,
-    "z": -10.125,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T14:03:32.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -10668,18 +11156,78 @@
       {
         "system": "Demeter",
         "distance": 29.95
+      },
+      {
+        "system": "Ammapa",
+        "distance": 81.14
+      },
+      {
+        "system": "Wanggu",
+        "distance": 85.37
+      },
+      {
+        "system": "Piran",
+        "distance": 74.23
+      },
+      {
+        "system": "Yakan",
+        "distance": 91.79
+      },
+      {
+        "system": "Suraci",
+        "distance": 64.37
+      },
+      {
+        "system": "Gera",
+        "distance": 42.38
+      },
+      {
+        "system": "Arin",
+        "distance": 56.42
+      },
+      {
+        "system": "Pollux",
+        "distance": 63.88
+      },
+      {
+        "system": "Amun",
+        "distance": 107.92
+      },
+      {
+        "system": "Eranin",
+        "distance": 37.9
+      },
+      {
+        "system": "Chini",
+        "distance": 112.03
+      },
+      {
+        "system": "Alcor",
+        "distance": 58.21
+      },
+      {
+        "system": "Blata",
+        "distance": 99.19
+      },
+      {
+        "system": "Eme",
+        "distance": 89.24
+      },
+      {
+        "system": "Loga",
+        "distance": 45.66
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -53.875,
+    "y": 16.6875,
+    "z": -10.125,
+    "region": "Beta2"
   },
   {
     "name": "Laima",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -46.03125,
-    "y": 36.8125,
-    "z": 14.125,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T16:38:49.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -10696,18 +11244,78 @@
       {
         "system": "Demeter",
         "distance": 12.074
+      },
+      {
+        "system": "Ammapa",
+        "distance": 92.42
+      },
+      {
+        "system": "Wanggu",
+        "distance": 102.15
+      },
+      {
+        "system": "Piran",
+        "distance": 83.3
+      },
+      {
+        "system": "Yakan",
+        "distance": 98.91
+      },
+      {
+        "system": "Suraci",
+        "distance": 90.94
+      },
+      {
+        "system": "Gera",
+        "distance": 68.84
+      },
+      {
+        "system": "Arin",
+        "distance": 61.95
+      },
+      {
+        "system": "Pollux",
+        "distance": 72.62
+      },
+      {
+        "system": "Amun",
+        "distance": 106.05
+      },
+      {
+        "system": "Eranin",
+        "distance": 27.79
+      },
+      {
+        "system": "Chini",
+        "distance": 109.01
+      },
+      {
+        "system": "Alcor",
+        "distance": 46.44
+      },
+      {
+        "system": "Blata",
+        "distance": 111.22
+      },
+      {
+        "system": "Eme",
+        "distance": 81.08
+      },
+      {
+        "system": "Loga",
+        "distance": 65.55
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -46.03125,
+    "y": 36.8125,
+    "z": 14.125,
+    "region": "Beta2"
   },
   {
     "name": "LFT 1487",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -55,
-    "y": 15.15625,
-    "z": 4.4375,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T15:47:23.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -10724,18 +11332,78 @@
       {
         "system": "Demeter",
         "distance": 25.848
+      },
+      {
+        "system": "Ammapa",
+        "distance": 88.05
+      },
+      {
+        "system": "Wanggu",
+        "distance": 90.71
+      },
+      {
+        "system": "Piran",
+        "distance": 75.82
+      },
+      {
+        "system": "Yakan",
+        "distance": 92.76
+      },
+      {
+        "system": "Suraci",
+        "distance": 73.73
+      },
+      {
+        "system": "Gera",
+        "distance": 51.01
+      },
+      {
+        "system": "Arin",
+        "distance": 58.74
+      },
+      {
+        "system": "Pollux",
+        "distance": 70.75
+      },
+      {
+        "system": "Amun",
+        "distance": 112.44
+      },
+      {
+        "system": "Eranin",
+        "distance": 39.02
+      },
+      {
+        "system": "Chini",
+        "distance": 117.1
+      },
+      {
+        "system": "Alcor",
+        "distance": 62.8
+      },
+      {
+        "system": "Blata",
+        "distance": 99.61
+      },
+      {
+        "system": "Eme",
+        "distance": 89.41
+      },
+      {
+        "system": "Loga",
+        "distance": 56.86
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -55,
+    "y": 15.15625,
+    "z": 4.4375,
+    "region": "Beta2"
   },
   {
     "name": "LHS 446",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -44.3125,
-    "y": 31.625,
-    "z": 11.15625,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T16:28:40.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -10768,18 +11436,74 @@
       {
         "system": "Moros",
         "distance": 44.826
+      },
+      {
+        "system": "Ammapa",
+        "distance": 93.26
+      },
+      {
+        "system": "Wanggu",
+        "distance": 101.94
+      },
+      {
+        "system": "Piran",
+        "distance": 84.31
+      },
+      {
+        "system": "Yakan",
+        "distance": 100.42
+      },
+      {
+        "system": "Suraci",
+        "distance": 88.47
+      },
+      {
+        "system": "Gera",
+        "distance": 66.18
+      },
+      {
+        "system": "Arin",
+        "distance": 56.88
+      },
+      {
+        "system": "Pollux",
+        "distance": 68.04
+      },
+      {
+        "system": "Amun",
+        "distance": 103.24
+      },
+      {
+        "system": "Eranin",
+        "distance": 25.25
+      },
+      {
+        "system": "Chini",
+        "distance": 106.69
+      },
+      {
+        "system": "Alcor",
+        "distance": 48.53
+      },
+      {
+        "system": "Blata",
+        "distance": 111.62
+      },
+      {
+        "system": "Eme",
+        "distance": 78.54
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -44.3125,
+    "y": 31.625,
+    "z": 11.15625,
+    "region": "Beta2"
   },
   {
     "name": "LHS 494",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -50.5625,
-    "y": 11.46875,
-    "z": -6.1875,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T14:36:45.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -10812,18 +11536,74 @@
       {
         "system": "Moros",
         "distance": 26.215
+      },
+      {
+        "system": "Ammapa",
+        "distance": 87.96
+      },
+      {
+        "system": "Wanggu",
+        "distance": 90.81
+      },
+      {
+        "system": "Piran",
+        "distance": 79.37
+      },
+      {
+        "system": "Yakan",
+        "distance": 96.85
+      },
+      {
+        "system": "Suraci",
+        "distance": 69.06
+      },
+      {
+        "system": "Gera",
+        "distance": 47.06
+      },
+      {
+        "system": "Arin",
+        "distance": 52.26
+      },
+      {
+        "system": "Pollux",
+        "distance": 62.12
+      },
+      {
+        "system": "Amun",
+        "distance": 106.29
+      },
+      {
+        "system": "Eranin",
+        "distance": 37.7
+      },
+      {
+        "system": "Chini",
+        "distance": 111.12
+      },
+      {
+        "system": "Alcor",
+        "distance": 62.73
+      },
+      {
+        "system": "Blata",
+        "distance": 103.06
+      },
+      {
+        "system": "Eme",
+        "distance": 86.17
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -50.5625,
+    "y": 11.46875,
+    "z": -6.1875,
+    "region": "Beta2"
   },
   {
     "name": "LHS 3409",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -59.78125,
-    "y": 24.375,
-    "z": 8.53125,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T16:19:11.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -10840,10 +11620,72 @@
       {
         "system": "Demeter",
         "distance": 17.053
+      },
+      {
+        "system": "Ammapa",
+        "distance": 83.07
+      },
+      {
+        "system": "Wanggu",
+        "distance": 87.63
+      },
+      {
+        "system": "Piran",
+        "distance": 70.08
+      },
+      {
+        "system": "Yakan",
+        "distance": 86.49
+      },
+      {
+        "system": "Suraci",
+        "distance": 75.31
+      },
+      {
+        "system": "Gera",
+        "distance": 52.71
+      },
+      {
+        "system": "Arin",
+        "distance": 66.55
+      },
+      {
+        "system": "Pollux",
+        "distance": 77.65
+      },
+      {
+        "system": "Amun",
+        "distance": 117.17
+      },
+      {
+        "system": "Eranin",
+        "distance": 40.08
+      },
+      {
+        "system": "Chini",
+        "distance": 120.98
+      },
+      {
+        "system": "Alcor",
+        "distance": 57.96
+      },
+      {
+        "system": "Blata",
+        "distance": 95.55
+      },
+      {
+        "system": "Eme",
+        "distance": 93.63
+      },
+      {
+        "system": "Loga",
+        "distance": 55.74
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -59.78125,
+    "y": 24.375,
+    "z": 8.53125,
+    "region": "Beta2"
   },
   {
     "name": "LHS 3749",
@@ -10999,11 +11841,9 @@
   },
   {
     "name": "Ross 1069",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -50.53125,
-    "y": 10.625,
-    "z": 1.03125,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T15:00:42.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -11020,10 +11860,72 @@
       {
         "system": "Demeter",
         "distance": 31.259
+      },
+      {
+        "system": "Ammapa",
+        "distance": 91.7
+      },
+      {
+        "system": "Wanggu",
+        "distance": 93.91
+      },
+      {
+        "system": "Piran",
+        "distance": 80.72
+      },
+      {
+        "system": "Yakan",
+        "distance": 97.91
+      },
+      {
+        "system": "Suraci",
+        "distance": 74.02
+      },
+      {
+        "system": "Gera",
+        "distance": 51.63
+      },
+      {
+        "system": "Arin",
+        "distance": 52.99
+      },
+      {
+        "system": "Pollux",
+        "distance": 65.25
+      },
+      {
+        "system": "Amun",
+        "distance": 108.08
+      },
+      {
+        "system": "Eranin",
+        "distance": 37.98
+      },
+      {
+        "system": "Chini",
+        "distance": 113.2
+      },
+      {
+        "system": "Alcor",
+        "distance": 64.89
+      },
+      {
+        "system": "Blata",
+        "distance": 103.88
+      },
+      {
+        "system": "Eme",
+        "distance": 85.73
+      },
+      {
+        "system": "Loga",
+        "distance": 58.17
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -50.53125,
+    "y": 10.625,
+    "z": 1.03125,
+    "region": "Beta2"
   },
   {
     "name": "Omega Draconis",
@@ -11063,11 +11965,9 @@
   },
   {
     "name": "Wolf 1084",
-    "contributor": "Harbinger",
     "calculated": true,
-    "x": -51,
-    "y": 7.09375,
-    "z": -2.1875,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-02T14:46:09.000Z",
     "distances": [
       {
         "system": "Sol",
@@ -11084,18 +11984,78 @@
       {
         "system": "Demeter",
         "distance": 35.368
+      },
+      {
+        "system": "Ammapa",
+        "distance": 91.77
+      },
+      {
+        "system": "Wanggu",
+        "distance": 92.99
+      },
+      {
+        "system": "Piran",
+        "distance": 81.1
+      },
+      {
+        "system": "Yakan",
+        "distance": 98.43
+      },
+      {
+        "system": "Suraci",
+        "distance": 71.45
+      },
+      {
+        "system": "Gera",
+        "distance": 49.37
+      },
+      {
+        "system": "Arin",
+        "distance": 52.6
+      },
+      {
+        "system": "Pollux",
+        "distance": 64.47
+      },
+      {
+        "system": "Amun",
+        "distance": 108.49
+      },
+      {
+        "system": "Eranin",
+        "distance": 40.75
+      },
+      {
+        "system": "Chini",
+        "distance": 113.83
+      },
+      {
+        "system": "Alcor",
+        "distance": 67.67
+      },
+      {
+        "system": "Blata",
+        "distance": 103.48
+      },
+      {
+        "system": "Eme",
+        "distance": 87.07
+      },
+      {
+        "system": "Loga",
+        "distance": 57.31
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -51,
+    "y": 7.09375,
+    "z": -2.1875,
+    "region": "Beta2"
   },
   {
     "name": "Perkwunos",
-    "contributor": "anon via Codec",
     "calculated": true,
-    "x": -40.5,
-    "y": 46.75,
-    "z": 6.75,
+    "contributor": "anon via Codec, Harbinger",
+    "contributed": "2014-11-02T17:18:43.000Z",
     "distances": [
       {
         "system": "Surya",
@@ -11132,10 +12092,72 @@
       {
         "system": "Demeter",
         "distance": 16.008
+      },
+      {
+        "system": "Ammapa",
+        "distance": 90.66
+      },
+      {
+        "system": "Wanggu",
+        "distance": 104.41
+      },
+      {
+        "system": "Piran",
+        "distance": 86.73
+      },
+      {
+        "system": "Yakan",
+        "distance": 102.18
+      },
+      {
+        "system": "Suraci",
+        "distance": 93.03
+      },
+      {
+        "system": "Gera",
+        "distance": 72.05
+      },
+      {
+        "system": "Arin",
+        "distance": 61.76
+      },
+      {
+        "system": "Pollux",
+        "distance": 68.41
+      },
+      {
+        "system": "Amun",
+        "distance": 99.17
+      },
+      {
+        "system": "Eranin",
+        "distance": 21.89
+      },
+      {
+        "system": "Chini",
+        "distance": 100.83
+      },
+      {
+        "system": "Alcor",
+        "distance": 33.3
+      },
+      {
+        "system": "Blata",
+        "distance": 116.79
+      },
+      {
+        "system": "Eme",
+        "distance": 77.05
+      },
+      {
+        "system": "Loga",
+        "distance": 63.48
       }
     ],
-    "region": "Beta2 (unverified)",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "x": -40.5,
+    "y": 46.75,
+    "z": 6.75,
+    "region": "Beta2"
   },
   {
     "name": "KUI 47",
