@@ -8314,7 +8314,7 @@
         "distance": 12.655
       },
       {
-        "system": "Veren's stop",
+        "system": "Veren's Stop",
         "distance": 15.695
       },
       {
@@ -8414,10 +8414,6 @@
       {
         "system": "Demeter",
         "distance": 44.641
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 27.504
       },
       {
         "system": "HIP 105906",
@@ -8532,10 +8528,6 @@
       {
         "system": "Demeter",
         "distance": 6.197
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 63.123
       }
     ],
     "region": "Beta2 (unverified)",
@@ -8552,10 +8544,6 @@
       {
         "system": "Aulin",
         "distance": "101.476"
-      },
-      {
-        "system": "Baga",
-        "distance": "37.295"
       },
       {
         "system": "Gera",
@@ -8598,10 +8586,6 @@
         "distance": "117.079"
       },
       {
-        "system": "Baga",
-        "distance": "39.663"
-      },
-      {
         "system": "Gera",
         "distance": "49.729"
       },
@@ -8638,10 +8622,6 @@
         "distance": "117.6"
       },
       {
-        "system": "Baga",
-        "distance": "39.432"
-      },
-      {
         "system": "Gera",
         "distance": "48.95"
       },
@@ -8674,10 +8654,6 @@
         "distance": "100.076"
       },
       {
-        "system": "Baga",
-        "distance": "17.485"
-      },
-      {
         "system": "Gera",
         "distance": "27.921"
       },
@@ -8708,10 +8684,6 @@
       {
         "system": "Aulin",
         "distance": "102.217"
-      },
-      {
-        "system": "Baga",
-        "distance": "11.747"
       },
       {
         "system": "Gera",
@@ -9002,10 +8974,6 @@
         "distance": 23.031
       },
       {
-        "system": "Fu Haiting",
-        "distance": 35.893
-      },
-      {
         "system": "Moros",
         "distance": 31.559
       }
@@ -9146,10 +9114,6 @@
         "distance": 29.004
       },
       {
-        "system": "Fu Haiting",
-        "distance": 33.361
-      },
-      {
         "system": "HIP 105906",
         "distance": 67.766
       },
@@ -9206,10 +9170,6 @@
         "distance": 80.14
       },
       {
-        "system": "Fu Haiting",
-        "distance": 31.736
-      },
-      {
         "system": "HIP 105906",
         "distance": 63.185
       },
@@ -9246,10 +9206,6 @@
       {
         "system": "Demeter",
         "distance": 60.223
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 88.01
       },
       {
         "system": "HIP 105906",
@@ -9330,10 +9286,6 @@
       {
         "system": "Demeter",
         "distance": 55.438
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 27.192
       },
       {
         "system": "Moros",
@@ -9428,10 +9380,6 @@
         "distance": 57.189
       },
       {
-        "system": "Fu Haiting",
-        "distance": 79.341
-      },
-      {
         "system": "HIP 105906",
         "distance": 124.767
       },
@@ -9508,10 +9456,6 @@
         "distance": 58.483
       },
       {
-        "system": "Fu Haiting",
-        "distance": 80.89
-      },
-      {
         "system": "HIP 105906",
         "distance": 126.468
       },
@@ -9586,10 +9530,6 @@
       {
         "system": "Demeter",
         "distance": 43.512
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 37.738
       },
       {
         "system": "HIP 105906",
@@ -9694,10 +9634,6 @@
         "distance": 51.704
       },
       {
-        "system": "Fu Haiting",
-        "distance": 32.208
-      },
-      {
         "system": "Moros",
         "distance": 14.055
       }
@@ -9730,10 +9666,6 @@
         "distance": 50.58
       },
       {
-        "system": "Fu Haiting",
-        "distance": 56.513
-      },
-      {
         "system": "HIP 105906",
         "distance": 103.815
       },
@@ -9744,10 +9676,6 @@
       {
         "system": "Moros",
         "distance": 29.061
-      },
-      {
-        "system": "Chapoyo",
-        "distance": 58.259
       },
       {
         "system": "Adepti",
@@ -9780,10 +9708,6 @@
       {
         "system": "Demeter",
         "distance": 50.994
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 58.4
       },
       {
         "system": "HIP 105906",
@@ -9826,10 +9750,6 @@
         "distance": 46.534
       },
       {
-        "system": "Fu Haiting",
-        "distance": 43.83
-      },
-      {
         "system": "HIP 105906",
         "distance": 90.677
       },
@@ -9868,10 +9788,6 @@
       {
         "system": "Demeter",
         "distance": 52.974
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 59.594
       },
       {
         "system": "HIP 105906",
@@ -9918,10 +9834,6 @@
         "distance": 52.632
       },
       {
-        "system": "Fu Haiting",
-        "distance": 58.128
-      },
-      {
         "system": "HIP 105906",
         "distance": 105.926
       },
@@ -9958,10 +9870,6 @@
       {
         "system": "Demeter",
         "distance": 54.792
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 75.276
       },
       {
         "system": "HIP 105906",
@@ -10042,10 +9950,6 @@
         "distance": 45.101
       },
       {
-        "system": "Fu Haiting",
-        "distance": 31.884
-      },
-      {
         "system": "Moros",
         "distance": 14.111
       }
@@ -10076,10 +9980,6 @@
       {
         "system": "Demeter",
         "distance": 50.545
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 57.063
       },
       {
         "system": "HIP 105906",
@@ -10116,10 +10016,6 @@
       {
         "system": "Demeter",
         "distance": 55.134
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 61.206
       },
       {
         "system": "HIP 105906",
@@ -10166,10 +10062,6 @@
         "distance": 54.056
       },
       {
-        "system": "Fu Haiting",
-        "distance": 63.878
-      },
-      {
         "system": "HIP 105906",
         "distance": 111.122
       },
@@ -10214,10 +10106,6 @@
         "distance": 35.571
       },
       {
-        "system": "Fu Haiting",
-        "distance": 47.161
-      },
-      {
         "system": "HIP 105906",
         "distance": 92.015
       },
@@ -10252,10 +10140,6 @@
       {
         "system": "Demeter",
         "distance": 33.836
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 40.581
       },
       {
         "system": "HIP 105906",
@@ -10300,10 +10184,6 @@
       {
         "system": "Demeter",
         "distance": 51.517
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 52.756
       }
     ],
     "region": "Beta2 (unverified)",
@@ -10332,10 +10212,6 @@
       {
         "system": "Demeter",
         "distance": 51.013
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 67.155
       },
       {
         "system": "HIP 105906",
@@ -10376,10 +10252,6 @@
       {
         "system": "Demeter",
         "distance": 58.645
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 65.714
       }
     ],
     "region": "Beta2 (unverified)",
@@ -10406,10 +10278,6 @@
       {
         "system": "Demeter",
         "distance": 62.2
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 81.594
       },
       {
         "system": "Ammapa",
@@ -10478,10 +10346,6 @@
         "distance": 42.676
       },
       {
-        "system": "Fu Haiting",
-        "distance": 29.68
-      },
-      {
         "system": "35 Draconis",
         "distance": 46.584
       },
@@ -10530,10 +10394,6 @@
         "distance": 37.004
       },
       {
-        "system": "Fu Haiting",
-        "distance": 31.639
-      },
-      {
         "system": "HIP 105906",
         "distance": 71.906
       },
@@ -10578,10 +10438,6 @@
         "distance": 16.862
       },
       {
-        "system": "Fu Haiting",
-        "distance": 44.561
-      },
-      {
         "system": "HIP 105906",
         "distance": 72.705
       },
@@ -10616,10 +10472,6 @@
       {
         "system": "Demeter",
         "distance": 9.986
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 52.793
       },
       {
         "system": "HIP 105906",
@@ -10660,10 +10512,6 @@
       {
         "system": "Demeter",
         "distance": 20.85
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 61.603
       }
     ],
     "region": "Beta2 (unverified)",
@@ -10692,10 +10540,6 @@
       {
         "system": "Demeter",
         "distance": 22.332
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 64.188
       }
     ],
     "region": "Beta2 (unverified)",
@@ -10722,10 +10566,6 @@
       {
         "system": "Demeter",
         "distance": 33.297
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 40.805
       },
       {
         "system": "HIP 105906",
@@ -10828,10 +10668,6 @@
       {
         "system": "Demeter",
         "distance": 29.95
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 44.531
       }
     ],
     "region": "Beta2 (unverified)",
@@ -10860,10 +10696,6 @@
       {
         "system": "Demeter",
         "distance": 12.074
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 67.382
       }
     ],
     "region": "Beta2 (unverified)",
@@ -10892,10 +10724,6 @@
       {
         "system": "Demeter",
         "distance": 25.848
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 57.788
       }
     ],
     "region": "Beta2 (unverified)",
@@ -10924,10 +10752,6 @@
       {
         "system": "Demeter",
         "distance": 14.799
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 65.091
       },
       {
         "system": "HIP 105906",
@@ -10974,10 +10798,6 @@
         "distance": 32.756
       },
       {
-        "system": "Fu Haiting",
-        "distance": 51.052
-      },
-      {
         "system": "HIP 105906",
         "distance": 90.359
       },
@@ -11020,10 +10840,6 @@
       {
         "system": "Demeter",
         "distance": 17.053
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 58.731
       }
     ],
     "region": "Beta2 (unverified)",
@@ -11052,10 +10868,6 @@
       {
         "system": "Demeter",
         "distance": 43.653
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 32.944
       },
       {
         "system": "HIP 105906",
@@ -11102,10 +10914,6 @@
         "distance": 36.35
       },
       {
-        "system": "Fu Haiting",
-        "distance": 33.021
-      },
-      {
         "system": "HIP 105906",
         "distance": 65.687
       },
@@ -11146,10 +10954,6 @@
         "distance": 39.601
       },
       {
-        "system": "Fu Haiting",
-        "distance": 28.581
-      },
-      {
         "system": "Moros",
         "distance": 15.262
       }
@@ -11180,10 +10984,6 @@
       {
         "system": "Demeter",
         "distance": 22.44
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 45.122
       },
       {
         "system": "HIP 105906",
@@ -11220,10 +11020,6 @@
       {
         "system": "Demeter",
         "distance": 31.259
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 57.546
       }
     ],
     "region": "Beta2 (unverified)",
@@ -11252,10 +11048,6 @@
       {
         "system": "Demeter",
         "distance": 19.447
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 39.991
       },
       {
         "system": "HIP 105906",
@@ -11292,10 +11084,6 @@
       {
         "system": "Demeter",
         "distance": 35.368
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 56.102
       }
     ],
     "region": "Beta2 (unverified)",
@@ -11372,10 +11160,6 @@
       {
         "system": "Demeter",
         "distance": 49.415
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 34.075
       }
     ],
     "region": "Beta2 (unverified)",
@@ -11402,10 +11186,6 @@
       {
         "system": "Demeter",
         "distance": 50.011
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 35.197
       },
       {
         "system": "HIP 91906",
@@ -11504,10 +11284,6 @@
         "distance": 40.794
       },
       {
-        "system": "Fu Haiting",
-        "distance": 27.548
-      },
-      {
         "system": "35 Draconis",
         "distance": 43.433
       },
@@ -11604,10 +11380,6 @@
       {
         "system": "Demeter",
         "distance": 47.65
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 32.376
       }
     ],
     "region": "Beta2 (unverified)",
@@ -11636,10 +11408,6 @@
       {
         "system": "Demeter",
         "distance": 50.07
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 25.163
       }
     ],
     "region": "Beta2 (unverified)",
@@ -11668,10 +11436,6 @@
       {
         "system": "Demeter",
         "distance": 50.251
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 34.003
       }
     ],
     "region": "Beta2 (unverified)",
@@ -11700,10 +11464,6 @@
       {
         "system": "Demeter",
         "distance": 35.679
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 23.828
       },
       {
         "system": "HIP 105906",
@@ -11744,10 +11504,6 @@
       {
         "system": "Demeter",
         "distance": 37.652
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 36.388
       }
     ],
     "region": "Beta2 (unverified)",
@@ -11776,10 +11532,6 @@
       {
         "system": "Demeter",
         "distance": 46.384
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 25.423
       },
       {
         "system": "Moros",
@@ -11814,10 +11566,6 @@
         "distance": 49.215
       },
       {
-        "system": "Fu Haiting",
-        "distance": 20.071
-      },
-      {
         "system": "Moros",
         "distance": 22.942
       }
@@ -11848,10 +11596,6 @@
       {
         "system": "Demeter",
         "distance": 37.614
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 41.423
       },
       {
         "system": "HIP 105906",
@@ -11888,10 +11632,6 @@
       {
         "system": "Demeter",
         "distance": 30.762
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 30.864
       },
       {
         "system": "HIP 105906",
@@ -11932,10 +11672,6 @@
       {
         "system": "Demeter",
         "distance": 32.701
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 30.468
       }
     ],
     "region": "Beta2 (unverified)",
@@ -11964,10 +11700,6 @@
       {
         "system": "Demeter",
         "distance": 44.648
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 27.437
       }
     ],
     "region": "Beta2 (unverified)",
@@ -13300,10 +13032,6 @@
       {
         "system": "Demeter",
         "distance": 72.402
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 37.609
       }
     ],
     "region": "Beta2 (unverified)",
@@ -14090,10 +13818,6 @@
       {
         "system": "Demeter",
         "distance": 39.99
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 84.265
       }
     ],
     "x": -24.6875,
@@ -14122,10 +13846,6 @@
       {
         "system": "Demeter",
         "distance": 43.255
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 69.263
       }
     ],
     "x": -23.9375,
@@ -14156,10 +13876,6 @@
       {
         "system": "Demeter",
         "distance": 62.558
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 28.35
       }
     ],
     "region": "Beta2 (unverified)",
@@ -14188,10 +13904,6 @@
       {
         "system": "Demeter",
         "distance": 66.402
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 31.583
       }
     ],
     "region": "Beta2 (unverified)",
@@ -14220,10 +13932,6 @@
       {
         "system": "Demeter",
         "distance": 85.291
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 34.13
       }
     ],
     "region": "Beta2 (unverified)",
@@ -14253,10 +13961,6 @@
       {
         "system": "Demeter",
         "distance": 38.277
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 47.942
       }
     ],
     "region": "Beta2 (unverified)"
@@ -14285,10 +13989,6 @@
       {
         "system": "Demeter",
         "distance": 44.163
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 48.828
       }
     ],
     "region": "Beta2 (unverified)"
@@ -14317,10 +14017,6 @@
       {
         "system": "Demeter",
         "distance": 42.441
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 37.328
       }
     ],
     "region": "Beta2 (unverified)"
@@ -14349,10 +14045,6 @@
       {
         "system": "Demeter",
         "distance": 67.175
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 12.44
       }
     ],
     "region": "Beta2 (unverified)"
@@ -14378,10 +14070,6 @@
       {
         "system": "Demeter",
         "distance": 37.088
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 58.279
       }
     ],
     "x": -32.6875,
@@ -14410,10 +14098,6 @@
       {
         "system": "Demeter",
         "distance": 33.193
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 71.912
       }
     ],
     "x": -32.5625,
@@ -14442,10 +14126,6 @@
       {
         "system": "Demeter",
         "distance": 20.876
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 69.774
       }
     ],
     "x": -37.28125,
@@ -14474,10 +14154,6 @@
       {
         "system": "Demeter",
         "distance": 21.141
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 56.061
       }
     ],
     "x": -72.125,
@@ -14506,10 +14182,6 @@
       {
         "system": "Demeter",
         "distance": 57.923
-      },
-      {
-        "system": "Fu Haiting",
-        "distance": 18.975
       }
     ],
     "x": -70.25,
@@ -14618,10 +14290,6 @@
       {
         "system": "LTT 16979",
         "distance": 25952.859
-      },
-      {
-        "system": "Baga",
-        "distance": 25959.213
       },
       {
         "system": "HR 158",
