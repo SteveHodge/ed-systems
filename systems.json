@@ -15707,5 +15707,1517 @@
     "y": 32.125,
     "z": -0.65625,
     "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector ON-T B3-4",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T02:59:42.531Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 84.85
+      },
+      {
+        "system": "Eranin",
+        "distance": 53.42
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 119.97
+      },
+      {
+        "system": "Pachanu",
+        "distance": 97.62
+      },
+      {
+        "system": "Yakan",
+        "distance": 65.71
+      },
+      {
+        "system": "Salarhul",
+        "distance": 54.25
+      },
+      {
+        "system": "Minawara",
+        "distance": 59.44
+      },
+      {
+        "system": "Ciguru",
+        "distance": 33.98
+      },
+      {
+        "system": "Tefenhua",
+        "distance": 45.79
+      },
+      {
+        "system": "Yanyan",
+        "distance": 36.13
+      },
+      {
+        "system": "Chongquan",
+        "distance": 67.68
+      },
+      {
+        "system": "Circios",
+        "distance": 80.16
+      }
+    ],
+    "x": -76,
+    "y": 37.15625,
+    "z": -6.5,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector ST-R B4-2",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T02:53:26.989Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 91.76
+      },
+      {
+        "system": "Eranin",
+        "distance": 60.1
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 116.38
+      },
+      {
+        "system": "Pachanu",
+        "distance": 94.86
+      },
+      {
+        "system": "Yakan",
+        "distance": 59.5
+      },
+      {
+        "system": "Salarhul",
+        "distance": 51.94
+      },
+      {
+        "system": "Minawara",
+        "distance": 62.24
+      },
+      {
+        "system": "Ciguru",
+        "distance": 36.41
+      },
+      {
+        "system": "Tefenhua",
+        "distance": 52.1
+      },
+      {
+        "system": "Yanyan",
+        "distance": 43.35
+      },
+      {
+        "system": "Chongquan",
+        "distance": 76.68
+      },
+      {
+        "system": "Circios",
+        "distance": 88.14
+      }
+    ],
+    "x": -82.875,
+    "y": 39.375,
+    "z": -0.84375,
+    "region": "Beta3"
+  },
+  {
+    "name": "Herculis Sector EL-Y B4",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T02:48:12.066Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 92.39
+      },
+      {
+        "system": "Eranin",
+        "distance": 56.67
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 123.38
+      },
+      {
+        "system": "Pachanu",
+        "distance": 102.43
+      },
+      {
+        "system": "Yakan",
+        "distance": 65.47
+      },
+      {
+        "system": "Salarhul",
+        "distance": 58.8
+      },
+      {
+        "system": "Minawara",
+        "distance": 68.9
+      },
+      {
+        "system": "Ciguru",
+        "distance": 48.05
+      },
+      {
+        "system": "Tefenhua",
+        "distance": 51.69
+      },
+      {
+        "system": "Yanyan",
+        "distance": 40.12
+      },
+      {
+        "system": "Chongquan",
+        "distance": 79.44
+      },
+      {
+        "system": "Circios",
+        "distance": 84.57
+      }
+    ],
+    "x": -77.65625,
+    "y": 49.875,
+    "z": 4.15625,
+    "region": "Beta3"
+  },
+  {
+    "name": "Herculis Sector CQ-Y B3",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T02:43:58.787Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 91.45
+      },
+      {
+        "system": "Eranin",
+        "distance": 52.47
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 127.01
+      },
+      {
+        "system": "Pachanu",
+        "distance": 105.7
+      },
+      {
+        "system": "Yakan",
+        "distance": 71.85
+      },
+      {
+        "system": "Salarhul",
+        "distance": 61.3
+      },
+      {
+        "system": "Minawara",
+        "distance": 67.09
+      },
+      {
+        "system": "Ciguru",
+        "distance": 55.68
+      },
+      {
+        "system": "Tefenhua",
+        "distance": 42.88
+      },
+      {
+        "system": "Yanyan",
+        "distance": 34.72
+      },
+      {
+        "system": "Chongquan",
+        "distance": 75.74
+      },
+      {
+        "system": "Circios",
+        "distance": 75.42
+      }
+    ],
+    "x": -70.75,
+    "y": 57.90625,
+    "z": -2.21875,
+    "region": "Beta3"
+  },
+  {
+    "name": "Herculis Sector EL-Y B5",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T02:39:36.353Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 86.21
+      },
+      {
+        "system": "Eranin",
+        "distance": 47.61
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 131.63
+      },
+      {
+        "system": "Pachanu",
+        "distance": 110.18
+      },
+      {
+        "system": "Yakan",
+        "distance": 75.65
+      },
+      {
+        "system": "Salarhul",
+        "distance": 65.79
+      },
+      {
+        "system": "Minawara",
+        "distance": 71.12
+      },
+      {
+        "system": "Ciguru",
+        "distance": 53.72
+      },
+      {
+        "system": "Tefenhua",
+        "distance": 45.82
+      },
+      {
+        "system": "Yanyan",
+        "distance": 30.74
+      },
+      {
+        "system": "Chongquan",
+        "distance": 72.93
+      },
+      {
+        "system": "Circios",
+        "distance": 73.72
+      }
+    ],
+    "x": -66.9375,
+    "y": 54.3125,
+    "z": 1.25,
+    "region": "Beta3"
+  },
+  {
+    "name": "Bei Dou Sector JC-V B2-4",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T02:34:55.783Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 82.21
+      },
+      {
+        "system": "Eranin",
+        "distance": 42.24
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 138.42
+      },
+      {
+        "system": "Pachanu",
+        "distance": 116.87
+      },
+      {
+        "system": "Yakan",
+        "distance": 82.71
+      },
+      {
+        "system": "Salarhul",
+        "distance": 72.37
+      },
+      {
+        "system": "Minawara",
+        "distance": 75.94
+      },
+      {
+        "system": "Ciguru",
+        "distance": 57.81
+      },
+      {
+        "system": "Tefenhua",
+        "distance": 46.69
+      },
+      {
+        "system": "Yanyan",
+        "distance": 26.47
+      },
+      {
+        "system": "Chongquan",
+        "distance": 70.61
+      },
+      {
+        "system": "Circios",
+        "distance": 68.81
+      }
+    ],
+    "x": -60.15625,
+    "y": 55.96875,
+    "z": 2.625,
+    "region": "Beta3"
+  },
+  {
+    "name": "Bei Dou Sector JC-V B2-3",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T02:30:10.351Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 84.78
+      },
+      {
+        "system": "Eranin",
+        "distance": 44.32
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 136.63
+      },
+      {
+        "system": "Pachanu",
+        "distance": 115.12
+      },
+      {
+        "system": "Yakan",
+        "distance": 81.62
+      },
+      {
+        "system": "Salarhul",
+        "distance": 70.6
+      },
+      {
+        "system": "Minawara",
+        "distance": 73.85
+      },
+      {
+        "system": "Ciguru",
+        "distance": 59.43
+      },
+      {
+        "system": "Tefenhua",
+        "distance": 44.09
+      },
+      {
+        "system": "Yanyan",
+        "distance": 27.84
+      },
+      {
+        "system": "Chongquan",
+        "distance": 71.51
+      },
+      {
+        "system": "Circios",
+        "distance": 68.4
+      }
+    ],
+    "x": -61.21875,
+    "y": 58.65625,
+    "z": 0.125,
+    "region": "Beta3"
+  },
+  {
+    "name": "Bei Dou Sector JC-V B2-0",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T02:25:26.588Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 85.69
+      },
+      {
+        "system": "Eranin",
+        "distance": 45.29
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 134.73
+      },
+      {
+        "system": "Pachanu",
+        "distance": 113.12
+      },
+      {
+        "system": "Yakan",
+        "distance": 80.33
+      },
+      {
+        "system": "Salarhul",
+        "distance": 68.58
+      },
+      {
+        "system": "Minawara",
+        "distance": 71.37
+      },
+      {
+        "system": "Ciguru",
+        "distance": 58.96
+      },
+      {
+        "system": "Tefenhua",
+        "distance": 41.67
+      },
+      {
+        "system": "Yanyan",
+        "distance": 28.09
+      },
+      {
+        "system": "Chongquan",
+        "distance": 70.98
+      },
+      {
+        "system": "Circios",
+        "distance": 67.98
+      }
+    ],
+    "x": -62.21875,
+    "y": 58.875,
+    "z": -2.3125,
+    "region": "Beta3"
+  },
+  {
+    "name": "Bei Dou Sector JC-V B2-2",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T02:20:21.351Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 84.41
+      },
+      {
+        "system": "Eranin",
+        "distance": 43.98
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 135.6
+      },
+      {
+        "system": "Pachanu",
+        "distance": 113.91
+      },
+      {
+        "system": "Yakan",
+        "distance": 81.28
+      },
+      {
+        "system": "Salarhul",
+        "distance": 69.35
+      },
+      {
+        "system": "Minawara",
+        "distance": 71.72
+      },
+      {
+        "system": "Ciguru",
+        "distance": 58.67
+      },
+      {
+        "system": "Tefenhua",
+        "distance": 41.57
+      },
+      {
+        "system": "Yanyan",
+        "distance": 26.8
+      },
+      {
+        "system": "Chongquan",
+        "distance": 69.84
+      },
+      {
+        "system": "Circios",
+        "distance": 66.95
+      }
+    ],
+    "x": -61.125,
+    "y": 58.15625,
+    "z": -2.40625,
+    "region": "Beta3"
+  },
+  {
+    "name": "Bei Dou Sector FW-W B1-2",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T02:11:00.559Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 84.15
+      },
+      {
+        "system": "Eranin",
+        "distance": 42.61
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 142.83
+      },
+      {
+        "system": "Pachanu",
+        "distance": 120.63
+      },
+      {
+        "system": "Yakan",
+        "distance": 94.17
+      },
+      {
+        "system": "Salarhul",
+        "distance": 76.92
+      },
+      {
+        "system": "Minawara",
+        "distance": 71.32
+      },
+      {
+        "system": "Ciguru",
+        "distance": 71.25
+      },
+      {
+        "system": "Tefenhua",
+        "distance": 30.63
+      },
+      {
+        "system": "Yanyan",
+        "distance": 26.77
+      },
+      {
+        "system": "Chongquan",
+        "distance": 63.59
+      },
+      {
+        "system": "Circios",
+        "distance": 50.78
+      },
+      {
+        "system": "Slatus",
+        "distance": 129.5
+      },
+      {
+        "system": "Chini",
+        "distance": 105.27
+      },
+      {
+        "system": "Atum",
+        "distance": 112.55
+      }
+    ],
+    "x": -49,
+    "y": 66.3125,
+    "z": -16.8125,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector MN-T B3-0",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T07:40:03.903Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 120.79
+      },
+      {
+        "system": "Eranin",
+        "distance": 89.12
+      },
+      {
+        "system": "Cuages",
+        "distance": 37.48
+      },
+      {
+        "system": "Ciguru",
+        "distance": 51.68
+      },
+      {
+        "system": "Minawara",
+        "distance": 55.86
+      },
+      {
+        "system": "Yanyan",
+        "distance": 71.11
+      },
+      {
+        "system": "Yakan",
+        "distance": 30.31
+      },
+      {
+        "system": "Chara",
+        "distance": 108.28
+      },
+      {
+        "system": "Slatus",
+        "distance": 188.74
+      },
+      {
+        "system": "Chini",
+        "distance": 165.99
+      },
+      {
+        "system": "Atum",
+        "distance": 164.22
+      },
+      {
+        "system": "Circios",
+        "distance": 111.98
+      }
+    ],
+    "x": -111.25,
+    "y": 46.65625,
+    "z": -6.03125,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector IR-W C1-15",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T07:26:31.626Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 106.97
+      },
+      {
+        "system": "Eranin",
+        "distance": 77.12
+      },
+      {
+        "system": "Cuages",
+        "distance": 42.55
+      },
+      {
+        "system": "Ciguru",
+        "distance": 38.71
+      },
+      {
+        "system": "Minawara",
+        "distance": 45.58
+      },
+      {
+        "system": "Yanyan",
+        "distance": 58.87
+      },
+      {
+        "system": "Yakan",
+        "distance": 42.93
+      },
+      {
+        "system": "Chara",
+        "distance": 95.12
+      },
+      {
+        "system": "Slatus",
+        "distance": 175.42
+      },
+      {
+        "system": "Chini",
+        "distance": 152.37
+      },
+      {
+        "system": "Atum",
+        "distance": 151.51
+      },
+      {
+        "system": "Circios",
+        "distance": 98.52
+      }
+    ],
+    "x": -98.65625,
+    "y": 38.4375,
+    "z": -15.21875,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector IR-W C1-17",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T07:22:55.363Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 109.04
+      },
+      {
+        "system": "Eranin",
+        "distance": 79.45
+      },
+      {
+        "system": "Cuages",
+        "distance": 39.72
+      },
+      {
+        "system": "Ciguru",
+        "distance": 39.09
+      },
+      {
+        "system": "Minawara",
+        "distance": 50.47
+      },
+      {
+        "system": "Yanyan",
+        "distance": 61.64
+      },
+      {
+        "system": "Yakan",
+        "distance": 39.99
+      },
+      {
+        "system": "Chara",
+        "distance": 97.71
+      },
+      {
+        "system": "Slatus",
+        "distance": 178.67
+      },
+      {
+        "system": "Chini",
+        "distance": 156.04
+      },
+      {
+        "system": "Atum",
+        "distance": 153.89
+      },
+      {
+        "system": "Circios",
+        "distance": 102.74
+      }
+    ],
+    "x": -101.75,
+    "y": 37.8125,
+    "z": -10.375,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector IR-W C1-19",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T07:16:54.271Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 111.44
+      },
+      {
+        "system": "Eranin",
+        "distance": 81.47
+      },
+      {
+        "system": "Cuages",
+        "distance": 38.62
+      },
+      {
+        "system": "Ciguru",
+        "distance": 41.43
+      },
+      {
+        "system": "Minawara",
+        "distance": 51.65
+      },
+      {
+        "system": "Yanyan",
+        "distance": 63.64
+      },
+      {
+        "system": "Yakan",
+        "distance": 37.71
+      },
+      {
+        "system": "Chara",
+        "distance": 99.93
+      },
+      {
+        "system": "Slatus",
+        "distance": 180.88
+      },
+      {
+        "system": "Chini",
+        "distance": 158.26
+      },
+      {
+        "system": "Atum",
+        "distance": 156.07
+      },
+      {
+        "system": "Circios",
+        "distance": 104.85
+      }
+    ],
+    "x": -103.875,
+    "y": 39.3125,
+    "z": -9.1875,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector RT-R B4-0",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T07:09:37.785Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 111.51
+      },
+      {
+        "system": "Eranin",
+        "distance": 81.59
+      },
+      {
+        "system": "Cuages",
+        "distance": 39.21
+      },
+      {
+        "system": "Ciguru",
+        "distance": 41.79
+      },
+      {
+        "system": "Minawara",
+        "distance": 56.74
+      },
+      {
+        "system": "Yanyan",
+        "distance": 64.26
+      },
+      {
+        "system": "Yakan",
+        "distance": 38.07
+      },
+      {
+        "system": "Chara",
+        "distance": 100.28
+      },
+      {
+        "system": "Slatus",
+        "distance": 181.69
+      },
+      {
+        "system": "Chini",
+        "distance": 159.52
+      },
+      {
+        "system": "Atum",
+        "distance": 156.11
+      },
+      {
+        "system": "Circios",
+        "distance": 106.77
+      }
+    ],
+    "x": -104.34375,
+    "y": 39.125,
+    "z": -4.125,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector RT-R B4-1",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T07:05:03.527Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 112.91
+      },
+      {
+        "system": "Eranin",
+        "distance": 82.14
+      },
+      {
+        "system": "Cuages",
+        "distance": 40.44
+      },
+      {
+        "system": "Ciguru",
+        "distance": 44.52
+      },
+      {
+        "system": "Minawara",
+        "distance": 57.61
+      },
+      {
+        "system": "Yanyan",
+        "distance": 64.69
+      },
+      {
+        "system": "Yakan",
+        "distance": 37.47
+      },
+      {
+        "system": "Chara",
+        "distance": 101.11
+      },
+      {
+        "system": "Slatus",
+        "distance": 182.29
+      },
+      {
+        "system": "Chini",
+        "distance": 160.06
+      },
+      {
+        "system": "Atum",
+        "distance": 156.89
+      },
+      {
+        "system": "Circios",
+        "distance": 107.11
+      }
+    ],
+    "x": -104.78125,
+    "y": 41.9375,
+    "z": -3.1875,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector RT-R B4-2",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T07:00:15.477Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 110.92
+      },
+      {
+        "system": "Eranin",
+        "distance": 80.91
+      },
+      {
+        "system": "Cuages",
+        "distance": 40.24
+      },
+      {
+        "system": "Ciguru",
+        "distance": 41.79
+      },
+      {
+        "system": "Minawara",
+        "distance": 58.02
+      },
+      {
+        "system": "Yanyan",
+        "distance": 63.7
+      },
+      {
+        "system": "Yakan",
+        "distance": 38.98
+      },
+      {
+        "system": "Chara",
+        "distance": 99.67
+      },
+      {
+        "system": "Slatus",
+        "distance": 181.16
+      },
+      {
+        "system": "Chini",
+        "distance": 159.11
+      },
+      {
+        "system": "Atum",
+        "distance": 155.41
+      },
+      {
+        "system": "Circios",
+        "distance": 106.55
+      }
+    ],
+    "x": -103.6875,
+    "y": 39.3125,
+    "z": -2.78125,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector FG-Y D139",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T06:53:11.103Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 111.29
+      },
+      {
+        "system": "Eranin",
+        "distance": 80.44
+      },
+      {
+        "system": "Cuages",
+        "distance": 43.31
+      },
+      {
+        "system": "Ciguru",
+        "distance": 44.5
+      },
+      {
+        "system": "Minawara",
+        "distance": 61.89
+      },
+      {
+        "system": "Yanyan",
+        "distance": 63.49
+      },
+      {
+        "system": "Yakan",
+        "distance": 40.4
+      },
+      {
+        "system": "Chara",
+        "distance": 99.59
+      },
+      {
+        "system": "Slatus",
+        "distance": 181.02
+      },
+      {
+        "system": "Chini",
+        "distance": 159.21
+      },
+      {
+        "system": "Atum",
+        "distance": 155.02
+      },
+      {
+        "system": "Circios",
+        "distance": 106.99
+      }
+    ],
+    "x": -103.0625,
+    "y": 41.96875,
+    "z": 1.21875,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector RT-R B4-3",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T06:48:51.860Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 107.38
+      },
+      {
+        "system": "Eranin",
+        "distance": 77.18
+      },
+      {
+        "system": "Cuages",
+        "distance": 44.74
+      },
+      {
+        "system": "Ciguru",
+        "distance": 40.77
+      },
+      {
+        "system": "Minawara",
+        "distance": 61.96
+      },
+      {
+        "system": "Yanyan",
+        "distance": 60.5
+      },
+      {
+        "system": "Yakan",
+        "distance": 43.69
+      },
+      {
+        "system": "Chara",
+        "distance": 96.12
+      },
+      {
+        "system": "Slatus",
+        "distance": 177.84
+      },
+      {
+        "system": "Chini",
+        "distance": 156.22
+      },
+      {
+        "system": "Atum",
+        "distance": 151.52
+      },
+      {
+        "system": "Circios",
+        "distance": 104.48
+      }
+    ],
+    "x": -99.9375,
+    "y": 39.25,
+    "z": 1.28125,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector RT-R B4-5",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T06:44:55.965Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 104.84
+      },
+      {
+        "system": "Eranin",
+        "distance": 75.56
+      },
+      {
+        "system": "Cuages",
+        "distance": 44.2
+      },
+      {
+        "system": "Ciguru",
+        "distance": 36.9
+      },
+      {
+        "system": "Minawara",
+        "distance": 60.02
+      },
+      {
+        "system": "Yanyan",
+        "distance": 58.91
+      },
+      {
+        "system": "Yakan",
+        "distance": 45.07
+      },
+      {
+        "system": "Chara",
+        "distance": 94.12
+      },
+      {
+        "system": "Slatus",
+        "distance": 176.04
+      },
+      {
+        "system": "Chini",
+        "distance": 154.39
+      },
+      {
+        "system": "Atum",
+        "distance": 149.67
+      },
+      {
+        "system": "Circios",
+        "distance": 102.78
+      }
+    ],
+    "x": -98.40625,
+    "y": 36.15625,
+    "z": -0.9375,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector TO-R B4-3",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T06:40:28.401Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 98.87
+      },
+      {
+        "system": "Eranin",
+        "distance": 70.83
+      },
+      {
+        "system": "Cuages",
+        "distance": 48.55
+      },
+      {
+        "system": "Ciguru",
+        "distance": 32.27
+      },
+      {
+        "system": "Minawara",
+        "distance": 63.72
+      },
+      {
+        "system": "Yanyan",
+        "distance": 55.12
+      },
+      {
+        "system": "Yakan",
+        "distance": 51.41
+      },
+      {
+        "system": "Chara",
+        "distance": 89.05
+      },
+      {
+        "system": "Slatus",
+        "distance": 171.48
+      },
+      {
+        "system": "Chini",
+        "distance": 150.42
+      },
+      {
+        "system": "Atum",
+        "distance": 144.22
+      },
+      {
+        "system": "Circios",
+        "distance": 100.16
+      }
+    ],
+    "x": -93.46875,
+    "y": 32.1875,
+    "z": 1.9375,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector TO-R B4-4",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T06:35:21.377Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 96.53
+      },
+      {
+        "system": "Eranin",
+        "distance": 68.13
+      },
+      {
+        "system": "Cuages",
+        "distance": 49.72
+      },
+      {
+        "system": "Ciguru",
+        "distance": 30.53
+      },
+      {
+        "system": "Minawara",
+        "distance": 59.57
+      },
+      {
+        "system": "Yanyan",
+        "distance": 51.82
+      },
+      {
+        "system": "Yakan",
+        "distance": 52.71
+      },
+      {
+        "system": "Chara",
+        "distance": 86.23
+      },
+      {
+        "system": "Slatus",
+        "distance": 168.36
+      },
+      {
+        "system": "Chini",
+        "distance": 146.89
+      },
+      {
+        "system": "Atum",
+        "distance": 141.84
+      },
+      {
+        "system": "Circios",
+        "distance": 96.03
+      }
+    ],
+    "x": -90.84375,
+    "y": 32.53125,
+    "z": -2.59375,
+    "region": "Beta3"
+  },
+  {
+    "name": "Col 285 Sector DI-X B16-3",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T06:30:20.919Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 88.69
+      },
+      {
+        "system": "Eranin",
+        "distance": 57.74
+      },
+      {
+        "system": "Cuages",
+        "distance": 61.67
+      },
+      {
+        "system": "Ciguru",
+        "distance": 35.08
+      },
+      {
+        "system": "Minawara",
+        "distance": 65.7
+      },
+      {
+        "system": "Yanyan",
+        "distance": 41.83
+      },
+      {
+        "system": "Yakan",
+        "distance": 62.66
+      },
+      {
+        "system": "Chara",
+        "distance": 76.68
+      },
+      {
+        "system": "Slatus",
+        "distance": 158.6
+      },
+      {
+        "system": "Chini",
+        "distance": 137.52
+      },
+      {
+        "system": "Atum",
+        "distance": 131.98
+      },
+      {
+        "system": "Circios",
+        "distance": 87.62
+      }
+    ],
+    "x": -80.5,
+    "y": 37.1875,
+    "z": 1.90625,
+    "region": "Beta3"
+  },
+  {
+    "name": "Col 285 Sector PY-R D4-132",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T06:24:35.516Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 78.71
+      },
+      {
+        "system": "Eranin",
+        "distance": 50.25
+      },
+      {
+        "system": "Cuages",
+        "distance": 67.22
+      },
+      {
+        "system": "Ciguru",
+        "distance": 29.3
+      },
+      {
+        "system": "Minawara",
+        "distance": 67.22
+      },
+      {
+        "system": "Yanyan",
+        "distance": 35.52
+      },
+      {
+        "system": "Yakan",
+        "distance": 70.99
+      },
+      {
+        "system": "Chara",
+        "distance": 68.07
+      },
+      {
+        "system": "Slatus",
+        "distance": 150.62
+      },
+      {
+        "system": "Chini",
+        "distance": 129.92
+      },
+      {
+        "system": "Atum",
+        "distance": 123.45
+      },
+      {
+        "system": "Circios",
+        "distance": 81.59
+      }
+    ],
+    "x": -72.6875,
+    "y": 30.1875,
+    "z": -0.4375,
+    "region": "Beta3"
+  },
+  {
+    "name": "Cephei Sector ON-T B3-3",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-03T06:20:18.570Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 81.75
+      },
+      {
+        "system": "Eranin",
+        "distance": 50.27
+      },
+      {
+        "system": "Cuages",
+        "distance": 67.41
+      },
+      {
+        "system": "Ciguru",
+        "distance": 34.52
+      },
+      {
+        "system": "Minawara",
+        "distance": 57.47
+      },
+      {
+        "system": "Yanyan",
+        "distance": 32.46
+      },
+      {
+        "system": "Yakan",
+        "distance": 69.26
+      },
+      {
+        "system": "Chara",
+        "distance": 68.39
+      },
+      {
+        "system": "Slatus",
+        "distance": 149.16
+      },
+      {
+        "system": "Chini",
+        "distance": 126.88
+      },
+      {
+        "system": "Atum",
+        "distance": 124.74
+      },
+      {
+        "system": "Circios",
+        "distance": 75.32
+      }
+    ],
+    "x": -72.21875,
+    "y": 36.8125,
+    "z": -10.625,
+    "region": "Beta3"
   }
 ]
