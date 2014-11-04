@@ -997,42 +997,55 @@
     "z": 13.46875,
     "region": "Beta1",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Agriculture",
+    "government": "Democracy",
+    "population": 3200000000,
+    "security": "High",
     "stations": [
       {
         "station": "Carey Colony",
         "distance": 73,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "type": "Orbis Starport",
+        "faction": "Syndicate Of LHS 6309",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Ryumin Terminal",
-        "distance": 134,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 133,
+        "type": "Commercial Outpost",
+        "faction": "Jet Universal Services",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "medium"
       },
       {
         "station": "Smeaton Port",
-        "distance": 2537,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 2531,
+        "type": "Orbis Starport",
+        "faction": "Jet Universal Services",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Kaku Station",
-        "distance": 2671,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 2702,
+        "type": "Commercial Outpost",
+        "faction": "Jet Universal Services",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -1062,24 +1075,33 @@
     "z": 12.78125,
     "region": "Beta1",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Agriculture",
+    "government": "Democracy",
+    "population": 5200000,
+    "security": "Medium",
     "stations": [
       {
         "station": "Gorbatko Reserve",
-        "distance": 901,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 899,
+        "type": "Orbis Starport",
+        "faction": "Crimson Travel Interstellar",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Gemar Orbital",
-        "distance": 901,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 899,
+        "type": "Orbis Starport",
+        "faction": "Natural Chi Herculis National Party",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -1334,24 +1356,33 @@
     "z": -1.34375,
     "region": "Alpha4",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Independent",
+    "economy": "High Tech",
+    "government": "Corporate",
+    "population": 50000,
+    "security": "Medium",
     "stations": [
       {
         "station": "Foster Research Lab",
-        "distance": 169,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 171,
+        "type": "Scientific Outpost",
+        "faction": "Union of Asellus Primus",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
       },
       {
         "station": "Beagle 2 Landing",
-        "distance": 1263,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 1252,
+        "type": "Coriolis Starport",
+        "faction": "Brothers of Asellus Primus",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -1372,24 +1403,33 @@
     "z": 14.8125,
     "region": "Beta1",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Industrial",
+    "government": "Democracy",
+    "population": 125000,
+    "security": "Medium",
     "stations": [
       {
         "station": "Abe Works",
         "distance": 379,
         "type": "Coriolis Starport",
+        "faction": "Blue Dynamic Ltd",
         "commodities_market": false,
         "black_market": false,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Bradfield Orbital",
         "distance": 377,
         "type": "Orbis Starport",
+        "faction": "Blue Dynamic Ltd",
         "commodities_market": true,
         "black_market": false,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -1572,33 +1612,44 @@
     "z": -1.1875,
     "region": "Alpha4",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Independent",
+    "economy": "Agriculture",
+    "government": "Communism",
+    "population": 450000,
+    "security": "Medium",
     "stations": [
       {
         "station": "Azeban Orbital",
         "distance": 294,
         "type": "Civilian Outpost",
+        "faction": "Eranin Peoples Party",
         "commodities_market": false,
         "black_market": false,
         "shipyard": false,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "medium"
       },
       {
         "station": "Azeban City",
         "distance": 295,
         "type": "Coriolis Starport",
+        "faction": "Eranin Peoples Party",
         "commodities_market": true,
         "black_market": false,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Eranin 4 Survey",
         "distance": 2024,
         "type": "Scientific Outpost",
+        "faction": "Eranin Peoples Party",
         "commodities_market": false,
         "black_market": false,
         "shipyard": false,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -1646,24 +1697,33 @@
     "z": 2.125,
     "region": "Beta1",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Industrial",
+    "government": "Democracy",
+    "population": 125000,
+    "security": "Medium",
     "stations": [
       {
         "station": "Moxon's Mojo",
         "distance": 935,
         "type": "Orbis Starport",
+        "faction": "Bolg Ltd",
         "commodities_market": true,
         "black_market": false,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Payette Platform",
         "distance": 1835,
         "type": "Civilian Outpost",
+        "faction": "Social Bolg Labour",
         "commodities_market": false,
         "black_market": true,
         "shipyard": false,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -1702,24 +1762,33 @@
     "z": -3.1875,
     "region": "Alpha4",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Refinery",
+    "government": "Confederacy",
+    "population": 4000,
+    "security": "Low",
     "stations": [
       {
         "station": "Dahan Gateway",
         "distance": 468,
         "type": "Coriolis Starport",
+        "faction": "Dahan Liberals",
         "commodities_market": true,
         "black_market": true,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Dahan 3 Metalworks",
         "distance": 1854,
         "type": "Industrial Outpost",
+        "faction": "Eranin Gold Wing",
         "commodities_market": false,
         "black_market": true,
         "shipyard": false,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -1803,24 +1872,33 @@
     "z": -4.59375,
     "region": "Alpha4",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Independent",
+    "economy": "Extraction",
+    "government": "Anarchy",
+    "population": 1500,
+    "security": "Low",
     "stations": [
       {
         "station": "Freeport",
         "distance": 184,
         "type": "Coriolis Starport",
+        "faction": "LP 98-132 Alliance",
         "commodities_market": true,
         "black_market": true,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Prospect Five",
         "distance": 389,
         "type": "Industrial Outpost",
+        "faction": "LP 98-132 Alliance",
         "commodities_market": false,
         "black_market": true,
         "shipyard": false,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -1859,24 +1937,33 @@
     "z": 4,
     "region": "Alpha4",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Agriculture",
+    "government": "Democracy",
+    "population": 2300000,
+    "security": "High",
     "stations": [
       {
         "station": "Chango Dock",
         "distance": 1098,
         "type": "Coriolis Starport",
+        "faction": "i Bootis Network",
         "commodities_market": true,
         "black_market": false,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Maher Stellar Research",
         "distance": 20929,
         "type": "Scientific Outpost",
+        "faction": "People's i Bootis Labour Union",
         "commodities_market": false,
         "black_market": true,
         "shipyard": false,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -1888,33 +1975,44 @@
     "z": -3.9375,
     "region": "Beta1",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Independent",
+    "economy": "Agriculture",
+    "government": "Communism",
+    "population": 27500000,
+    "security": "High",
     "stations": [
       {
         "station": "Vonarburg Co-operative",
         "distance": 161,
         "type": "Orbis Starport",
+        "faction": "People of Wyrd",
         "commodities_market": true,
         "black_market": false,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Bokeili Station",
         "distance": 849,
         "type": "Orbis Starport",
+        "faction": "Wyrd Values Party",
         "commodities_market": false,
         "black_market": true,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Gareth Edwards Park",
         "distance": 849,
         "type": "Orbis Starport",
+        "faction": "People of Wyrd",
         "commodities_market": false,
         "black_market": false,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -1980,33 +2078,44 @@
     "z": 4.75,
     "region": "Premium Beta2",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "High Tech",
+    "government": "Corporate",
+    "population": 7500000,
+    "security": "High",
     "stations": [
       {
         "station": "Yurchikhin Gateway",
         "distance": 60.2,
         "type": "Scientific Outpost",
+        "faction": "Aulin Bureau",
         "commodities_market": false,
         "black_market": false,
         "shipyard": false,
-        "outfitting": false
+        "outfitting": false,
+        "largest_pad": "medium"
       },
       {
         "station": "Aulin Enterprise",
         "distance": 117,
         "type": "Orbis Starport",
+        "faction": "Aulin Group",
         "commodities_market": true,
         "black_market": false,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Binnie City",
         "distance": 347,
         "type": "Scientific Outpost",
+        "faction": "Aulin Group",
         "commodities_market": false,
         "black_market": false,
         "shipyard": false,
-        "outfitting": false
+        "outfitting": false,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -2065,33 +2174,44 @@
     "z": 9.28125,
     "region": "Beta1",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Agriculture",
+    "government": "Democracy",
+    "population": 1300000,
+    "security": "Medium",
     "stations": [
       {
         "station": "Meikle Point",
-        "distance": 1371,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 1391,
+        "type": "Industrial Outpost",
+        "faction": "Jet Vision Systems",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
       },
       {
         "station": "Onizuka's Hold",
-        "distance": 1458,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 1449,
+        "type": "Coriolis Starport",
+        "faction": "Jet Vision Systems",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Romanenko Estate",
-        "distance": 1460,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 1451,
+        "type": "Orbis Starport",
+        "faction": "Jet Vision Systems",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -2175,24 +2295,33 @@
     "z": 10.125,
     "region": "Beta1",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "High Tech",
+    "government": "Democracy",
+    "population": 57999,
+    "security": "Medium",
     "stations": [
       {
         "station": "Keeler Rest",
-        "distance": 197,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 196,
+        "type": "Orbis Starport",
+        "faction": "Blue Allied Industries",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Maunder's Hope",
-        "distance": 197,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 196,
+        "type": "Orbis Starport",
+        "faction": "Blue Allied Industries",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -2204,15 +2333,22 @@
     "z": 12.59375,
     "region": "Beta1",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Independent",
+    "economy": "Extraction",
+    "government": "Anarchy",
+    "population": 500,
+    "security": "Low",
     "stations": [
       {
         "station": "Derrickson's Escape",
         "distance": 270,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "type": "Coriolis Starport",
+        "faction": "The Blue Mafia",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -2341,33 +2477,44 @@
     "z": 15.5,
     "region": "Beta1",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Agriculture",
+    "government": "Democracy",
+    "population": 500000,
+    "security": "Medium",
     "stations": [
       {
         "station": "Xiaoguan Hub",
         "distance": 131,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "type": "Orbis Starport",
+        "faction": "Magec Left Party",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Garriott Outpost",
-        "distance": 333,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "distance": 335,
+        "type": "Unsanctioned Outpost",
+        "faction": "Magec Resistance",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "small"
       },
       {
         "station": "Trumpler Dock",
         "distance": 4541,
-        "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "type": "Orbis Starport",
+        "faction": "Allied Magec Front",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -2621,15 +2768,22 @@
     "z": -0.40625,
     "region": "Beta1",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Extraction",
+    "government": "Confederacy",
+    "population": 2500,
+    "security": "Low",
     "stations": [
       {
         "station": "Olivas Settlement",
         "distance": 230,
         "type": "Coriolis Starport",
+        "faction": "United BD+47 2112 Worker's Party",
         "commodities_market": true,
         "black_market": true,
         "shipyard": true,
-        "outfitting": true
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -2857,15 +3011,22 @@
     "contributor": "FD",
     "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Refinery",
+    "government": "Corporate",
+    "population": 52017,
+    "security": "Low",
     "stations": [
       {
         "station": "Reilly Refinery",
         "distance": 11738,
         "type": "Industrial Outpost",
+        "faction": "Future of Chara",
         "commodities_market": true,
         "black_market": false,
         "shipyard": false,
-        "outfitting": false
+        "outfitting": false,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -11030,9 +11191,21 @@
       {
         "system": "Demeter",
         "distance": 22.332
+      },
+      {
+        "system": "Ovid",
+        "distance": 28.73
+      },
+      {
+        "system": "LHS 6309",
+        "distance": 22.97
+      },
+      {
+        "system": "Chi Herculis",
+        "distance": 29.38
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2 (outside Beta3)",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
