@@ -2132,19 +2132,19 @@
         "station": "Morukov Platform",
         "distance": 16.6,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Xing Dock",
         "distance": 943,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       }
     ]
   },
@@ -2603,10 +2603,10 @@
         "station": "Shepherd Ring",
         "distance": 8171,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       }
     ]
   },
@@ -2632,10 +2632,10 @@
         "station": "Romanek's Folly",
         "distance": 917,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       }
     ]
   },
@@ -2661,19 +2661,19 @@
         "station": "Gerst Port",
         "distance": 68.6,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Chi Hub",
         "distance": 652,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       }
     ]
   },
@@ -2708,28 +2708,28 @@
         "station": "Alexandria Gateway",
         "distance": 8.59,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Rozhdestvensky Ring",
         "distance": 13.9,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Allen Ring",
         "distance": 27.1,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       }
     ]
   },
@@ -3970,28 +3970,28 @@
         "station": "Volkov Dock",
         "distance": 567,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Chomsky Point",
         "distance": 1379,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Chamitoff Point",
         "distance": 7485,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       }
     ]
   },
@@ -4269,19 +4269,19 @@
         "station": "Thomas Installation",
         "distance": 483,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Dezhurov Platform",
         "distance": 21362,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       }
     ]
   },
@@ -7340,46 +7340,46 @@
         "station": "Garan Survey",
         "distance": 3082,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Haxel Station",
         "distance": 3082,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Phillips Hub",
         "distance": 3111,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Korniyenko Dock",
         "distance": 3111,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Zhen Port",
         "distance": 3138,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       }
     ]
   },
@@ -7495,19 +7495,19 @@
         "station": "Vinogradov Installation",
         "distance": 2077,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Laval City",
         "distance": 3411,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       }
     ]
   },
@@ -7848,46 +7848,46 @@
         "station": "Kaku Terminal",
         "distance": 54.6,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Kovalyonok City",
         "distance": 62.4,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Burbank Settlement",
         "distance": 79.5,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Onufrienko Settlement",
         "distance": 91,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       },
       {
         "station": "Agnesi Refinery",
         "distance": 125,
         "type": "unknown",
-        "commodities_market": "unknown",
-        "black_market": "unknown",
-        "shipyard": "unknown",
-        "outfitting": "unknown"
+        "commodities_market": null,
+        "black_market": null,
+        "shipyard": null,
+        "outfitting": null
       }
     ]
   },
