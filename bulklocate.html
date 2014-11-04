@@ -199,8 +199,7 @@ function processDistances() {
 				}
 				
 				// visible error is the different between the supplied distance and the calculated distance rounded to 3dp
-				var edDist = Math.round(distf(u, this)*1000)/1000;
-				u.totalErr += Math.abs(edDist - this.distance);
+				u.totalErr += checkDist(u, this, this.distance).error;
 			});
 			u.totalErr = u.totalErr.toFixed(3);
 			var prefCount = tunaDist.length;
@@ -215,7 +214,7 @@ function processDistances() {
 				if (gridLoc.x === tunaLoc.x && gridLoc.y === tunaLoc.y && gridLoc.z === tunaLoc.z) {
 					u.tunaMageInfo = "matches";
 				} else {
-					var err = getError(tunaCoords, u.distances);
+					var err = getRMSError(tunaCoords, u.distances);
 					u.tunaMageInfo = vectorToString(tunaLoc) + ",<br>error = "+err.toFixed(3)+", preferred refs = "+prefCount;
 				}
 			}
@@ -295,7 +294,7 @@ function selectSystem(row) {
 	var s = unknowns[selected.getAttribute('system').toLowerCase()];
 	if (s) {
 		$.each(s.distances, function() {
-			var d = distf(this,s);
+			var d = checkDist(this, s, this.distance);
 			if (!this.accepted) {
 				newDists += '	    {"system": "'+this.name+'", "distance": '+this.distance+'},\n'
 			}
@@ -303,8 +302,8 @@ function selectSystem(row) {
 				.append($('<td>').text(this.name))
 				.append($('<td>').text(this.accepted ? 'N' : 'Y'))
 				.append($('<td>').text(this.distance))
-				.append($('<td>').text(s.x === "" ? "" : d.toFixed(3)))
-				.append($('<td>').text(s.x === "" ? "" : Math.abs(d-this.distance).toFixed(3)))
+				.append($('<td>').text(s.x === "" ? "" : d.distance.toFixed(d.dp)))
+				.append($('<td>').text(s.x === "" ? "" : d.error.toFixed(d.dp)))
 				.appendTo('#details-table tbody');
 		});
 	}

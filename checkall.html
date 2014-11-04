@@ -114,9 +114,7 @@ function runCheck() {
 		// build set of distances to the reference systems
 		for (var i = 0; i < refSystems.length; i++) {
 			// get the rounded distance
-			var d = distf(system, refSystems[i]);
-			d = Math.round(d*Math.pow(10,dp))/Math.pow(10,dp);
-			refSystems[i].distance = d;
+			refSystems[i].distance = eddist(system, refSystems[i], dp);
 		}
 
 		var bestCandidate = getCoords(refSystems);
@@ -127,7 +125,7 @@ function runCheck() {
 			$(this).children("td:nth-child(6)").text(bestCandidate.x);
 			$(this).children("td:nth-child(7)").text(bestCandidate.y);
 			$(this).children("td:nth-child(8)").text(bestCandidate.z);
-			$(this).children("td:nth-child(9)").text(distf(system,bestCandidate).toFixed(3));
+			$(this).children("td:nth-child(9)").text(eddist(system,bestCandidate).toFixed(3));
 
 			if (bestCandidate.x !== system.x || bestCandidate.y !== system.y || bestCandidate.z !== system.z) {
 				$(this).addClass('error');

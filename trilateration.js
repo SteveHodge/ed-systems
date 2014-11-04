@@ -18,10 +18,10 @@ function getBestCandidate(dists) {
 					candidates[1].totalSqErr = 0;
 					
 		 			for (i4 = 0; i4 < dists.length; i4++) {
-						var err = Math.abs(distf(candidates[0], dists[i4]) - dists[i4].distance);
-		 				candidates[0].totalSqErr += err*err;
-		 				err = Math.abs(distf(candidates[1], dists[i4]) - dists[i4].distance);
-		 				candidates[1].totalSqErr += err*err;
+						var err = checkDist(candidates[0], dists[i4], dists[i4].distance);
+		 				candidates[0].totalSqErr += err.error*err.error;
+		 				err = checkDist(candidates[1], dists[i4], dists[i4].distance);
+		 				candidates[1].totalSqErr += err.error*err.error;
 		 			}
 					if (bestCandidate === null || bestCandidate.totalSqErr > candidates[0].totalSqErr) {
 						bestCandidate = candidates[0];
@@ -77,13 +77,32 @@ function getCandidates(dists, i1, i2, i3) {
 	}
 }
 
+// calculates the distance between p1 and p2 and then calculates the error between the calculated distance and the supplied distance.
+// if dist has 3dp of precision then the calculated distance is also calculated with 3dp, otherwise 2dp are assumed
+// returns and object with properties (distance, error, dp)
+function checkDist(p1, p2, dist) {
+	var ret = {dp: 2};
+
+	if (typeof dist === 'string') {
+		// if dist is a string then check if it has exactly 3 decimal places:
+		if (dist.indexOf('.') === dist.length-4) ret.dp = 3;
+	} else if (dist.toFixed(3) === dist.toString()) {
+		// assume it's 3 dp if its 3 dp rounded string matches the string version
+		ret.dp = 3;
+	}
+
+	ret.distance = eddist(p1, p2, ret.dp);
+	ret.error = Math.abs(ret.distance - dist);
+	return ret;
+}
+
 // dists is an array of reference objects (properties x, y, z, distance)
 // p is a vector (properties x, y, z)
 // returns the RMS error between the distances as calculated from the coordinates and the distances supplied
-function getError(p, dists) {
+function getRMSError(p, dists) {
 	var err = 0;
 	$.each(dists, function() {
-		var e = distf(this, p) - this.distance;
+		var e = eddist(this, p) - this.distance;
 		err += e*e;
 	});
 	return Math.sqrt(err/dists.length);
@@ -145,21 +164,25 @@ function dist(p1, p2) {
 // v is a vector obejct with x, y, and z properties
 // returns the length of v
 function length(v) {
-	return Math.sqrt(v.x*v.x + v.y*v.y + v.z*v.z);
+	return Math.sqrt(dotProd(v,v));
 }
 
 var fround = Math.fround || function(x) { return x };
 
 // p1 and p2 are objects that have x, y, and z properties
-// returns the distance between p1 and p2, calculated as single precision (as ED does)
-function distf(p1, p2) {
-	return lengthf(diff(p2,p1));
+// dp is optional number of decimal places to round to (defaults to 2)
+// returns the distance between p1 and p2, calculated as single precision (as ED does),
+// as a string with the specified number of decimal places
+function eddist(p1, p2, dp) {
+	dp = (typeof dp === 'undefined') ? 2 : dp;
+	var v = diff(p2,p1);
+	var d = fround(Math.sqrt(fround(fround(v.x*v.x) + fround(v.y*v.y) + fround(v.z*v.z))));
+	return round(d,dp);
 }
 
-// v is a vector obejct with x, y, and z properties
-// returns the length of v
-function lengthf(v) {
-	return fround(Math.sqrt(fround(fround(v.x*v.x) + fround(v.y*v.y) + fround(v.z*v.z))));
+// round to the specified number of decimal places
+function round(v, dp) {
+	return Math.round(v*Math.pow(10,dp))/Math.pow(10,dp);
 }
 
 // p1 and p2 are objects that have x, y, and z properties

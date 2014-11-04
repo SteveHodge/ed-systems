@@ -231,19 +231,19 @@ function updateCoords() {
 					}
 
 					var sys = systemsMap[nameKey];
-					var calcDist = distf(sys, bestCandidate);
-					var err = Math.abs(enteredDist - calcDist).toFixed(3);
+					var calcDist = eddist(sys, bestCandidate);
+					var err = Math.abs(enteredDist - calcDist).toFixed(2);
 					if (sys.name === dists[bestCandidate.i1].name || sys.name === dists[bestCandidate.i2].name || sys.name === dists[bestCandidate.i3].name) {
 						err += " (ref)";
 					}
 					if (sys.calculated) err += " (derived star)";
-					$(this).children("td:nth-child(3)").text(calcDist.toFixed(3))
+					$(this).children("td:nth-child(3)").text(calcDist.toFixed(2))
 							.next().text(err);
 				}
 			});
 	
 			$("#output").html("Coordinates: "+vectorToString(bestCandidate)
-					+"<br/>RMS error: "+(Math.sqrt(bestCandidate.totalSqErr/dists.length)).toFixed(3)
+					+"<br/>RMS error: "+(Math.sqrt(bestCandidate.totalSqErr/dists.length)).toFixed(2)
 					+"<br/>Local Systems:");
 			$("#output").append(getLocalSystems(bestCandidate)).append('<br/>');
 			
@@ -295,7 +295,7 @@ function getLocalSystems(coords) {
 
 	var locals = [];
 	for (i = 0; i < systems.length; i++) {
-		locals.push({system:systems[i], distance:distf(systems[i],coords)});
+		locals.push({system:systems[i], distance:eddist(systems[i],coords)});
 	}
 	locals.sort(function(a,b) {return a.distance-b.distance;});
 
@@ -305,7 +305,7 @@ function getLocalSystems(coords) {
 		$('<td>').text(locals[i].system.x).appendTo(row);
 		$('<td>').text(locals[i].system.y).appendTo(row);
 		$('<td>').text(locals[i].system.z).appendTo(row);
-		$('<td>').text((locals[i].distance).toFixed(3)).appendTo(row);
+		$('<td>').text((locals[i].distance).toFixed(2)).appendTo(row);
 		tbody.appendChild(row);
 	}
 	$(table).stupidtable().bind('aftertablesort', updateSortArrow);
@@ -348,11 +348,7 @@ function getLocalSystems(coords) {
 				<tr><td><input class="system-name" value="Wolf 497"></td><td><input class="distance"></td><td/><td/></tr>
 				<tr><td><input class="system-name" value="Huokang"></td><td><input class="distance"></td><td/><td/></tr>
 				<tr><td><input class="system-name" value="Demeter"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Clotti"></td><td><input class="distance"></td><td/><td/></tr>
 				<tr><td><input class="system-name" value="Fu Haiting"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="San Guaralaru"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Haras"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Arabha"></td><td><input class="distance"></td><td/><td/></tr>
 			</tbody>
 		</table>
 		<div id="ref-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">

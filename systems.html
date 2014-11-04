@@ -12,12 +12,16 @@
 var systems = null;
 var selected = null;
 
+var sysMap = {};
+
 $(document).ready(function () {
 	$.getJSON('systems.json', function(data) {
 		systems = data;
 
 		var d, i;
 		for (i = 0; i < systems.length; i++) {
+			sysMap[systems[i].name] = systems[i];
+			
 			var contrib = systems[i].region;
 			if (!systems[i].calculated) contrib += ' (ref)';
 			$('<tr>')
@@ -32,6 +36,17 @@ $(document).ready(function () {
 				.append($('<td>'))
 				.appendTo('#tableDiv tbody');
 		}
+
+		// check distance data involves known systems
+		for (i = 0; i < systems.length; i++) {
+			if (!('distances' in systems[i])) continue;
+			for (var j = 0; j < systems[i].distances.length; j++) {
+				if (!(systems[i].distances[j].system in sysMap)) {
+					console.log(systems[i].distances[j].system + ' system not found for distance from ' + systems[i].name);
+				}
+			}
+		}
+
 		$('#tableDiv table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
 		$('#generate-csv').click(function() {generateCSV(false)});
 		$('#sort-csv').click(function() {generateCSV(true)});
@@ -74,7 +89,7 @@ function selectSystem(row) {
 			return;
 		}
 		var s = systems[r.getAttribute('system')];
-		$(r).children('td:nth-last-child(2)').last().text((distf(s0, s)).toFixed(3));
+		$(r).children('td:nth-last-child(2)').last().text(eddist(s0, s).toFixed(2));
 		$(r).children('td:nth-last-child(1)').last().text(dists[s.name]);
 	});
 }
