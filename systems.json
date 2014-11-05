@@ -897,7 +897,25 @@
     "z": -31.75,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Industrial",
+    "government": "Democracy",
+    "population": 11600000,
+    "security": "High",
+    "stations": [
+      {
+        "station": "Hornblower Platform",
+        "distance": 90855,
+        "type": "Orbis Starport",
+        "faction": "Purple Life PLC",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
+      }
+    ]
   },
   {
     "name": "Aeolus",
@@ -1530,7 +1548,25 @@
     "z": -23.0625,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Industrial",
+    "government": "Democracy",
+    "population": 21900000,
+    "security": "High",
+    "stations": [
+      {
+        "station": "Onizuka Orbital",
+        "distance": 581,
+        "type": "Coriolis Starport",
+        "faction": "Silver Vision One",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
+      }
+    ]
   },
   {
     "name": "LP 25-2",
@@ -1575,7 +1611,25 @@
     "z": -17.53125,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Agriculture",
+    "government": "Democracy",
+    "population": 500000,
+    "security": "Medium",
+    "stations": [
+      {
+        "station": "Tun's Wart",
+        "distance": 226,
+        "type": "Orbis Starport",
+        "faction": "Crimson Communications PLC",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
+      }
+    ]
   },
   {
     "name": "NLTT 46621",
@@ -2041,7 +2095,25 @@
     "y": 31.40625,
     "z": -18.34375,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Independent",
+    "economy": "Refinery",
+    "government": "Corporate",
+    "population": 2500,
+    "security": "Low",
+    "stations": [
+      {
+        "station": "Baker Platform",
+        "distance": 5.68,
+        "type": "Orbis Starport",
+        "faction": "LFT 880 League",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
+      }
+    ]
   },
   {
     "name": "Tollan",
@@ -2127,24 +2199,33 @@
     "contributor": "FD",
     "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Refinery",
+    "government": "Democracy",
+    "population": 2400000,
+    "security": "High",
     "stations": [
       {
         "station": "Morukov Platform",
-        "distance": 16.6,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 16.1,
+        "type": "Coriolis Starport",
+        "faction": "Citizen Party of Ross 905",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Xing Dock",
-        "distance": 943,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 945,
+        "type": "Industrial Outpost",
+        "faction": "Citizen Party of Ross 905",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -2598,15 +2679,22 @@
     "contributor": "FD",
     "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Industrial",
+    "government": "Confederacy",
+    "population": 5700000,
+    "security": "Medium",
     "stations": [
       {
         "station": "Shepherd Ring",
-        "distance": 8171,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 8151,
+        "type": "Orbis Starport",
+        "faction": "Social Zeta Herculis Resistance",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -2627,15 +2715,22 @@
     "z": -2.25,
     "region": "Beta1",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Independent",
+    "economy": "Extraction",
+    "government": "Anarchy",
+    "population": 1500,
+    "security": "Medium",
     "stations": [
       {
         "station": "Romanek's Folly",
-        "distance": 917,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 916,
+        "type": "Coriolis Starport",
+        "faction": "Morgor Party",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -2656,24 +2751,33 @@
     "z": 6.03125,
     "region": "Premium Beta2",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Industrial",
+    "government": "Democracy",
+    "population": 18500000,
+    "security": "High",
     "stations": [
       {
         "station": "Gerst Port",
-        "distance": 68.6,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 70,
+        "type": "Commercial Outpost",
+        "faction": "Bureau of Styx Focus",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
       },
       {
         "station": "Chi Hub",
-        "distance": 652,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 653,
+        "type": "Ocellus Starport",
+        "faction": "Styx Organisation",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
@@ -2703,33 +2807,44 @@
     "contributor": "FD",
     "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Industrial",
+    "government": "Democracy",
+    "population": 23900000,
+    "security": "High",
     "stations": [
       {
         "station": "Alexandria Gateway",
-        "distance": 8.59,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 8.97,
+        "type": "Ocellus Starport",
+        "faction": "Jet United Systems",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Rozhdestvensky Ring",
-        "distance": 13.9,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 16,
+        "type": "Civilian Outpost",
+        "faction": "G 180-18 Mob",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
       },
       {
         "station": "Allen Ring",
-        "distance": 27.1,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 29.3,
+        "type": "Commercial Outpost",
+        "faction": "G 180-18 Democrats",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -3586,7 +3701,36 @@
     "z": -25.15625,
     "contributor": "FD",
     "contributed": "2014-11-01T06:36:37.633Z",
-    "region": "Beta3"
+    "region": "Beta3",
+    "allegiance": "Federation",
+    "economy": "Extraction",
+    "government": "Corporate",
+    "population": 29110,
+    "security": "Medium",
+    "stations": [
+      {
+        "station": "Buchli Port",
+        "distance": 114,
+        "type": "Unsanctioned Outpost",
+        "faction": "Bhotega Limited",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "small"
+      },
+      {
+        "station": "Newton Station",
+        "distance": 167,
+        "type": "Industrial Outpost",
+        "faction": "Bhotega Limited",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
+      }
+    ]
   },
   {
     "name": "Binbeal",
@@ -3965,33 +4109,44 @@
     "contributor": "FD",
     "contributed": "2014-11-01T06:36:37.633Z",
     "region": "Beta3",
+    "allegiance": "Federation",
+    "economy": "Refinery",
+    "government": "Democracy",
+    "population": 513421,
+    "security": "Medium",
     "stations": [
       {
         "station": "Volkov Dock",
         "distance": 567,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "type": "Industrial Outpost",
+        "faction": "Denebola Free",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
       },
       {
         "station": "Chomsky Point",
-        "distance": 1379,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 1371,
+        "type": "Undefined (Outpost)",
+        "faction": "Denebola Systems",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
       },
       {
         "station": "Chamitoff Point",
-        "distance": 7485,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 7482,
+        "type": "Civilian Outpost",
+        "faction": "Denebola Free",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -4264,24 +4419,33 @@
     "contributor": "FD",
     "contributed": "2014-11-01T06:36:37.633Z",
     "region": "Beta3",
+    "allegiance": "Federation",
+    "economy": "Refinery",
+    "government": "Corporate",
+    "population": 162503,
+    "security": "Medium",
     "stations": [
       {
         "station": "Thomas Installation",
-        "distance": 483,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 485,
+        "type": "Coriolis Starport",
+        "faction": "Revolutionary G 181-6 Union Party",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Dezhurov Platform",
-        "distance": 21362,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 21366,
+        "type": "Industrial Outpost",
+        "faction": "G 181-6 United Industries",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -7335,51 +7499,66 @@
     "contributor": "FD",
     "contributed": "2014-11-01T06:36:37.633Z",
     "region": "Beta3",
+    "allegiance": "Federation",
+    "economy": "High Tech",
+    "government": "Democracy",
+    "population": 116200000,
+    "security": "High",
     "stations": [
       {
         "station": "Garan Survey",
-        "distance": 3082,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 3089,
+        "type": "Coriolis Starport",
+        "faction": "Teng Yeh Network",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Haxel Station",
-        "distance": 3082,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 3089,
+        "type": "Commercial Outpost",
+        "faction": "New Teng Yeh First",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
       },
       {
         "station": "Phillips Hub",
-        "distance": 3111,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 3094,
+        "type": "Scientific Outpost",
+        "faction": "Teng Yeh Network",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
       },
       {
         "station": "Korniyenko Dock",
-        "distance": 3111,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 3093,
+        "type": "Scientific Outpost",
+        "faction": "Purple Transport Partners",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
       },
       {
         "station": "Zhen Port",
-        "distance": 3138,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 3117,
+        "type": "Orbis Starport",
+        "faction": "New Teng Yeh First",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       }
     ]
   },
