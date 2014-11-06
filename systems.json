@@ -8581,7 +8581,7 @@
         "distance": 54.439
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -8789,7 +8789,7 @@
         "distance": "17.238"
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -9509,7 +9509,7 @@
         "distance": 31.559
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -10785,7 +10785,7 @@
         "distance": 58.645
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -10897,7 +10897,7 @@
         "distance": 7.152
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -12577,7 +12577,7 @@
         "distance": 47.65
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -12633,7 +12633,7 @@
         "distance": 50.251
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -12981,7 +12981,7 @@
         "distance": 51.792
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -13121,7 +13121,7 @@
         "distance": 51.027
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -13261,7 +13261,7 @@
         "distance": 66.542
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -14129,7 +14129,7 @@
         "distance": 30.251
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -14185,7 +14185,7 @@
         "distance": 32.903
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -14313,7 +14313,7 @@
         "distance": 30.276
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -14585,7 +14585,7 @@
         "distance": 17.459
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -14785,7 +14785,7 @@
         "distance": 96.72
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -15073,7 +15073,7 @@
         "distance": 62.558
       }
     ],
-    "region": "Beta2 (unverified)",
+    "region": "Beta2",
     "contributed": "2014-10-21T17:16:31.000Z"
   },
   {
@@ -15242,7 +15242,7 @@
         "distance": 67.175
       }
     ],
-    "region": "Beta2 (unverified)"
+    "region": "Beta2"
   },
   {
     "name": "Wolf 483",
@@ -15354,7 +15354,7 @@
     "x": -72.125,
     "y": 27.96875,
     "z": 6.96875,
-    "region": "Beta2 (unverified)"
+    "region": "Beta2"
   },
   {
     "name": "Matask",
@@ -15382,7 +15382,7 @@
     "x": -70.25,
     "y": 51.03125,
     "z": -47.46875,
-    "region": "Beta2 (unverified)"
+    "region": "Beta2"
   },
   {
     "name": "Sagittarius A*",
