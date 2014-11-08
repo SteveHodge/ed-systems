@@ -33,7 +33,47 @@
     "z": -36.125,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Refinery",
+    "government": "Democracy",
+    "population": 263055,
+    "security": "Medium",
+    "stations": [
+      {
+        "station": "Eisele Dock",
+        "distance": 190,
+        "type": "Civilian Outpost",
+        "faction": "Green Party of HR 8474",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
+      },
+      {
+        "station": "Clark Point",
+        "distance": 326,
+        "type": "Industrial Outpost",
+        "faction": "HR 8474 Solutions",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
+      },
+      {
+        "station": "Galvani Landing",
+        "distance": 326,
+        "type": "Industrial Outpost",
+        "faction": "Traditional HR 8474 Order",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
+      }
+    ]
   },
   {
     "name": "BD+71 1033",
@@ -150,7 +190,47 @@
     "z": -43.4375,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-11-01T06:36:37.633Z"
+    "contributed": "2014-11-01T06:36:37.633Z",
+    "allegiance": "Independent",
+    "economy": "Industrial",
+    "government": "Democracy",
+    "population": 38500000,
+    "security": "High",
+    "stations": [
+      {
+        "station": "Kummer Dock",
+        "distance": 298,
+        "type": "Industrial Outpost",
+        "faction": "Traditional Fu Haiting Party",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
+      },
+      {
+        "station": "Hannu Station",
+        "distance": 38.5,
+        "type": "Orbis Starport",
+        "faction": "People's Fu Haiting People's Party",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
+      },
+      {
+        "station": "McDevitt Orbital",
+        "distance": 65.1,
+        "type": "Commercial Outpost",
+        "faction": "Fu Haiting Group",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
+      }
+    ]
   },
   {
     "name": "GCRV 13292",
@@ -231,7 +311,25 @@
     "z": -39.3125,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Extraction",
+    "government": "Corporate",
+    "population": 31839,
+    "security": "Medium",
+    "stations": [
+      {
+        "station": "Cenker Outpost",
+        "distance": 6450,
+        "type": "Industrial Outpost",
+        "faction": "HIP 107457 Incorporated",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
+      }
+    ]
   },
   {
     "name": "Loga",
@@ -294,7 +392,36 @@
     "z": -25.5625,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Refinery",
+    "government": "Democracy",
+    "population": 128953,
+    "security": "Medium",
+    "stations": [
+      {
+        "station": "Samokutyayev Camp",
+        "distance": 10.8,
+        "type": "Unsanctioned Outpost",
+        "faction": "LP 48-567 Telecommunications Services",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "small"
+      },
+      {
+        "station": "Magnus Refinery",
+        "distance": 18.9,
+        "type": "Unsanctioned Outpost",
+        "faction": "LP 48-567 Camorra",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "small"
+      }
+    ]
   },
   {
     "name": "LTT 16979",
@@ -582,7 +709,36 @@
     "z": -23.15625,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Extraction",
+    "government": "Corporate",
+    "population": 21519,
+    "security": "Low",
+    "stations": [
+      {
+        "station": "Ride Survey",
+        "distance": 84.9,
+        "type": "Industrial Outpost",
+        "faction": "LHS 3586 Communications PLC",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
+      },
+      {
+        "station": "Lawrence Station",
+        "distance": 2189,
+        "type": "Industrial Outpost",
+        "faction": "LHS 3586 Communications PLC",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
+      }
+    ]
   },
   {
     "name": "Aurea",
@@ -654,7 +810,25 @@
     "z": -33.46875,
     "contributor": "FD",
     "region": "Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Industrial",
+    "government": "Democracy",
+    "population": 4900000,
+    "security": "High",
+    "stations": [
+      {
+        "station": "Bondar City",
+        "distance": 728,
+        "type": "Ocellus Starport",
+        "faction": "LHS 1101 Future",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
+      }
+    ]
   },
   {
     "name": "LTT 15294",
@@ -1328,7 +1502,47 @@
     "y": 22.84375,
     "z": -4.59375,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Independent",
+    "economy": "Agriculture",
+    "government": "Corporate",
+    "population": 7500000,
+    "security": "Medium",
+    "stations": [
+      {
+        "station": "Cartier's Port",
+        "distance": 353,
+        "type": "Orbis Starport",
+        "faction": "Purple Natural Industries",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
+      },
+      {
+        "station": "Brooks Estate",
+        "distance": 369,
+        "type": "Orbis Starport",
+        "faction": "The Purple Dragons",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
+      },
+      {
+        "station": "McMahon Port",
+        "distance": 1168,
+        "type": "Industral Outpost",
+        "faction": "The Purple Dragons",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
+      }
+    ]
   },
   {
     "name": "LHS 2405",
@@ -2357,7 +2571,36 @@
     "y": 25.28125,
     "z": -4,
     "region": "Beta1",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Refinery",
+    "government": "Democracy",
+    "population": 55000,
+    "security": "Medium",
+    "stations": [
+      {
+        "station": "Mastracchio Base",
+        "distance": 508,
+        "type": "Coriolis Starport",
+        "faction": "The Jet Drug Empire",
+        "commodities_market": false,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
+      },
+      {
+        "station": "Cuffey Plant",
+        "distance": 508,
+        "type": "Orbis Starport",
+        "faction": "Acihaut Allied Network",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
+      }
+    ]
   },
   {
     "name": "BD+55 1519",
@@ -2494,7 +2737,25 @@
     "y": 29.09375,
     "z": -1.71875,
     "region": "Premium Beta2",
-    "contributed": "2014-10-21T17:16:31.000Z"
+    "contributed": "2014-10-21T17:16:31.000Z",
+    "allegiance": "Federation",
+    "economy": "Extraction",
+    "government": "Confederacy",
+    "population": 11999,
+    "security": "Low",
+    "stations": [
+      {
+        "station": "WCM Transfer Orbital",
+        "distance": 70.4,
+        "type": "Coriolis Starport",
+        "faction": "Movement For LHS 3006 Independents",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
+      }
+    ]
   },
   {
     "name": "Rakapila",
@@ -7669,24 +7930,33 @@
     "contributor": "FD",
     "contributed": "2014-11-01T06:36:37.633Z",
     "region": "Beta3",
+    "allegiance": "Federation",
+    "economy": "Industrial",
+    "government": "Corporation",
+    "population": 3100000,
+    "security": "Medium",
     "stations": [
       {
         "station": "Vinogradov Installation",
-        "distance": 2077,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 2076,
+        "type": "Coriolis Starport",
+        "faction": "Union of Tripu Liberals",
+        "commodities_market": true,
+        "black_market": true,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Laval City",
-        "distance": 3411,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 3413,
+        "type": "Commercial Outpost",
+        "faction": "Tripu Communications Network",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": true,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -8022,51 +8292,66 @@
     "contributor": "FD",
     "contributed": "2014-11-01T06:36:37.633Z",
     "region": "Beta3",
+    "allegiance": "Federation",
+    "economy": "Industrial",
+    "government": "Democracy",
+    "population": 64600000,
+    "security": "High",
     "stations": [
       {
         "station": "Kaku Terminal",
-        "distance": 54.6,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 57.6,
+        "type": "Orbis Starport",
+        "faction": "Wosyra Pao Central Incorporated",
+        "commodities_market": true,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Kovalyonok City",
-        "distance": 62.4,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 66.2,
+        "type": "Ocellus Starport",
+        "faction": "Wosyra Pao Group",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": true,
+        "outfitting": true,
+        "largest_pad": "large"
       },
       {
         "station": "Burbank Settlement",
-        "distance": 79.5,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 77,
+        "type": "Civilian Outpost",
+        "faction": "Natural Wosyra Pao Party",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
       },
       {
         "station": "Onufrienko Settlement",
-        "distance": 91,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "distance": 97.1,
+        "type": "Industrial Outpost",
+        "faction": "Wosyra Pao Group",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
       },
       {
         "station": "Agnesi Refinery",
         "distance": 125,
-        "type": "unknown",
-        "commodities_market": null,
-        "black_market": null,
-        "shipyard": null,
-        "outfitting": null
+        "type": "Industrial Outpost",
+        "faction": "Labour of Wosyra Pao",
+        "commodities_market": false,
+        "black_market": false,
+        "shipyard": false,
+        "outfitting": false,
+        "largest_pad": "medium"
       }
     ]
   },
@@ -17397,6 +17682,222 @@
     "x": -72.21875,
     "y": 36.8125,
     "z": -10.625,
+    "region": "Beta3"
+  },
+  {
+    "name": "HIP 118207",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-08T04:17:46.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 33.92
+      },
+      {
+        "system": "Wanggu",
+        "distance": 33.13
+      },
+      {
+        "system": "Piran",
+        "distance": 55.67
+      },
+      {
+        "system": "Yakan",
+        "distance": 61.42
+      },
+      {
+        "system": "Suraci",
+        "distance": 36.77
+      },
+      {
+        "system": "Gera",
+        "distance": 53.32
+      },
+      {
+        "system": "Arin",
+        "distance": 138.68
+      },
+      {
+        "system": "Pollux",
+        "distance": 134.06
+      },
+      {
+        "system": "Amun",
+        "distance": 176.13
+      },
+      {
+        "system": "Eranin",
+        "distance": 118.17
+      },
+      {
+        "system": "Chini",
+        "distance": 176.38
+      },
+      {
+        "system": "Alcor",
+        "distance": 105.74
+      },
+      {
+        "system": "Blata",
+        "distance": 67.54
+      },
+      {
+        "system": "Eme",
+        "distance": 170.1
+      },
+      {
+        "system": "Loga",
+        "distance": 48.08
+      }
+    ],
+    "x": -119.375,
+    "y": 36.8125,
+    "z": -69.34375,
+    "region": "Beta3"
+  },
+  {
+    "name": "HIP 112951",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-08T04:51:32.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 38.49
+      },
+      {
+        "system": "Wanggu",
+        "distance": 31.27
+      },
+      {
+        "system": "Piran",
+        "distance": 56.32
+      },
+      {
+        "system": "Yakan",
+        "distance": 55.8
+      },
+      {
+        "system": "Suraci",
+        "distance": 51.89
+      },
+      {
+        "system": "Gera",
+        "distance": 68.36
+      },
+      {
+        "system": "Arin",
+        "distance": 157.21
+      },
+      {
+        "system": "Pollux",
+        "distance": 153.74
+      },
+      {
+        "system": "Amun",
+        "distance": 195.74
+      },
+      {
+        "system": "Eranin",
+        "distance": 134.69
+      },
+      {
+        "system": "Chini",
+        "distance": 195.82
+      },
+      {
+        "system": "Alcor",
+        "distance": 120.47
+      },
+      {
+        "system": "Blata",
+        "distance": 60.44
+      },
+      {
+        "system": "Eme",
+        "distance": 188.38
+      },
+      {
+        "system": "Loga",
+        "distance": 65.46
+      }
+    ],
+    "x": -139.59375,
+    "y": 41.6875,
+    "z": -68.15625,
+    "region": "Beta3"
+  },
+  {
+    "name": "HIP 113628",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-08T05:18:21.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 42.76
+      },
+      {
+        "system": "Wanggu",
+        "distance": 36.73
+      },
+      {
+        "system": "Piran",
+        "distance": 61.44
+      },
+      {
+        "system": "Yakan",
+        "distance": 59.77
+      },
+      {
+        "system": "Suraci",
+        "distance": 57.43
+      },
+      {
+        "system": "Gera",
+        "distance": 74.29
+      },
+      {
+        "system": "Arin",
+        "distance": 162.73
+      },
+      {
+        "system": "Pollux",
+        "distance": 158.83
+      },
+      {
+        "system": "Amun",
+        "distance": 200.47
+      },
+      {
+        "system": "Eranin",
+        "distance": 140.13
+      },
+      {
+        "system": "Chini",
+        "distance": 200.34
+      },
+      {
+        "system": "Alcor",
+        "distance": 125.04
+      },
+      {
+        "system": "Blata",
+        "distance": 64.28
+      },
+      {
+        "system": "Eme",
+        "distance": 193.66
+      },
+      {
+        "system": "Loga",
+        "distance": 70.81
+      }
+    ],
+    "x": -143.40625,
+    "y": 44.03125,
+    "z": -72.21875,
     "region": "Beta3"
   }
 ]
