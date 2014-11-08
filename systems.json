@@ -18461,5 +18461,77 @@
     "y": 41.625,
     "z": -70.40625,
     "region": "Beta3"
+  },
+  {
+    "name": "HIP 112970",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-08T22:40:10.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 74.9
+      },
+      {
+        "system": "Wanggu",
+        "distance": 54.9
+      },
+      {
+        "system": "Piran",
+        "distance": 79.46
+      },
+      {
+        "system": "Yakan",
+        "distance": 72.56
+      },
+      {
+        "system": "Suraci",
+        "distance": 78.48
+      },
+      {
+        "system": "Gera",
+        "distance": 96.86
+      },
+      {
+        "system": "Arin",
+        "distance": 189.71
+      },
+      {
+        "system": "Pollux",
+        "distance": 188.26
+      },
+      {
+        "system": "Amun",
+        "distance": 232.4
+      },
+      {
+        "system": "Eranin",
+        "distance": 169.57
+      },
+      {
+        "system": "Chini",
+        "distance": 233.34
+      },
+      {
+        "system": "Alcor",
+        "distance": 158.56
+      },
+      {
+        "system": "Blata",
+        "distance": 64.53
+      },
+      {
+        "system": "Eme",
+        "distance": 223.55
+      },
+      {
+        "system": "Loga",
+        "distance": 101.75
+      }
+    ],
+    "x": -176.25,
+    "y": 26.125,
+    "z": -72.6875,
+    "region": "Beta3"
   }
 ]
