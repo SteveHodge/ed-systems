@@ -22133,5 +22133,1445 @@
     "y": 18.09375,
     "z": -5.5625,
     "region": "Beta3"
+  },
+  {
+    "name": "GL Virginis",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T18:13:09.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 134.79
+      },
+      {
+        "system": "Wanggu",
+        "distance": 145.25
+      },
+      {
+        "system": "Piran",
+        "distance": 133.05
+      },
+      {
+        "system": "Yakan",
+        "distance": 150.07
+      },
+      {
+        "system": "Suraci",
+        "distance": 121.36
+      },
+      {
+        "system": "Gera",
+        "distance": 101.59
+      },
+      {
+        "system": "Arin",
+        "distance": 19.81
+      },
+      {
+        "system": "Pollux",
+        "distance": 31.48
+      },
+      {
+        "system": "Amun",
+        "distance": 54.31
+      },
+      {
+        "system": "Eranin",
+        "distance": 33.52
+      },
+      {
+        "system": "Chini",
+        "distance": 61.01
+      },
+      {
+        "system": "Alcor",
+        "distance": 68.52
+      },
+      {
+        "system": "Blata",
+        "distance": 159.91
+      },
+      {
+        "system": "Eme",
+        "distance": 28.12
+      },
+      {
+        "system": "Loga",
+        "distance": 97.58
+      }
+    ],
+    "x": 6.4375,
+    "y": 20.3125,
+    "z": 0.65625,
+    "region": "Beta3"
+  },
+  {
+    "name": "LHS 47",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T18:26:18.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 132.42
+      },
+      {
+        "system": "Wanggu",
+        "distance": 141.54
+      },
+      {
+        "system": "Piran",
+        "distance": 128.65
+      },
+      {
+        "system": "Yakan",
+        "distance": 145.66
+      },
+      {
+        "system": "Suraci",
+        "distance": 118.18
+      },
+      {
+        "system": "Gera",
+        "distance": 97.78
+      },
+      {
+        "system": "Arin",
+        "distance": 19.28
+      },
+      {
+        "system": "Pollux",
+        "distance": 36.16
+      },
+      {
+        "system": "Amun",
+        "distance": 62.32
+      },
+      {
+        "system": "Eranin",
+        "distance": 31.5
+      },
+      {
+        "system": "Chini",
+        "distance": 69.24
+      },
+      {
+        "system": "Alcor",
+        "distance": 69.26
+      },
+      {
+        "system": "Blata",
+        "distance": 154.77
+      },
+      {
+        "system": "Eme",
+        "distance": 34.38
+      },
+      {
+        "system": "Loga",
+        "distance": 95.54
+      }
+    ],
+    "x": 0.71875,
+    "y": 16.6875,
+    "z": 5.40625,
+    "region": "Beta3"
+  },
+  {
+    "name": "Struve 2398",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T18:45:58.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 125.21
+      },
+      {
+        "system": "Wanggu",
+        "distance": 131.03
+      },
+      {
+        "system": "Piran",
+        "distance": 119.8
+      },
+      {
+        "system": "Yakan",
+        "distance": 137.16
+      },
+      {
+        "system": "Suraci",
+        "distance": 105.56
+      },
+      {
+        "system": "Gera",
+        "distance": 85.42
+      },
+      {
+        "system": "Arin",
+        "distance": 14.83
+      },
+      {
+        "system": "Pollux",
+        "distance": 35.98
+      },
+      {
+        "system": "Amun",
+        "distance": 73.22
+      },
+      {
+        "system": "Eranin",
+        "distance": 34.07
+      },
+      {
+        "system": "Chini",
+        "distance": 80.79
+      },
+      {
+        "system": "Alcor",
+        "distance": 73.28
+      },
+      {
+        "system": "Blata",
+        "distance": 143.86
+      },
+      {
+        "system": "Eme",
+        "distance": 49.42
+      },
+      {
+        "system": "Loga",
+        "distance": 87
+      }
+    ],
+    "x": -10.625,
+    "y": 4.75,
+    "z": 0.09375,
+    "region": "Beta3"
+  },
+  {
+    "name": "Sigma Draconis",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T18:51:44.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 117.62
+      },
+      {
+        "system": "Wanggu",
+        "distance": 123.49
+      },
+      {
+        "system": "Piran",
+        "distance": 112.62
+      },
+      {
+        "system": "Yakan",
+        "distance": 130.05
+      },
+      {
+        "system": "Suraci",
+        "distance": 98.1
+      },
+      {
+        "system": "Gera",
+        "distance": 77.93
+      },
+      {
+        "system": "Arin",
+        "distance": 19.24
+      },
+      {
+        "system": "Pollux",
+        "distance": 36.37
+      },
+      {
+        "system": "Amun",
+        "distance": 76.86
+      },
+      {
+        "system": "Eranin",
+        "distance": 30.17
+      },
+      {
+        "system": "Chini",
+        "distance": 83.7
+      },
+      {
+        "system": "Alcor",
+        "distance": 68.51
+      },
+      {
+        "system": "Blata",
+        "distance": 136.92
+      },
+      {
+        "system": "Eme",
+        "distance": 54.84
+      },
+      {
+        "system": "Loga",
+        "distance": 79.32
+      }
+    ],
+    "x": -17.09375,
+    "y": 7,
+    "z": -3.46875,
+    "region": "Beta3"
+  },
+  {
+    "name": "LHS 3595",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T19:00:15.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 114.47
+      },
+      {
+        "system": "Wanggu",
+        "distance": 119.15
+      },
+      {
+        "system": "Piran",
+        "distance": 108.46
+      },
+      {
+        "system": "Yakan",
+        "distance": 125.92
+      },
+      {
+        "system": "Suraci",
+        "distance": 93.66
+      },
+      {
+        "system": "Gera",
+        "distance": 73.34
+      },
+      {
+        "system": "Arin",
+        "distance": 24.01
+      },
+      {
+        "system": "Pollux",
+        "distance": 40.46
+      },
+      {
+        "system": "Amun",
+        "distance": 82.38
+      },
+      {
+        "system": "Eranin",
+        "distance": 32.21
+      },
+      {
+        "system": "Chini",
+        "distance": 89.19
+      },
+      {
+        "system": "Alcor",
+        "distance": 69.76
+      },
+      {
+        "system": "Blata",
+        "distance": 132.05
+      },
+      {
+        "system": "Eme",
+        "distance": 60.6
+      },
+      {
+        "system": "Loga",
+        "distance": 76.28
+      }
+    ],
+    "x": -22.3125,
+    "y": 4.40625,
+    "z": -3.53125,
+    "region": "Beta3"
+  },
+  {
+    "name": "WISE 0313+7807",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T19:20:09.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 110.19
+      },
+      {
+        "system": "Wanggu",
+        "distance": 116.67
+      },
+      {
+        "system": "Piran",
+        "distance": 108.57
+      },
+      {
+        "system": "Yakan",
+        "distance": 126.21
+      },
+      {
+        "system": "Suraci",
+        "distance": 88.98
+      },
+      {
+        "system": "Gera",
+        "distance": 70.35
+      },
+      {
+        "system": "Arin",
+        "distance": 23.48
+      },
+      {
+        "system": "Pollux",
+        "distance": 30.56
+      },
+      {
+        "system": "Amun",
+        "distance": 76.52
+      },
+      {
+        "system": "Eranin",
+        "distance": 32.56
+      },
+      {
+        "system": "Chini",
+        "distance": 82.54
+      },
+      {
+        "system": "Alcor",
+        "distance": 65.52
+      },
+      {
+        "system": "Blata",
+        "distance": 133.19
+      },
+      {
+        "system": "Eme",
+        "distance": 60.91
+      },
+      {
+        "system": "Loga",
+        "distance": 70.21
+      }
+    ],
+    "x": -20.46875,
+    "y": 8.3125,
+    "z": -17.25,
+    "region": "Beta3"
+  },
+  {
+    "name": "V388 Cassiopeiae",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T19:30:30.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 111.31
+      },
+      {
+        "system": "Wanggu",
+        "distance": 115.13
+      },
+      {
+        "system": "Piran",
+        "distance": 107.73
+      },
+      {
+        "system": "Yakan",
+        "distance": 125.42
+      },
+      {
+        "system": "Suraci",
+        "distance": 86.24
+      },
+      {
+        "system": "Gera",
+        "distance": 67.76
+      },
+      {
+        "system": "Arin",
+        "distance": 26.81
+      },
+      {
+        "system": "Pollux",
+        "distance": 36.62
+      },
+      {
+        "system": "Amun",
+        "distance": 83.19
+      },
+      {
+        "system": "Eranin",
+        "distance": 39.9
+      },
+      {
+        "system": "Chini",
+        "distance": 89.93
+      },
+      {
+        "system": "Alcor",
+        "distance": 73.12
+      },
+      {
+        "system": "Blata",
+        "distance": 130.52
+      },
+      {
+        "system": "Eme",
+        "distance": 67.03
+      },
+      {
+        "system": "Loga",
+        "distance": 71.26
+      }
+    ],
+    "x": -24.3125,
+    "y": -0.25,
+    "z": -16.59375,
+    "region": "Beta3"
+  },
+  {
+    "name": "Lorana",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T19:38:18.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 109.2
+      },
+      {
+        "system": "Wanggu",
+        "distance": 113.49
+      },
+      {
+        "system": "Piran",
+        "distance": 107.02
+      },
+      {
+        "system": "Yakan",
+        "distance": 124.73
+      },
+      {
+        "system": "Suraci",
+        "distance": 83.89
+      },
+      {
+        "system": "Gera",
+        "distance": 66.07
+      },
+      {
+        "system": "Arin",
+        "distance": 28.72
+      },
+      {
+        "system": "Pollux",
+        "distance": 35.09
+      },
+      {
+        "system": "Amun",
+        "distance": 82.64
+      },
+      {
+        "system": "Eranin",
+        "distance": 40.75
+      },
+      {
+        "system": "Chini",
+        "distance": 89.04
+      },
+      {
+        "system": "Alcor",
+        "distance": 72
+      },
+      {
+        "system": "Blata",
+        "distance": 130.05
+      },
+      {
+        "system": "Eme",
+        "distance": 68.49
+      },
+      {
+        "system": "Loga",
+        "distance": 68.67
+      }
+    ],
+    "x": -24.78125,
+    "y": 1.09375,
+    "z": -21.21875,
+    "region": "Beta3"
+  },
+  {
+    "name": "LHS 115",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T19:44:36.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 106.71
+      },
+      {
+        "system": "Wanggu",
+        "distance": 110.85
+      },
+      {
+        "system": "Piran",
+        "distance": 103.31
+      },
+      {
+        "system": "Yakan",
+        "distance": 121
+      },
+      {
+        "system": "Suraci",
+        "distance": 82.48
+      },
+      {
+        "system": "Gera",
+        "distance": 63.72
+      },
+      {
+        "system": "Arin",
+        "distance": 30.12
+      },
+      {
+        "system": "Pollux",
+        "distance": 38.65
+      },
+      {
+        "system": "Amun",
+        "distance": 85.4
+      },
+      {
+        "system": "Eranin",
+        "distance": 37.76
+      },
+      {
+        "system": "Chini",
+        "distance": 91.65
+      },
+      {
+        "system": "Alcor",
+        "distance": 69.76
+      },
+      {
+        "system": "Blata",
+        "distance": 126.49
+      },
+      {
+        "system": "Eme",
+        "distance": 69.29
+      },
+      {
+        "system": "Loga",
+        "distance": 66.79
+      }
+    ],
+    "x": -27.9375,
+    "y": 2.65625,
+    "z": -17.0625,
+    "region": "Beta3"
+  },
+  {
+    "name": "LHS 18",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T19:54:19.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 101.31
+      },
+      {
+        "system": "Wanggu",
+        "distance": 107.58
+      },
+      {
+        "system": "Piran",
+        "distance": 101.48
+      },
+      {
+        "system": "Yakan",
+        "distance": 119.15
+      },
+      {
+        "system": "Suraci",
+        "distance": 78.62
+      },
+      {
+        "system": "Gera",
+        "distance": 61.08
+      },
+      {
+        "system": "Arin",
+        "distance": 34.22
+      },
+      {
+        "system": "Pollux",
+        "distance": 35.56
+      },
+      {
+        "system": "Amun",
+        "distance": 83.1
+      },
+      {
+        "system": "Eranin",
+        "distance": 37.18
+      },
+      {
+        "system": "Chini",
+        "distance": 88.24
+      },
+      {
+        "system": "Alcor",
+        "distance": 64.17
+      },
+      {
+        "system": "Blata",
+        "distance": 125.94
+      },
+      {
+        "system": "Eme",
+        "distance": 70.87
+      },
+      {
+        "system": "Loga",
+        "distance": 60.54
+      }
+    ],
+    "x": -28.28125,
+    "y": 9.1875,
+    "z": -25.78125,
+    "region": "Beta3"
+  },
+  {
+    "name": "Mbombo",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T20:15:01.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 96.63
+      },
+      {
+        "system": "Wanggu",
+        "distance": 99.83
+      },
+      {
+        "system": "Piran",
+        "distance": 96.08
+      },
+      {
+        "system": "Yakan",
+        "distance": 113.71
+      },
+      {
+        "system": "Suraci",
+        "distance": 68.57
+      },
+      {
+        "system": "Gera",
+        "distance": 52.2
+      },
+      {
+        "system": "Arin",
+        "distance": 44.46
+      },
+      {
+        "system": "Pollux",
+        "distance": 45.85
+      },
+      {
+        "system": "Amun",
+        "distance": 94.21
+      },
+      {
+        "system": "Eranin",
+        "distance": 47.89
+      },
+      {
+        "system": "Chini",
+        "distance": 99.5
+      },
+      {
+        "system": "Alcor",
+        "distance": 71.83
+      },
+      {
+        "system": "Blata",
+        "distance": 118.4
+      },
+      {
+        "system": "Eme",
+        "distance": 83.02
+      },
+      {
+        "system": "Loga",
+        "distance": 55.67
+      }
+    ],
+    "x": -37.59375,
+    "y": 1.96875,
+    "z": -30.875,
+    "region": "Beta3"
+  },
+  {
+    "name": "Atanua",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T20:21:54.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 91.14
+      },
+      {
+        "system": "Wanggu",
+        "distance": 97.65
+      },
+      {
+        "system": "Piran",
+        "distance": 95.77
+      },
+      {
+        "system": "Yakan",
+        "distance": 113.13
+      },
+      {
+        "system": "Suraci",
+        "distance": 66.26
+      },
+      {
+        "system": "Gera",
+        "distance": 52.31
+      },
+      {
+        "system": "Arin",
+        "distance": 50.61
+      },
+      {
+        "system": "Pollux",
+        "distance": 45.31
+      },
+      {
+        "system": "Amun",
+        "distance": 92.2
+      },
+      {
+        "system": "Eranin",
+        "distance": 49.58
+      },
+      {
+        "system": "Chini",
+        "distance": 96.01
+      },
+      {
+        "system": "Alcor",
+        "distance": 66.3
+      },
+      {
+        "system": "Blata",
+        "distance": 119.78
+      },
+      {
+        "system": "Eme",
+        "distance": 85.45
+      },
+      {
+        "system": "Loga",
+        "distance": 49.6
+      }
+    ],
+    "x": -37.09375,
+    "y": 11.28125,
+    "z": -41.40625,
+    "region": "Beta3"
+  },
+  {
+    "name": "LHS 214",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T20:46:29.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 88.13
+      },
+      {
+        "system": "Wanggu",
+        "distance": 98.94
+      },
+      {
+        "system": "Piran",
+        "distance": 98.38
+      },
+      {
+        "system": "Yakan",
+        "distance": 115.14
+      },
+      {
+        "system": "Suraci",
+        "distance": 69.16
+      },
+      {
+        "system": "Gera",
+        "distance": 57.93
+      },
+      {
+        "system": "Arin",
+        "distance": 58.45
+      },
+      {
+        "system": "Pollux",
+        "distance": 47.36
+      },
+      {
+        "system": "Amun",
+        "distance": 90.01
+      },
+      {
+        "system": "Eranin",
+        "distance": 52.95
+      },
+      {
+        "system": "Chini",
+        "distance": 91.98
+      },
+      {
+        "system": "Alcor",
+        "distance": 60.91
+      },
+      {
+        "system": "Blata",
+        "distance": 124.22
+      },
+      {
+        "system": "Eme",
+        "distance": 87.9
+      },
+      {
+        "system": "Loga",
+        "distance": 47.84
+      }
+    ],
+    "x": -34.75,
+    "y": 23.09375,
+    "z": -51,
+    "region": "Beta3"
+  },
+  {
+    "name": "Rex",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T21:00:35.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 99.52
+      },
+      {
+        "system": "Wanggu",
+        "distance": 107.15
+      },
+      {
+        "system": "Piran",
+        "distance": 104.37
+      },
+      {
+        "system": "Yakan",
+        "distance": 121.79
+      },
+      {
+        "system": "Suraci",
+        "distance": 76.08
+      },
+      {
+        "system": "Gera",
+        "distance": 61.83
+      },
+      {
+        "system": "Arin",
+        "distance": 42.93
+      },
+      {
+        "system": "Pollux",
+        "distance": 35.6
+      },
+      {
+        "system": "Amun",
+        "distance": 82.61
+      },
+      {
+        "system": "Eranin",
+        "distance": 46.58
+      },
+      {
+        "system": "Chini",
+        "distance": 86.73
+      },
+      {
+        "system": "Alcor",
+        "distance": 66.14
+      },
+      {
+        "system": "Blata",
+        "distance": 128.95
+      },
+      {
+        "system": "Eme",
+        "distance": 76.84
+      },
+      {
+        "system": "Loga",
+        "distance": 58.11
+      }
+    ],
+    "x": -27.34375,
+    "y": 11.5625,
+    "z": -40.25,
+    "region": "Beta3"
+  },
+  {
+    "name": "LHS 1596",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T22:10:51.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 88.42
+      },
+      {
+        "system": "Wanggu",
+        "distance": 95.61
+      },
+      {
+        "system": "Piran",
+        "distance": 92.67
+      },
+      {
+        "system": "Yakan",
+        "distance": 110.07
+      },
+      {
+        "system": "Suraci",
+        "distance": 65.55
+      },
+      {
+        "system": "Gera",
+        "distance": 50.54
+      },
+      {
+        "system": "Arin",
+        "distance": 50.35
+      },
+      {
+        "system": "Pollux",
+        "distance": 46
+      },
+      {
+        "system": "Amun",
+        "distance": 92.53
+      },
+      {
+        "system": "Eranin",
+        "distance": 45.91
+      },
+      {
+        "system": "Chini",
+        "distance": 96.12
+      },
+      {
+        "system": "Alcor",
+        "distance": 62.22
+      },
+      {
+        "system": "Blata",
+        "distance": 117.39
+      },
+      {
+        "system": "Eme",
+        "distance": 84.55
+      },
+      {
+        "system": "Loga",
+        "distance": 46.94
+      }
+    ],
+    "x": -38.5625,
+    "y": 14.40625,
+    "z": -38.21875,
+    "region": "Beta3"
+  },
+  {
+    "name": "LHS 1865",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T22:16:04.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 81.82
+      },
+      {
+        "system": "Wanggu",
+        "distance": 94.9
+      },
+      {
+        "system": "Piran",
+        "distance": 94.08
+      },
+      {
+        "system": "Yakan",
+        "distance": 110.48
+      },
+      {
+        "system": "Suraci",
+        "distance": 67.48
+      },
+      {
+        "system": "Gera",
+        "distance": 56.66
+      },
+      {
+        "system": "Arin",
+        "distance": 64.03
+      },
+      {
+        "system": "Pollux",
+        "distance": 52.9
+      },
+      {
+        "system": "Amun",
+        "distance": 93.37
+      },
+      {
+        "system": "Eranin",
+        "distance": 52.99
+      },
+      {
+        "system": "Chini",
+        "distance": 94.36
+      },
+      {
+        "system": "Alcor",
+        "distance": 55.27
+      },
+      {
+        "system": "Blata",
+        "distance": 121.08
+      },
+      {
+        "system": "Eme",
+        "distance": 91.25
+      },
+      {
+        "system": "Loga",
+        "distance": 42.66
+      }
+    ],
+    "x": -38.5625,
+    "y": 30.8125,
+    "z": -51.46875,
+    "region": "Beta3"
+  },
+  {
+    "name": "LP 34-161",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T22:21:42.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 82.42
+      },
+      {
+        "system": "Wanggu",
+        "distance": 96.51
+      },
+      {
+        "system": "Piran",
+        "distance": 96.19
+      },
+      {
+        "system": "Yakan",
+        "distance": 112.34
+      },
+      {
+        "system": "Suraci",
+        "distance": 69.52
+      },
+      {
+        "system": "Gera",
+        "distance": 59.65
+      },
+      {
+        "system": "Arin",
+        "distance": 66.58
+      },
+      {
+        "system": "Pollux",
+        "distance": 54.18
+      },
+      {
+        "system": "Amun",
+        "distance": 93.11
+      },
+      {
+        "system": "Eranin",
+        "distance": 55.41
+      },
+      {
+        "system": "Chini",
+        "distance": 93.62
+      },
+      {
+        "system": "Alcor",
+        "distance": 55.45
+      },
+      {
+        "system": "Blata",
+        "distance": 123.42
+      },
+      {
+        "system": "Eme",
+        "distance": 92.44
+      },
+      {
+        "system": "Loga",
+        "distance": 44.28
+      }
+    ],
+    "x": -37.40625,
+    "y": 33.5,
+    "z": -54.5625,
+    "region": "Beta3"
+  },
+  {
+    "name": "LP 54-19",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T22:29:48.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 82.3
+      },
+      {
+        "system": "Wanggu",
+        "distance": 88.48
+      },
+      {
+        "system": "Piran",
+        "distance": 89.54
+      },
+      {
+        "system": "Yakan",
+        "distance": 106.45
+      },
+      {
+        "system": "Suraci",
+        "distance": 56.03
+      },
+      {
+        "system": "Gera",
+        "distance": 45.15
+      },
+      {
+        "system": "Arin",
+        "distance": 63.38
+      },
+      {
+        "system": "Pollux",
+        "distance": 56.85
+      },
+      {
+        "system": "Amun",
+        "distance": 102.57
+      },
+      {
+        "system": "Eranin",
+        "distance": 58.89
+      },
+      {
+        "system": "Chini",
+        "distance": 105.58
+      },
+      {
+        "system": "Alcor",
+        "distance": 69.31
+      },
+      {
+        "system": "Blata",
+        "distance": 112.84
+      },
+      {
+        "system": "Eme",
+        "distance": 97.56
+      },
+      {
+        "system": "Loga",
+        "distance": 41.29
+      }
+    ],
+    "x": -46.65625,
+    "y": 13.09375,
+    "z": -49.6875,
+    "region": "Beta3"
+  },
+  {
+    "name": "LTT 11362",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T22:36:46.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 66.37
+      },
+      {
+        "system": "Wanggu",
+        "distance": 76.6
+      },
+      {
+        "system": "Piran",
+        "distance": 79.82
+      },
+      {
+        "system": "Yakan",
+        "distance": 95.63
+      },
+      {
+        "system": "Suraci",
+        "distance": 48.05
+      },
+      {
+        "system": "Gera",
+        "distance": 41.36
+      },
+      {
+        "system": "Arin",
+        "distance": 79.51
+      },
+      {
+        "system": "Pollux",
+        "distance": 71.37
+      },
+      {
+        "system": "Amun",
+        "distance": 113.76
+      },
+      {
+        "system": "Eranin",
+        "distance": 66.49
+      },
+      {
+        "system": "Chini",
+        "distance": 114.95
+      },
+      {
+        "system": "Alcor",
+        "distance": 65.39
+      },
+      {
+        "system": "Blata",
+        "distance": 104.62
+      },
+      {
+        "system": "Eme",
+        "distance": 110.15
+      },
+      {
+        "system": "Loga",
+        "distance": 27.79
+      }
+    ],
+    "x": -58.15625,
+    "y": 27.0625,
+    "z": -56.71875,
+    "region": "Beta3"
+  },
+  {
+    "name": "WISE 1741+2553",
+    "calculated": true,
+    "contributor": "Harbinger",
+    "contributed": "2014-11-11T23:44:04.000Z",
+    "distances": [
+      {
+        "system": "Ammapa",
+        "distance": 126.39
+      },
+      {
+        "system": "Wanggu",
+        "distance": 132.29
+      },
+      {
+        "system": "Piran",
+        "distance": 118.88
+      },
+      {
+        "system": "Yakan",
+        "distance": 135.89
+      },
+      {
+        "system": "Suraci",
+        "distance": 109.38
+      },
+      {
+        "system": "Gera",
+        "distance": 88.22
+      },
+      {
+        "system": "Arin",
+        "distance": 23.91
+      },
+      {
+        "system": "Pollux",
+        "distance": 45.14
+      },
+      {
+        "system": "Amun",
+        "distance": 78.01
+      },
+      {
+        "system": "Eranin",
+        "distance": 32.58
+      },
+      {
+        "system": "Chini",
+        "distance": 85.27
+      },
+      {
+        "system": "Alcor",
+        "distance": 72.63
+      },
+      {
+        "system": "Blata",
+        "distance": 143.04
+      },
+      {
+        "system": "Eme",
+        "distance": 50.03
+      },
+      {
+        "system": "Loga",
+        "distance": 90.03
+      }
+    ],
+    "x": -12.40625,
+    "y": 7.90625,
+    "z": 10.34375,
+    "region": "Beta3"
   }
 ]
