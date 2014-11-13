@@ -23573,5 +23573,40 @@
     "y": 7.90625,
     "z": 10.34375,
     "region": "Beta3"
-  }
+  },
+  {
+    "name": "Ross 214",
+    "calculated": true,
+    "contributor": "Finwen",
+    "contributed": "2014-11-13T15:32:35.481Z",
+    "distances": [
+    {
+      "system": "Sol",
+      "distance": 172.23
+    },
+    {
+      "system": "Wolf 497",
+      "distance": 177.69
+    },
+    {
+      "system": "Huokang",
+      "distance": 153.73
+    },
+    {
+      "system": "Demeter",
+      "distance": 126.99
+    },
+    {
+      "system": "Fu Haiting",
+      "distance": 61.36
+    },
+    {
+      "system": "Shama",
+      "distance": 39.72
+    }
+    ],
+    "x": -161.125,
+    "y": 16.78125,
+    "z": -58.5
+  }  
 ]
