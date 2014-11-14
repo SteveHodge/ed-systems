@@ -8626,6 +8626,10 @@
       {
         "system": "Theta Draconis",
         "distance": "205.549"
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 159.12
       }
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
@@ -8654,6 +8658,10 @@
       {
         "system": "Theta Draconis",
         "distance": "91.351"
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 130.86
       }
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
@@ -8698,6 +8706,10 @@
       {
         "system": "h Draconis",
         "distance": "677.152"
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 675.71
       }
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
@@ -8754,6 +8766,10 @@
       {
         "system": "Demeter",
         "distance": 1355.437
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 1387.52
       }
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
@@ -8798,6 +8814,10 @@
       {
         "system": "h Draconis",
         "distance": "388.228"
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 408.98
       }
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
@@ -8842,6 +8862,10 @@
       {
         "system": "h Draconis",
         "distance": "486.409"
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 490.35
       }
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
@@ -8874,6 +8898,10 @@
       {
         "system": "SDSS J1416+1348",
         "distance": "174.753"
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 195.51
       }
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
@@ -8918,6 +8946,10 @@
       {
         "system": "h Draconis",
         "distance": "890.934"
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 873.63
       }
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
@@ -9101,6 +9133,14 @@
       {
         "system": "Moros",
         "distance": 54.439
+      },
+      {
+        "system": "Olgrea",
+        "distance": 59.08
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 23.57
       }
     ],
     "region": "Beta2",
@@ -9134,6 +9174,10 @@
       {
         "system": "Basium",
         "distance": "92.326"
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 39.67
       }
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
@@ -9253,6 +9297,14 @@
       {
         "system": "CR Draco",
         "distance": "4.642"
+      },
+      {
+        "system": "Olgrea",
+        "distance": 35.91
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 56.61
       }
     ],
     "region": "Beta2",
@@ -9309,6 +9361,14 @@
       {
         "system": "Rahu",
         "distance": "17.238"
+      },
+      {
+        "system": "Olgrea",
+        "distance": 27.17
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 42.56
       }
     ],
     "region": "Beta2",
@@ -9385,6 +9445,14 @@
       {
         "system": "h Draconis",
         "distance": "42.332"
+      },
+      {
+        "system": "Olgrea",
+        "distance": 52.74
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 48.75
       }
     ],
     "region": "Beta2",
@@ -9429,6 +9497,14 @@
       {
         "system": "h Draconis",
         "distance": "60.887"
+      },
+      {
+        "system": "Olgrea",
+        "distance": 70.62
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 79.68
       }
     ],
     "region": "Beta2",
@@ -9581,6 +9657,14 @@
       {
         "system": "Demeter",
         "distance": 6.197
+      },
+      {
+        "system": "Olgrea",
+        "distance": 46.08
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 57.47
       }
     ],
     "region": "Beta2",
@@ -9621,6 +9705,14 @@
       {
         "system": "Moros",
         "distance": 76.79
+      },
+      {
+        "system": "Olgrea",
+        "distance": 90.24
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 101.86
       }
     ],
     "region": "Beta2",
@@ -9657,6 +9749,14 @@
       {
         "system": "Moros",
         "distance": 88.079
+      },
+      {
+        "system": "Olgrea",
+        "distance": 111.11
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 111.32
       }
     ],
     "region": "Beta2",
@@ -9689,6 +9789,14 @@
       {
         "system": "Moros",
         "distance": 87.988
+      },
+      {
+        "system": "Olgrea",
+        "distance": 112.28
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 111.04
       }
     ],
     "region": "Beta2",
@@ -9721,6 +9829,14 @@
       {
         "system": "Moros",
         "distance": 64.247
+      },
+      {
+        "system": "Olgrea",
+        "distance": 95.55
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 89.57
       }
     ],
     "region": "Beta2",
@@ -9761,6 +9877,14 @@
       {
         "system": "Tyr",
         "distance": "37.014"
+      },
+      {
+        "system": "Olgrea",
+        "distance": 97.17
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 90.47
       }
     ],
     "region": "Beta2",
@@ -9801,6 +9925,14 @@
       {
         "system": "Moros",
         "distance": 47.099
+      },
+      {
+        "system": "Olgrea",
+        "distance": 61.42
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 29.35
       }
     ],
     "region": "Beta2",
@@ -9878,6 +10010,10 @@
       {
         "system": "35 Draconis",
         "distance": "86.967"
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 16.02
       }
     ],
     "contributed": "2014-10-21T17:16:31.000Z"
@@ -10029,6 +10165,14 @@
       {
         "system": "Moros",
         "distance": 31.559
+      },
+      {
+        "system": "Olgrea",
+        "distance": 45.93
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 49.96
       }
     ],
     "region": "Beta2",
@@ -10097,6 +10241,14 @@
       {
         "system": "h Draconis",
         "distance": "26.299"
+      },
+      {
+        "system": "Olgrea",
+        "distance": 44.11
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 49.48
       }
     ],
     "region": "Beta2",
@@ -10177,6 +10329,14 @@
       {
         "system": "Moros",
         "distance": 26.514
+      },
+      {
+        "system": "Olgrea",
+        "distance": 56.14
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 47.16
       }
     ],
     "region": "Beta2",
@@ -10233,6 +10393,14 @@
       {
         "system": "Moros",
         "distance": 34.37
+      },
+      {
+        "system": "Olgrea",
+        "distance": 42.97
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 58.05
       }
     ],
     "region": "Beta2",
@@ -10689,6 +10857,14 @@
       {
         "system": "Moros",
         "distance": 14.055
+      },
+      {
+        "system": "Olgrea",
+        "distance": 71.5
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 33.26
       }
     ],
     "region": "Beta2",
@@ -10733,6 +10909,14 @@
       {
         "system": "Adepti",
         "distance": 58.359
+      },
+      {
+        "system": "Olgrea",
+        "distance": 47.1
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 27.57
       }
     ],
     "region": "Beta2",
@@ -10773,6 +10957,14 @@
       {
         "system": "Moros",
         "distance": 30.137
+      },
+      {
+        "system": "Olgrea",
+        "distance": 48.22
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 26.21
       }
     ],
     "region": "Beta2",
@@ -10813,6 +11005,14 @@
       {
         "system": "Moros",
         "distance": 21.509
+      },
+      {
+        "system": "Olgrea",
+        "distance": 43.84
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 33.83
       }
     ],
     "region": "Beta2",
@@ -10857,6 +11057,14 @@
       {
         "system": "Moros",
         "distance": 40.413
+      },
+      {
+        "system": "Olgrea",
+        "distance": 34.91
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 45.66
       }
     ],
     "region": "Beta2",
@@ -10897,6 +11105,14 @@
       {
         "system": "Moros",
         "distance": 29.177
+      },
+      {
+        "system": "Olgrea",
+        "distance": 51.09
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 24
       }
     ],
     "region": "Beta2",
@@ -11005,6 +11221,14 @@
       {
         "system": "Moros",
         "distance": 14.111
+      },
+      {
+        "system": "Olgrea",
+        "distance": 67.13
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 34.45
       }
     ],
     "region": "Beta2",
@@ -11041,6 +11265,14 @@
       {
         "system": "Moros",
         "distance": 28.09
+      },
+      {
+        "system": "Olgrea",
+        "distance": 49.67
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 23.98
       }
     ],
     "region": "Beta2",
@@ -11085,6 +11317,14 @@
       {
         "system": "Moros",
         "distance": 35.189
+      },
+      {
+        "system": "Olgrea",
+        "distance": 46.81
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 32.43
       }
     ],
     "region": "Beta2",
@@ -11129,6 +11369,14 @@
       {
         "system": "Moros",
         "distance": 35.667
+      },
+      {
+        "system": "Olgrea",
+        "distance": 48.92
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 28.49
       }
     ],
     "region": "Beta2",
@@ -11165,6 +11413,14 @@
       {
         "system": "Moros",
         "distance": 18.356
+      },
+      {
+        "system": "Olgrea",
+        "distance": 47.45
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 24.78
       }
     ],
     "region": "Beta2",
@@ -11209,6 +11465,14 @@
       {
         "system": "Moros",
         "distance": 14.778
+      },
+      {
+        "system": "Olgrea",
+        "distance": 46.9
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 29.8
       }
     ],
     "region": "Beta2",
@@ -11237,6 +11501,14 @@
       {
         "system": "Demeter",
         "distance": 51.517
+      },
+      {
+        "system": "Olgrea",
+        "distance": 38.96
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 40.88
       }
     ],
     "region": "Beta2",
@@ -11277,6 +11549,14 @@
       {
         "system": "Moros",
         "distance": 37.523
+      },
+      {
+        "system": "Olgrea",
+        "distance": 49.27
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 26.57
       }
     ],
     "region": "Beta2",
@@ -11305,6 +11585,14 @@
       {
         "system": "Demeter",
         "distance": 58.645
+      },
+      {
+        "system": "Olgrea",
+        "distance": 44.56
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 38.63
       }
     ],
     "region": "Beta2",
@@ -11417,6 +11705,14 @@
       {
         "system": "Moros",
         "distance": 7.152
+      },
+      {
+        "system": "Olgrea",
+        "distance": 59.79
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 38.64
       }
     ],
     "region": "Beta2",
@@ -11461,6 +11757,14 @@
       {
         "system": "Moros",
         "distance": 17.404
+      },
+      {
+        "system": "Olgrea",
+        "distance": 61.1
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 38.45
       }
     ],
     "region": "Beta2",
@@ -11497,6 +11801,14 @@
       {
         "system": "Moros",
         "distance": 37.772
+      },
+      {
+        "system": "Olgrea",
+        "distance": 49.97
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 54.33
       }
     ],
     "region": "Beta2",
@@ -11725,6 +12037,10 @@
       {
         "system": "Chi Herculis",
         "distance": 29.38
+      },
+      {
+        "system": "Olgrea",
+        "distance": 57.33
       }
     ],
     "region": "Beta2 (outside Beta3)",
@@ -12421,6 +12737,14 @@
       {
         "system": "Moros",
         "distance": 25.681
+      },
+      {
+        "system": "Olgrea",
+        "distance": 71.34
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 44.52
       }
     ],
     "region": "Beta2",
@@ -12461,6 +12785,14 @@
       {
         "system": "Moros",
         "distance": 28.315
+      },
+      {
+        "system": "Olgrea",
+        "distance": 65.34
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 48.32
       }
     ],
     "region": "Beta2",
@@ -12493,6 +12825,14 @@
       {
         "system": "Moros",
         "distance": 15.262
+      },
+      {
+        "system": "Olgrea",
+        "distance": 61.47
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 38.66
       }
     ],
     "region": "Beta2",
@@ -12529,6 +12869,14 @@
       {
         "system": "Moros",
         "distance": 46.351
+      },
+      {
+        "system": "Olgrea",
+        "distance": 50.12
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 65.75
       }
     ],
     "region": "Beta2",
@@ -12653,6 +13001,14 @@
       {
         "system": "Moros",
         "distance": 35.49
+      },
+      {
+        "system": "Olgrea",
+        "distance": 45.41
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 54.73
       }
     ],
     "region": "Beta2",
@@ -12877,6 +13233,14 @@
       {
         "system": "Demeter",
         "distance": 49.415
+      },
+      {
+        "system": "Olgrea",
+        "distance": 42.31
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 49.64
       }
     ],
     "region": "Beta2",
@@ -13097,6 +13461,14 @@
       {
         "system": "Demeter",
         "distance": 47.65
+      },
+      {
+        "system": "Olgrea",
+        "distance": 40.88
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 55.34
       }
     ],
     "region": "Beta2",
@@ -13125,6 +13497,14 @@
       {
         "system": "Demeter",
         "distance": 50.07
+      },
+      {
+        "system": "Olgrea",
+        "distance": 48.52
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 51.32
       }
     ],
     "region": "Beta2",
@@ -13153,6 +13533,14 @@
       {
         "system": "Demeter",
         "distance": 50.251
+      },
+      {
+        "system": "Olgrea",
+        "distance": 45.08
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 49.29
       }
     ],
     "region": "Beta2",
@@ -13193,6 +13581,14 @@
       {
         "system": "Moros",
         "distance": 30.336
+      },
+      {
+        "system": "Olgrea",
+        "distance": 53.15
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 56.11
       }
     ],
     "region": "Beta2",
@@ -13221,6 +13617,14 @@
       {
         "system": "Demeter",
         "distance": 37.652
+      },
+      {
+        "system": "Olgrea",
+        "distance": 37.29
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 43.88
       }
     ],
     "region": "Beta2",
@@ -13253,6 +13657,14 @@
       {
         "system": "Moros",
         "distance": 15.972
+      },
+      {
+        "system": "Olgrea",
+        "distance": 51.05
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 42.23
       }
     ],
     "region": "Beta2",
@@ -13285,6 +13697,14 @@
       {
         "system": "Moros",
         "distance": 22.942
+      },
+      {
+        "system": "Olgrea",
+        "distance": 52.34
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 50.14
       }
     ],
     "region": "Beta2",
@@ -13321,6 +13741,14 @@
       {
         "system": "Moros",
         "distance": 52.337
+      },
+      {
+        "system": "Olgrea",
+        "distance": 46.61
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 76.05
       }
     ],
     "region": "Beta2",
@@ -13361,6 +13789,14 @@
       {
         "system": "Moros",
         "distance": 31.694
+      },
+      {
+        "system": "Olgrea",
+        "distance": 42.22
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 55.45
       }
     ],
     "region": "Beta2",
@@ -13389,6 +13825,14 @@
       {
         "system": "Demeter",
         "distance": 32.701
+      },
+      {
+        "system": "Olgrea",
+        "distance": 41.7
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 47.57
       }
     ],
     "region": "Beta2",
@@ -13417,6 +13861,14 @@
       {
         "system": "Demeter",
         "distance": 44.648
+      },
+      {
+        "system": "Olgrea",
+        "distance": 45.65
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 46.57
       }
     ],
     "region": "Beta2",
@@ -13445,6 +13897,10 @@
       {
         "system": "Moros",
         "distance": 64.398
+      },
+      {
+        "system": "Olgrea",
+        "distance": 39.43
       }
     ],
     "region": "Beta2 (outside Beta3)",
@@ -13473,6 +13929,14 @@
       {
         "system": "Moros",
         "distance": 62.136
+      },
+      {
+        "system": "Olgrea",
+        "distance": 41.09
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 57.93
       }
     ],
     "region": "Beta2",
@@ -13501,6 +13965,14 @@
       {
         "system": "Moros",
         "distance": 51.792
+      },
+      {
+        "system": "Olgrea",
+        "distance": 23
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 61.57
       }
     ],
     "region": "Beta2",
@@ -13529,6 +14001,14 @@
       {
         "system": "Moros",
         "distance": 61.844
+      },
+      {
+        "system": "Olgrea",
+        "distance": 102.58
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 83.98
       }
     ],
     "region": "Beta2",
@@ -13557,6 +14037,14 @@
       {
         "system": "Moros",
         "distance": 55.29
+      },
+      {
+        "system": "Olgrea",
+        "distance": 58.59
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 81.39
       }
     ],
     "region": "Beta2",
@@ -13585,6 +14073,14 @@
       {
         "system": "Moros",
         "distance": 48.486
+      },
+      {
+        "system": "Olgrea",
+        "distance": 46.22
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 73.8
       }
     ],
     "region": "Beta2",
@@ -13613,6 +14109,14 @@
       {
         "system": "Moros",
         "distance": 60.738
+      },
+      {
+        "system": "Olgrea",
+        "distance": 35.43
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 59.64
       }
     ],
     "region": "Beta2",
@@ -13641,6 +14145,14 @@
       {
         "system": "Moros",
         "distance": 51.027
+      },
+      {
+        "system": "Olgrea",
+        "distance": 90.73
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 76.14
       }
     ],
     "region": "Beta2",
@@ -13669,6 +14181,14 @@
       {
         "system": "Moros",
         "distance": 57.172
+      },
+      {
+        "system": "Olgrea",
+        "distance": 26.2
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 61.32
       }
     ],
     "region": "Beta2",
@@ -13697,6 +14217,14 @@
       {
         "system": "Moros",
         "distance": 36.362
+      },
+      {
+        "system": "Olgrea",
+        "distance": 25.73
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 48.07
       }
     ],
     "region": "Beta2",
@@ -13725,6 +14253,14 @@
       {
         "system": "Moros",
         "distance": 61.12
+      },
+      {
+        "system": "Olgrea",
+        "distance": 38.81
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 58.81
       }
     ],
     "region": "Beta2",
@@ -13753,6 +14289,14 @@
       {
         "system": "Moros",
         "distance": 43.333
+      },
+      {
+        "system": "Olgrea",
+        "distance": 68.94
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 58.04
       }
     ],
     "region": "Beta2",
@@ -13781,6 +14325,14 @@
       {
         "system": "35 Draconis",
         "distance": 66.542
+      },
+      {
+        "system": "Olgrea",
+        "distance": 12.78
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 51.71
       }
     ],
     "region": "Beta2",
@@ -13809,6 +14361,14 @@
       {
         "system": "35 Draconis",
         "distance": 72.113
+      },
+      {
+        "system": "Olgrea",
+        "distance": 16.38
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 67.39
       }
     ],
     "region": "Beta2",
@@ -13925,6 +14485,14 @@
       {
         "system": "35 Draconis",
         "distance": 31.701
+      },
+      {
+        "system": "Olgrea",
+        "distance": 31.99
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 65.48
       }
     ],
     "region": "Beta2",
@@ -13953,6 +14521,14 @@
       {
         "system": "35 Draconis",
         "distance": 37.119
+      },
+      {
+        "system": "Olgrea",
+        "distance": 89.26
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 74.74
       }
     ],
     "region": "Beta2",
@@ -13981,6 +14557,14 @@
       {
         "system": "35 Draconis",
         "distance": 60.073
+      },
+      {
+        "system": "Olgrea",
+        "distance": 20.08
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 51.77
       }
     ],
     "region": "Beta2",
@@ -14009,6 +14593,14 @@
       {
         "system": "35 Draconis",
         "distance": 48.514
+      },
+      {
+        "system": "Olgrea",
+        "distance": 105.2
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 100.82
       }
     ],
     "region": "Beta2",
@@ -14037,6 +14629,14 @@
       {
         "system": "35 Draconis",
         "distance": 30.296
+      },
+      {
+        "system": "Olgrea",
+        "distance": 82.44
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 78.15
       }
     ],
     "region": "Beta2",
@@ -14065,6 +14665,14 @@
       {
         "system": "Keries",
         "distance": 23.452
+      },
+      {
+        "system": "Olgrea",
+        "distance": 59.21
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 20.98
       }
     ],
     "region": "Beta2",
@@ -14181,6 +14789,10 @@
       {
         "system": "Keries",
         "distance": 16.803
+      },
+      {
+        "system": "Olgrea",
+        "distance": 47.73
       }
     ],
     "region": "Beta2 (outside Beta3)",
@@ -14473,6 +15085,14 @@
       {
         "system": "Keries",
         "distance": 69.634
+      },
+      {
+        "system": "Olgrea",
+        "distance": 59.89
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 62.87
       }
     ],
     "region": "Beta2",
@@ -14501,6 +15121,14 @@
       {
         "system": "Keries",
         "distance": 112.808
+      },
+      {
+        "system": "Olgrea",
+        "distance": 100.77
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 94.76
       }
     ],
     "region": "Beta2",
@@ -14533,6 +15161,14 @@
       {
         "system": "Wyrd",
         "distance": 18.566
+      },
+      {
+        "system": "Olgrea",
+        "distance": 58.58
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 28.75
       }
     ],
     "region": "Beta2",
@@ -14561,6 +15197,14 @@
       {
         "system": "Keries",
         "distance": 21.987
+      },
+      {
+        "system": "Olgrea",
+        "distance": 57.79
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 20.8
       }
     ],
     "region": "Beta2",
@@ -14593,6 +15237,14 @@
       {
         "system": "Wyrd",
         "distance": 72.193
+      },
+      {
+        "system": "Olgrea",
+        "distance": 67.19
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 61.9
       }
     ],
     "region": "Beta2",
@@ -14621,6 +15273,14 @@
       {
         "system": "Keries",
         "distance": 23.772
+      },
+      {
+        "system": "Olgrea",
+        "distance": 50.49
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 28.44
       }
     ],
     "region": "Beta2",
@@ -14649,6 +15309,14 @@
       {
         "system": "Keries",
         "distance": 30.251
+      },
+      {
+        "system": "Olgrea",
+        "distance": 31.47
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 50.39
       }
     ],
     "region": "Beta2",
@@ -14705,6 +15373,14 @@
       {
         "system": "Wyrd",
         "distance": 32.903
+      },
+      {
+        "system": "Olgrea",
+        "distance": 53.59
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 18.88
       }
     ],
     "region": "Beta2",
@@ -14749,6 +15425,14 @@
       {
         "system": "Demeter",
         "distance": 72.402
+      },
+      {
+        "system": "Olgrea",
+        "distance": 93.25
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 89.88
       }
     ],
     "region": "Beta2",
@@ -14777,6 +15461,14 @@
       {
         "system": "Wyrd",
         "distance": 16.288
+      },
+      {
+        "system": "Olgrea",
+        "distance": 41.88
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 52.47
       }
     ],
     "region": "Beta2",
@@ -14805,6 +15497,14 @@
       {
         "system": "Wyrd",
         "distance": 26.55
+      },
+      {
+        "system": "Olgrea",
+        "distance": 53.76
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 17.84
       }
     ],
     "region": "Beta2",
@@ -14833,6 +15533,14 @@
       {
         "system": "Wyrd",
         "distance": 30.276
+      },
+      {
+        "system": "Olgrea",
+        "distance": 34.34
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 52.76
       }
     ],
     "region": "Beta2",
@@ -15021,6 +15729,14 @@
       {
         "system": "Wyrd",
         "distance": 20.959
+      },
+      {
+        "system": "Olgrea",
+        "distance": 26.8
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 58.41
       }
     ],
     "region": "Beta2",
@@ -15049,6 +15765,14 @@
       {
         "system": "Wyrd",
         "distance": 24.144
+      },
+      {
+        "system": "Olgrea",
+        "distance": 25.38
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 61.48
       }
     ],
     "region": "Beta2",
@@ -15105,6 +15829,14 @@
       {
         "system": "Wyrd",
         "distance": 17.459
+      },
+      {
+        "system": "Olgrea",
+        "distance": 37.13
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 42.46
       }
     ],
     "region": "Beta2",
@@ -15133,6 +15865,14 @@
       {
         "system": "Wyrd",
         "distance": 19.771
+      },
+      {
+        "system": "Olgrea",
+        "distance": 27.26
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 53.68
       }
     ],
     "region": "Beta2",
@@ -15249,6 +15989,14 @@
       {
         "system": "Wyrd",
         "distance": 25.123
+      },
+      {
+        "system": "Olgrea",
+        "distance": 21.48
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 60.92
       }
     ],
     "region": "Beta2",
@@ -15277,6 +16025,138 @@
       {
         "system": "Wyrd",
         "distance": 28.049
+      },
+      {
+        "system": "Olgrea",
+        "distance": 61.62
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 15.93
+      },
+      {
+        "system": "Alkurhah",
+        "distance": 76.14
+      },
+      {
+        "system": "Apep",
+        "distance": 55.34
+      },
+      {
+        "system": "Avici",
+        "distance": 42.46
+      },
+      {
+        "system": "Devi",
+        "distance": 52.76
+      },
+      {
+        "system": "Dziban",
+        "distance": 49.96
+      },
+      {
+        "system": "Enlil",
+        "distance": 49.29
+      },
+      {
+        "system": "Grannus",
+        "distance": 53.08
+      },
+      {
+        "system": "Liabefa",
+        "distance": 80.13
+      },
+      {
+        "system": "Loucetios",
+        "distance": 51.71
+      },
+      {
+        "system": "Marcov's Point",
+        "distance": 23.57
+      },
+      {
+        "system": "Matask",
+        "distance": 76.64
+      },
+      {
+        "system": "Mormo",
+        "distance": 91.6
+      },
+      {
+        "system": "Nanauatzin",
+        "distance": 50.39
+      },
+      {
+        "system": "Taran",
+        "distance": 42.56
+      },
+      {
+        "system": "Taranis",
+        "distance": 38.64
+      },
+      {
+        "system": "Thaumas",
+        "distance": 61.57
+      },
+      {
+        "system": "Trua",
+        "distance": 71.49
+      },
+      {
+        "system": "Yinfu",
+        "distance": 18.88
+      },
+      {
+        "system": "Youdu",
+        "distance": 38.63
+      },
+      {
+        "system": "Sol",
+        "distance": 26.1
+      },
+      {
+        "system": "Achenar",
+        "distance": 159.12
+      },
+      {
+        "system": "Alpha Cygni",
+        "distance": 1387.52
+      },
+      {
+        "system": "Alphard",
+        "distance": 195.51
+      },
+      {
+        "system": "Enif",
+        "distance": 675.71
+      },
+      {
+        "system": "Etamin",
+        "distance": 130.86
+      },
+      {
+        "system": "LP 336-6",
+        "distance": 16.02
+      },
+      {
+        "system": "LP 625-34",
+        "distance": 39.67
+      },
+      {
+        "system": "Mirphak",
+        "distance": 490.35
+      },
+      {
+        "system": "Polaris",
+        "distance": 408.98
+      },
+      {
+        "system": "Rigel",
+        "distance": 873.63
+      },
+      {
+        "system": "Sagittarius A*",
+        "distance": 25904.47
       }
     ],
     "region": "Beta2",
@@ -15305,6 +16185,14 @@
       {
         "system": "Wyrd",
         "distance": 96.72
+      },
+      {
+        "system": "Olgrea",
+        "distance": 84.05
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 91.6
       }
     ],
     "region": "Beta2",
@@ -15333,6 +16221,14 @@
       {
         "system": "Wyrd",
         "distance": 21.557
+      },
+      {
+        "system": "Olgrea",
+        "distance": 44.4
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 57.54
       }
     ],
     "region": "Beta2",
@@ -15361,6 +16257,14 @@
       {
         "system": "Wyrd",
         "distance": 112.579
+      },
+      {
+        "system": "Olgrea",
+        "distance": 106.39
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 96.91
       }
     ],
     "region": "Beta2",
@@ -15389,6 +16293,14 @@
       {
         "system": "Wyrd",
         "distance": 25.105
+      },
+      {
+        "system": "Olgrea",
+        "distance": 46.69
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 60.03
       }
     ],
     "region": "Beta2",
@@ -15417,6 +16329,14 @@
       {
         "system": "Wyrd",
         "distance": 117.443
+      },
+      {
+        "system": "Olgrea",
+        "distance": 102.24
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 107.85
       }
     ],
     "region": "Beta2",
@@ -15445,6 +16365,14 @@
       {
         "system": "Wyrd",
         "distance": 81.672
+      },
+      {
+        "system": "Olgrea",
+        "distance": 75.34
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 69.81
       }
     ],
     "region": "Beta2",
@@ -15481,6 +16409,14 @@
       {
         "system": "Wyrd",
         "distance": 45.899
+      },
+      {
+        "system": "Olgrea",
+        "distance": 65.69
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 20.87
       }
     ],
     "region": "Beta2",
@@ -15563,6 +16499,14 @@
       {
         "system": "Demeter",
         "distance": 43.255
+      },
+      {
+        "system": "Olgrea",
+        "distance": 56.51
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 22.04
       }
     ],
     "x": -23.9375,
@@ -15593,6 +16537,14 @@
       {
         "system": "Demeter",
         "distance": 62.558
+      },
+      {
+        "system": "Olgrea",
+        "distance": 87.2
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 71.49
       }
     ],
     "region": "Beta2",
@@ -15621,6 +16573,14 @@
       {
         "system": "Demeter",
         "distance": 66.402
+      },
+      {
+        "system": "Olgrea",
+        "distance": 90.79
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 60.58
       }
     ],
     "region": "Beta2",
@@ -15649,6 +16609,14 @@
       {
         "system": "Demeter",
         "distance": 85.291
+      },
+      {
+        "system": "Olgrea",
+        "distance": 100.4
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 90.29
       }
     ],
     "region": "Beta2",
@@ -15678,6 +16646,14 @@
       {
         "system": "Demeter",
         "distance": 38.277
+      },
+      {
+        "system": "Olgrea",
+        "distance": 74.45
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 53.96
       }
     ],
     "region": "Beta2"
@@ -15706,6 +16682,14 @@
       {
         "system": "Demeter",
         "distance": 44.163
+      },
+      {
+        "system": "Olgrea",
+        "distance": 80.24
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 62.73
       }
     ],
     "region": "Beta2"
@@ -15734,6 +16718,14 @@
       {
         "system": "Demeter",
         "distance": 42.441
+      },
+      {
+        "system": "Olgrea",
+        "distance": 70.32
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 38.58
       }
     ],
     "region": "Beta2"
@@ -15762,6 +16754,14 @@
       {
         "system": "Demeter",
         "distance": 67.175
+      },
+      {
+        "system": "Olgrea",
+        "distance": 75.56
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 80.13
       }
     ],
     "region": "Beta2"
@@ -15787,6 +16787,14 @@
       {
         "system": "Demeter",
         "distance": 37.088
+      },
+      {
+        "system": "Olgrea",
+        "distance": 11.57
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 61.38
       }
     ],
     "x": -32.6875,
@@ -15815,6 +16823,14 @@
       {
         "system": "Demeter",
         "distance": 33.193
+      },
+      {
+        "system": "Olgrea",
+        "distance": 11.51
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 68.68
       }
     ],
     "x": -32.5625,
@@ -15843,6 +16859,14 @@
       {
         "system": "Demeter",
         "distance": 20.876
+      },
+      {
+        "system": "Olgrea",
+        "distance": 25.59
+      },
+      {
+        "system": "Wolf 46",
+        "distance": 59.5
       }
     ],
     "x": -37.28125,
@@ -15871,6 +16895,14 @@
       {
         "system": "Demeter",
         "distance": 21.141
+      },
+      {
+        "system": "Olgrea",
+        "distance": 61.15
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 53.08
       }
     ],
     "x": -72.125,
@@ -15899,6 +16931,14 @@
       {
         "system": "Demeter",
         "distance": 57.923
+      },
+      {
+        "system": "Olgrea",
+        "distance": 61.33
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 76.64
       }
     ],
     "x": -70.25,
@@ -16027,6 +17067,10 @@
       {
         "system": "Hyperion",
         "distance": 25916.816
+      },
+      {
+        "system": "LHS 3558",
+        "distance": 25904.47
       }
     ]
   },
@@ -24116,30 +25160,30 @@
     "contributor": "Finwen",
     "contributed": "2014-11-13T15:32:35.481Z",
     "distances": [
-    {
-      "system": "Sol",
-      "distance": 172.23
-    },
-    {
-      "system": "Wolf 497",
-      "distance": 177.69
-    },
-    {
-      "system": "Huokang",
-      "distance": 153.73
-    },
-    {
-      "system": "Demeter",
-      "distance": 126.99
-    },
-    {
-      "system": "Fu Haiting",
-      "distance": 61.36
-    },
-    {
-      "system": "Shama",
-      "distance": 39.72
-    }
+      {
+        "system": "Sol",
+        "distance": 172.23
+      },
+      {
+        "system": "Wolf 497",
+        "distance": 177.69
+      },
+      {
+        "system": "Huokang",
+        "distance": 153.73
+      },
+      {
+        "system": "Demeter",
+        "distance": 126.99
+      },
+      {
+        "system": "Fu Haiting",
+        "distance": 61.36
+      },
+      {
+        "system": "Shama",
+        "distance": 39.72
+      }
     ],
     "x": -161.125,
     "y": 16.78125,
