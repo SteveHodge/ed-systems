@@ -25154,6 +25154,161 @@
     "z": -8.78125,
     "region": "Beta3"
   },
+    {
+      "name": "Col 285 Sector LE-E B13-1",
+      "calculated": true,
+      "contributor": "Finwen",
+      "contributed": "2014-11-17T23:15:53.328Z",
+      "distances": [
+        {
+          "system": "Shama",
+          "distance": 34.66
+        },
+        {
+          "system": "Maitaokona",
+          "distance": 9.72
+        },
+        {
+          "system": "HIP 114769",
+          "distance": 11.24
+        },
+        {
+          "system": "HIP 114099",
+          "distance": 5.39
+        },
+        {
+          "system": "Ross 214",
+          "distance": "11.49"
+        }
+      ],
+      "x": -156.25,
+      "y": 24.59375,
+      "z": -65.34375
+    },
+    {
+      "name": "COL 285 SECTOR NP-C B14-1",
+      "calculated": true,
+      "contributor": "Finwen",
+      "contributed": "2014-11-17T23:23:01.904Z",
+      "distances": [
+        {
+          "system": "Pachanu",
+          "distance": 3.89
+        },
+        {
+          "system": "Shama",
+          "distance": 23.75
+        },
+        {
+          "system": "Maitaokona",
+          "distance": 9.72
+        },
+        {
+          "system": "HIP 114769",
+          "distance": 11.24
+        },
+        {
+          "system": "HIP 114099",
+          "distance": 5.39
+        }
+      ],
+      "x": -156.25,
+      "y": 24.59375,
+      "z": -65.34375
+    },
+{
+  "name": "HR 8099",
+  "calculated": true,
+  "contributor": "Finwen",
+  "contributed": "2014-11-17T23:49:22.416Z",
+  "distances": [
+    {
+      "system": "Kumana",
+      "distance": 219.87
+    },
+    {
+      "system": "Shama",
+      "distance": 6.38
+    },
+    {
+      "system": "Jetes",
+      "distance": 31.55
+    },
+    {
+      "system": "HIP 114769",
+      "distance": 38.93
+    },
+    {
+      "system": "HIP 109479",
+      "distance": 23.52
+    }
+  ],
+  "x": -146,
+  "y": 43.96875,
+  "z": -44.96875
+},
+{
+  "name": "Skokolochoeri",
+  "calculated": true,
+  "contributor": "Finwen",
+  "contributed": "2014-11-17T23:46:30.746Z",
+  "distances": [
+    {
+      "system": "Krumine",
+      "distance": 45.57
+    },
+    {
+      "system": "Shama",
+      "distance": 11.18
+    },
+    {
+      "system": "Pachanu",
+      "distance": 14.09
+    },
+    {
+      "system": "HIP 113905",
+      "distance": 29.06
+    },
+    {
+      "system": "Altais",
+      "distance": 74.27
+    }
+  ],
+  "x": -154.4375,
+  "y": 49.1875,
+  "z": -46.25
+},
+    {
+      "name": "COL 285 SECTOR NP-C B14-5",
+      "calculated": true,
+      "contributor": "Finwen",
+      "contributed": "2014-11-17T23:43:12.623Z",
+      "distances": [
+        {
+          "system": "Tarasa",
+          "distance": 7.44
+        },
+        {
+          "system": "Shama",
+          "distance": 17.33
+        },
+        {
+          "system": "Pachanu",
+          "distance": 6.47
+        },
+        {
+          "system": "HIP 113905",
+          "distance": 24.08
+        },
+        {
+          "system": "HIP 110773",
+          "distance": 37.69
+        }
+      ],
+      "x": -157.5625,
+      "y": 46.3125,
+      "z": -54.5625
+    },
   {
     "name": "Ross 214",
     "calculated": true,
