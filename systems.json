@@ -25951,5 +25951,99 @@
     "x": -34.46875,
     "y": 67.78125,
     "z": -21.09375
+  },
+  {
+    "name": "NLTT 25207",
+    "calculated": true,
+    "contributed": "2014-11-19T11:45:58.373Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 90.82
+      },
+      {
+        "system": "Wolf 497",
+        "distance": 84
+      },
+      {
+        "system": "Huokang",
+        "distance": 101.41
+      },
+      {
+        "system": "Demeter",
+        "distance": 139.21
+      },
+      {
+        "system": "Fu Haiting",
+        "distance": 193.65
+      },
+      {
+        "system": "Aegilips",
+        "distance": 64.43
+      },
+      {
+        "system": "Melcior",
+        "distance": 45.56
+      },
+      {
+        "system": "Momoirent",
+        "distance": 33.74
+      },
+      {
+        "system": "Hyperion",
+        "distance": 139.7
+      },
+      {
+        "system": "AZ Cancri",
+        "distance": "79.08"
+      }
+    ],
+    "x": 83.71875,
+    "y": 34.375,
+    "z": 7.65625,
+    "contributor": "RedWizzard"
+  },
+  {
+    "name": "LHS 289",
+    "calculated": true,
+    "contributor": "RedWizzard",
+    "contributed": "2014-11-19T12:15:35.993Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 65.27
+      },
+      {
+        "system": "Wolf 497",
+        "distance": 55.63
+      },
+      {
+        "system": "Huokang",
+        "distance": 69.47
+      },
+      {
+        "system": "Demeter",
+        "distance": 109.47
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 244.03
+      },
+      {
+        "system": "Sanguru",
+        "distance": 190.43
+      },
+      {
+        "system": "LHS 6197",
+        "distance": 30.21
+      },
+      {
+        "system": "HIP 105849",
+        "distance": "259.10"
+      }
+    ],
+    "x": 53.5625,
+    "y": 37.1875,
+    "z": -2.90625
   }
 ]
