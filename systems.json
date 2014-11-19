@@ -5178,15 +5178,62 @@
     "contributed": "2014-11-01T06:36:37.633Z",
     "region": "Beta3"
   },
-  {
-    "name": "Jata",
-    "x": -28.375,
-    "y": -112.53125,
-    "z": 98.4375,
-    "contributor": "FD",
-    "contributed": "2014-11-01T06:36:37.633Z",
-    "region": "Beta3"
-  },
+{
+  "name": "Jata",
+  "calculated": true,
+  "contributor": "Maddavo",
+  "contributed": "2014-11-19T09:23:28.274Z",
+  "distances": [
+    {
+      "system": "Sol",
+      "distance": 93.94
+    },
+    {
+      "system": "Eranin",
+      "distance": 57.07
+    },
+    {
+      "system": "Chara",
+      "distance": 74.44
+    },
+    {
+      "system": "Chini",
+      "distance": 121.45
+    },
+    {
+      "system": "Ciguru",
+      "distance": 59.78
+    },
+    {
+      "system": "Cuages",
+      "distance": 80.2
+    },
+    {
+      "system": "Atum",
+      "distance": 129.25
+    },
+    {
+      "system": "Slatus",
+      "distance": 146.63
+    },
+    {
+      "system": "Yakan",
+      "distance": 75.87
+    },
+    {
+      "system": "Yanyan",
+      "distance": 37.7
+    },
+    {
+      "system": "Minawara",
+      "distance": 47.95
+    }
+  ],
+  "region": "Beta3",
+  "x": -67.78125,
+  "y": 58.3125,
+  "z": -28.8125
+},
   {
     "name": "Jeidrungaragototo",
     "x": -145.5,
