@@ -214,69 +214,71 @@ function updateCoords() {
 	$("#distances tr:has(input.system-name) td:nth-child(3)").text("").next().text("");
 	$("#output").html("");
 
-	if (dists.length >= 4) {
-		var bestCandidate = getBestCandidate(dists);
-		if (bestCandidate !== null) {
-			$('#ref-warning').hide();
-			setVector(bestCandidate,gridLocation(bestCandidate));	// round to grid location
+	var trilat = new Trilateration();
+	for (var i = 0; i < dists.length; i++) {
+		trilat.addDistance(dists[i]);
+	}
+	if (trilat.best.length === 1) {
+		// single candidate
+		var bestCandidate = trilat.best[0];
 
-			$("#distances tr[system]").each(function() {
-				var enteredDist = $(this).find("input.distance").val();
-				if (enteredDist.length > 0) {
-					var nameKey = this.getAttribute('system');
-					if (!(nameKey in systemsMap)) {
-						$(this).children("td:nth-child(3)").text("")
-								.next().text("(unknown star)");
-						return;
-					}
+		$('#ref-warning').hide();
+		setVector(bestCandidate,gridLocation(bestCandidate));	// round to grid location
 
-					var sys = systemsMap[nameKey];
-					var calcDist = eddist(sys, bestCandidate);
-					var err = Math.abs(enteredDist - calcDist).toFixed(2);
-					if (sys.name === dists[bestCandidate.i1].name || sys.name === dists[bestCandidate.i2].name || sys.name === dists[bestCandidate.i3].name) {
-						err += " (ref)";
-					}
-					if (sys.calculated) err += " (derived star)";
-					$(this).children("td:nth-child(3)").text(calcDist.toFixed(2))
-							.next().text(err);
+		$("#distances tr[system]").each(function() {
+			var enteredDist = $(this).find("input.distance").val();
+			if (enteredDist.length > 0) {
+				var nameKey = this.getAttribute('system');
+				if (!(nameKey in systemsMap)) {
+					$(this).children("td:nth-child(3)").text("")
+							.next().text("(unknown star)");
+					return;
 				}
-			});
-	
-			$("#output").html("Coordinates: "+vectorToString(bestCandidate)
-					+"<br/>RMS error: "+(Math.sqrt(bestCandidate.totalSqErr/dists.length)).toFixed(2)
-					+"<br/>Local Systems:");
-			$("#output").append(getLocalSystems(bestCandidate)).append('<br/>');
-			
-			// update stored system data
-			setVector(systemData, bestCandidate);
-			for (var i = 0; i < dists.length; i++) {
-				systemData.distances.push({
-					system: dists[i].name,
-					distance: dists[i].distance
-				});
-			}
-			// add any unknown star data
-			$("#distances tr[system]").each(function() {
-				var sys = $(this).find('input.system-name').val();
-				var dist = $(this).find('input.distance').val();
-				var syskey = this.getAttribute('system');
-				if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].calculated)) {
-					systemData.distances.push({system: sys, distance: dist});
-				}
-			});
-			
-			$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
-			$("#sql-output").text(getSQL(systemData) + sqlOutput);
 
-			if (systemData.name && systemData.name.length > 0) {
-				$('#done-button').attr('disabled',false);
-			} else {
-				$('#no-name-warning').show();
+				var sys = systemsMap[nameKey];
+				var calcDist = eddist(sys, bestCandidate);
+				var err = Math.abs(enteredDist - calcDist).toFixed(2);
+				if (sys.calculated) err += " (derived star)";
+				$(this).children("td:nth-child(3)").text(calcDist.toFixed(2))
+						.next().text(err);
 			}
-		} else {
-			$('#ref-warning').show();
+		});
+
+		$("#output").html("Coordinates: "+vectorToString(bestCandidate)
+				+"<br/>Better than next candidate(s) by "+(trilat.bestCount - trilat.nextBest)+" distances"
+				+"<br/>Inconsistent distances: "+(dists.length - trilat.bestCount)
+				+"<br/>Local Systems:");
+		$("#output").append(getLocalSystems(bestCandidate)).append('<br/>');
+		
+		// update stored system data
+		setVector(systemData, bestCandidate);
+		for (var i = 0; i < dists.length; i++) {
+			systemData.distances.push({
+				system: dists[i].name,
+				distance: dists[i].distance
+			});
 		}
+		// add any unknown star data
+		$("#distances tr[system]").each(function() {
+			var sys = $(this).find('input.system-name').val();
+			var dist = $(this).find('input.distance').val();
+			var syskey = this.getAttribute('system');
+			if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].calculated)) {
+				systemData.distances.push({system: sys, distance: dist});
+			}
+		});
+		
+		$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
+		$("#sql-output").text(getSQL(systemData) + sqlOutput);
+
+		if (systemData.name && systemData.name.length > 0) {
+			$('#done-button').attr('disabled',false);
+		} else {
+			$('#no-name-warning').show();
+		}
+
 	} else {
+		$("#output").html("Coordinates: found "+trilat.best.length+" potential candidates");
 		$('#ref-warning').show();
 	}
 }
