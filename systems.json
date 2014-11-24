@@ -26038,6 +26038,151 @@
     "z": -2.90625
   },
   {
+    "name": "HIP 109278",
+    "calculated": true,
+    "contributor": "RedWizzard",
+    "contributed": "2014-11-20T12:08:20.559Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 329.47
+      },
+      {
+        "system": "Ross 667",
+        "distance": 152.32
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 137.83
+      },
+      {
+        "system": "Sanguru",
+        "distance": 195.54
+      },
+      {
+        "system": "LHS 6197",
+        "distance": 408.85
+      },
+      {
+        "system": "Binbeal",
+        "distance": 149.06
+      },
+      {
+        "system": "Cavashira",
+        "distance": 155.79
+      }
+    ],
+    "x": -317.90625,
+    "y": 23.75,
+    "z": -83.1875
+  },
+  {
+    "name": "Col 285 Sector ZX-F B12-4",
+    "calculated": true,
+    "contributor": "RedWizzard",
+    "contributed": "2014-11-20T12:04:16.677Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 338.02
+      },
+      {
+        "system": "Wolf 497",
+        "distance": 340.05
+      },
+      {
+        "system": "Huokang",
+        "distance": 318.06
+      },
+      {
+        "system": "Demeter",
+        "distance": 286.35
+      },
+      {
+        "system": "Ross 667",
+        "distance": 161.38
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 143.71
+      },
+      {
+        "system": "Sanguru",
+        "distance": 200.29
+      },
+      {
+        "system": "LHS 6197",
+        "distance": 415.77
+      },
+      {
+        "system": "Binbeal",
+        "distance": 157.71
+      },
+      {
+        "system": "Cavashira",
+        "distance": 163.26
+      }
+    ],
+    "x": -322.34375,
+    "y": 34.53125,
+    "z": -95.71875
+  },
+  {
+    "name": "20 Cephei",
+    "calculated": true,
+    "contributor": "RedWizzard",
+    "contributed": "2014-11-20T11:55:35.815Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 303.15
+      },
+      {
+        "system": "Wolf 497",
+        "distance": 305.25
+      },
+      {
+        "system": "Huokang",
+        "distance": 283.89
+      },
+      {
+        "system": "Demeter",
+        "distance": 251.37
+      },
+      {
+        "system": "Ross 667",
+        "distance": 126.67
+      },
+      {
+        "system": "Jula Oh",
+        "distance": 109.78
+      },
+      {
+        "system": "Sanguru",
+        "distance": 167.67
+      },
+      {
+        "system": "LHS 6197",
+        "distance": 381.38
+      },
+      {
+        "system": "Binbeal",
+        "distance": 122.97
+      },
+      {
+        "system": "Cavashira",
+        "distance": 128.47
+      },
+      {
+        "system": "HIP 112584",
+        "distance": "96.52"
+      }
+    ],
+    "x": -290.65625,
+    "y": 31.15625,
+    "z": -80.3125
+  },
+  {
     "name": "Juathao Theela",
     "calculated": true,
     "contributor": "Maddavo",
@@ -26619,151 +26764,6 @@
     "x": -0.84375,
     "y": 5.46875,
     "z": 12.84375
-  },
-  {
-    "name": "HIP 109278",
-    "calculated": true,
-    "contributor": "RedWizzard",
-    "contributed": "2014-11-20T12:08:20.559Z",
-    "distances": [
-      {
-        "system": "Sol",
-        "distance": 329.47
-      },
-      {
-        "system": "Ross 667",
-        "distance": 152.32
-      },
-      {
-        "system": "Jula Oh",
-        "distance": 137.83
-      },
-      {
-        "system": "Sanguru",
-        "distance": 195.54
-      },
-      {
-        "system": "LHS 6197",
-        "distance": 408.85
-      },
-      {
-        "system": "Binbeal",
-        "distance": 149.06
-      },
-      {
-        "system": "Cavashira",
-        "distance": 155.79
-      }
-    ],
-    "x": -317.90625,
-    "y": 23.75,
-    "z": -83.1875
-  },
-  {
-    "name": "Col 285 Sector ZX-F B12-4",
-    "calculated": true,
-    "contributor": "RedWizzard",
-    "contributed": "2014-11-20T12:04:16.677Z",
-    "distances": [
-      {
-        "system": "Sol",
-        "distance": 338.02
-      },
-      {
-        "system": "Wolf 497",
-        "distance": 340.05
-      },
-      {
-        "system": "Huokang",
-        "distance": 318.06
-      },
-      {
-        "system": "Demeter",
-        "distance": 286.35
-      },
-      {
-        "system": "Ross 667",
-        "distance": 161.38
-      },
-      {
-        "system": "Jula Oh",
-        "distance": 143.71
-      },
-      {
-        "system": "Sanguru",
-        "distance": 200.29
-      },
-      {
-        "system": "LHS 6197",
-        "distance": 415.77
-      },
-      {
-        "system": "Binbeal",
-        "distance": 157.71
-      },
-      {
-        "system": "Cavashira",
-        "distance": 163.26
-      }
-    ],
-    "x": -322.34375,
-    "y": 34.53125,
-    "z": -95.71875
-  },
-  {
-    "name": "20 Cephei",
-    "calculated": true,
-    "contributor": "RedWizzard",
-    "contributed": "2014-11-20T11:55:35.815Z",
-    "distances": [
-      {
-        "system": "Sol",
-        "distance": 303.15
-      },
-      {
-        "system": "Wolf 497",
-        "distance": 305.25
-      },
-      {
-        "system": "Huokang",
-        "distance": 283.89
-      },
-      {
-        "system": "Demeter",
-        "distance": 251.37
-      },
-      {
-        "system": "Ross 667",
-        "distance": 126.67
-      },
-      {
-        "system": "Jula Oh",
-        "distance": 109.78
-      },
-      {
-        "system": "Sanguru",
-        "distance": 167.67
-      },
-      {
-        "system": "LHS 6197",
-        "distance": 381.38
-      },
-      {
-        "system": "Binbeal",
-        "distance": 122.97
-      },
-      {
-        "system": "Cavashira",
-        "distance": 128.47
-      },
-      {
-        "system": "HIP 112584",
-        "distance": "96.52"
-      }
-    ],
-    "x": -290.65625,
-    "y": 31.15625,
-    "z": -80.3125
   },
   {
   "name": "Barnard's Star",
