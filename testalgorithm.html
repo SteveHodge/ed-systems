@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Elite Dangerous Algorithm Test</title>
+	<link href="external/jquery-ui.css" rel="stylesheet">
+	<link href="trilateration.css" rel="stylesheet">
+	<script src="external/jquery-2.1.1.js"></script>
+	<script src="external/stupidtable.min.js"></script>
+	<script src="trilateration.js"></script>
+<script>
+/*
+regionSize = 5 (1728 vol 12^3)
+regionSize = 4 (1000 vol 10^3)
+
+regionSize = 3 (512 vol 8^3)
+2396 systems
+2044 found (85%)
+took 2275.530s
+1 result requried regionsize >= 2
+9 results require regionsize >= 1 and < 2
+
+regionSize = 2 (216 vol 6^3)
+2363 systems
+2008 found (85%)
+took 919.356s
+8 results require regionsize >= 1
+
+regionSize = 1 (64 vol 4^3)
+2397 systems
+2031 found (85%)
+took 329.279s
+11 results require regionsize >= 1
+
+regionSize = 0 (8 vol 2^3)
+2466 systems
+2109 found (86%)
+13 incorrect
+took 63.628s
+9 results require regionsize >= 1
+
+*/
+	
+var systems = null;
+var running = false;
+
+$(document).ready(function () {
+	$.getJSON('systems.json', function(data) {
+		systems = data;
+
+		$('#system-table table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
+
+		$('#run').click(function() {
+			if (!running) {
+				runCheck();
+			} else {
+				running = false;
+			}
+		});
+	});
+});
+
+function runCheck() {
+	var maxRefs = 10;
+ 	var time = 0;
+ 	var refs = 0;
+ 	var attempts = 0;
+ 	var failed = 0;
+ 	var bad = 0;
+ 	var found = 0;
+	var rowidx = 0;
+	
+	var runStart = new Date();
+	running = true;
+	$('#run').text('Stop');
+	
+	var sysgen = null;	// iterator object with next function that returns the next system to find
+	
+	if ($('#run-for').val() === 'all') {
+		sysgen = {
+			index: 0,
+			next: function() {
+				return this.index < systems.length ? systems[this.index++] : null;
+			}
+		};
+
+	} else if ($('#run-for').val() === 'reference') {
+		sysgen = {
+			index: 0,
+			next: function() {
+				while (this.index < systems.length && systems[this.index].calculated) {
+					this.index++;
+				}
+				return this.index < systems.length ? systems[this.index++] : null;
+			}
+		};
+		
+	} else if ($('#run-for').val() === 'random') {
+		sysgen = {
+			index: 1,
+			next: function() {
+				var s = gridLocation({
+					x: Math.random() * 1000 - 500,
+					y: Math.random() * 1000 - 500,
+					z: Math.random() * 1000 - 500,
+				});
+				s.name = 'Random '+this.index++;
+				return s;
+			}
+		}		
+	}
+
+	$('#system-table tbody').empty();
+
+	setTimeout(doSystem, 20);
+
+	function doSystem() {
+		var system = sysgen.next();
+		if (!running || system === null) {
+			$('#summary').html(function(i, old) {
+				return old + (running ? '<br/>Completed.' : '<br/>Cancelled.');
+			});
+			running = false;
+			$('#run').text('Run');
+			return;
+		}
+
+		var tabrow = $('<tr>')
+				.append($('<td>').text(system.calculated?'':'Y'))
+				.append($('<td>').text(system.name))
+				.append($('<td>').text(system.x))
+				.append($('<td>').text(system.y))
+				.append($('<td>').text(system.z))
+				.append($('<td>'))
+				.append($('<td>'))
+				.append($('<td>'))
+				.append($('<td>'))
+				.append($('<td>'))
+				.appendTo('#system-table tbody');
+
+		var sysStart = new Date();
+		attempts++;
+
+		var trilat = new Trilateration();
+		var distmap = {};
+		for (var i = 1; i <= maxRefs; i++) {
+			// pick random reference system we don't already have
+			var s;
+			do {
+				s = Math.floor(Math.random() * systems.length);
+			} while (typeof distmap[s] !== 'undefined' || systems[s] === system || systems[s].calculated);
+			distmap[s] = {x: systems[s].x,
+				y: systems[s].y,
+				z: systems[s].z,
+				distance: eddist(system, systems[s]),
+				system: systems[s].name};
+
+			trilat.addDistance(distmap[s]);
+			if (i > 4 && 'best' in trilat && trilat.best.length === 1 && trilat.bestCount-trilat.nextBest > 1) break;
+		}
+
+		if (i > maxRefs) i--;	// if we gave up then we used one distance less than i implies
+		var took = (((new Date())-sysStart)/1000);
+		time += took;
+		$(tabrow).children("td:nth-child(10)").text(took.toFixed(3));
+		if (trilat.best.length === 1) {
+			// single candidate
+			$(tabrow).children("td:nth-child(6)").text(i);
+			$(tabrow).children("td:nth-child(7)").text(trilat.bestCount);
+			$(tabrow).children("td:nth-child(8)").text(trilat.bestCount-trilat.nextBest);
+			
+			var closest = null;
+			$.each(trilat.regions, function() {
+				var c;
+				if (this.contains(trilat.best[0])) {
+					c = this.centrality(trilat.best[0]);
+					if (closest === null || c < closest) closest = c;
+				}
+			});
+			$(tabrow).children("td:nth-child(9)").text((closest*32).toFixed(1));
+
+			refs += i;
+			found++;
+			if (trilat.best[0].x != system.x
+				|| trilat.best[0].y != system.y
+				|| trilat.best[0].z != system.z) {
+				// warn of incorrect result
+				$(tabrow).children("td:nth-child(7)").html(function(idx, old) {return old +"<br/><b>Incorrect result</b>";});
+				bad++;
+				logAttempt(system, distmap, trilat);
+			} else {
+				if (trilat.bestCount < i) logAttempt(system, distmap, trilat);
+			}
+		} else {
+			$(tabrow).children("td:nth-child(6)").text("> "+i);
+			$(tabrow).children("td:nth-child(7)").html(trilat.best.length+" candidates");
+			$(tabrow).children("td:nth-child(8)").html("<b>No result</b>");
+			failed++;
+			logAttempt(system, distmap, trilat);
+		}
+
+		var totalTime = (((new Date())-runStart)/1000);
+		$('#summary').html(
+			'Tried to locate '+attempts+' systems:'
+			+'<br/>Found: '+found+' ('+(found*100/attempts).toFixed(0)+'%)'
+			+'<br/>Using mean of '+(refs/found).toFixed(1)+' references'
+			+'<br/>Got bad location: '+bad+' ('+(bad*100/attempts).toFixed(0)+'%)'
+			+'<br/>Failed to locate: '+failed+' ('+(failed*100/attempts).toFixed(0)+'%)'
+			+'<br/>Calculation total of '+time.toFixed(3)+'s'
+			+'<br/>Wallclock total of '+totalTime.toFixed(3)+'s'
+		);
+		
+		setTimeout(doSystem,20);
+	}
+}
+
+function logAttempt(system, distmap, trilat) {
+	console.log(system.name);
+	var i = 0;
+	$.each(distmap, function() {
+		console.log('  '+(++i)+': '+this.system+' '+this.distance);
+	});
+	console.log('  '+trilat.best.length+' candidates matched '+trilat.bestCount+' distances');
+	console.log('  Next best candidate(s) matched '+trilat.nextBest+' distances');
+}
+
+</script>
+</head>
+<body>
+	<div class="ui-widget">
+		<label for="run-for">Run for:</label>
+		<select id="run-for">
+			<option value="all">All Systems</option>
+			<option value="reference">Reference Systems</option>
+			<option value="random">Random Points</option>
+		</select>
+		<br/><button id="run" type="button">Run</button>
+		<p id="summary"></p>
+		<div id="system-table" style="height:50%; overflow-y:auto">
+			<table>
+				<thead>
+					<tr>
+						<th data-sort="string-ins">Ref</th>
+						<th data-sort="string-ins">System</th>
+						<th data-sort="float">X</th>
+						<th data-sort="float">Y</th>
+						<th data-sort="float">Z</th>
+						<th data-sort="string">Refs req.</th>
+						<th data-sort="string">Best matched</th>
+						<th data-sort="string">Margin</th>
+						<th data-sort="string">Region req.</th>
+						<th data-sort="optfloat">Time (s)</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

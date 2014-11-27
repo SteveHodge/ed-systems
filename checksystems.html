@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Elite Dangerous Systems.json Check</title>
+	<link href="external/jquery-ui.css" rel="stylesheet">
+	<link href="trilateration.css" rel="stylesheet">
+	<script src="external/jquery-2.1.1.js"></script>
+	<script src="external/stupidtable.min.js"></script>
+	<script src="trilateration.js"></script>
+	<style>
+	pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+	.string { color: green; }
+	.number { color: darkorange; }
+	.boolean { color: blue; }
+	.null { color: magenta; }
+	.key { color: red; }
+	</style>
+<script>
+var systems = null;
+var output = [];
+
+$(document).ready(function () {
+	$.getJSON('systems.json', function(data) {
+		systems = data;
+		logAppend('Loaded systems.json\n');
+		process();
+	});
+});
+
+function logAppend(str) {
+	$('#log-output').text(function(i, old) {
+		return old + str;
+	});
+}
+
+function displayName(s) {
+	return s.name + ' (' + s.region + (s.calculated ? '' : ' ref') + ')';
+}
+
+function process() {
+	logAppend('Processing...\n');
+
+	var dupenames = 0, dupecoords = 0;
+	var baddists = 0;
+	var regions = {};
+	
+	
+	// find duplicate names
+	// count regions
+	var names = {};
+	for (i = 0; i < systems.length; i++) {
+		var r = systems[i].region + (systems[i].calculated ? '' : ' (ref)');
+		if (r in regions) {
+			regions[r]++;
+		} else {
+			regions[r] = 1;
+		}
+
+		if (systems[i].name.trim().toLowerCase() in names) {
+			logAppend('Duplicate system: '+displayName(systems[i])+'\n');
+			dupenames++;
+		} else {
+			names[systems[i].name.trim().toLowerCase()] = systems[i];
+		}
+	}
+	
+	// find duplicate coordinates
+	var coords = {};
+	for (i = 0; i < systems.length; i++) {
+		var coords = '[' + systems[i].x + ', ' + systems[i].y + ', ' + systems[i].z + ']';
+		if (coords in names) {
+			logAppend('Duplicate coordinates: '+displayName(systems[i]) + ' and ' + displayName(names[coords])+'\n');
+			dupecoords++;
+		} else {
+			names[coords] = systems[i];
+		}
+	}
+	
+	// check distances exist
+	$.each(systems, function() {
+		if (this.distances) {
+			for (var i = 0; i < this.distances.length; i++) {
+				if (!(this.distances[i].system.trim().toLowerCase() in names)) {
+					logAppend(this.name+': distance to non-existant system '+this.distances[i].system+'\n');
+					baddists++;
+				}
+			}
+		}
+	});
+	
+	logAppend('\n\nTotal systems: '+systems.length+'\n');
+	logAppend('Duplicated names: '+dupenames+'\n');
+	logAppend('Duplicated coordinates: '+dupecoords+'\n');
+	logAppend('Bad distances: '+baddists+'\n');
+	logAppend('\nRegions:\n');
+	$.each(Object.keys(regions).sort(), function() {
+		logAppend('  '+this+': '+regions[this]+'\n');
+	});
+//	$('#json-output').text(JSON.stringify(output, null, 2));
+}
+
+</script>
+</head>
+<body class="ui-widget" style="font-size:100%">
+	<pre id="log-output" style="height:45vh; overflow:auto"></pre>
+	<pre id="json-output" style="height:45vh; overflow:auto"></pre>
+</body>
+</html>
