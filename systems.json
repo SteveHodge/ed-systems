@@ -6583,7 +6583,7 @@
     "region": "Beta3"
   },
   {
-    "name": "Shinrata Dezhra",
+    "name": "Shinrarta Dezhra",
     "x": 55.71875,
     "y": 17.59375,
     "z": 27.15625,
@@ -194755,5 +194755,436 @@
     "y": 31.15625,
     "z": -80.3125,
     "region": "Beta3 (unverified)"
-  }
+  },
+  {
+    "name": "Cephei Sector LX-U B2-0",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-20T07:17:02.820Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 148.18
+      },
+      {
+        "system": "Eranin",
+        "distance": 126.99
+      },
+      {
+        "system": "Chara (removed)",
+        "distance": 142.07
+      },
+      {
+        "system": "Chini",
+        "distance": 197.58
+      },
+      {
+        "system": "Ciguru",
+        "distance": 67.48
+      },
+      {
+        "system": "Cuages",
+        "distance": 23.97
+      },
+      {
+        "system": "Atum",
+        "distance": 197.34
+      },
+      {
+        "system": "Slatus",
+        "distance": 221.01
+      },
+      {
+        "system": "Yakan (removed)",
+        "distance": 39.84
+      },
+      {
+        "system": "Yanyan",
+        "distance": 109.83
+      },
+      {
+        "system": "Minawara",
+        "distance": 55.88
+      }
+    ],
+    "region": "Beta3 (unverified)",
+    "x": -142.625,
+    "y": 14.8125,
+    "z": -37.34375
+  },
+  {
+    "name": "Cephei Sector JC-V B2-1",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-20T07:13:13.749Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 148.06
+      },
+      {
+        "system": "Eranin",
+        "distance": 126.93
+      },
+      {
+        "system": "Chara (removed)",
+        "distance": 141.64
+      },
+      {
+        "system": "Chini",
+        "distance": 195.67
+      },
+      {
+        "system": "Ciguru",
+        "distance": 68.89
+      },
+      {
+        "system": "Cuages",
+        "distance": 29.84
+      },
+      {
+        "system": "Atum",
+        "distance": 196.83
+      },
+      {
+        "system": "Slatus",
+        "distance": 219.48
+      },
+      {
+        "system": "Yakan (removed)",
+        "distance": 43.67
+      },
+      {
+        "system": "Yanyan",
+        "distance": 109.62
+      },
+      {
+        "system": "Minawara",
+        "distance": 51.34
+      }
+    ],
+    "region": "Beta3 (unverified)",
+    "x": -140.5,
+    "y": 15.65625,
+    "z": -44
+  },
+  {
+    "name": "Cephei Sector EG-Y C13",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-20T06:37:20.978Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 160.93
+      },
+      {
+        "system": "Eranin",
+        "distance": 140.27
+      },
+      {
+        "system": "Chara (removed)",
+        "distance": 154.85
+      },
+      {
+        "system": "Chini",
+        "distance": 208.23
+      },
+      {
+        "system": "Ciguru",
+        "distance": 81.61
+      },
+      {
+        "system": "Cuages",
+        "distance": 38.52
+      },
+      {
+        "system": "Atum",
+        "distance": 209.89
+      },
+      {
+        "system": "Slatus",
+        "distance": 232.21
+      },
+      {
+        "system": "Yakan (removed)",
+        "distance": 50.53
+      },
+      {
+        "system": "Yanyan",
+        "distance": 122.9
+      },
+      {
+        "system": "Minawara",
+        "distance": 60.93
+      }
+    ],
+    "region": "Beta3 (unverified)",
+    "x": -152.5,
+    "y": 13.59375,
+    "z": -49.5625
+  },
+  {
+    "name": "Cephei Sector EG-Y C18",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-20T06:31:17.126Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 157.42
+      },
+      {
+        "system": "Eranin",
+        "distance": 136.59
+      },
+      {
+        "system": "Chara (removed)",
+        "distance": 151.12
+      },
+      {
+        "system": "Chini",
+        "distance": 204.21
+      },
+      {
+        "system": "Ciguru",
+        "distance": 78.6
+      },
+      {
+        "system": "Cuages",
+        "distance": 37.31
+      },
+      {
+        "system": "Atum",
+        "distance": 206.17
+      },
+      {
+        "system": "Slatus",
+        "distance": 228.27
+      },
+      {
+        "system": "Yakan (removed)",
+        "distance": 49.31
+      },
+      {
+        "system": "Yanyan",
+        "distance": 119.17
+      },
+      {
+        "system": "Minawara",
+        "distance": 56.93
+      }
+    ],
+    "region": "Beta3 (unverified)",
+    "x": -148.5625,
+    "y": 14.75,
+    "z": -49.9375
+  },
+  {
+    "name": "LHS 3003",
+    "calculated": true,
+    "contributed": "2014-11-23T07:37:08.734Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 20.24
+      },
+      {
+        "system": "Eranin",
+        "distance": 44.65
+      },
+      {
+        "system": "Chara (removed)",
+        "distance": 30.11
+      },
+      {
+        "system": "Chini",
+        "distance": 73.95
+      },
+      {
+        "system": "Ciguru",
+        "distance": 93.89
+      },
+      {
+        "system": "Cuages",
+        "distance": 149.49
+      },
+      {
+        "system": "Atum",
+        "distance": 44.18
+      },
+      {
+        "system": "Slatus",
+        "distance": 81.55
+      },
+      {
+        "system": "Yanyan",
+        "distance": 63.52
+      },
+      {
+        "system": "Minawara",
+        "distance": 136.59
+      }
+    ],
+    "region": "Gamma (unverified)",
+    "x": 7.90625,
+    "y": 9.21875,
+    "z": 16.1875
+  },
+  {
+    "name": "Wolf 1061",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-23T08:01:59.218Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 13.99
+      },
+      {
+        "system": "Eranin",
+        "distance": 40.57
+      },
+      {
+        "system": "Chara (removed)",
+        "distance": 27.85
+      },
+      {
+        "system": "Chini",
+        "distance": 79.34
+      },
+      {
+        "system": "Ciguru",
+        "distance": 84.43
+      },
+      {
+        "system": "Cuages",
+        "distance": 140.66
+      },
+      {
+        "system": "Atum",
+        "distance": 52.75
+      },
+      {
+        "system": "Slatus",
+        "distance": 88.96
+      },
+      {
+        "system": "Yanyan",
+        "distance": 58.11
+      },
+      {
+        "system": "Minawara",
+        "distance": 128.86
+      }
+    ],
+    "region": "Gamma (unverified)",
+    "x": -0.84375,
+    "y": 5.46875,
+    "z": 12.84375
+  },
+{
+  "name": "Ministry",
+  "calculated": true,
+  "contributor": "Maddavo",
+  "contributed": "2014-11-24T07:33:57.438Z",
+  "distances": [
+    {
+      "system": "Sol",
+      "distance": 16.06
+    },
+    {
+      "system": "Eranin",
+      "distance": 55.84
+    },
+    {
+      "system": "Chara (removed)",
+      "distance": 37.33
+    },
+    {
+      "system": "Chini",
+      "distance": 68.97
+    },
+    {
+      "system": "Ciguru",
+      "distance": 98.75
+    },
+    {
+      "system": "Cuages",
+      "distance": 156.27
+    },
+    {
+      "system": "Atum",
+      "distance": 40.91
+    },
+    {
+      "system": "Slatus",
+      "distance": 75.58
+    },
+    {
+      "system": "Yanyan",
+      "distance": 73.26
+    },
+    {
+      "system": "Minawara",
+      "distance": 139.2
+    }
+  ],
+  "region": "Gamma (unverified)",
+  "x": 15.46875,
+  "y": -4,
+  "z": 1.625
+},
+{
+  "name": "Luyten 143-23",
+  "calculated": true,
+  "contributor": "Maddavo",
+  "contributed": "2014-11-24T07:21:45.605Z",
+  "distances": [
+    {
+      "system": "Sol",
+      "distance": 14.62
+    },
+    {
+      "system": "Eranin",
+      "distance": 52.36
+    },
+    {
+      "system": "Chara (removed)",
+      "distance": 34.63
+    },
+    {
+      "system": "Chini",
+      "distance": 70.54
+    },
+    {
+      "system": "Ciguru",
+      "distance": 96.86
+    },
+    {
+      "system": "Cuages",
+      "distance": 154.05
+    },
+    {
+      "system": "Atum",
+      "distance": 41.18
+    },
+    {
+      "system": "Slatus",
+      "distance": 77.34
+    },
+    {
+      "system": "Yanyan",
+      "distance": 70.28
+    },
+    {
+      "system": "Minawara",
+      "distance": 138.44
+    }
+  ],
+  "region": "Gamma (unverified)",
+  "x": 13.125,
+  "y": -0.75,
+  "z": 6.40625
+}
 ]
