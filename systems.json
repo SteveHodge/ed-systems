@@ -6583,7 +6583,7 @@
     "region": "Beta3"
   },
   {
-    "name": "Shinrata Dezhra",
+    "name": "Shinrarta Dezhra",
     "x": 55.71875,
     "y": 17.59375,
     "z": 27.15625,
@@ -194755,5 +194755,1004 @@
     "y": 31.15625,
     "z": -80.3125,
     "region": "Beta3 (unverified)"
-  }
+  },
+  {
+    "name": "Juathao Theela",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-20T07:24:16.468Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 163.77
+      },
+      {
+        "system": "Eranin",
+        "distance": 142.96
+      },
+      {
+        "system": "Chara",
+        "distance": 158.11
+      },
+      {
+        "system": "Chini",
+        "distance": 213.55
+      },
+      {
+        "system": "Ciguru",
+        "distance": 82.47
+      },
+      {
+        "system": "Cuages",
+        "distance": 33.67
+      },
+      {
+        "system": "Atum",
+        "distance": 213.29
+      },
+      {
+        "system": "Slatus",
+        "distance": 237.04
+      },
+      {
+        "system": "Yakan",
+        "distance": 46.65
+      },
+      {
+        "system": "Yanyan",
+        "distance": 125.76
+      },
+      {
+        "system": "Minawara",
+        "distance": 68.79
+      }
+    ],
+    "region": "Beta3 (unverified)",
+    "x": -158.34375,
+    "y": 12.46875,
+    "z": -39.90625
+  },
+  {
+    "name": "Cephei Sector LX-U B2-0",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-20T07:17:02.820Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 148.18
+      },
+      {
+        "system": "Eranin",
+        "distance": 126.99
+      },
+      {
+        "system": "Chara",
+        "distance": 142.07
+      },
+      {
+        "system": "Chini",
+        "distance": 197.58
+      },
+      {
+        "system": "Ciguru",
+        "distance": 67.48
+      },
+      {
+        "system": "Cuages",
+        "distance": 23.97
+      },
+      {
+        "system": "Atum",
+        "distance": 197.34
+      },
+      {
+        "system": "Slatus",
+        "distance": 221.01
+      },
+      {
+        "system": "Yakan",
+        "distance": 39.84
+      },
+      {
+        "system": "Yanyan",
+        "distance": 109.83
+      },
+      {
+        "system": "Minawara",
+        "distance": 55.88
+      }
+    ],
+    "region": "Beta3 (unverified)",
+    "x": -142.625,
+    "y": 14.8125,
+    "z": -37.34375
+  },
+  {
+    "name": "Cephei Sector JC-V B2-1",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-20T07:13:13.749Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 148.06
+      },
+      {
+        "system": "Eranin",
+        "distance": 126.93
+      },
+      {
+        "system": "Chara",
+        "distance": 141.64
+      },
+      {
+        "system": "Chini",
+        "distance": 195.67
+      },
+      {
+        "system": "Ciguru",
+        "distance": 68.89
+      },
+      {
+        "system": "Cuages",
+        "distance": 29.84
+      },
+      {
+        "system": "Atum",
+        "distance": 196.83
+      },
+      {
+        "system": "Slatus",
+        "distance": 219.48
+      },
+      {
+        "system": "Yakan",
+        "distance": 43.67
+      },
+      {
+        "system": "Yanyan",
+        "distance": 109.62
+      },
+      {
+        "system": "Minawara",
+        "distance": 51.34
+      }
+    ],
+    "region": "Beta3 (unverified)",
+    "x": -140.5,
+    "y": 15.65625,
+    "z": -44
+  },
+  {
+    "name": "Cephei Sector JC-V B2-4",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-20T06:54:12.830Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 150.73
+      },
+      {
+        "system": "Eranin",
+        "distance": 129.3
+      },
+      {
+        "system": "Chara",
+        "distance": 144.36
+      },
+      {
+        "system": "Chini",
+        "distance": 199.25
+      },
+      {
+        "system": "Ciguru",
+        "distance": 70.5
+      },
+      {
+        "system": "Cuages",
+        "distance": 26.8
+      },
+      {
+        "system": "Atum",
+        "distance": 199.68
+      },
+      {
+        "system": "Slatus",
+        "distance": 222.9
+      },
+      {
+        "system": "Yakan",
+        "distance": 40.95
+      },
+      {
+        "system": "Yanyan",
+        "distance": 111.97
+      },
+      {
+        "system": "Minawara",
+        "distance": 55.54
+      }
+    ],
+    "region": "Beta3 (unverified)",
+    "x": -144.375,
+    "y": 16,
+    "z": -40.25
+  },
+  {
+    "name": "Cephei Sector EG-Y C13",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-20T06:37:20.978Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 160.93
+      },
+      {
+        "system": "Eranin",
+        "distance": 140.27
+      },
+      {
+        "system": "Chara",
+        "distance": 154.85
+      },
+      {
+        "system": "Chini",
+        "distance": 208.23
+      },
+      {
+        "system": "Ciguru",
+        "distance": 81.61
+      },
+      {
+        "system": "Cuages",
+        "distance": 38.52
+      },
+      {
+        "system": "Atum",
+        "distance": 209.89
+      },
+      {
+        "system": "Slatus",
+        "distance": 232.21
+      },
+      {
+        "system": "Yakan",
+        "distance": 50.53
+      },
+      {
+        "system": "Yanyan",
+        "distance": 122.9
+      },
+      {
+        "system": "Minawara",
+        "distance": 60.93
+      }
+    ],
+    "region": "Beta3 (unverified)",
+    "x": -152.5,
+    "y": 13.59375,
+    "z": -49.5625
+  },
+  {
+    "name": "Cephei Sector EG-Y C18",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-20T06:31:17.126Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 157.42
+      },
+      {
+        "system": "Eranin",
+        "distance": 136.59
+      },
+      {
+        "system": "Chara",
+        "distance": 151.12
+      },
+      {
+        "system": "Chini",
+        "distance": 204.21
+      },
+      {
+        "system": "Ciguru",
+        "distance": 78.6
+      },
+      {
+        "system": "Cuages",
+        "distance": 37.31
+      },
+      {
+        "system": "Atum",
+        "distance": 206.17
+      },
+      {
+        "system": "Slatus",
+        "distance": 228.27
+      },
+      {
+        "system": "Yakan",
+        "distance": 49.31
+      },
+      {
+        "system": "Yanyan",
+        "distance": 119.17
+      },
+      {
+        "system": "Minawara",
+        "distance": 56.93
+      }
+    ],
+    "region": "Beta3 (unverified)",
+    "x": -148.5625,
+    "y": 14.75,
+    "z": -49.9375
+  },
+  {
+    "name": "Aiabiko",
+    "calculated": true,
+    "contributed": "2014-11-22T13:56:23.316Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 83.34
+      },
+      {
+        "system": "Eranin",
+        "distance": 70.01
+      },
+      {
+        "system": "Chini",
+        "distance": 142.24
+      },
+      {
+        "system": "Ciguru",
+        "distance": 5.98
+      },
+      {
+        "system": "Cuages",
+        "distance": 59.23
+      },
+      {
+        "system": "Slatus",
+        "distance": 162.33
+      },
+      {
+        "system": "Yanyan",
+        "distance": 58.67
+      }
+    ],
+    "region": "Gamma (unverified)",
+    "x": -82.0625,
+    "y": 1.625,
+    "z": -14.4375,
+    "contributor": "Maddavo"
+  },
+  {
+    "name": "WISE 0855-0714",
+    "calculated": true,
+    "contributed": "2014-11-23T05:13:08.338Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 7.17
+      },
+      {
+        "system": "Eranin",
+        "distance": 48.68
+      },
+      {
+        "system": "Chara",
+        "distance": 31.72
+      },
+      {
+        "system": "Chini",
+        "distance": 73.19
+      },
+      {
+        "system": "Ciguru",
+        "distance": 89.81
+      },
+      {
+        "system": "Cuages",
+        "distance": 147.25
+      },
+      {
+        "system": "Atum",
+        "distance": 47.86
+      },
+      {
+        "system": "Slatus",
+        "distance": 82.24
+      },
+      {
+        "system": "Yanyan",
+        "distance": 65.5
+      },
+      {
+        "system": "Minawara",
+        "distance": 131.43
+      }
+    ],
+    "region": "Gamma (unverified)",
+    "x": 6.53125,
+    "y": -2.15625,
+    "z": 2.03125,
+    "contributor": "Maddavo"
+  },
+  {
+    "name": "LHS 397",
+    "calculated": true,
+    "contributed": "2014-11-23T07:12:33.715Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 19.32
+      },
+      {
+        "system": "Eranin",
+        "distance": 48.78
+      },
+      {
+        "system": "Chara",
+        "distance": 34.17
+      },
+      {
+        "system": "Chini",
+        "distance": 76.63
+      },
+      {
+        "system": "Ciguru",
+        "distance": 94.55
+      },
+      {
+        "system": "Cuages",
+        "distance": 150.81
+      },
+      {
+        "system": "Atum",
+        "distance": 45.06
+      },
+      {
+        "system": "Slatus",
+        "distance": 83.16
+      },
+      {
+        "system": "Yanyan",
+        "distance": 67.2
+      },
+      {
+        "system": "Minawara",
+        "distance": 138.88
+      }
+    ],
+    "region": "Gamma (unverified)",
+    "x": 8.5625,
+    "y": 3.875,
+    "z": 16.875,
+    "contributor": "Maddavo"
+  },
+  {
+    "name": "LHS 3003",
+    "calculated": true,
+    "contributed": "2014-11-23T07:37:08.734Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 20.24
+      },
+      {
+        "system": "Eranin",
+        "distance": 44.65
+      },
+      {
+        "system": "Chara",
+        "distance": 30.11
+      },
+      {
+        "system": "Chini",
+        "distance": 73.95
+      },
+      {
+        "system": "Ciguru",
+        "distance": 93.89
+      },
+      {
+        "system": "Cuages",
+        "distance": 149.49
+      },
+      {
+        "system": "Atum",
+        "distance": 44.18
+      },
+      {
+        "system": "Slatus",
+        "distance": 81.55
+      },
+      {
+        "system": "Yanyan",
+        "distance": 63.52
+      },
+      {
+        "system": "Minawara",
+        "distance": 136.59
+      }
+    ],
+    "region": "Gamma (unverified)",
+    "x": 7.90625,
+    "y": 9.21875,
+    "z": 16.1875
+  },
+  {
+    "name": "Wolf 1061",
+    "calculated": true,
+    "contributor": "Maddavo",
+    "contributed": "2014-11-23T08:01:59.218Z",
+    "distances": [
+      {
+        "system": "Sol",
+        "distance": 13.99
+      },
+      {
+        "system": "Eranin",
+        "distance": 40.57
+      },
+      {
+        "system": "Chara",
+        "distance": 27.85
+      },
+      {
+        "system": "Chini",
+        "distance": 79.34
+      },
+      {
+        "system": "Ciguru",
+        "distance": 84.43
+      },
+      {
+        "system": "Cuages",
+        "distance": 140.66
+      },
+      {
+        "system": "Atum",
+        "distance": 52.75
+      },
+      {
+        "system": "Slatus",
+        "distance": 88.96
+      },
+      {
+        "system": "Yanyan",
+        "distance": 58.11
+      },
+      {
+        "system": "Minawara",
+        "distance": 128.86
+      }
+    ],
+    "region": "Gamma (unverified)",
+    "x": -0.84375,
+    "y": 5.46875,
+    "z": 12.84375
+  },
+  {
+  "name": "Barnard's Star",
+  "calculated": true,
+  "contributor": "Maddavo",
+  "contributed": "2014-11-24T06:03:26.466Z",
+  "distances": [
+    {
+      "system": "Sol",
+      "distance": 5.95
+    },
+    {
+      "system": "Eranin",
+      "distance": 40.82
+    },
+    {
+      "system": "Chara",
+      "distance": 27.15
+    },
+    {
+      "system": "Chini",
+      "distance": 78.9
+    },
+    {
+      "system": "Ciguru",
+      "distance": 80.61
+    },
+    {
+      "system": "Cuages",
+      "distance": 137.71
+    },
+    {
+      "system": "Atum",
+      "distance": 55.44
+    },
+    {
+      "system": "Slatus",
+      "distance": 89.87
+    },
+    {
+      "system": "Yanyan",
+      "distance": 57.04
+    },
+    {
+      "system": "Minawara",
+      "distance": 124.09
+    }
+  ],
+  "region": "Gamma (unverified)",
+  "x": -3.03125,
+  "y": 1.375,
+  "z": 4.9375
+},
+{
+  "name": "Ross 154",
+  "calculated": true,
+  "contributor": "Maddavo",
+  "contributed": "2014-11-24T06:36:22.335Z",
+  "distances": [
+    {
+      "system": "Sol",
+      "distance": 9.69
+    },
+    {
+      "system": "Eranin",
+      "distance": 44.94
+    },
+    {
+      "system": "Chara",
+      "distance": 31.93
+    },
+    {
+      "system": "Chini",
+      "distance": 82
+    },
+    {
+      "system": "Ciguru",
+      "distance": 82.7
+    },
+    {
+      "system": "Cuages",
+      "distance": 139.98
+    },
+    {
+      "system": "Atum",
+      "distance": 55.56
+    },
+    {
+      "system": "Slatus",
+      "distance": 91.43
+    },
+    {
+      "system": "Yanyan",
+      "distance": 61.21
+    },
+    {
+      "system": "Minawara",
+      "distance": 128.37
+    }
+  ],
+  "region": "Gamma (unverified)",
+  "x": -1.9375,
+  "y": -1.84375,
+  "z": 9.3125
+},
+{
+  "name": "LTT 3572",
+  "calculated": true,
+  "contributor": "Maddavo",
+  "contributed": "2014-11-24T07:46:04.719Z",
+  "distances": [
+    {
+      "system": "Sol",
+      "distance": 20.24
+    },
+    {
+      "system": "Eranin",
+      "distance": 58.77
+    },
+    {
+      "system": "Chara",
+      "distance": 40.38
+    },
+    {
+      "system": "Chini",
+      "distance": 69.51
+    },
+    {
+      "system": "Ciguru",
+      "distance": 102.7
+    },
+    {
+      "system": "Cuages",
+      "distance": 160.17
+    },
+    {
+      "system": "Atum",
+      "distance": 37.98
+    },
+    {
+      "system": "Slatus",
+      "distance": 74.26
+    },
+    {
+      "system": "Yanyan",
+      "distance": 76.72
+    },
+    {
+      "system": "Minawara",
+      "distance": 144.05
+    }
+  ],
+  "region": "Gamma (unverified)",
+  "x": 18.90625,
+  "y": -4.21875,
+  "z": 5.84375
+},
+{
+  "name": "Ministry",
+  "calculated": true,
+  "contributor": "Maddavo",
+  "contributed": "2014-11-24T07:33:57.438Z",
+  "distances": [
+    {
+      "system": "Sol",
+      "distance": 16.06
+    },
+    {
+      "system": "Eranin",
+      "distance": 55.84
+    },
+    {
+      "system": "Chara",
+      "distance": 37.33
+    },
+    {
+      "system": "Chini",
+      "distance": 68.97
+    },
+    {
+      "system": "Ciguru",
+      "distance": 98.75
+    },
+    {
+      "system": "Cuages",
+      "distance": 156.27
+    },
+    {
+      "system": "Atum",
+      "distance": 40.91
+    },
+    {
+      "system": "Slatus",
+      "distance": 75.58
+    },
+    {
+      "system": "Yanyan",
+      "distance": 73.26
+    },
+    {
+      "system": "Minawara",
+      "distance": 139.2
+    }
+  ],
+  "region": "Gamma (unverified)",
+  "x": 15.46875,
+  "y": -4,
+  "z": 1.625
+},
+{
+  "name": "Luyten 145-141",
+  "calculated": true,
+  "contributor": "Maddavo",
+  "contributed": "2014-11-24T07:25:54.862Z",
+  "distances": [
+    {
+      "system": "Sol",
+      "distance": 15.02
+    },
+    {
+      "system": "Eranin",
+      "distance": 52.65
+    },
+    {
+      "system": "Chara",
+      "distance": 34.92
+    },
+    {
+      "system": "Chini",
+      "distance": 70.54
+    },
+    {
+      "system": "Ciguru",
+      "distance": 97.21
+    },
+    {
+      "system": "Cuages",
+      "distance": 154.4
+    },
+    {
+      "system": "Atum",
+      "distance": 40.93
+    },
+    {
+      "system": "Slatus",
+      "distance": 77.2
+    },
+    {
+      "system": "Yanyan",
+      "distance": 70.61
+    },
+    {
+      "system": "Minawara",
+      "distance": 138.84
+    }
+  ],
+  "region": "Gamma (unverified)",
+  "x": 13.4375,
+  "y": -0.8125,
+  "z": 6.65625
+},
+{
+  "name": "Luyten 143-23",
+  "calculated": true,
+  "contributor": "Maddavo",
+  "contributed": "2014-11-24T07:21:45.605Z",
+  "distances": [
+    {
+      "system": "Sol",
+      "distance": 14.62
+    },
+    {
+      "system": "Eranin",
+      "distance": 52.36
+    },
+    {
+      "system": "Chara",
+      "distance": 34.63
+    },
+    {
+      "system": "Chini",
+      "distance": 70.54
+    },
+    {
+      "system": "Ciguru",
+      "distance": 96.86
+    },
+    {
+      "system": "Cuages",
+      "distance": 154.05
+    },
+    {
+      "system": "Atum",
+      "distance": 41.18
+    },
+    {
+      "system": "Slatus",
+      "distance": 77.34
+    },
+    {
+      "system": "Yanyan",
+      "distance": 70.28
+    },
+    {
+      "system": "Minawara",
+      "distance": 138.44
+    }
+  ],
+  "region": "Gamma (unverified)",
+  "x": 13.125,
+  "y": -0.75,
+  "z": 6.40625
+},
+{
+  "name": "Lawd 26",
+  "calculated": true,
+  "contributor": "Maddavo",
+  "contributed": "2014-11-24T09:13:03.259Z",
+  "distances": [
+    {
+      "system": "Sol",
+      "distance": 22.53
+    },
+    {
+      "system": "Eranin",
+      "distance": 62.27
+    },
+    {
+      "system": "Chara",
+      "distance": 43.62
+    },
+    {
+      "system": "Chini",
+      "distance": 69.8
+    },
+    {
+      "system": "Ciguru",
+      "distance": 104.7
+    },
+    {
+      "system": "Cuages",
+      "distance": 162.43
+    },
+    {
+      "system": "Atum",
+      "distance": 38.46
+    },
+    {
+      "system": "Slatus",
+      "distance": 73.86
+    },
+    {
+      "system": "Yanyan",
+      "distance": 79.92
+    },
+    {
+      "system": "Minawara",
+      "distance": 145.84
+    }
+  ],
+  "region": "Gamma (unverified)",
+  "x": 20.90625,
+  "y": -7.5,
+  "z": 3.75
+},
+{
+  "name": "Kushen",
+  "calculated": true,
+  "contributor": "Maddavo",
+  "contributed": "2014-11-24T09:19:24.384Z",
+  "distances": [
+    {
+      "system": "Sol",
+      "distance": 28.89
+    },
+    {
+      "system": "Eranin",
+      "distance": 67.39
+    },
+    {
+      "system": "Chara",
+      "distance": 48.74
+    },
+    {
+      "system": "Chini",
+      "distance": 70.4
+    },
+    {
+      "system": "Ciguru",
+      "distance": 110.85
+    },
+    {
+      "system": "Cuages",
+      "distance": 168.55
+    },
+    {
+      "system": "Atum",
+      "distance": 35.21
+    },
+    {
+      "system": "Slatus",
+      "distance": 71.81
+    },
+    {
+      "system": "Yanyan",
+      "distance": 85.54
+    },
+    {
+      "system": "Minawara",
+      "distance": 152.61
+    }
+  ],
+  "region": "Gamma (unverified)",
+  "x": 26.46875,
+  "y": -8.5,
+  "z": 7.84375
+}
 ]
