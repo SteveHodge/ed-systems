@@ -1,2 +1,147 @@
 [
+  {
+    "system1": "LHS 3093",
+    "system2": "Crucis Sector IW-W B1-2",
+    "distance": 102.97
+  },
+  {
+    "system1": "LHS 3093",
+    "system2": "Col 285 Sector TJ-R A34-1",
+    "distance": 120.87
+  },
+  {
+    "system1": "LHS 3093",
+    "system2": "Crucis Sector YO-R A4-3",
+    "distance": 108.79
+  },
+  {
+    "system1": "LHS 3093",
+    "system2": "Crucis Sector XO-R A4-0",
+    "distance": 99.97
+  },
+  {
+    "system1": "LHS 3093",
+    "system2": "Crucis Sector BL-X B1-1",
+    "distance": 76.08
+  },
+  {
+    "system1": "LHS 3093",
+    "system2": "Col 285 Sector PD-T A33-1",
+    "distance": 122.54
+  },
+  {
+    "system1": "LHS 3093",
+    "system2": "Crucis Sector FB-X B1-4",
+    "distance": 89.57
+  },
+  {
+    "system1": "LHS 3093",
+    "system2": "Crucis Sector XO-R A4-4",
+    "distance": 97.2
+  },
+  {
+    "system1": "LHS 366",
+    "system2": "Crucis Sector IW-W B1-2",
+    "distance": 110.04
+  },
+  {
+    "system1": "LHS 366",
+    "system2": "Col 285 Sector TJ-R A34-1",
+    "distance": 128.17
+  },
+  {
+    "system1": "LHS 366",
+    "system2": "Crucis Sector FB-X B1-4",
+    "distance": 93.99
+  },
+  {
+    "system1": "LHS 366",
+    "system2": "Crucis Sector YO-R A4-3",
+    "distance": 117.48
+  },
+  {
+    "system1": "LHS 366",
+    "system2": "Crucis Sector XO-R A4-0",
+    "distance": 110.16
+  },
+  {
+    "system1": "LHS 366",
+    "system2": "Col 285 Sector PD-T A33-1",
+    "distance": 129.23
+  },
+  {
+    "system1": "LP 437-12",
+    "system2": "Crucis Sector FB-X B1-4",
+    "distance": 112.31
+  },
+  {
+    "system1": "LP 437-12",
+    "system2": "Crucis Sector YO-R A4-3",
+    "distance": 142.69
+  },
+  {
+    "system1": "LP 437-12",
+    "system2": "Crucis Sector XO-R A4-0",
+    "distance": 138.38
+  },
+  {
+    "system1": "Col 285 Sector GD-W B17-0",
+    "system2": "Crucis Sector XO-R A4-0",
+    "distance": 149.63
+  },
+  {
+    "system1": "Amadioha",
+    "system2": "Crucis Sector FB-X B1-4",
+    "distance": 101.95
+  },
+  {
+    "system1": "LHS 3221",
+    "system2": "Col 285 Sector PD-T A33-1",
+    "distance": 144.87
+  },
+  {
+    "system1": "LHS 3221",
+    "system2": "Crucis Sector FB-X B1-4",
+    "distance": 112.52
+  },
+  {
+    "system1": "LHS 3221",
+    "system2": "Crucis Sector XO-R A4-0",
+    "distance": 121.58
+  },
+  {
+    "system1": "LHS 3221",
+    "system2": "Crucis Sector IW-W B1-2",
+    "distance": 125.52
+  },
+  {
+    "system1": "LHS 3221",
+    "system2": "Crucis Sector YO-R A4-3",
+    "distance": 130.96
+  },
+  {
+    "system1": "LHS 3221",
+    "system2": "Crucis Sector BL-X B1-1",
+    "distance": 97.68
+  },
+  {
+    "system1": "LHS 3221",
+    "system2": "Col 285 Sector TJ-R A34-1",
+    "distance": 143.05
+  },
+  {
+    "system1": "LHS 3221",
+    "system2": "Crucis Sector XO-R A4-4",
+    "distance": 119.33
+  },
+  {
+    "system1": "Col 285 Sector AC-Y B16-0",
+    "system2": "Crucis Sector XO-R A4-0",
+    "distance": 166.1
+  },
+  {
+    "system1": "Col 285 Sector AC-Y B16-0",
+    "system2": "Crucis Sector FB-X B1-4",
+    "distance": 133.28
+  }
 ]

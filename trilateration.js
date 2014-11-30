@@ -1,5 +1,7 @@
 var Region = function(center) {
-	var regionSize = 5;	// 1/32 Ly grid locations to search around candidate coordinate
+	var regionSize = 1;	// 1/32 Ly grid locations to search around candidate coordinate
+
+	this.origins = [center];
 
 	this.minx = Math.floor(center.x*32-regionSize)/32;
 	this.maxx = Math.ceil(center.x*32+regionSize)/32;
@@ -9,15 +11,25 @@ var Region = function(center) {
 	this.maxz = Math.ceil(center.z*32+regionSize)/32;
 	
 	// number of grid coordinates in the region
+	// for a region that has not been merged this is typically (2*regionSize)^3 (though if the center
+	// was grid aligned it will be (2*regionsize-1)^3)
 	this.volume = function() {
 		return 32768*(this.maxx-this.minx+1/32)*(this.maxy-this.miny+1/32)*(this.maxz-this.minz+1/32);
 	};
+
+	// p has properties x, y, z. returns true if p is in this region, false otherwise
+	this.contains = function(p) {
+		return (p.x >= this.minx && p.x <= this.maxx
+				&& p.y >= this.miny && p.y <= this.maxy
+				&& p.z >= this.minz && p.z <= this.maxz);
+	}
 	
 	// returns a new region that represents the union of this and r
 	this.union = function(r) {
 		if (!(r instanceof Region)) return null;
 
 		var u = new Region({x: 0, y: 0, z: 0});
+		u.origins = this.origins.concat(r.origins);
 		u.minx = Math.min(this.minx, r.minx);
 		u.miny = Math.min(this.miny, r.miny);
 		u.minz = Math.min(this.minz, r.minz);
@@ -27,6 +39,21 @@ var Region = function(center) {
 
 		return u;
 	};
+	
+	// returns the highest coordinate of the vector from p to the closest origin point. this is the
+	// minimum value of region size (in Ly) that would include the specified point
+	this.centrality = function(p) {
+		var i, d, best = null;
+		for (i = 0; i < this.origins.length; i++) {
+			d = Math.max(
+				Math.abs(this.origins[i].x - p.x),
+				Math.abs(this.origins[i].y - p.y),
+				Math.abs(this.origins[i].z - p.z)
+			);
+			if (d < best || best === null) best = d;
+		}
+		return best;
+	}
 	
 	this.toString = function() {
 		return "Region ["+this.minx+", "+this.miny+", "+this.minz
@@ -74,10 +101,10 @@ var Trilateration = function () {
 			}
 		}
 
-		console.log("Candidate egions:");
-		$.each(regions, function() {
-			console.log(this.toString());
-		});
+//		console.log("Candidate regions:");
+//		$.each(regions, function() {
+//			console.log(this.toString());
+//		});
 		return regions;
 	}
 
@@ -102,27 +129,45 @@ var Trilateration = function () {
 	}
 
 	function run() {
-		var regions = getRegions();
+		self.regions = getRegions();
 		// check the number of matching distances for each grid location in each region
 		// track the best number of matches (and the corresponding locations) and the next
 		// best number
 		self.bestCount = 0;
 		self.best = [];
 		self.nextBest = 0;
-		
-		$.each(regions, function() {
-			console.log(this.toString());
+
+		$.each(self.regions, function() {
+			this.bestCount = 0;
+			this.best = [];
+			this.nextBest = 0;
 			for (var x = this.minx; x <= this.maxx; x+= 1/32) {
 				for (var y = this.miny; y <= this.maxy; y+= 1/32) {
 					for (var z = this.minz; z <= this.maxz; z+= 1/32) {
 						var p = {x: x, y: y, z: z};
 						var matches = checkDistances(p);
+						if (matches > this.bestCount) {
+							this.nextBest = this.bestCount;
+							this.bestCount = matches;
+							this.best = [p];
+						} else if (matches === this.bestCount) {
+							this.best.push(p);
+						} else if (matches > this.nextBest) {
+							this.nextBest = matches;
+						}
 						if (matches > self.bestCount) {
 							self.nextBest = self.bestCount;
 							self.bestCount = matches;
 							self.best = [p];
 						} else if (matches === self.bestCount) {
-							self.best.push(p);
+							var found = false;
+							$.each(self.best, function() {
+								if (this.x === p.x && this.y === p.y && this.z === p.z) {
+									found = true;
+									return false;
+								}
+							});
+							if (!found) self.best.push(p);
 						} else if (matches > self.nextBest) {
 							self.nextBest = matches;
 						}

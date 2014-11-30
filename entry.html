@@ -246,9 +246,9 @@ function updateCoords() {
 
 		$("#output").html("Coordinates: "+vectorToString(bestCandidate)
 				+"<br/>Better than next candidate(s) by "+(trilat.bestCount - trilat.nextBest)+" distances"
-				+"<br/>Inconsistent distances: "+(dists.length - trilat.bestCount)
-				+"<br/>Local Systems:");
-		$("#output").append(getLocalSystems(bestCandidate)).append('<br/>');
+				+"<br/>Inconsistent distances: "+(dists.length - trilat.bestCount));
+		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
+		$("#output").append('<br/>Local Systems:').append(getLocalSystems(bestCandidate)).append('<br/>');
 		
 		// update stored system data
 		setVector(systemData, bestCandidate);
@@ -279,8 +279,44 @@ function updateCoords() {
 
 	} else {
 		$("#output").html("Coordinates: found "+trilat.best.length+" potential candidates");
+		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
 		$('#ref-warning').show();
 	}
+}
+
+function getRegionTable(trilat) {
+	var table = document.createElement('table');
+	var row = document.createElement('tr');
+	$('<th data-sort="string">Corner 1</th>').appendTo(row);
+	$('<th data-sort="string">Corner 2</th>').appendTo(row);
+	$('<th data-sort="int">Volume</th>').appendTo(row);
+	$('<th data-sort="int">Best Candidates</th>').appendTo(row);
+	$('<th data-sort="int">Region Best</th>').appendTo(row);
+	$('<th data-sort="int"># Region Best</th>').appendTo(row);
+	$('<th data-sort="int">Region 2nd</th>').appendTo(row);
+	$('<thead/>').append(row).appendTo(table);
+	var tbody = document.createElement('tbody');
+	table.appendChild(tbody);
+
+	$.each(trilat.regions, function() {
+		var best = 0;
+		for (var i = 0; i < trilat.best.length; i++) {
+			if (this.contains(trilat.best[i])) best++;
+		}
+
+		row = document.createElement('tr');
+		$('<td>').text('['+this.minx+', '+this.miny+', '+this.minz+']').appendTo(row);
+		$('<td>').text('['+this.maxx+', '+this.maxy+', '+this.maxz+']').appendTo(row);
+		$('<td>').text(this.volume()).appendTo(row);
+		$('<td>').text(best).appendTo(row);
+		$('<td>').text(this.bestCount).appendTo(row);
+		$('<td>').text(this.best.length).appendTo(row);
+		$('<td>').text(this.nextBest).appendTo(row);
+		tbody.appendChild(row);
+	});
+
+	$(table).stupidtable().bind('aftertablesort', updateSortArrow);
+	return table;
 }
 
 function getLocalSystems(coords) {
