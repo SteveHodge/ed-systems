@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Elite Dangerous New System</title>
+	<title>ED New System</title>
 	<link href="external/jquery-ui.css" rel="stylesheet">
 	<link href="trilateration.css" rel="stylesheet">
 	<script src="external/jquery-2.1.1.js"></script>
@@ -218,7 +218,7 @@ function updateCoords() {
 	for (var i = 0; i < dists.length; i++) {
 		trilat.addDistance(dists[i]);
 	}
-	if (trilat.best.length === 1) {
+	if (trilat.best && trilat.best.length === 1) {
 		// single candidate
 		var bestCandidate = trilat.best[0];
 
@@ -278,7 +278,7 @@ function updateCoords() {
 		}
 
 	} else {
-		$("#output").html("Coordinates: found "+trilat.best.length+" potential candidates");
+		$("#output").html("Coordinates: found "+(trilat.best ? trilat.best.length : 'no')+" potential candidates");
 		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
 		$('#ref-warning').show();
 	}

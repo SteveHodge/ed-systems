@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Elite Dangerous Systems.json Check</title>
+	<title>ED Systems.json Sanity Check</title>
 	<link href="external/jquery-ui.css" rel="stylesheet">
 	<link href="trilateration.css" rel="stylesheet">
 	<script src="external/jquery-2.1.1.js"></script>
@@ -26,6 +26,8 @@ $(document).ready(function () {
 		logAppend('Loaded systems.json\n');
 		process();
 	});
+
+	$("#json-output").click(selectAll);
 });
 
 function logAppend(str) {
@@ -57,8 +59,14 @@ function process() {
 			regions[r] = 1;
 		}
 
-		if (systems[i].name.trim().toLowerCase() in names) {
-			logAppend('Duplicate system: '+displayName(systems[i])+'\n');
+		var key = systems[i].name.trim().toLowerCase();
+		if (key in names) {
+			logAppend('Duplicate system: '+displayName(systems[i]));
+			if (systems[i].x == names[key].x && systems[i].y == names[key].y && systems[i].z == names[key].z) {
+				logAppend(' and ('+names[key].region+') - coordinates identical\n');
+			} else {
+				logAppend(' '+vectorToString(systems[i])+' and ('+names[key].region+') '+vectorToString(names[key])+'\n');
+			}
 			dupenames++;
 		} else {
 			names[systems[i].name.trim().toLowerCase()] = systems[i];
@@ -84,6 +92,11 @@ function process() {
 				if (!(this.distances[i].system.trim().toLowerCase() in names)) {
 					logAppend(this.name+': distance to non-existant system '+this.distances[i].system+'\n');
 					baddists++;
+					output.push({
+						system1: this.name,
+						system2: this.distances[i].system,
+						distance: this.distances[i].distance
+					});
 				}
 			}
 		}
@@ -97,7 +110,7 @@ function process() {
 	$.each(Object.keys(regions).sort(), function() {
 		logAppend('  '+this+': '+regions[this]+'\n');
 	});
-//	$('#json-output').text(JSON.stringify(output, null, 2));
+	$('#json-output').text(JSON.stringify(output, null, 2));
 }
 
 </script>
