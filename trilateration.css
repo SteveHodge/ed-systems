@@ -32,3 +32,15 @@ div.table-div {
 	overflow:auto;
 	border:1px solid black;
 }
+.inline-alert {
+	float: left;
+	margin-right: .3em;
+	margin-top: .2em;
+	background-image: url('external/images/ui-icons_a83300_256x240.png');
+}
+.inline-check {
+	float: left;
+	margin-right: .3em;
+	margin-top: .2em;
+	background-image: url('external/images/ui-icons_4b8e0b_256x240.png');
+}

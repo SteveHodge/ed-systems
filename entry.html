@@ -11,109 +11,260 @@
 	<script src="trilateration.js"></script>
 <!--	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
 <script>
-// TODO? prepopulate distances for dupe systems?
-// TODO webservice integration when ready
+var systemsMap = {};		// reference system data
+var lastFetch = '2014-09-09 12:13:14Z';
 
-var systems = null;		// reference system data
 var systemData = null;	// current system data
 var jsonOutput = "";
 var sqlOutput = "";
-var systemsMap = {};
 var names = [];
 
+function updateTGCData(callback) {
+	$.ajax({
+		type: 'POST',
+		contentType: 'application/json; charset=utf-8',
+		url: 'http://edstarcoordinator.com/api.asmx/GetSystems',
+		data: JSON.stringify({data: {
+			ver: 2,
+			test: $('#test-mode:checked').length > 0,
+			outputmode: 2,
+			filter: {
+				cr: 1,
+				date: lastFetch
+			}
+		}}),
+		dataType: 'json',
+		success: function(data, status, xhr) {
+			data = data.d;
+			//console.log(JSON.stringify(data, null, 2));
+			if (data.status.input[0].status.statusnum !== 0) {
+				console.log(data.status.input[0].status.statusnum +' :'+data.status.input[0].status.msg);
+			} else {
+				console.log('Fetched '+data.systems.length+' systems from server');
+				addSystems(data.systems);
+			}
+			callback();
+		},
+		error: function(xhr, status, error) {
+			//console.log(xhr.responseText);
+			console.log(error);
+			console.log('Request was:');
+			console.log(JSON.stringify(query, null, 2));
+			callback();
+		}
+	});
+}
+
+function sendToTGC(success, failure) {
+	if (!systemData) return;
+
+	var data = {
+		ver: 2,
+		test: $('#test-mode:checked').length > 0,
+		commander: $('#cdmr-name').val(),
+		p0: {name: systemData.name},
+		refs: []
+	};
+	$.each(systemData.distances, function() {
+		if (this.gooddist) {
+			data.refs.push({
+				name: this.system,
+				dist: this.distance
+			});
+		}
+	});
+	console.log("Submitting:");
+	console.log(JSON.stringify(data, null, 2));
+
+	$.ajax({
+		type: 'POST',
+		contentType: 'application/json; charset=utf-8',
+		url: 'http://edstarcoordinator.com/api.asmx/SubmitDistances',
+		data: JSON.stringify({data: data}),
+		dataType: 'json',
+		success: function(data, status, xhr) {
+			data = data.d;
+			console.log("Response:");
+			console.log(JSON.stringify(data, null, 2));
+			if (data.status.input[0].status.statusnum !== 0) {
+				console.log(data.status.input[0].status.statusnum +' :'+data.status.input[0].status.msg);
+				failure();
+			} else {
+				console.log('Submitted '+systemData.name+' successfully');
+				// new system:
+				// system array: 201 added, 202 cr incremented (should have coord)
+				// dist array: 301 added for each distance
+				// trilat array: 401 successful, has coords
+				//
+				// existing (ref) system: Altair
+				// system array empty
+				// dist array: 303 used to identify coordinates
+				// trilat array: 401 successful for sol, has coords for sol
+				$.each(data.status.system, function() {
+					if (this.status.statusnum !== 201 && this.status.statusnum !== 202) {
+						console.log('System message for '+this.system+': '+this.status.statusnum+' '+this.status.msg);
+					}
+				});
+				$.each(data.status.dist, function() {
+					if (this.status.statusnum !== 301 && this.status.statusnum !== 302 && this.status.statusnum !== 303) {
+						console.log('Distance message for '+this.system1+' - '+this.system2+': '+this.status.statusnum+' '+this.status.msg);
+					}
+				});
+				$.each(data.status.trilat, function() {
+					if (this.status.statusnum !== 401) {
+						console.log('Trilat message for '+this.system+': '+this.status.statusnum+' '+this.status.msg);
+					} else {
+						console.log('Calculated coordinates for '+this.system+': '+this.coord.x+', '+this.coord.y+', '+this.coord.z);
+					}
+				});
+				success();
+			}
+		},
+		error: function(xhr, status, error) {
+			//console.log(xhr.responseText);
+			console.log(error);
+			console.log('Request was:');
+			console.log(JSON.stringify(data, null, 2));
+			failure(error);
+		}
+	});
+}
+
+function addSystems(systems) {
+	var count = 0; rejected = 0;
+	$.each(systems, function() {
+		if (this.coord) {
+			systemsMap[this.name.trim().toLowerCase()] = {
+				x: this.coord[0],
+				y: this.coord[1],
+				z: this.coord[2],
+				name: this.name,
+				calculated: this.cr < 5
+			};
+			count++;
+		} else {
+			rejected++;
+		}
+	});
+	var msg = 'Updated '+count+' systems. ';
+	if (rejected > 0) msg += 'Rejected '+rejected+' systems. ';
+	console.log(msg+'Total number of systems: '+Object.keys(systemsMap).length);
+}
+
+function getTGCData(callback) {
+	$.getJSON('tgcsystems.json', function(data) {
+		lastFetch = data.date+'Z';
+		console.log('Loaded tgcsystems.json - data up to '+data.date);
+		systemsMap = {};
+		addSystems(data.systems);
+	}).fail(function() {
+		console.log('Failed to read from tgcsystems.json');
+	}).always(function() {
+		// update with any additional data from the server
+		updateTGCData(callback);
+	});
+};
+
 $(document).ready(function () {
-	$.getJSON('systems.json', function(data) {
-		systems = data;
-
-		// generate system name map
-		$.each(systems, function() {
-			systemsMap[$.trim(this.name.toLowerCase())] = this;
-		});
-
+	getTGCData(function() {
 		// set up the autocomplete
-		$.each(systems, function() {
-			names.push(this.name);
+		$.each(systemsMap, function(key, val) {
+			names.push(val.name);
 		});
 		names.sort();
 		$("input.system-name").autocomplete({source: names});
-	
-		// setup sorting on the distance table
-		$('#distances').stupidtable({'optfloat': sortOptionalFloat})
-			.bind('aftertablesort', postSortDistances)
-			.bind('beforetablesort', preSortDistances);
-
-		// add the event handlers
-		$('#cmdr-name').change(function() {
-			var cmdr = $.trim(this.value);
-			if (systemData) {
-				if (cmdr.length > 0) {
-					systemData.contributor = cmdr;
-				} else {
-					delete systemData.contributor;
-				}
-				updateJSON();
-			}
-		});
-
-		$("#toggle-json").click(getToggle(document.getElementById('json-output'),'Hide JSON','Visible JSON'));
-		$("#json-output").click(selectAll);
-		$("#toggle-sql").click(getToggle(document.getElementById('sql-output'),'Hide SQL','Visible SQL'));
-		$("#sql-output").click(selectAll);
-
-		$("#done-button").click(function() {
-			if (systemData !== null) {
-				jsonOutput = JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput;
-				$("#json-output").text(jsonOutput);
-				sqlOutput = getSQL(systemData) + sqlOutput;
-				$("#sql-output").text(sqlOutput);
-			}
-			$("#cancel-button").click();
-		});
-
-		$("#cancel-button").click(function() {
-			$("#distances input.distance").val("");
-			$("#distances tr:has(input.system-name) td:nth-child(3)").text("").next().text("");
-			$("#output").html("");
-			$("#done-button").attr('disabled', true);
-			$("#unknown-name").val("").focus();
-			$("#json-output").text(jsonOutput);
-			$("#sql-output").text(sqlOutput);
-			$('#ref-warning').hide();
-			$('#no-name-warning').hide();
-			systemData = null;
-		});
-
-		$('#unknown-name').change(function() {
-			// check for duplicate name
-			var dupe = false;
-			if (this.value && this.value.length > 0) {
-				var lc = $.trim(this.value.toLowerCase());
-				$.each(systems, function() {
-					if (this.name.toLowerCase() === lc) {
-						dupe = true;
-						return false;
-					}
-				});
-				$('#no-name-warning').hide();
-			}
-			$('#dupe-warning').toggle(dupe);
-			
-			if (systemData !== null) {
-				systemData.name = this.value;
-				updateJSON();
-				$("#sql-output").text(getSQL(systemData) + sqlOutput);
-				$("#done-button").attr('disabled',this.value.length === 0);
-				if (this.value.length === 0) {
-					$('#no-name-warning').show();
-				}
-			}
-		});
-		
-		$("#distances input").change(updateCoords);
-		$('input.system-name').change(checkEmptyRow);
-
-		addSystemRow();
+		updateCoords();
 	});
+
+	// setup sorting on the distance table
+	$('#distances').stupidtable({'optfloat': sortOptionalFloat})
+		.bind('aftertablesort', postSortDistances)
+		.bind('beforetablesort', preSortDistances);
+
+	// add the event handlers
+	$('#cmdr-name').change(function() {
+		var cmdr = $.trim(this.value);
+		if (systemData) {
+			if (cmdr.length > 0) {
+				systemData.contributor = cmdr;
+			} else {
+				delete systemData.contributor;
+			}
+			updateJSON();
+		}
+	});
+
+	$("#toggle-json").click(getToggle(document.getElementById('json-output'),'Hide JSON','Visible JSON'));
+	$("#json-output").click(selectAll);
+	$("#toggle-sql").click(getToggle(document.getElementById('sql-output'),'Hide SQL','Visible SQL'));
+	$("#sql-output").click(selectAll);
+
+	$("#done-button").click(function() {
+		if (systemData !== null) {
+			jsonOutput = JSON.stringify(systemData, filterJSON, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput;
+			$("#json-output").text(jsonOutput);
+			sqlOutput = getSQL(systemData) + sqlOutput;
+			$("#sql-output").text(sqlOutput);
+		}
+		$("#cancel-button").click();
+	});
+
+	$('#tgc-button').click(function() {
+		$("#tgc-button").attr('disabled', true);
+		$("#done-button").attr('disabled', true);
+		sendToTGC(function() {
+			$("#done-button").click();
+		}, function(error) {
+			alert('Failed to submit the system to TGC:\n'+error);
+			$("#tgc-button").attr('disabled', false);
+			$("#done-button").attr('disabled', false);
+		});
+	});
+
+	$("#cancel-button").click(function() {
+		$("#distances input.distance").val("");
+		$("#distances tr:has(input.system-name) td:nth-child(3)").text("").next().text("");
+		$("#output").html("");
+		$("#tgc-button").attr('disabled', true);
+		$("#done-button").attr('disabled', true);
+		$("#unknown-name").val("").focus();
+		$("#json-output").text(jsonOutput);
+		$("#sql-output").text(sqlOutput);
+		$('#ref-warning').hide();
+		$('#no-name-warning').hide();
+		systemData = null;
+	});
+
+	$('#unknown-name').change(function() {
+		// check for duplicate name
+		var dupe = false;
+		if (this.value && this.value.length > 0) {
+			var lc = $.trim(this.value.toLowerCase());
+			if (lc in systemsMap) {
+				dupe = true;
+			}
+			$('#no-name-warning').hide();
+		}
+		$('#dupe-warning').toggle(dupe);
+		
+		if (systemData !== null) {
+			systemData.name = this.value;
+			updateJSON();
+			$("#sql-output").text(getSQL(systemData) + sqlOutput);
+			$("#tgc-button").attr('disabled',this.value.length === 0 || !systemData.cansubmit);
+			$("#done-button").attr('disabled',this.value.length === 0 || !systemData.cansubmit);
+			if (this.value.length === 0) {
+				$('#no-name-warning').show();
+			}
+		}
+	});
+	
+	$("#distances input").change(updateCoords);
+	$('input.system-name').change(checkEmptyRow);
+
+	addSystemRow();
+	$("#tgc-button").attr('disabled',true);
+	$("#done-button").attr('disabled',true);
 });
 
 // setup sort values for the system column
@@ -150,9 +301,14 @@ function postSortDistances(event, data) {
 	$(this).children("tbody").append($(rows));
 }
 
+function filterJSON(key, value) {
+	if (key === 'cansubmit' || key === 'gooddist') return undefined;
+	return value;
+}
+
 function updateJSON() {
 	if (systemData) {
-		$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
+		$("#json-output").text(JSON.stringify(systemData, filterJSON, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
 	}
 }
 
@@ -168,7 +324,7 @@ function checkEmptyRow() {
 }
 
 function addSystemRow() {
-	 var tr = $('<tr><td><input class="system-name"></td><td><input class="distance"></td><td/><td/></tr>')
+	var tr = $('<tr><td><input class="system-name"></td><td><input class="distance"></td><td/><td/></tr>')
 		.appendTo('#distances tbody');
 	tr.find('input').change(updateCoords);
 	tr.find('input.system-name')
@@ -221,9 +377,7 @@ function updateCoords() {
 	if (trilat.best && trilat.best.length === 1) {
 		// single candidate
 		var bestCandidate = trilat.best[0];
-
-		$('#ref-warning').hide();
-		setVector(bestCandidate,gridLocation(bestCandidate));	// round to grid location
+		var goodRefs = 0;	// number of reference system distances that match
 
 		$("#distances tr[system]").each(function() {
 			var enteredDist = $(this).find("input.distance").val();
@@ -231,16 +385,23 @@ function updateCoords() {
 				var nameKey = this.getAttribute('system');
 				if (!(nameKey in systemsMap)) {
 					$(this).children("td:nth-child(3)").text("")
-							.next().text("(unknown star)");
+							.next().html('<span class="ui-icon ui-icon-alert inline-alert"></span>Unknown system');
 					return;
 				}
 
 				var sys = systemsMap[nameKey];
 				var calcDist = eddist(sys, bestCandidate);
-				var err = Math.abs(enteredDist - calcDist).toFixed(2);
-				if (sys.calculated) err += " (derived star)";
+				var status;
+				if (enteredDist - calcDist !== 0) {
+					status = '<span class="ui-icon ui-icon-alert inline-alert"></span>'+"Distance doesn't match";
+				} else {
+					status = '<span class="ui-icon ui-icon-check inline-check"></span>Ok';
+					if (!sys.calculated) goodRefs++;
+				}
+				if (sys.calculated) status += " (not ref system)";
+
 				$(this).children("td:nth-child(3)").text(calcDist.toFixed(2))
-						.next().text(err);
+						.next().html(status);
 			}
 		});
 
@@ -255,29 +416,41 @@ function updateCoords() {
 		for (var i = 0; i < dists.length; i++) {
 			systemData.distances.push({
 				system: dists[i].name,
-				distance: dists[i].distance
+				distance: dists[i].distance,
+				gooddist: dists[i].distance - eddist(dists[i], bestCandidate) === 0		// if the distances match then we can submit it
 			});
 		}
-		// add any unknown star data
+		// add any unknown system data
 		$("#distances tr[system]").each(function() {
 			var sys = $(this).find('input.system-name').val();
 			var dist = $(this).find('input.distance').val();
 			var syskey = this.getAttribute('system');
 			if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].calculated)) {
-				systemData.distances.push({system: sys, distance: dist});
+				systemData.distances.push({
+					system: sys,
+					distance: dist,
+					gooddist: !(syskey in systemsMap) || (dist - eddist(systemsMap[syskey], bestCandidate) === 0)	// if the system is unknown or the distances match we can submit it
+				});
 			}
 		});
 		
-		$("#json-output").text(JSON.stringify(systemData, null, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput);
+		updateJSON();
 		$("#sql-output").text(getSQL(systemData) + sqlOutput);
 
-		if (systemData.name && systemData.name.length > 0) {
-			$('#done-button').attr('disabled',false);
+		if (goodRefs < 5 || trilat.bestCount - trilat.nextBest < 2) {
+			systemData.cansubmit = false;
+			$('#ref-warning').show();
 		} else {
-			$('#no-name-warning').show();
+			systemData.cansubmit = true;
+			$('#ref-warning').hide();
+			if (!systemData.name || systemData.name.length === 0) {
+				$('#no-name-warning').show();
+			}
 		}
+		$("#tgc-button").attr('disabled', systemData.name.length === 0 || !systemData.cansubmit);
+		$("#done-button").attr('disabled', systemData.name.length === 0 || !systemData.cansubmit);
 
-	} else {
+	} else if (dists.length > 0) {
 		$("#output").html("Coordinates: found "+(trilat.best ? trilat.best.length : 'no')+" potential candidates");
 		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
 		$('#ref-warning').show();
@@ -332,9 +505,9 @@ function getLocalSystems(coords) {
 	table.appendChild(tbody);
 
 	var locals = [];
-	for (i = 0; i < systems.length; i++) {
-		locals.push({system:systems[i], distance:eddist(systems[i],coords)});
-	}
+	$.each(systemsMap, function(key, val) {
+		locals.push({system:val, distance:eddist(val,coords)});
+	});
 	locals.sort(function(a,b) {return a.distance-b.distance;});
 
 	for (i = 0; i < 5 && i < locals.length; i++) {
@@ -377,16 +550,17 @@ function getLocalSystems(coords) {
 					<th data-sort="string-ins" data-sort-desc="string-ins">System</th>
 					<th>Distance</th>
 					<th data-sort="optfloat">Calculated</th>
-					<th data-sort="optfloat">Error</th>
+					<th data-sort="optfloat" style="width:20em">Status</th>
 				</tr>
 			</thead>
 			<tbody>
-				<!-- Flousop, Tring, Rahu, Parcae, Hepa, Poqomathi, Hyperion, Aulin, Sol -->
 				<tr><td><input class="system-name" value="Sol"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Wolf 497"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Huokang"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Demeter"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Fu Haiting"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Kato"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Cayu"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Prim"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Sabi"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Aka"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Juro"></td><td><input class="distance"></td><td/><td/></tr>
 			</tbody>
 		</table>
 		<div id="ref-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
@@ -395,7 +569,11 @@ function getLocalSystems(coords) {
 		</div>
 		<h3>Calculated</h3>
 		<div id="output"></div>
-		<button id="done-button" disabled="true">Done</button><button id="cancel-button">Cancel</button>
+		<button id="tgc-button" disabled="true">Submit to TGC</button>
+		<button id="done-button" disabled="true">Add to output only</button>
+		<button id="cancel-button">Cancel</button>
+		<br>
+		<input id="test-mode" type="checkbox" checked="checked">Testing</input>
 		<h3>Structured Output</h3>
 		<button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
 		<pre id="sql-output" style="display:none"></pre>
