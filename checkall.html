@@ -34,7 +34,7 @@ $(document).ready(function () {
 });
 
 function runCheck() {
-	var maxRefs = 40;
+	var maxRefs = 15;
  	var time = 0;
  	var refs = 0;
  	var attempts = 0;
@@ -78,7 +78,7 @@ function runCheck() {
 				.append($('<td>').text(system.x))
 				.append($('<td>').text(system.y))
 				.append($('<td>').text(system.z))
-				.append($('<td/><td/><td/><td/><td/><td/>'))
+				.append($('<td/><td/><td/><td/><td/><td/><td/>'))
 				.appendTo('#system-table tbody');
 
 		var sysStart = new Date();
@@ -103,16 +103,27 @@ function runCheck() {
 			}
 		}
 
-		if (i < maxRefs) i++;
+		if (i < maxRefs && i < system.distances.length) i++;
 		var took = (((new Date())-sysStart)/1000);
 		time += took;
-		$(tabrow).children("td:nth-child(10)").text(took.toFixed(3));
+		$(tabrow).children("td:nth-child(11)").text(took.toFixed(3));
 		if (trilat.best && trilat.best.length === 1) {
 			// single candidate
 			$(tabrow).children("td:nth-child(6)").text(i);
 			$(tabrow).children("td:nth-child(7)").text(trilat.bestCount);
 			$(tabrow).children("td:nth-child(8)").text(trilat.bestCount-trilat.nextBest);
 			
+			var badDists = 0;
+			$.each(system.distances, function() {
+				var s = sysmap[this.system];
+				if (s && checkDist(system, s, this.distance).error !== 0) {
+					var err = checkDist(system, s, this.distance);
+					console.log('Bad distance from '+system.name+' to '+s.name+': '+this.distance+' should be '+err.distance);
+					badDists++;
+				}
+			});
+			$(tabrow).children("td:nth-child(9)").text(badDists);
+
 			var closest = null;
 			$.each(trilat.regions, function() {
 				var c;
@@ -121,7 +132,7 @@ function runCheck() {
 					if (closest === null || c < closest) closest = c;
 				}
 			});
-			$(tabrow).children("td:nth-child(9)").text((closest*32).toFixed(1));
+			$(tabrow).children("td:nth-child(10)").text((closest*32).toFixed(1));
 
 			refs += i;
 			found++;
@@ -192,6 +203,7 @@ function logAttempt(system, distmap, trilat) {
 						<th data-sort="string">Refs req.</th>
 						<th data-sort="string">Best matched</th>
 						<th data-sort="string">Margin</th>
+						<th data-sort="int">Bad dists.</th>
 						<th data-sort="string">Region req.</th>
 						<th data-sort="optfloat">Time (s)</th>
 					</tr>
