@@ -17,7 +17,6 @@ var lastFetch = '2014-09-09 12:13:14Z';
 var systemData = null;	// current system data
 var jsonOutput = "";
 var sqlOutput = "";
-var names = [];
 
 function updateTGCData(callback) {
 	$.ajax({
@@ -26,7 +25,6 @@ function updateTGCData(callback) {
 		url: 'http://edstarcoordinator.com/api.asmx/GetSystems',
 		data: JSON.stringify({data: {
 			ver: 2,
-			test: $('#test-mode:checked').length > 0,
 			outputmode: 2,
 			filter: {
 				cr: 1,
@@ -38,16 +36,17 @@ function updateTGCData(callback) {
 			data = data.d;
 			//console.log(JSON.stringify(data, null, 2));
 			if (data.status.input[0].status.statusnum !== 0) {
-				console.log(data.status.input[0].status.statusnum +' :'+data.status.input[0].status.msg);
+				logAppend('Error from TGC server: '+data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg+'\n');
 			} else {
-				console.log('Fetched '+data.systems.length+' systems from server');
 				addSystems(data.systems);
+				logAppend('Fetched '+data.systems.length+' systems from TGC. Total number of systems: '+Object.keys(systemsMap).length+'\n');
 			}
 			callback();
 		},
 		error: function(xhr, status, error) {
 			//console.log(xhr.responseText);
-			console.log(error);
+			logAppend(error+'\n');
+			console.log('Error from TGC server: '+error);
 			console.log('Request was:');
 			console.log(JSON.stringify(query, null, 2));
 			callback();
@@ -60,7 +59,6 @@ function sendToTGC(success, failure) {
 
 	var data = {
 		ver: 2,
-		test: $('#test-mode:checked').length > 0,
 		commander: $('#cdmr-name').val(),
 		p0: {name: systemData.name},
 		refs: []
@@ -73,8 +71,9 @@ function sendToTGC(success, failure) {
 			});
 		}
 	});
-	console.log("Submitting:");
-	console.log(JSON.stringify(data, null, 2));
+	logAppend('Submitting '+systemData.name+' to TGC: ');
+	//console.log("Submitting:");
+	//console.log(JSON.stringify(data, null, 2));
 
 	$.ajax({
 		type: 'POST',
@@ -87,41 +86,16 @@ function sendToTGC(success, failure) {
 			console.log("Response:");
 			console.log(JSON.stringify(data, null, 2));
 			if (data.status.input[0].status.statusnum !== 0) {
-				console.log(data.status.input[0].status.statusnum +' :'+data.status.input[0].status.msg);
-				failure();
+				logAppend('error: '+data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg);
+				failure(data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg);
 			} else {
-				console.log('Submitted '+systemData.name+' successfully');
-				// new system:
-				// system array: 201 added, 202 cr incremented (should have coord)
-				// dist array: 301 added for each distance
-				// trilat array: 401 successful, has coords
-				//
-				// existing (ref) system: Altair
-				// system array empty
-				// dist array: 303 used to identify coordinates
-				// trilat array: 401 successful for sol, has coords for sol
-				$.each(data.status.system, function() {
-					if (this.status.statusnum !== 201 && this.status.statusnum !== 202) {
-						console.log('System message for '+this.system+': '+this.status.statusnum+' '+this.status.msg);
-					}
-				});
-				$.each(data.status.dist, function() {
-					if (this.status.statusnum !== 301 && this.status.statusnum !== 302 && this.status.statusnum !== 303) {
-						console.log('Distance message for '+this.system1+' - '+this.system2+': '+this.status.statusnum+' '+this.status.msg);
-					}
-				});
-				$.each(data.status.trilat, function() {
-					if (this.status.statusnum !== 401) {
-						console.log('Trilat message for '+this.system+': '+this.status.statusnum+' '+this.status.msg);
-					} else {
-						console.log('Calculated coordinates for '+this.system+': '+this.coord.x+', '+this.coord.y+', '+this.coord.z);
-					}
-				});
-				success();
+				logAppend('successful\n');
+				success(data.status);
 			}
 		},
 		error: function(xhr, status, error) {
 			//console.log(xhr.responseText);
+			logAppend('error: '+error);
 			console.log(error);
 			console.log('Request was:');
 			console.log(JSON.stringify(data, null, 2));
@@ -134,7 +108,7 @@ function addSystems(systems) {
 	var count = 0; rejected = 0;
 	$.each(systems, function() {
 		if (this.coord) {
-			systemsMap[this.name.trim().toLowerCase()] = {
+			systemsMap[nameKey(this.name)] = {
 				x: this.coord[0],
 				y: this.coord[1],
 				z: this.coord[2],
@@ -146,35 +120,40 @@ function addSystems(systems) {
 			rejected++;
 		}
 	});
-	var msg = 'Updated '+count+' systems. ';
-	if (rejected > 0) msg += 'Rejected '+rejected+' systems. ';
-	console.log(msg+'Total number of systems: '+Object.keys(systemsMap).length);
+//	if (rejected > 0) msg += 'Rejected '+rejected+' systems. ';
 }
 
 function getTGCData(callback) {
 	$.getJSON('tgcsystems.json', function(data) {
 		lastFetch = data.date+'Z';
-		console.log('Loaded tgcsystems.json - data up to '+data.date);
 		systemsMap = {};
 		addSystems(data.systems);
+		logAppend('Loaded tgcsystems.json: data up to '+data.date+'. Total number of systems: '+Object.keys(systemsMap).length+'\n');
 	}).fail(function() {
-		console.log('Failed to read from tgcsystems.json');
+		logAppend('Failed to read from tgcsystems.json\n');
 	}).always(function() {
 		// update with any additional data from the server
 		updateTGCData(callback);
 	});
-};
+}
+
+function systemAutoComplete(req, res) {
+	var options = [];
+	var term = req.term.toLowerCase();
+	$.each(systemsMap, function(key, val) {
+		if (key.indexOf(term) > -1) {
+			options.push(val.name);
+		}
+	});
+	res(options);
+}
 
 $(document).ready(function () {
 	getTGCData(function() {
-		// set up the autocomplete
-		$.each(systemsMap, function(key, val) {
-			names.push(val.name);
-		});
-		names.sort();
-		$("input.system-name").autocomplete({source: names});
 		updateCoords();
 	});
+
+	$("input.system-name").autocomplete({source: systemAutoComplete});
 
 	// setup sorting on the distance table
 	$('#distances').stupidtable({'optfloat': sortOptionalFloat})
@@ -194,10 +173,11 @@ $(document).ready(function () {
 		}
 	});
 
-	$("#toggle-json").click(getToggle(document.getElementById('json-output'),'Hide JSON','Visible JSON'));
+	$("#toggle-json").click(getToggle(document.getElementById('json-output'),'Hide JSON','Show JSON'));
 	$("#json-output").click(selectAll);
-	$("#toggle-sql").click(getToggle(document.getElementById('sql-output'),'Hide SQL','Visible SQL'));
+	$("#toggle-sql").click(getToggle(document.getElementById('sql-output'),'Hide SQL','Show SQL'));
 	$("#sql-output").click(selectAll);
+	$("#toggle-log").click(getToggle(document.getElementById('log-output'),'Hide Log','Show Log'));
 
 	$("#done-button").click(function() {
 		if (systemData !== null) {
@@ -212,7 +192,29 @@ $(document).ready(function () {
 	$('#tgc-button').click(function() {
 		$("#tgc-button").attr('disabled', true);
 		$("#done-button").attr('disabled', true);
-		sendToTGC(function() {
+		sendToTGC(function(status) {
+			// new system:
+			// system array: 201 added, 202 cr incremented (should have coord)
+			// dist array: 301 added for each distance
+			// trilat array: 401 successful, has coords
+			//
+			// existing (ref) system: Altair
+			// system array empty
+			// dist array: 303 used to identify coordinates
+			// trilat array: 401 successful for sol, has coords for sol
+			$.each(status.system, function() {
+				logAppend('TGC: System '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
+			});
+			$.each(status.trilat, function() {
+				logAppend('TGC: Trilateration for '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
+				if (this.status.statusnum === 401 && this.system === systemData.name
+						&& (this.coord.x !== systemData.x || this.coord.y !== systemData.y || this.coord.z !== systemData.z)) {
+					logAppend('TGC calculated different coordinates: '+vectorToString(this.coord)+' vs '+vectorToString(systemData)+'\n');
+				}
+			});
+
+			systemsMap[nameKey(systemData.name)] = systemData;
+
 			$("#done-button").click();
 		}, function(error) {
 			alert('Failed to submit the system to TGC:\n'+error);
@@ -239,8 +241,7 @@ $(document).ready(function () {
 		// check for duplicate name
 		var dupe = false;
 		if (this.value && this.value.length > 0) {
-			var lc = $.trim(this.value.toLowerCase());
-			if (lc in systemsMap) {
+			if (nameKey(this.value) in systemsMap) {
 				dupe = true;
 			}
 			$('#no-name-warning').hide();
@@ -266,6 +267,16 @@ $(document).ready(function () {
 	$("#tgc-button").attr('disabled',true);
 	$("#done-button").attr('disabled',true);
 });
+
+function logAppend(str) {
+	$('#log-output').text(function(i, old) {
+		return old + str;
+	});
+}
+
+function nameKey(n) {
+	return $.trim(n.toLowerCase());
+}
 
 // setup sort values for the system column
 function preSortDistances(event, data) {
@@ -329,7 +340,7 @@ function addSystemRow() {
 	tr.find('input').change(updateCoords);
 	tr.find('input.system-name')
 		.change(checkEmptyRow)
-		.autocomplete({source: names});
+		.autocomplete({source: systemAutoComplete});
 }
 
 function updateCoords() {
@@ -339,11 +350,12 @@ function updateCoords() {
 	var cmdr = $.trim($('#cmdr-name').val());
 	if (cmdr.length > 0) systemData.contributor = cmdr;
 	systemData.contributed = (new Date()).toJSON();
+	systemData.region = 'Gamma';
 	systemData.distances = [];
 	
 	// hook the reference systems up to the data
 	$("#distances input.system-name").each(function() {
-		var n = $.trim(this.value.toLowerCase());
+		var n = nameKey(this.value);
 		if (n.length > 0) {
 			$(this).parentsUntil('table','tr').attr('system', n);
 			if ((n in systemsMap) && systemsMap[n].name !== this.value) $(this).val(systemsMap[n].name);
@@ -573,9 +585,9 @@ function getLocalSystems(coords) {
 		<button id="done-button" disabled="true">Add to output only</button>
 		<button id="cancel-button">Cancel</button>
 		<br>
-		<input id="test-mode" type="checkbox" checked="checked">Testing</input>
-		<h3>Structured Output</h3>
-		<button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
+		<h3>Output</h3>
+		<button id="toggle-log">Hide Log</button><button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
+		<pre id="log-output" style="height: 180px; overflow: auto"></pre>
 		<pre id="sql-output" style="display:none"></pre>
 		<pre id="json-output" style="display:none"></pre>
 	</div>
