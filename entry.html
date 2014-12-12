@@ -11,6 +11,13 @@
 	<script src="trilateration.js"></script>
 <!--	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
 <script>
+// TODO dialog when submitting system with distances that won't be submitted
+// TODO load systems from system.json as well
+// TODO prepopulate distances for dupe systems
+// TODO suggest reference system to use
+// TODO optimisation
+// TODO consider not clearing the form if TGC can't trilaterate
+
 var systemsMap = {};		// reference system data
 var lastFetch = '2014-09-09 12:13:14Z';
 
@@ -569,9 +576,9 @@ function getLocalSystems(coords) {
 				<tr><td><input class="system-name" value="Sol"></td><td><input class="distance"></td><td/><td/></tr>
 				<tr><td><input class="system-name" value="Kato"></td><td><input class="distance"></td><td/><td/></tr>
 				<tr><td><input class="system-name" value="Cayu"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Prim"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Sabi"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Aka"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Nuwach"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Marra"></td><td><input class="distance"></td><td/><td/></tr>
+				<tr><td><input class="system-name" value="Zhuar"></td><td><input class="distance"></td><td/><td/></tr>
 				<tr><td><input class="system-name" value="Juro"></td><td><input class="distance"></td><td/><td/></tr>
 			</tbody>
 		</table>
