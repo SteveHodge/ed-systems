@@ -66,7 +66,7 @@ function sendToTGC(success, failure) {
 
 	var data = {
 		ver: 2,
-		commander: $('#cdmr-name').val(),
+		commander: $('#cmdr-name').val(),
 		p0: {name: systemData.name},
 		refs: []
 	};
@@ -90,8 +90,8 @@ function sendToTGC(success, failure) {
 		dataType: 'json',
 		success: function(data, status, xhr) {
 			data = data.d;
-			console.log("Response:");
-			console.log(JSON.stringify(data, null, 2));
+			//console.log("Response:");
+			//console.log(JSON.stringify(data, null, 2));
 			if (data.status.input[0].status.statusnum !== 0) {
 				logAppend('error: '+data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg);
 				failure(data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg);
@@ -547,7 +547,7 @@ function getLocalSystems(coords) {
 <body>
 	<div class="ui-widget">
 		<div style="float: right">
-			<label for="cdmr-name">Commander Name (optional): </label>
+			<label for="cmdr-name">Commander Name (optional): </label>
 			<input id="cmdr-name"/>
 		</div>
 		<label for="unknown-name">Name of new system: </label>
