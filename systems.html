@@ -105,7 +105,7 @@ function generateCSV(sort) {
 		if (s.contributed) {
 			contrib = s.contributed.substr(0,10)+' '+s.contributed.substr(11,8);
 		}
-		csv.push("'"+s.name.replace("'","''")+"',"+s.x+","+s.y+","+s.z+",'"+added+"','"+contrib+"'");
+		csv.push("'"+s.name.replace(/'/g,"''")+"',"+s.x+","+s.y+","+s.z+",'"+added+"','"+contrib+"'");
 	});
 	if (sort) csv.sort(function(a,b) {return a.localeCompare(b, 'en', {'sensitivity': 'base'});});
 	$('#csv-output').text('name,pos_x,pos_y,pos_z,name@Added.added_id,modified\n' + csv.join('\n'));

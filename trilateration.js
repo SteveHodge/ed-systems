@@ -443,7 +443,7 @@ function sortOptionalInt(a,b) {
 
 // returns a string containing an sql insert statement for TradeDangerous
 function getSQL(s) {
-	var quotedName = s.name.replace("'","''");
+	var quotedName = s.name.replace(/'/g,"''");
 	var d = (new Date()).toISOString().replace('T',' ').substr(0,19);
 	return "INSERT INTO \"System\" VALUES(,'"+quotedName+"',"+s.x+","+s.y+","+s.z+",'"+d+"');\n";
 }
