@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Systems Visualisation</title>
+	<script src="external/jquery-2.1.1.js" type="text/javascript"></script>
+	<script src="external/three.js" type="text/javascript"></script>
+	<script src="external/TrackballControls.js" type="text/javascript"></script>
+	<style>
+		body {
+			color: #ffffff;
+			font-family:Monospace;
+			font-size:13px;
+			text-align:center;
+			font-weight: bold;
+			
+			background-color: #000000;
+			margin: 0px;
+			overflow: hidden;
+		}
+		td {
+			text-align:left;
+		}
+	</style>
+	<script>
+var renderer, scene, camera, refCloud, pointCloud;
+var axes;
+
+var systemsMap = {};		// reference system data
+var systems = [];
+var lastFetch = '2014-09-09 12:13:14Z';
+
+var cmdrColors = ['gray', 'aqua', 'blue', 'navy', 'teal', 'lime', 'green', 'fuchsia', 'purple', 'red', 'maroon', 'orange', 'yellow', 'olive','white'];
+var cmdrColorMap = {};
+
+$(document).ready(function () {
+	getTGCData(function() {
+		var contribMap = {};
+		
+		$.each(systemsMap, function(k, v) {
+			systems.push(v);
+			if (v.contributor in contribMap) {
+				contribMap[v.contributor]++;
+			} else {
+				contribMap[v.contributor] = 1;
+			}
+		});
+		
+		var contribCount = [];
+		$.each(contribMap, function(cmdr, count) {
+			contribCount.push({name: cmdr, count: count});
+		});
+		contribCount.sort(function(a,b) {
+			if (b.count !== a.count) return b.count-a.count;
+			if (a.name) return a.name.localeCompare(b.name);
+			return b.name ? -1 : 0;
+		});
+
+		var i = 0;
+		var rest = 0;
+		$.each(contribCount, function() {
+			if (i < cmdrColors.length-1 && this.name !== '(unknown)') {
+				$('<tr>')
+					.append($('<td>').width('1.5em').css('background',cmdrColors[i]))
+					.append($('<td>').text(this.name+': '+this.count))
+					.appendTo('#legend tbody');
+				cmdrColorMap[this.name] = cmdrColors[i];
+				i++;
+			} else {
+				rest += this.count;
+			}
+		});
+		$('<tr>')
+			.append($('<td>').width('1.5em').css('background',cmdrColors[i]))
+			.append($('<td>').text('others: '+rest))
+			.appendTo('#legend tbody');
+
+		init();
+	});
+});
+	
+function init() {	
+	var container = document.getElementById('container');
+	
+	renderer = new THREE.WebGLRenderer({ clearColor: 0x000000, clearAlpha: 1 });
+	renderer.setSize(window.innerWidth, window.innerHeight);
+	container.appendChild(renderer.domElement);
+	
+	scene = new THREE.Scene();
+
+	camera = new THREE.PerspectiveCamera(
+        45,
+        window.innerWidth / window.innerHeight,
+        1,
+        20000);
+	camera.position.z = 2500;
+
+	controls = new THREE.TrackballControls( camera );
+	controls.rotateSpeed = 1.0;
+	controls.zoomSpeed = 1.2;
+	controls.panSpeed = 0.8;
+	controls.noZoom = false;
+	controls.noPan = false;
+	controls.staticMoving = true;
+	controls.dynamicDampingFactor = 0.3;
+	controls.keys = [ 65, 83, 68 ];
+	controls.addEventListener( 'change', render );
+
+	var refMaterial = new THREE.PointCloudMaterial({
+		color: cmdrColors[0],
+//		vertexColors: THREE.VertexColors,
+		size: 4,
+		sizeAttenuation: false,
+		opacity: 1,
+		map: THREE.ImageUtils.loadTexture("external/images/ball.png"),
+		transparent: true
+	});
+	var refGeometry = new THREE.Geometry();
+
+	var material = new THREE.PointCloudMaterial({
+		color: 0xffffff,
+		vertexColors: THREE.VertexColors,
+		size: 4,
+		sizeAttenuation: false,
+		opacity: 1,
+		map: THREE.ImageUtils.loadTexture("external/images/ball.png"),
+		transparent: true
+	});
+	var geometry = new THREE.Geometry();
+
+	$.each(systems, function(i,v){
+		if (v.calculated) {
+			geometry.vertices.push(new THREE.Vector3( v.x, v.y, v.z ));
+			geometry.colors.push(getColor(v));
+		} else {
+			refGeometry.vertices.push(new THREE.Vector3( v.x, v.y, v.z ));
+		}
+//		var c = new THREE.Color();
+//    c.setHSL( Math.random(), 1.0, 0.5 );
+//		geometry.colors.push(c);
+	});
+
+	refCloud = new THREE.PointCloud(refGeometry, refMaterial);
+	refCloud.sortParticles = true;
+	scene.add(refCloud);
+
+	pointCloud = new THREE.PointCloud(geometry, material);
+	pointCloud.sortParticles = true;
+	scene.add(pointCloud);
+
+	material = new THREE.LineBasicMaterial({
+		color: 0x0000ff
+	});
+
+	geometry = new THREE.Geometry();
+	geometry.vertices.push(
+		new THREE.Vector3(-100, 0, 0),
+		new THREE.Vector3(100, 0, 0),
+		new THREE.Vector3(0, 0, 0),
+		new THREE.Vector3(0, -100, 0),
+		new THREE.Vector3(0, 100, 0),
+		new THREE.Vector3(0, 0, 0),
+		new THREE.Vector3(0, 0, -100),
+		new THREE.Vector3(0, 0, 100)
+	);
+
+	axes = new THREE.Line(geometry, material);
+	scene.add(axes);
+
+//	var redA = true;
+//	$('#switch-button').click(function() {
+//		redA = !redA;
+//		$.each(systems, function(i, v) {
+//			if ((v.name.substr(0,1) === 'A') === redA) {
+//				geometry.colors[i] = new THREE.Color(0xff0000);
+//			} else {
+//				geometry.colors[i] = new THREE.Color(0xffffff);
+//			}
+//		});
+//	});
+
+	refCloud.visible = $('#show-refs').prop('checked');
+	$('#show-refs').change(function() {
+		refCloud.visible = this.checked;
+	});
+
+	animate();
+}
+
+function getColor(s) {
+//	if (s.calculated) return new THREE.Color(0xffffff);
+//	return new THREE.Color(0xff0000);
+	var c = cmdrColorMap[s.contributor];
+	if (!c) c = cmdrColors[cmdrColors.length-1];
+	return new THREE.Color(c);
+}
+
+function animate() {
+	requestAnimationFrame(animate);
+	controls.update();
+	render();
+}
+
+function render() {
+	if ($('#autorotate').prop('checked')){
+		refCloud.rotation.x += 0.005;
+		refCloud.rotation.y += 0.005;
+		
+		pointCloud.rotation.x += 0.005;
+		pointCloud.rotation.y += 0.005;
+
+		axes.rotation.x += 0.005;
+		axes.rotation.y += 0.005;
+	}
+
+	renderer.render(scene, camera);
+}
+
+function addSystems(systems) {
+	var count = 0; rejected = 0;
+	$.each(systems, function() {
+		if (this.coord) {
+			systemsMap[nameKey(this.name)] = {
+				x: this.coord[0],
+				y: this.coord[1],
+				z: this.coord[2],
+				name: this.name,
+				calculated: this.commandercreate !== 'FD',
+				cr: this.cr,
+				contributor: this.commandercreate ? this.commandercreate : '(unknown)',
+				contributed: this.createdate
+			};
+			count++;
+		} else {
+			rejected++;
+		}
+	});
+//	if (rejected > 0) msg += 'Rejected '+rejected+' systems. ';
+}
+
+function getTGCData(callback) {
+	$.getJSON('tgcsystems.json', function(data) {
+		lastFetch = data.date+'Z';
+		systemsMap = {};
+		addSystems(data.systems);
+		logAppend('Loaded tgcsystems.json: data up to '+data.date+'. Total number of systems: '+Object.keys(systemsMap).length+'\n');
+	}).fail(function() {
+		logAppend('Failed to read from tgcsystems.json\n');
+	}).always(function() {
+		// update with any additional data from the server
+		updateTGCData(callback);
+	});
+}
+
+function updateTGCData(callback) {
+	$.ajax({
+		type: 'POST',
+		contentType: 'application/json; charset=utf-8',
+		url: 'http://edstarcoordinator.com/api.asmx/GetSystems',
+		data: JSON.stringify({data: {
+			ver: 2,
+			outputmode: 2,
+			filter: {
+				cr: 1,
+				date: lastFetch
+			}
+		}}),
+		dataType: 'json',
+		success: function(data, status, xhr) {
+			data = data.d;
+			//console.log(JSON.stringify(data, null, 2));
+			if (data.status.input[0].status.statusnum !== 0) {
+				logAppend('Error from TGC server: '+data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg+'\n');
+			} else {
+				addSystems(data.systems);
+				logAppend('Fetched '+data.systems.length+' systems from TGC. Total number of systems: '+Object.keys(systemsMap).length+'\n');
+			}
+			callback();
+		},
+		error: function(xhr, status, error) {
+			//console.log(xhr.responseText);
+			logAppend(error+'\n');
+			console.log('Error from TGC server: '+error);
+			console.log('Request was:');
+			console.log(JSON.stringify(query, null, 2));
+			callback();
+		}
+	});
+}
+
+function logAppend(str) {
+	console.log(str);
+}
+
+function nameKey(n) {
+	return $.trim(n.toLowerCase());
+}
+	</script>
+</head>
+<body>
+	<div id="info">ED Known Systems<br>Left mouse: rotate - Right mouse: pan - Mouse wheel: zoom<br>
+		<input type="checkbox" id="autorotate">Animate
+		<input type="checkbox" id="show-refs" checked>Show FD Supplied
+		<!--<input type="button" value="Switch" id="switch-button">-->
+	</div>
+	<div id="legend" style="position: absolute">
+		<table><tbody>
+		</tbody></table>
+	</div>
+	<div id="container"></div>
+
+</body>
+</html>
