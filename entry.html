@@ -9,6 +9,7 @@
 	<script src="external/stupidtable.min.js"></script>
 	<script src="external/jquery-ui.js"></script>
 	<script src="trilateration.js"></script>
+	<script src="tgc.js"></script>
 <!--	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
 <script>
 // TODO dialog when submitting system with distances that won't be submitted
@@ -18,48 +19,9 @@
 // TODO optimisation
 // TODO consider not clearing the form if TGC can't trilaterate
 
-var systemsMap = {};		// reference system data
-var lastFetch = '2014-09-09 12:13:14Z';
-
 var systemData = null;	// current system data
 var jsonOutput = "";
 var sqlOutput = "";
-
-function updateTGCData(callback) {
-	$.ajax({
-		type: 'POST',
-		contentType: 'application/json; charset=utf-8',
-		url: 'http://edstarcoordinator.com/api.asmx/GetSystems',
-		data: JSON.stringify({data: {
-			ver: 2,
-			outputmode: 2,
-			filter: {
-				cr: 1,
-				date: lastFetch
-			}
-		}}),
-		dataType: 'json',
-		success: function(data, status, xhr) {
-			data = data.d;
-			//console.log(JSON.stringify(data, null, 2));
-			if (data.status.input[0].status.statusnum !== 0) {
-				logAppend('Error from TGC server: '+data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg+'\n');
-			} else {
-				addSystems(data.systems);
-				logAppend('Fetched '+data.systems.length+' systems from TGC. Total number of systems: '+Object.keys(systemsMap).length+'\n');
-			}
-			callback();
-		},
-		error: function(xhr, status, error) {
-			//console.log(xhr.responseText);
-			logAppend(error+'\n');
-			console.log('Error from TGC server: '+error);
-			console.log('Request was:');
-			console.log(JSON.stringify(query, null, 2));
-			callback();
-		}
-	});
-}
 
 function sendToTGC(success, failure) {
 	if (!systemData) return;
@@ -108,39 +70,6 @@ function sendToTGC(success, failure) {
 			console.log(JSON.stringify(data, null, 2));
 			failure(error);
 		}
-	});
-}
-
-function addSystems(systems) {
-	var count = 0; rejected = 0;
-	$.each(systems, function() {
-		if (this.coord) {
-			systemsMap[nameKey(this.name)] = {
-				x: this.coord[0],
-				y: this.coord[1],
-				z: this.coord[2],
-				name: this.name,
-				calculated: this.cr < 5
-			};
-			count++;
-		} else {
-			rejected++;
-		}
-	});
-//	if (rejected > 0) msg += 'Rejected '+rejected+' systems. ';
-}
-
-function getTGCData(callback) {
-	$.getJSON('tgcsystems.json', function(data) {
-		lastFetch = data.date+'Z';
-		systemsMap = {};
-		addSystems(data.systems);
-		logAppend('Loaded tgcsystems.json: data up to '+data.date+'. Total number of systems: '+Object.keys(systemsMap).length+'\n');
-	}).fail(function() {
-		logAppend('Failed to read from tgcsystems.json\n');
-	}).always(function() {
-		// update with any additional data from the server
-		updateTGCData(callback);
 	});
 }
 
@@ -379,7 +308,7 @@ function updateCoords() {
 
 		if (isNaN(d)) {
 			inp.val("");
-		} else if (system !== undefined && !system.calculated) {
+		} else if (system !== undefined /*&& !system.calculated*/) {
 			if (d != (dist+0)) inp.val(d);	// parseFloat will parse anything starting with a valid float, so if that doesn't match the input then update the field
 			dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
 		}

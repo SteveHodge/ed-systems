@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ED System Info</title>
+	<link href="external/jquery-ui.css" rel="stylesheet">
+	<link href="trilateration.css" rel="stylesheet">
+	<script src="external/jquery-2.1.1.js"></script>
+	<script src="external/stupidtable.min.js"></script>
+	<script src="external/jquery-ui.js"></script>
+	<script src="trilateration.js"></script>
+	<script src="tgc.js"></script>
+<script>
+
+var currentSystem = null;
+var systemData;
+
+function systemAutoComplete(req, res) {
+	var options = [];
+	var term = req.term.toLowerCase();
+	$.each(systemsMap, function(key, val) {
+		if (key.indexOf(term) > -1) {
+			options.push(val.name);
+		}
+	});
+	res(options);
+}
+
+$(document).ready(function () {
+	getTGCData(function() {
+		$('#search-go').prop('disabled', false);
+	}, true);
+
+	$('#search-name').autocomplete({source: systemAutoComplete});
+
+	// setup sorting on the distance table
+	$('#distances').stupidtable({'optfloat': sortOptionalFloat})
+		.bind('aftertablesort', postSortDistances)
+		.bind('beforetablesort', preSortDistances);
+
+	$('#local-systems').stupidtable().bind('aftertablesort', updateSortArrow);
+
+	// add the event handlers
+	$('#search-go').click(function() {
+		showSystem();
+	});
+
+//	$("#distances input").change(updateCoords);
+//	$('input.system-name').change(checkEmptyRow);
+
+//	addSystemRow();
+//	$("#tgc-button").attr('disabled',true);
+//	$("#done-button").attr('disabled',true);
+});
+
+function showSystem() {
+	currentSystem = systemsMap[nameKey($('#search-name').val())] || null;
+
+	var info = '';
+	if (currentSystem) {
+		info += 'Coordinates: '+vectorToString(currentSystem)+'<br>';
+		info += 'Contributed by: '+currentSystem.contributor+' on '+currentSystem.contributed+'<br>';
+		info += 'CR: '+currentSystem.cr+'<br>';
+	}
+	$('#system-info').html(info);	
+
+	updateLocalSystems();
+	updateTrilateration();
+}
+
+function logAppend(str) {
+	$('#log-output').text(function(i, old) {
+		return old + str;
+	});
+}
+
+// setup sort values for the system column
+function preSortDistances(event, data) {
+	$('#distances td').has('input.system-name').each(function() {
+		$(this).data('sort-value', $(this).find('input.system-name').val());
+	});
+}
+
+// update the arrows and force any blank systems to the bottom
+function postSortDistances(event, data) {
+	var th = $(this).find("th");
+	th.find(".arrow").remove();
+	var arrow = data.direction === "asc" ? "\u2191" : "\u2193";
+	th.eq(data.column).append('<span class="arrow">' + arrow +'</span>');
+
+	// Move all top row blanks to the bottom.
+	var rowsObjs = $(this).find("tbody tr");
+	var rows = rowsObjs.slice(0);
+	var numBlank = 0;  
+	$(rows).children("td:nth-child(1)").each(function(){
+		if($(this).find('input.system-name').val() === "")
+			numBlank++;
+		else
+			return false;
+	});
+	for(j=0; j<numBlank; j++){
+		var tmp = rows[0];
+		for(i=0; i<rows.length-1; i++){
+			rows[i] = rows[i+1];   
+		}
+		rows[rows.length-1] = tmp;
+	}
+	$(this).children("tbody").append($(rows));
+}
+
+function checkEmptyRow() {
+	var empty = false;
+	$('input.system-name').each(function() {
+		if (!this.value || this.value.length === 0) {
+			empty = true
+			return false;
+		}
+	});
+	if (!empty) addSystemRow();
+}
+
+function addSystemRow() {
+	var tr = $('<tr><td><input class="system-name"></td><td><input class="distance" size="8"></td><td/><td/></tr>')
+		.appendTo('#distances tbody');
+	tr.find('input').change(updateCoords);
+	tr.find('input.system-name')
+		.change(checkEmptyRow)
+		.autocomplete({source: systemAutoComplete});
+	return tr;
+}
+
+function updateTrilateration() {
+	$('#distances tbody').empty();
+	$('#output').html('');
+
+	if (currentSystem != null && 'distances' in currentSystem) {
+		$.each(currentSystem.distances, function() {
+			var $tr = addSystemRow();
+			$tr.find('input.system-name').val(this.system);
+			$tr.find('input.distance').val(this.distance);
+		});
+
+		updateCoords();
+	}
+
+	checkEmptyRow();
+}
+
+function updateCoords() {
+	var dists = [];
+	
+	// hook the reference systems up to the data
+	$("#distances input.system-name").each(function() {
+		var n = nameKey(this.value);
+		if (n.length > 0) {
+			$(this).parentsUntil('table','tr').attr('system', n);
+			if ((n in systemsMap) && systemsMap[n].name !== this.value) $(this).val(systemsMap[n].name);
+		}
+	});
+
+	// get the distances
+	$("#distances tr[system]").each(function() {
+		var inp = $(this).find("input.distance");
+		var dist = inp.val();
+		var nameKey = this.getAttribute('system');
+		var system = systemsMap[nameKey];
+		var d = parseFloat(dist);
+
+		if (isNaN(d)) {
+			inp.val("");
+		} else if (system !== undefined && !system.calculated) {
+			if (d != (dist+0)) inp.val(d);	// parseFloat will parse anything starting with a valid float, so if that doesn't match the input then update the field
+			dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
+		}
+	});
+
+	// reset the calculated distances and errors.
+	$("#distances tr:has(input.system-name) td:nth-child(3)").text("").next().text("");
+	$("#output").html("");
+
+	var trilat = new Trilateration();
+	for (var i = 0; i < dists.length; i++) {
+		trilat.addDistance(dists[i]);
+	}
+	if (trilat.best && trilat.best.length === 1) {
+		// single candidate
+		var bestCandidate = trilat.best[0];
+		var goodRefs = 0;	// number of reference system distances that match
+
+		$("#distances tr[system]").each(function() {
+			var enteredDist = $(this).find("input.distance").val();
+			if (enteredDist.length > 0) {
+				var nameKey = this.getAttribute('system');
+				if (!(nameKey in systemsMap)) {
+					$(this).children("td:nth-child(3)").text("")
+							.next().html('<span class="ui-icon ui-icon-alert inline-alert"></span>Unknown system');
+					return;
+				}
+
+				var sys = systemsMap[nameKey];
+				var calcDist = eddist(sys, bestCandidate);
+				var status;
+				if (enteredDist - calcDist !== 0) {
+					status = '<span class="ui-icon ui-icon-alert inline-alert"></span>'+"Distance doesn't match";
+				} else {
+					status = '<span class="ui-icon ui-icon-check inline-check"></span>Ok';
+					if (!sys.calculated) goodRefs++;
+				}
+				if (sys.calculated) status += " (not ref system)";
+
+				$(this).children("td:nth-child(3)").text(calcDist.toFixed(2))
+						.next().html(status);
+			}
+		});
+
+		$("#output").html("Coordinates: "+vectorToString(bestCandidate)
+				+"<br/>Better than next candidate(s) by "+(trilat.bestCount - trilat.nextBest)+" distances"
+				+"<br/>Inconsistent distances: "+(dists.length - trilat.bestCount));
+		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
+		
+		if (goodRefs < 5 || trilat.bestCount - trilat.nextBest < 2) {
+//			$('#ref-warning').show();
+		} else {
+//			$('#ref-warning').hide();
+		}
+
+	} else if (dists.length > 0) {
+		$("#output").html("Coordinates: found "+(trilat.best ? trilat.best.length : 'no')+" potential candidates");
+		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
+//		$('#ref-warning').show();
+	}
+}
+
+function getRegionTable(trilat) {
+	var table = document.createElement('table');
+	var row = document.createElement('tr');
+	$('<th data-sort="string">Corner 1</th>').appendTo(row);
+	$('<th data-sort="string">Corner 2</th>').appendTo(row);
+	$('<th data-sort="int">Volume</th>').appendTo(row);
+	$('<th data-sort="int">Best Candidates</th>').appendTo(row);
+	$('<th data-sort="int">Region Best</th>').appendTo(row);
+	$('<th data-sort="int"># Region Best</th>').appendTo(row);
+	$('<th data-sort="int">Region 2nd</th>').appendTo(row);
+	$('<thead/>').append(row).appendTo(table);
+	var tbody = document.createElement('tbody');
+	table.appendChild(tbody);
+
+	$.each(trilat.regions, function() {
+		var best = 0;
+		for (var i = 0; i < trilat.best.length; i++) {
+			if (this.contains(trilat.best[i])) best++;
+		}
+
+		row = document.createElement('tr');
+		$('<td>').text('['+this.minx+', '+this.miny+', '+this.minz+']').appendTo(row);
+		$('<td>').text('['+this.maxx+', '+this.maxy+', '+this.maxz+']').appendTo(row);
+		$('<td>').text(this.volume()).appendTo(row);
+		$('<td>').text(best).appendTo(row);
+		$('<td>').text(this.bestCount).appendTo(row);
+		$('<td>').text(this.best.length).appendTo(row);
+		$('<td>').text(this.nextBest).appendTo(row);
+		tbody.appendChild(row);
+	});
+
+	$(table).stupidtable().bind('aftertablesort', updateSortArrow);
+	return table;
+}
+
+function updateLocalSystems() {
+	$('#local-systems tbody').empty();
+	if (currentSystem == null) return;
+
+	var locals = [];
+	$.each(systemsMap, function(key, val) {
+		if (val === currentSystem) return;
+		if (val.x == null) return;
+		locals.push({system:val, distance:eddist(val,currentSystem)});
+	});
+	locals.sort(function(a,b) {return a.distance-b.distance;});
+
+	for (i = 0; i < locals.length && locals[i].distance < 20; i++) {
+		$('<tr>')
+			.append($('<td>').text(locals[i].system.name))
+			.append($('<td>').text((locals[i].distance).toFixed(2)))
+			.appendTo('#local-systems tbody');
+	}
+}
+
+</script>
+</head>
+<body>
+	<div class="ui-widget">
+		<label for="search-name">Name: </label>
+		<input id="search-name"/>
+		<button id="search-go" disabled>go</button>
+
+		<div id="not-found-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			Can't find a system with that name!</p>
+		</div>
+
+		<div id="system-info"></div>
+
+		<div style="float:right">
+			<h3>Nearby Systems</h3>
+			<table id="local-systems">
+				<thead>
+					<tr>
+						<th data-sort="string-ins">System</th>
+						<th data-sort="optfloat">Distance</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+
+		<h3>Trilateration</h3>
+		<table id="distances">
+			<thead>
+				<tr>
+					<th data-sort="string-ins">System</th>
+					<th data-sort="optfloat">Distance</th>
+					<th data-sort="optfloat">Calculated</th>
+					<th data-sort="optfloat" style="width:20em">Status</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		<div id="output"></div>
+
+		<pre id="log-output" style="height: 180px; overflow: auto; float: clear"></pre>
+	</div>
+</body>
+</html>

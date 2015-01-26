@@ -347,7 +347,11 @@ function length(v) {
 	return Math.sqrt(dotProd(v,v));
 }
 
-var fround = Math.fround || function(x) { return x };
+// polyfill for fround (which is not implemented in node.js 0.10.35)
+var _f32 = new Float32Array(1);
+var fround = Math.fround || function(x) {
+	return _f32[0] = x, _f32[0];
+};
 
 // p1 and p2 are objects that have x, y, and z properties
 // dp is optional number of decimal places to round to (defaults to 2)
