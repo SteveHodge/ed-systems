@@ -298,6 +298,7 @@ function gridLocation(v) {
 }
 
 function vectorToString(v) {
+	if (v == null) return "(no coords)";
 	return "("+v.x+", "+v.y+", "+v.z+")";
 }
 

@@ -19,6 +19,8 @@
 // TODO optimisation
 // TODO consider not clearing the form if TGC can't trilaterate
 
+var expertMode = false;	// if true then allows submission of any data. use with care.
+
 var systemData = null;	// current system data
 var jsonOutput = "";
 var sqlOutput = "";
@@ -28,12 +30,13 @@ function sendToTGC(success, failure) {
 
 	var data = {
 		ver: 2,
+		//test: true,
 		commander: $('#cmdr-name').val(),
 		p0: {name: systemData.name},
 		refs: []
 	};
 	$.each(systemData.distances, function() {
-		if (this.gooddist) {
+		if (this.gooddist || expertMode) {
 			data.refs.push({
 				name: this.system,
 				dist: this.distance
@@ -188,8 +191,8 @@ $(document).ready(function () {
 			systemData.name = this.value;
 			updateJSON();
 			$("#sql-output").text(getSQL(systemData) + sqlOutput);
-			$("#tgc-button").attr('disabled',this.value.length === 0 || !systemData.cansubmit);
-			$("#done-button").attr('disabled',this.value.length === 0 || !systemData.cansubmit);
+			$("#tgc-button").attr('disabled', this.value.length === 0 || !systemData.cansubmit);
+			$("#done-button").attr('disabled', this.value.length === 0 || !systemData.cansubmit);
 			if (this.value.length === 0) {
 				$('#no-name-warning').show();
 			}
@@ -314,6 +317,30 @@ function updateCoords() {
 		}
 	});
 
+	// update distances in stored system data
+	systemData.distances = [];
+	for (var i = 0; i < dists.length; i++) {
+		systemData.distances.push({
+			system: dists[i].name,
+			distance: dists[i].distance,
+			gooddist: false
+		});
+	}
+	// add any unknown system data
+	$("#distances tr[system]").each(function() {
+		var sys = $(this).find('input.system-name').val();
+		var dist = $(this).find('input.distance').val();
+		var syskey = this.getAttribute('system');
+		if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].calculated)) {
+			systemData.distances.push({
+				system: sys,
+				distance: dist,
+				gooddist: false
+			});
+		}
+	});
+
+
 	// reset the calculated distances and errors.
 	$("#distances tr:has(input.system-name) td:nth-child(3)").text("").next().text("");
 	$("#output").html("");
@@ -361,24 +388,19 @@ function updateCoords() {
 		
 		// update stored system data
 		setVector(systemData, bestCandidate);
-		for (var i = 0; i < dists.length; i++) {
-			systemData.distances.push({
-				system: dists[i].name,
-				distance: dists[i].distance,
-				gooddist: dists[i].distance - eddist(dists[i], bestCandidate) === 0		// if the distances match then we can submit it
-			});
+		var i;
+		for (i = 0; i < dists.length; i++) {
+			if (dists[i].name !== systemData.distances[i].system) alert('Error: expected '+dists[i].name+' but existing data has '+systemData.distances[i].system);
+			systemData.distances[i].gooddist = dists[i].distance - eddist(dists[i], bestCandidate) === 0		// if the distances match then we can submit it
 		}
-		// add any unknown system data
+		// update unknown distances
 		$("#distances tr[system]").each(function() {
 			var sys = $(this).find('input.system-name').val();
 			var dist = $(this).find('input.distance').val();
 			var syskey = this.getAttribute('system');
 			if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].calculated)) {
-				systemData.distances.push({
-					system: sys,
-					distance: dist,
-					gooddist: !(syskey in systemsMap) || (dist - eddist(systemsMap[syskey], bestCandidate) === 0)	// if the system is unknown or the distances match we can submit it
-				});
+				if (syskey !== systemData.distances[i].system) alert('Error: expected '+syskey+' but existing data has '+systemData.distances[i].system);
+				systemData.distances[i++].gooddist = !(syskey in systemsMap) || (dist - eddist(systemsMap[syskey], bestCandidate) === 0)	// if the system is unknown or the distances match we can submit it
 			}
 		});
 		
@@ -395,14 +417,19 @@ function updateCoords() {
 				$('#no-name-warning').show();
 			}
 		}
-		$("#tgc-button").attr('disabled', systemData.name.length === 0 || !systemData.cansubmit);
-		$("#done-button").attr('disabled', systemData.name.length === 0 || !systemData.cansubmit);
 
 	} else if (dists.length > 0) {
 		$("#output").html("Coordinates: found "+(trilat.best ? trilat.best.length : 'no')+" potential candidates");
 		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
 		$('#ref-warning').show();
 	}
+	
+	if (expertMode && dists.length > 0) {
+		updateJSON();
+		systemData.cansubmit = true;
+	}
+	$("#tgc-button").attr('disabled', systemData.name.length === 0 || !systemData.cansubmit);
+	$("#done-button").attr('disabled', systemData.name.length === 0 || !systemData.cansubmit);
 }
 
 function getRegionTable(trilat) {

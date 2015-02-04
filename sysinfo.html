@@ -64,7 +64,7 @@ function showSystem() {
 	}
 	$('#system-info').html(info);	
 
-	updateLocalSystems();
+	updateLocalSystems(currentSystem);
 	updateTrilateration();
 }
 
@@ -168,7 +168,7 @@ function updateCoords() {
 
 		if (isNaN(d)) {
 			inp.val("");
-		} else if (system !== undefined && !system.calculated) {
+		} else if (system !== undefined) {
 			if (d != (dist+0)) inp.val(d);	// parseFloat will parse anything starting with a valid float, so if that doesn't match the input then update the field
 			dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
 		}
@@ -178,56 +178,82 @@ function updateCoords() {
 	$("#distances tr:has(input.system-name) td:nth-child(3)").text("").next().text("");
 	$("#output").html("");
 
+	// TODO trilateration needs to be moved to timer callback
+	var index = 0;
 	var trilat = new Trilateration();
-	for (var i = 0; i < dists.length; i++) {
-		trilat.addDistance(dists[i]);
-	}
-	if (trilat.best && trilat.best.length === 1) {
-		// single candidate
-		var bestCandidate = trilat.best[0];
-		var goodRefs = 0;	// number of reference system distances that match
+	var goodDists = 0;	// number of distances that match (reset if the best changes)
+	var badDists = 0;	// number of distances that don't match (reset if the best changes)
+	var currentBest = null;
+	setTimeout(doDistance, 20);
+	
+	function doDistance() {
+		if (index >= dists.length) return;
+		if (index > 29) return;	// bail out before it gets too slow
+	
+		$("#output").html('Calculating coordinates with '+(index+1)+' distances...<br>');
 
-		$("#distances tr[system]").each(function() {
-			var enteredDist = $(this).find("input.distance").val();
-			if (enteredDist.length > 0) {
-				var nameKey = this.getAttribute('system');
-				if (!(nameKey in systemsMap)) {
-					$(this).children("td:nth-child(3)").text("")
-							.next().html('<span class="ui-icon ui-icon-alert inline-alert"></span>Unknown system');
-					return;
-				}
+		trilat.addDistance(dists[index]);
 
-				var sys = systemsMap[nameKey];
-				var calcDist = eddist(sys, bestCandidate);
-				var status;
-				if (enteredDist - calcDist !== 0) {
-					status = '<span class="ui-icon ui-icon-alert inline-alert"></span>'+"Distance doesn't match";
-				} else {
-					status = '<span class="ui-icon ui-icon-check inline-check"></span>Ok';
-					if (!sys.calculated) goodRefs++;
-				}
-				if (sys.calculated) status += " (not ref system)";
+		if (trilat.best && trilat.best.length === 1) {
+			// single candidate
+			if (currentBest == null || trilat.best[0].x !== currentBest.x || trilat.best[0].y !== currentBest.y || trilat.best[0].z !== currentBest.z) {
+				currentBest = trilat.best[0];
+				//console.log('new best '+vectorToString(currentBest)+' after dist '+index);
+				goodDists = 0;
+				badDists = 0;
 
-				$(this).children("td:nth-child(3)").text(calcDist.toFixed(2))
-						.next().html(status);
+				$("#distances tr[system]").each(function() {
+					var enteredDist = $(this).find("input.distance").val();
+					if (enteredDist.length > 0) {
+						var nameKey = this.getAttribute('system');
+						if (!(nameKey in systemsMap)) {
+							$(this).children("td:nth-child(3)").text("")
+									.next().html('<span class="ui-icon ui-icon-alert inline-alert"></span>Unknown system');
+							return;
+						}
+			
+						var sys = systemsMap[nameKey];
+						var status;
+
+						if (sys.x != null) {
+							var calcDist = eddist(sys, trilat.best[0]);
+							if (enteredDist - calcDist !== 0) {
+								status = '<span class="ui-icon ui-icon-alert inline-alert"></span>Bad Distance';
+								badDists++;
+							} else {
+								status = '<span class="ui-icon ui-icon-check inline-check"></span>Ok';
+								goodDists++;
+							}
+						} else {
+							status = 'No coords';
+						}
+						if (!sys.calculated) status += " (ref)";
+			
+						$(this).children("td:nth-child(3)").text(sys.x == null ? '' : calcDist.toFixed(2)).next().html(status);
+					}
+				});
+
+				updateLocalSystems(trilat.best[0]);
 			}
-		});
-
-		$("#output").html("Coordinates: "+vectorToString(bestCandidate)
-				+"<br/>Better than next candidate(s) by "+(trilat.bestCount - trilat.nextBest)+" distances"
-				+"<br/>Inconsistent distances: "+(dists.length - trilat.bestCount));
-		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
 		
-		if (goodRefs < 5 || trilat.bestCount - trilat.nextBest < 2) {
-//			$('#ref-warning').show();
-		} else {
-//			$('#ref-warning').hide();
+			$("#output").append("Coordinates: "+vectorToString(trilat.best[0])
+					+"<br/>Better than next candidate(s) by "+(trilat.bestCount - trilat.nextBest)+" distances"
+					+"<br/>Matching distances: "+goodDists
+					+"<br/>Inconsistent distances: "+badDists);
+			//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
+		
+		} else if (dists.length > 0) {
+			$("#output").append("Coordinates: found "+(trilat.best ? trilat.best.length : 'no')+" potential candidates");
+			//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
+			if (null !== currentBest) {
+				//console.log('no best after dist '+index);
+				currentBest = null;
+				updateLocalSystems(null);
+			}
 		}
 
-	} else if (dists.length > 0) {
-		$("#output").html("Coordinates: found "+(trilat.best ? trilat.best.length : 'no')+" potential candidates");
-		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
-//		$('#ref-warning').show();
+		index++;
+		setTimeout(doDistance, 20);
 	}
 }
 
@@ -266,15 +292,17 @@ function getRegionTable(trilat) {
 	return table;
 }
 
-function updateLocalSystems() {
+// TODO should include any unresolved systems with known distances
+// TODO clicking on a row should navigate to that system
+function updateLocalSystems(coords) {
 	$('#local-systems tbody').empty();
-	if (currentSystem == null) return;
+	if (coords == null || coords.x == null) return;
 
 	var locals = [];
 	$.each(systemsMap, function(key, val) {
-		if (val === currentSystem) return;
+		if (val === coords) return;
 		if (val.x == null) return;
-		locals.push({system:val, distance:eddist(val,currentSystem)});
+		locals.push({system:val, distance:eddist(val, coords)});
 	});
 	locals.sort(function(a,b) {return a.distance-b.distance;});
 
@@ -316,6 +344,7 @@ function updateLocalSystems() {
 		</div>
 
 		<h3>Trilateration</h3>
+		<div id="output"></div>
 		<table id="distances">
 			<thead>
 				<tr>
@@ -328,7 +357,6 @@ function updateLocalSystems() {
 			<tbody>
 			</tbody>
 		</table>
-		<div id="output"></div>
 
 		<pre id="log-output" style="height: 180px; overflow: auto; float: clear"></pre>
 	</div>

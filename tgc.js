@@ -14,17 +14,21 @@ function getTGCData(callback, wantDists) {
 		logAppend('Failed to read from tgcsystems.json\n');
 	}).always(function() {
 		// update with any additional data from the server
-		updateTGCData(function() {
-			$.getJSON('tgcdistances.json', function(data) {
-				lastDistFetch = data.date+'Z';
-				var dists = addDistances(data.distances);
-				logAppend('Loaded tgcdistances.json: data up to '+data.date+'. Added '+dists+'\n');
-			}).fail(function() {
-				logAppend('Failed to read from tgcdistances.json\n');
-			}).always(function() {
-				fetchTGCDistances(callback);
-			});
-		});
+		updateTGCData(
+			wantDists ? 
+				function() {
+					$.getJSON('tgcdistances.json', function(data) {
+						lastDistFetch = data.date+'Z';
+						var dists = addDistances(data.distances);
+						logAppend('Loaded tgcdistances.json: data up to '+data.date+'. Added '+dists+'\n');
+					}).fail(function() {
+						logAppend('Failed to read from tgcdistances.json\n');
+					}).always(function() {
+						fetchTGCDistances(callback);
+					});
+				}
+				: callback
+		);
 	});
 }
 
