@@ -65,7 +65,7 @@ function addSystems(systems) {
 	var count = 0; rejected = 0;
 	$.each(systems, function() {
 		var key = nameKey(this.name);
-		if (!(key in systemsMap) || systemsMap[key].contributor !== 'FD' || true) {
+		if (!(key in systemsMap) || systemsMap[key].contributor !== 'FD') {
 			// we don't replace FD systems with new data
 			systemsMap[key] = {
 				x: this.coord[0],
