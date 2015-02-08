@@ -308,10 +308,22 @@ function updateLocalSystems(coords) {
 
 	for (i = 0; i < locals.length && locals[i].distance < 20; i++) {
 		$('<tr>')
+			.attr('system', nameKey(locals[i].system.name))
+			.click(selectSystem)
 			.append($('<td>').text(locals[i].system.name))
 			.append($('<td>').text((locals[i].distance).toFixed(2)))
 			.appendTo('#local-systems tbody');
 	}
+}
+
+function selectSystem() {
+	var key = $(this).attr('system');
+	console.log(key);
+	var sys = systemsMap[key];
+	if (!sys) return;
+	
+	$('#search-name').val(sys.name);
+	$('#search-go').click();
 }
 
 </script>

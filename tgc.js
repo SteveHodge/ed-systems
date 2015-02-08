@@ -60,12 +60,14 @@ function addDistances(distances) {
 	return count;
 }
 
-// TODO do something with count/rejected. note "if (this.coord)" probably never fails - which is good since we should exclude systems without coordinates unless the user requires it
+// TODO do something with count/rejected
 function addSystems(systems) {
 	var count = 0; rejected = 0;
 	$.each(systems, function() {
-		if (this.coord) {
-			systemsMap[nameKey(this.name)] = {
+		var key = nameKey(this.name);
+		if (!(key in systemsMap) || systemsMap[key].contributor !== 'FD' || true) {
+			// we don't replace FD systems with new data
+			systemsMap[key] = {
 				x: this.coord[0],
 				y: this.coord[1],
 				z: this.coord[2],

@@ -301,6 +301,7 @@ function updateCoords() {
 		}
 	});
 
+	// TODO refactor: should be able to combine these next two loops, perhaps all three
 	// get the distances
 	$("#distances tr[system]").each(function() {
 		var inp = $(this).find("input.distance");
@@ -311,7 +312,7 @@ function updateCoords() {
 
 		if (isNaN(d)) {
 			inp.val("");
-		} else if (system !== undefined /*&& !system.calculated*/) {
+		} else if (system !== undefined) {
 			if (d != (dist+0)) inp.val(d);	// parseFloat will parse anything starting with a valid float, so if that doesn't match the input then update the field
 			dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
 		}
@@ -331,7 +332,7 @@ function updateCoords() {
 		var sys = $(this).find('input.system-name').val();
 		var dist = $(this).find('input.distance').val();
 		var syskey = this.getAttribute('system');
-		if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].calculated)) {
+		if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap))) {
 			systemData.distances.push({
 				system: sys,
 				distance: dist,
@@ -371,9 +372,9 @@ function updateCoords() {
 					status = '<span class="ui-icon ui-icon-alert inline-alert"></span>'+"Distance doesn't match";
 				} else {
 					status = '<span class="ui-icon ui-icon-check inline-check"></span>Ok';
-					if (!sys.calculated) goodRefs++;
+					goodRefs++;
 				}
-				if (sys.calculated) status += " (not ref system)";
+				if (sys.calculated) status += " (not FD system)";
 
 				$(this).children("td:nth-child(3)").text(calcDist.toFixed(2))
 						.next().html(status);
@@ -390,7 +391,9 @@ function updateCoords() {
 		setVector(systemData, bestCandidate);
 		var i;
 		for (i = 0; i < dists.length; i++) {
-			if (dists[i].name !== systemData.distances[i].system) alert('Error: expected '+dists[i].name+' but existing data has '+systemData.distances[i].system);
+			if (dists[i].name !== systemData.distances[i].system) {
+				alert('Error: expected '+dists[i].name+' but existing data has '+systemData.distances[i].system);
+			}
 			systemData.distances[i].gooddist = dists[i].distance - eddist(dists[i], bestCandidate) === 0		// if the distances match then we can submit it
 		}
 		// update unknown distances
@@ -398,9 +401,11 @@ function updateCoords() {
 			var sys = $(this).find('input.system-name').val();
 			var dist = $(this).find('input.distance').val();
 			var syskey = this.getAttribute('system');
-			if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].calculated)) {
-				if (syskey !== systemData.distances[i].system) alert('Error: expected '+syskey+' but existing data has '+systemData.distances[i].system);
-				systemData.distances[i++].gooddist = !(syskey in systemsMap) || (dist - eddist(systemsMap[syskey], bestCandidate) === 0)	// if the system is unknown or the distances match we can submit it
+			if (sys.length > 0 && dist.length > 0 && !(syskey in systemsMap)) {
+				if (syskey !== nameKey(systemData.distances[i].system)) {
+					alert('Error: expected '+syskey+' but existing data has '+systemData.distances[i].system);
+				}
+				systemData.distances[i++].gooddist = true;
 			}
 		});
 		
