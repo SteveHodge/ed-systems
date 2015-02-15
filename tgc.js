@@ -4,7 +4,7 @@ var systemsMap;		// reference system data
 var lastFetch = '2014-09-09 12:13:14Z';		// last system fetch time (default is before earliest TGC data)
 var lastDistFetch = '2014-09-09 12:13:14Z';	// last distance fetch time (default is before earliest TGC data)
 
-function getTGCData(callback, wantDists) {
+function getTGCData(callback, wantDists, refDists) {
 	$.getJSON('tgcsystems.json', function(data) {
 		lastFetch = data.date+'Z';
 		systemsMap = {};
@@ -19,12 +19,12 @@ function getTGCData(callback, wantDists) {
 				function() {
 					$.getJSON('tgcdistances.json', function(data) {
 						lastDistFetch = data.date+'Z';
-						var dists = addDistances(data.distances);
+						var dists = addDistances(data.distances, refDists);
 						logAppend('Loaded tgcdistances.json: data up to '+data.date+'. Added '+dists+'\n');
 					}).fail(function() {
 						logAppend('Failed to read from tgcdistances.json\n');
 					}).always(function() {
-						fetchTGCDistances(callback);
+						fetchTGCDistances(callback, refDists);
 					});
 				}
 				: callback
@@ -32,7 +32,7 @@ function getTGCData(callback, wantDists) {
 	});
 }
 
-function addDistances(distances) {
+function addDistances(distances, refDists) {
 	var count = 0;
 	$.each(distances, function() {
 		var s1key = nameKey(this.name);
@@ -47,13 +47,13 @@ function addDistances(distances) {
 				return;
 			}
 			count++;
-			if (systemsMap[s1key].calculated) {
+			if (systemsMap[s1key].calculated || refDists) {
 				if (!('distances' in systemsMap[s1key])) systemsMap[s1key].distances = [];
-				systemsMap[s1key].distances.push({system: systemsMap[s2key].name, distance: this.dist});
+				systemsMap[s1key].distances.push({system: systemsMap[s2key].name, distance: this.dist, creator: this.commandercreate, created: this.createdate});
 			}
-			if (systemsMap[s2key].calculated) {
+			if (systemsMap[s2key].calculated || refDists) {
 				if (!('distances' in systemsMap[s2key])) systemsMap[s2key].distances = [];
-				systemsMap[s2key].distances.push({system: systemsMap[s1key].name, distance: this.dist});
+				systemsMap[s2key].distances.push({system: systemsMap[s1key].name, distance: this.dist, creator: this.commandercreate, created: this.createdate});
 			}
 		});
 	});
@@ -121,7 +121,7 @@ function updateTGCData(callback) {
 	});
 }
 
-function fetchTGCDistances(callback) {
+function fetchTGCDistances(callback, refDists) {
 	$.ajax({
 		type: 'POST',
 		contentType: 'application/json; charset=utf-8',
@@ -141,7 +141,7 @@ function fetchTGCDistances(callback) {
 			if (data.status.input[0].status.statusnum !== 0) {
 				logAppend('Error from TGC server: '+data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg+'\n');
 			} else {
-				var dists = addDistances(data.distances);
+				var dists = addDistances(data.distances, refDists);
 				logAppend('Fetched '+dists+' distances from TGC\n');
 			}
 			callback();

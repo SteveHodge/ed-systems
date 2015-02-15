@@ -29,7 +29,7 @@ function systemAutoComplete(req, res) {
 $(document).ready(function () {
 	getTGCData(function() {
 		$('#search-go').prop('disabled', false);
-	}, true);
+	}, true, true);
 
 	$('#search-name').autocomplete({source: systemAutoComplete});
 
@@ -120,7 +120,7 @@ function checkEmptyRow() {
 }
 
 function addSystemRow() {
-	var tr = $('<tr><td><input class="system-name"></td><td><input class="distance" size="8"></td><td/><td/></tr>')
+	var tr = $('<tr><td><input class="system-name"></td><td><input class="distance" size="8"></td><td/><td/><td/><td/></tr>')
 		.appendTo('#distances tbody');
 	tr.find('input').change(updateCoords);
 	tr.find('input.system-name')
@@ -138,6 +138,8 @@ function updateTrilateration() {
 			var $tr = addSystemRow();
 			$tr.find('input.system-name').val(this.system);
 			$tr.find('input.distance').val(this.distance);
+			$tr.children("td:nth-child(5)").text(this.created);
+			$tr.children("td:nth-child(6)").text(this.creator);
 		});
 
 		updateCoords();
@@ -363,7 +365,9 @@ function selectSystem() {
 					<th data-sort="string-ins">System</th>
 					<th data-sort="optfloat">Distance</th>
 					<th data-sort="optfloat">Calculated</th>
-					<th data-sort="optfloat" style="width:20em">Status</th>
+					<th data-sort="optfloat" style="width:12em">Status</th>
+					<th data-sort="string-ins">Date</th>
+					<th data-sort="string-ins">Cmdr</th>
 				</tr>
 			</thead>
 			<tbody>
