@@ -299,7 +299,6 @@
    {"action": "update system", "name": "Shu Wei Sector MI-S b4-5", "changes": {"name": "Shui Wei Sector MI-S b4-5"}},
    {"action": "update system", "name": "Shu Wei Sector MN-S b4-4", "changes": {"name": "Shui Wei Sector MN-S b4-4"}},
    {"action": "update system", "name": "Shu Wei Sector MN-S b4-9", "changes": {"name": "Shui Wei Sector MN-S b4-9"}},
-
    {"action": "update distance", "system1": "Ditibi", "system2": "LHS 222", "dist": 11.89, "changes": {"system1": "Ditibi (fixed)"}},
    {"action": "update distance", "system1": "Ditibi", "system2": "Core Sys Sector MC-V b2-7", "dist": 13.14, "changes": {"system1": "Ditibi (fixed)"}},
    {"action": "update distance", "system1": "Ditibi", "system2": "Luyten 143-23", "dist": 19.36, "changes": {"system1": "Ditibi (fixed)"}},
@@ -309,10 +308,25 @@
    {"action": "update distance", "system1": "L 32-9", "system2": "Ditibi", "dist": 6.03, "changes": {"system2": "Ditibi (fixed)"}},
    {"action": "update distance", "system1": "Crucis Sector BQ-Y c17", "system2": "Ditibi", "dist": 71.51, "changes": {"system2": "Ditibi (fixed)"}},
    {"action": "update distance", "system1": "Komovoy", "system2": "Ditibi", "dist": 71.51, "changes": {"system2": "Ditibi (fixed)"}},
-   {"action": "update system", "name": "Ditibi", "changes": {"name": "Ditibi (old location)"}},
+   {"action": "delete system", "name": "Ditibi"},
    {"action": "update system", "name": "Ditibi (fixed)", "changes": {"name": "Ditibi"}},
-
    {"action": "update system", "name": "Lu Yupik", "changes": {"cr": 1}},
    {"action": "update system", "name": "Macalites", "changes": {"cr": 1}},
-   {"action": "update system", "name": "Oguninksmii", "changes": {"cr": 1}}
+   {"action": "update system", "name": "Oguninksmii", "changes": {"cr": 1}},
+   {"action": "update distance", "system1": "Col 285 Sector QE-M B22-6", "system2": "Nadur", "dist": 12.81, "changes": {"system1": "HIP 72673"}},
+   {"action": "update distance", "system1": "Col 285 Sector QE-M B22-6", "system2": "Orisattu", "dist": 6.29, "changes": {"system1": "HIP 72673"}},
+   {"action": "update distance", "system1": "Col 285 Sector QE-M B22-6", "system2": "Assiones", "dist": 15.17, "changes": {"system1": "HIP 72673"}},
+   {"action": "update distance", "system1": "Col 285 Sector QE-M B22-6", "system2": "HIP 70098", "dist": 17.47, "changes": {"system1": "HIP 72673"}},
+   {"action": "update distance", "system1": "Col 285 Sector QE-M B22-6", "system2": "HR 5482", "dist": 7.41, "changes": {"system1": "HIP 72673"}},
+   {"action": "update system", "name": "Piscium Sector B4-2", "changes": {"name": "Piscium Sector PT-R b4-2"}},
+   {"action": "update system", "name": "Alrai Sector JC-V B2-6 A", "changes": {"name": "Alrai Sector JC-V B2-6"}},
+   {"action": "update system", "name": "Puppis Sector EG-X B1-1 A", "changes": {"name": "Puppis Sector EG-X B1-1"}},
+   {"action": "update system", "name": "Puppis Sector IM-V B2-O", "changes": {"name": "Puppis Sector IM-V B2-0"}},
+   {"action": "update system", "name": "Yin Sector EL-Y b6", "changes": {"name": "Tascheter Sector FB-X b1-6"}},
+   {"action": "update system", "name": "TENERIFE", "changes": {"name": "Tenerife"}},
+   {"action": "update distance", "system1": "Crucis Sector MN-T B3-2", "system2": "Xelardi", "dist": 16.21, "changes": {"system1": "Crucis Sector HR-W c1-20"}},
+   {"action": "update distance", "system1": "Crucis Sector MN-T B3-2", "system2": "Shanhauls", "dist": 30.9, "changes": {"system1": "Crucis Sector HR-W c1-20"}},
+   {"action": "update distance", "system1": "Crucis Sector MN-T B3-2", "system2": "Banebdjetet", "dist": 15.01, "changes": {"system1": "Crucis Sector HR-W c1-20"}},
+   {"action": "update distance", "system1": "Crucis Sector MN-T B3-2", "system2": "Callici", "dist": 14.96, "changes": {"system1": "Crucis Sector HR-W c1-20"}},
+   {"action": "update distance", "system1": "Crucis Sector MN-T B3-2", "system2": "Sitakapa", "dist": 23.18, "changes": {"system1": "Crucis Sector HR-W c1-20"}}
 ]

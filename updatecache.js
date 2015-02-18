@@ -29,7 +29,7 @@ var distancesMap;	// map of nameKey -> distance
 
 // set useCache = true for debugging. doesn't contact the server, just uses tgc*-raw.json files. also enables some debugging options
 // such as consistent timestamps in the output.
-var useCache = false;
+var useCache = true;
 
 fetchData('Systems', 'GetSystems', function(data) {
 	systemsResp = data;
@@ -123,7 +123,7 @@ function processData() {
 
 function checkNames() {
 	var validSectors = [
-		"Alrai Sector", "Antliae Sector", "Aries Dark Region", "Arietis Sector", "Aucofs",
+		"Alrai Sector", "Antliae Sector", "Aries Dark Region", "Arietis Sector", "Aucofs", "Aucoks",
 		"Bei Dou Sector", "Bleae Thaa", "Blu Ain", "Blu Euq", "Blu Thua", "Byoi Thua",
 		"California Sector", "Capricorni Sector", "Cephei Sector", "Cepheus Dark Region B Sector", "Ceti Sector", "Chraichooe", "Chraufao",
 		"Coalsack Sector", "Col 70 Sector", "Col 285 Sector", "Col 359 Sector", "Core Sys Sector", "Corona Austr. Dark Region", "Crucis Sector", 
@@ -131,7 +131,7 @@ function checkNames() {
 		"Herculis Sector", "Hyades Sector", "Hydrae Sector", "Hypiae Brue", 
 		"IC 1396 Sector", "IC 2602 Sector", "IC 4604 Sector", "ICZ", "Iorasp", "Jastreb Sector", "LBN 623 Sector", "Lyncis Sector",
 		"M7 Sector", "Mel 22 Sector", "Musca Dark Region",
-		"NGC 2632 Sector", "NGC 3199 Sector", "NGC 6820 Sector", "North America Sector", "Outorst", 
+		"NGC 2632 Sector", "NGC 3199 Sector", "NGC 6820 Sector", "NGC 7822 Sector", "North America Sector", "Outorst", 
 		"Pegasi Sector", "Pipe (stem) Sector", "Piscium Sector", "Pleiades Sector", "Plaa Eurk", "Praea Euq", "Pru Euq", "Pru Eurk", "Puppis Sector",
 		"Rosette Sector", "R CrA Sector", "Scorpii Sector", "Sharru Sector", "Shudun Sector", "Shui Wei Sector", "Sifi",
 		"Smojai", "Smojooe", "Stock 2 Sector", "Steph 1 Sector", "Struve's Lost Sector", "Synuefai", "Synuefe",
@@ -233,7 +233,20 @@ function applyFixups() {
 						} else {
 							console.log("  Couldn't find new system "+newVal);
 						}
-						// TODO handle system2 changes
+
+					} else if (key === 'system2' || key === 'name') {
+						// update id and coordinates
+						var newsys = systemsMap[nameKey(newVal)];
+						if (newsys) {
+							d.to.name = newsys.name;
+							d.to.id = newsys.id;
+							d.to.coord[0] = newsys.coord[0];
+							d.to.coord[1] = newsys.coord[1];
+							d.to.coord[2] = newsys.coord[2];
+						} else {
+							console.log("  Couldn't find new system "+newVal);
+						}
+
 					} else {
 						d.to[key] = newVal;
 					}
@@ -382,7 +395,7 @@ function applyFixups() {
 
 function checkCoords() {
 	// get count by cr for comparison:
-	var cr = [0,0,0,0,0,0];
+	var cr = [0,0,0,0,0,0,0];
 	_.each(systems, function(s) {
 		cr[s.cr ? s.cr : 0]++;
 	});
@@ -396,7 +409,7 @@ function checkCoords() {
 	// 1. build map of accepted systems starting with FD supplied systems from systems data
 	var located = {};
 	_.each(systems, function(s, i) {
-		if (s.commandercreate === 'FD' && s.cr === 5) {
+		if (s.commandercreate === 'FD' && s.cr >= 5) {
 			located[nameKey(s.name)] = {
 				name: s.name,
 				x: s.coord[0],
@@ -573,7 +586,20 @@ function checkCoords() {
 			console.log(s.name+': system not known from distances');
 		}
 	});
-	console.log('Located '+extraLocated+" systems that don't have coordinates in TGC");
+
+	console.log('\nLocated '+extraLocated+" systems that don't have coordinates in TGC");
+	var cr = [0,0,0,0,0,0,0];
+	var located = 0;
+	_.each(systems, function(s) {
+		cr[s.cr ? s.cr : 0]++;
+		if (s.coord && s.coord[0] != null) located++;
+	});
+	_.each(cr, function(count, cr) {
+		if (count > 0) {
+			console.log('CR '+cr+': '+count+' systems');
+		}
+	});
+	console.log('Total located systems: '+located);
 }
 
 function isGoodTrilat(trilat) {
