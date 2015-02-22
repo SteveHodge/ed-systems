@@ -124,19 +124,20 @@ function processData() {
 function checkNames() {
 	var validSectors = [
 		"Alrai Sector", "Antliae Sector", "Aries Dark Region", "Arietis Sector", "Aucofs", "Aucoks",
-		"Bei Dou Sector", "Bleae Thaa", "Blu Ain", "Blu Euq", "Blu Thua", "Byoi Thua",
+		"Bei Dou Sector", "Blanco 1 Sector", "Bleae Thaa", "Blu Ain", "Blu Euq", "Blu Thua", "Byoi Thua",
 		"California Sector", "Capricorni Sector", "Cephei Sector", "Cepheus Dark Region B Sector", "Ceti Sector", "Chraichooe", "Chraufao",
 		"Coalsack Sector", "Col 70 Sector", "Col 285 Sector", "Col 359 Sector", "Core Sys Sector", "Corona Austr. Dark Region", "Crucis Sector", 
 		"Drojao", "Dryeae Aec", "Elephant's Trunk Sector", "Eskimo Sector",
 		"Herculis Sector", "Hyades Sector", "Hydrae Sector", "Hypiae Brue", 
-		"IC 1396 Sector", "IC 2602 Sector", "IC 4604 Sector", "ICZ", "Iorasp", "Jastreb Sector", "LBN 623 Sector", "Lyncis Sector",
+		"IC 1396 Sector", "IC 2602 Sector", "IC 4604 Sector", "ICZ", "Iorasp", "Jastreb Sector",
+		"LBN 623 Sector", "Lyncis Sector", "Lupus Dark Region B Sector",
 		"M7 Sector", "Mel 22 Sector", "Musca Dark Region",
-		"NGC 2632 Sector", "NGC 3199 Sector", "NGC 6820 Sector", "NGC 7822 Sector", "North America Sector", "Outorst", 
+		"NGC 2632 Sector", "NGC 3199 Sector", "NGC 6124 Sector", "NGC 6820 Sector", "NGC 7822 Sector", "North America Sector", "Outorst", 
 		"Pegasi Sector", "Pipe (stem) Sector", "Piscium Sector", "Pleiades Sector", "Plaa Eurk", "Praea Euq", "Pru Euq", "Pru Eurk", "Puppis Sector",
 		"Rosette Sector", "R CrA Sector", "Scorpii Sector", "Sharru Sector", "Shudun Sector", "Shui Wei Sector", "Sifi",
-		"Smojai", "Smojooe", "Stock 2 Sector", "Steph 1 Sector", "Struve's Lost Sector", "Synuefai", "Synuefe",
+		"Sadr Region Sector", "Smojai", "Smojooe", "Stock 2 Sector", "Steph 1 Sector", "Struve's Lost Sector", "Synuefai", "Synuefe",
 		"Tascheter Sector", "Trianguli Sector", "Tucanae Sector",
-		"Wredguia", "Wregoe", "Yin Sector"
+		"Witch Head Sector", "Wredguia", "Wregoe", "Yin Sector"
 	];
 
 	var names = [];

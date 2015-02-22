@@ -328,5 +328,22 @@
    {"action": "update distance", "system1": "Crucis Sector MN-T B3-2", "system2": "Shanhauls", "dist": 30.9, "changes": {"system1": "Crucis Sector HR-W c1-20"}},
    {"action": "update distance", "system1": "Crucis Sector MN-T B3-2", "system2": "Banebdjetet", "dist": 15.01, "changes": {"system1": "Crucis Sector HR-W c1-20"}},
    {"action": "update distance", "system1": "Crucis Sector MN-T B3-2", "system2": "Callici", "dist": 14.96, "changes": {"system1": "Crucis Sector HR-W c1-20"}},
-   {"action": "update distance", "system1": "Crucis Sector MN-T B3-2", "system2": "Sitakapa", "dist": 23.18, "changes": {"system1": "Crucis Sector HR-W c1-20"}}
+   {"action": "update distance", "system1": "Crucis Sector MN-T B3-2", "system2": "Sitakapa", "dist": 23.18, "changes": {"system1": "Crucis Sector HR-W c1-20"}},
+   {"action": "update system", "name": "Witch Head BH-L B8-0", "changes": {"name": "Witch Head Sector BH-L b8-0"}},
+   {"action": "update system", "name": "\"XI HUNGAN\"", "changes": {"name": "Xi Hungan"}},
+   {"action": "update system", "name": "\"HARERMID\"", "changes": {"name": "Harermid"}},
+   {"action": "update system", "name": "\"PUPPIS SECTOR EG-X B1-1 A\"", "changes": {"name": "Puppis Sector Eg-X B1-1"}},
+   {"action": "update system", "name": "LP  634-18", "changes": {"name": "LP 634-18"}},
+   {"action": "update system", "name": "HIP 101110", "changes": {"name": "New Yembo"}},
+   {"action": "update system", "name": "Xi Hugan", "changes": {"name": "Zi Hungan"}},
+   {"action": "update system", "name": "Corngari", "changes": {"cr": 1}},
+   {"action": "update system", "name": "Bodb Djedi", "changes": {"name": "Bodedi"}},
+   {"action": "update system", "name": "Lyncis Sector  TO-R b4-4", "changes": {"name": "Lyncis Sector TO-R b4-4"}},
+   {"action": "update system", "name": "Synuefe NF-L D9-68 A", "changes": {"name": "Synuefe NF-L d9-68"}},
+   {"action": "update system", "name": "Haremid", "changes": {"name": "Harermid"}},
+   {"action": "update system", "name": "Zi Hungan", "changes": {"name": "Zi Hungan"}}
 ]
+
+
+
+
