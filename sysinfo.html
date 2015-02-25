@@ -45,6 +45,14 @@ $(document).ready(function () {
 		showSystem();
 	});
 
+	$('#refresh-tgc').click(function() {
+		$('#refresh-tgc').prop('disabled', true);
+		refreshTGCData(function() {
+			$('#refresh-tgc').prop('disabled', false);
+			showSystem();
+		}, true, true);
+	});
+
 //	$("#distances input").change(updateCoords);
 //	$('input.system-name').change(checkEmptyRow);
 
@@ -172,7 +180,7 @@ function updateCoords() {
 			inp.val("");
 		} else if (system !== undefined) {
 			if (d != (dist+0)) inp.val(d);	// parseFloat will parse anything starting with a valid float, so if that doesn't match the input then update the field
-			dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
+			if (system.x != null) dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
 		}
 	});
 
@@ -295,7 +303,6 @@ function getRegionTable(trilat) {
 }
 
 // TODO should include any unresolved systems with known distances
-// TODO clicking on a row should navigate to that system
 function updateLocalSystems(coords) {
 	$('#local-systems tbody').empty();
 	if (coords == null || coords.x == null) return;
@@ -306,6 +313,19 @@ function updateLocalSystems(coords) {
 		if (val.x == null) return;
 		locals.push({system:val, distance:eddist(val, coords)});
 	});
+
+	// add any entered distances to un-located systems
+	$('#distances tr[system]').each(function() {
+		var system = systemsMap[this.getAttribute('system')];
+		if (system !== undefined && system.x != null) return;
+
+		var name = system ? system.name : $(this).find('input.system-name').val();
+		var d = parseFloat($(this).find('input.distance').val());
+		if (!isNaN(d)) {
+			locals.push({system: name, distance: d});
+		}
+	});
+
 	locals.sort(function(a,b) {return a.distance-b.distance;});
 
 	for (i = 0; i < locals.length && locals[i].distance < 20; i++) {
@@ -334,7 +354,8 @@ function selectSystem() {
 	<div class="ui-widget">
 		<label for="search-name">Name: </label>
 		<input id="search-name"/>
-		<button id="search-go" disabled>go</button>
+		<button id="search-go" disabled>Go</button>
+		<button id="refresh-tgc" style="float: right">TGC Refresh</button>
 
 		<div id="not-found-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>

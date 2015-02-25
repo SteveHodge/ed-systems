@@ -29,7 +29,7 @@ var axes;
 
 var systems = [];
 
-var cmdrColors = ['gray', 'aqua', 'blue', 'navy', 'teal', 'lime', 'green', 'fuchsia', 'purple', 'red', 'maroon', 'orange', 'yellow', 'olive','white'];
+var cmdrColors = ['gray', 'aqua', 'teal', 'red', 'maroon', 'blue', 'navy', 'lime', 'green', 'fuchsia', 'purple', 'orange', 'yellow', 'olive','white'];
 var cmdrColorMap = {};
 
 $(document).ready(function () {
@@ -39,39 +39,44 @@ $(document).ready(function () {
 		$.each(systemsMap, function(k, v) {
 			systems.push(v);
 			if (v.contributor in contribMap) {
-				contribMap[v.contributor]++;
+				contribMap[v.contributor].names++;
+				if (v.x != null) {
+					contribMap[v.contributor].coords++;
+				}
 			} else {
-				contribMap[v.contributor] = 1;
+				contribMap[v.contributor] = {names:0, coords:0};
 			}
 		});
 		
 		var contribCount = [];
-		$.each(contribMap, function(cmdr, count) {
-			contribCount.push({name: cmdr, count: count});
+		$.each(contribMap, function(cmdr, contrib) {
+			contribCount.push({name: cmdr, names: contrib.names, coords: contrib.coords});
 		});
 		contribCount.sort(function(a,b) {
-			if (b.count !== a.count) return b.count-a.count;
+			if (b.coords !== a.coords) return b.coords-a.coords;
+			if (b.names !== a.names) return b.names-a.names;
 			if (a.name) return a.name.localeCompare(b.name);
 			return b.name ? -1 : 0;
 		});
 
 		var i = 0;
-		var rest = 0;
+		var rest = 0, restNames = 0;
 		$.each(contribCount, function() {
 			if (i < cmdrColors.length-1 && this.name !== '(unknown)') {
 				$('<tr>')
 					.append($('<td>').width('1.5em').css('background',cmdrColors[i]))
-					.append($('<td>').text(this.name+': '+this.count))
+					.append($('<td>').text(this.name+': '+this.coords+' ('+this.names+')'))
 					.appendTo('#legend tbody');
 				cmdrColorMap[this.name] = cmdrColors[i];
 				i++;
 			} else {
-				rest += this.count;
+				rest += this.coords;
+				restNames += this.names;
 			}
 		});
 		$('<tr>')
 			.append($('<td>').width('1.5em').css('background',cmdrColors[i]))
-			.append($('<td>').text('others: '+rest))
+			.append($('<td>').text('others: '+rest+' ('+restNames+')'))
 			.appendTo('#legend tbody');
 
 		init();
