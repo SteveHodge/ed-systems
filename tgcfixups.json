@@ -341,9 +341,38 @@
    {"action": "update system", "name": "Lyncis Sector  TO-R b4-4", "changes": {"name": "Lyncis Sector TO-R b4-4"}},
    {"action": "update system", "name": "Synuefe NF-L D9-68 A", "changes": {"name": "Synuefe NF-L d9-68"}},
    {"action": "update system", "name": "Haremid", "changes": {"name": "Harermid"}},
-   {"action": "update system", "name": "Zi Hungan", "changes": {"name": "Zi Hungan"}}
+   {"action": "update system", "name": "Zi Hungan", "changes": {"name": "Zi Hungan"}},
+   {"action": "update distance", "system1": "Puppis Sector ZZ-Y B4", "system2": "Makaneane", "dist": 13.09, "changes": {"system1": "Puppis Sector CQ-Y c18"}},
+   {"action": "update distance", "system1": "Puppis Sector ZZ-Y B4", "system2": "Mechucos", "dist": 15.72, "changes": {"system1": "Puppis Sector CQ-Y c18"}},
+   {"action": "update distance", "system1": "Puppis Sector ZZ-Y B4", "system2": "Messa", "dist": 13.67, "changes": {"system1": "Puppis Sector CQ-Y c18"}},
+   {"action": "update distance", "system1": "Puppis Sector ZZ-Y B4", "system2": "Sumeya", "dist": 12.93, "changes": {"system1": "Puppis Sector CQ-Y c18"}},
+   {"action": "update distance", "system1": "Puppis Sector ZZ-Y B4", "system2": "Aurora", "dist": 12.08, "changes": {"system1": "Puppis Sector CQ-Y c18"}},
+   {"action": "update system", "name": "192 G. CARINAE", "changes": {"name": "192 G. Carinae"}},
+   {"action": "update system", "name": "ALPHA MUSCAE", "changes": {"name": "Alpha Muscae"}},
+   {"action": "update system", "name": "BETA MUSCAE", "changes": {"name": "Beta Muscae"}},
+   {"action": "update system", "name": "CORRICHA", "changes": {"name": "Corricha"}},
+   {"action": "update system", "name": "EPSILON CRUCIS", "changes": {"name": "Epsilon Crucis"}},
+   {"action": "update system", "name": "GAMMA TRIANGULI AUSTRALIS", "changes": {"name": "Gamma Trianguli Australis"}},
+   {"action": "update system", "name": "GLIESE 534.1", "changes": {"name": "Gliese 534.1"}},
+   {"action": "update system", "name": "jakari", "changes": {"name": "Jakari"}},
+   {"action": "update system", "name": "M CARINAE", "changes": {"name": "M Carinae"}},
+   {"action": "update system", "name": "M CENTAURI", "changes": {"name": "M Centauri"}},
+   {"action": "update system", "name": "N CEN", "changes": {"name": "N Cen"}},
+   {"action": "update system", "name": "Q CENTAURI", "changes": {"name": "Q Centauri"}},
+   {"action": "update system", "name": "RHO VIRGINIS", "changes": {"name": "Rho Virginis"}},
+   {"action": "update system", "name": "VINDEMIATRIX", "changes": {"name": "Vindemiatrix"}},
+   {"action": "update system", "name": "ZETA-1 MUSCAE", "changes": {"name": "Zeta-1 Muscae"}},
+   {"action": "update system", "name": "ZETA-2 MUSCAE", "changes": {"name": "Zeta-2 Muscae"}},
+   {"action": "update system", "name": "29 PERSEI", "changes": {"name": "29 Persei"}},
+   {"action": "update system", "name": "43 THETA-2 ORIONIS", "changes": {"name": "43 Theta-2 Orionis"}},
+   {"action": "update system", "name": "77 G. CANIS MAJORIS", "changes": {"name": "77 G. Canis Majoris"}},
+   {"action": "update system", "name": "MELOTTE 20 91", "changes": {"name": "Melotte 20 91"}},
+   {"action": "update system", "name": "PORTUNES", "changes": {"name": "Portunes"}},
+   {"action": "update system", "name": "W ORIONIS", "changes": {"name": "W Orionis"}},
+   {"action": "update system", "name": "Core Sys HH-M A7-3", "changes": {"name": "Core Sys Sector HH-M A7-3"}},
+   {"action": "update system", "name": "Hydrae Secoter UJ-R B4-1", "changes": {"name": "Hydrae Sector UJ-R B4-1"}},
+   {"action": "update system", "name": "m7 sector xe-z d68 b", "changes": {"name": "M7 Sector XE-Z d68"}},
+   {"action": "update system", "name": "m7 sector xe-z d68a", "changes": {"name": "M7 Sector XE-Z d68"}},
+   {"action": "update system", "name": "Hydrae Sector IR-W b1-2", "changes": {"name": "Crucis Sector ER-V b2-2"}},
+   {"action": "update system", "name": "LP 937-98", "changes": {"name": "LP 937-95"}}
 ]
-
-
-
-

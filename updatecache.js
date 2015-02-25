@@ -29,24 +29,27 @@ var distancesMap;	// map of nameKey -> distance
 
 // set useCache = true for debugging. doesn't contact the server, just uses tgc*-raw.json files. also enables some debugging options
 // such as consistent timestamps in the output.
-var useCache = true;
+var useCache = false;
 
 fetchData('Systems', 'GetSystems', function(data) {
 	systemsResp = data;
 	systemsMap = {};
-	_.each(data.systems, function(s) {
+	var toRemove = [];
+	_.each(data.systems, function(s, i) {
 		var key = nameKey(s.name);
 		if (key in systemsMap) {
-			console.log('Ignoring duplicate system '+s.name+' added by '+s.commandercreate+' '+s.createdate);
-			//console.log('Warning: duplicate system detected:');
-			//console.log(JSON.stringify(s, null, 2));
-			//console.log('Existing version:');
-			//console.log(JSON.stringify(systemsMap[key], null, 2));
-			//console.log('-------------------------');
+			console.log('Duplicate system: '+s.name+' added by '+s.commandercreate+' '+s.createdate);
+			toRemove.push(i);
 		} else {
 			systemsMap[key] = s;
 		}
 	});
+	// remove duplicate systems
+	for (var i = toRemove.length-1; i >= 0; i--) {
+		console.log('Deleting duplicate '+data.systems[toRemove[i]].name);
+		data.systems.splice(toRemove[i], 1);
+	}
+
 	systems = data.systems;
 	if (!useCache) writeFile('Systems', 'tgcsystems-raw.json', systemsResp);
 	if (distances) processData();
@@ -59,6 +62,7 @@ fetchData('Distances', 'GetDistances', function(data) {
 		var key = nameKey(s.name);
 		if (key in distancesMap) {
 			console.log("Warning: duplicate system detected in distance data: '"+s.name+"', '"+distancesMap[key].name+"' existing");
+			// TODO should merge the distances entries and update distances with the original id
 		} else {
 			distancesMap[key] = s;
 		}
@@ -124,7 +128,7 @@ function processData() {
 function checkNames() {
 	var validSectors = [
 		"Alrai Sector", "Antliae Sector", "Aries Dark Region", "Arietis Sector", "Aucofs", "Aucoks",
-		"Bei Dou Sector", "Blanco 1 Sector", "Bleae Thaa", "Blu Ain", "Blu Euq", "Blu Thua", "Byoi Thua",
+		"Bei Dou Sector", "Blanco 1 Sector", "Bleae Thaa", "Blu Ain", "Blu Euq", "Blu Thua", "Bug Sector", "Byoi Thua",
 		"California Sector", "Capricorni Sector", "Cephei Sector", "Cepheus Dark Region B Sector", "Ceti Sector", "Chraichooe", "Chraufao",
 		"Coalsack Sector", "Col 70 Sector", "Col 285 Sector", "Col 359 Sector", "Core Sys Sector", "Corona Austr. Dark Region", "Crucis Sector", 
 		"Drojao", "Dryeae Aec", "Elephant's Trunk Sector", "Eskimo Sector",
@@ -132,11 +136,13 @@ function checkNames() {
 		"IC 1396 Sector", "IC 2602 Sector", "IC 4604 Sector", "ICZ", "Iorasp", "Jastreb Sector",
 		"LBN 623 Sector", "Lyncis Sector", "Lupus Dark Region B Sector",
 		"M7 Sector", "Mel 22 Sector", "Musca Dark Region",
-		"NGC 2632 Sector", "NGC 3199 Sector", "NGC 6124 Sector", "NGC 6820 Sector", "NGC 7822 Sector", "North America Sector", "Outorst", 
+		"NGC 2632 Sector", "NGC 3199 Sector", "NGC 6124 Sector", "NGC 6231 Sector", "NGC 6820 Sector", "NGC 7822 Sector", "North America Sector",
+		"Outorst", 
 		"Pegasi Sector", "Pipe (stem) Sector", "Piscium Sector", "Pleiades Sector", "Plaa Eurk", "Praea Euq", "Pru Euq", "Pru Eurk", "Puppis Sector",
-		"Rosette Sector", "R CrA Sector", "Scorpii Sector", "Sharru Sector", "Shudun Sector", "Shui Wei Sector", "Sifi",
-		"Sadr Region Sector", "Smojai", "Smojooe", "Stock 2 Sector", "Steph 1 Sector", "Struve's Lost Sector", "Synuefai", "Synuefe",
-		"Tascheter Sector", "Trianguli Sector", "Tucanae Sector",
+		"Rosette Sector", "R CrA Sector", "Running Man Sector",
+		"Sadr Region Sector", "Scorpii Sector", "Sharru Sector", "Shudun Sector", "Shui Wei Sector", "Sifi",
+		"Smojai", "Smojooe", "Stock 2 Sector", "Steph 1 Sector", "Struve's Lost Sector", "Synuefai", "Synuefe",
+		"Tascheter Sector", "Taurus Dark Region", "Tr 24 Sector", "Trianguli Sector", "Tucanae Sector",
 		"Witch Head Sector", "Wredguia", "Wregoe", "Yin Sector"
 	];
 
@@ -554,6 +560,7 @@ function checkCoords() {
 				var good = 0;
 				var bad = 0;
 				var unknown = 0;
+				var onedp = 0;
 				for (var i = 0; i < located[key].distances.length; i++) {
 					// set coordinates if they haven't already been set
 					var otherkey = nameKey(located[key].distances[i].system);
@@ -565,15 +572,29 @@ function checkCoords() {
 						if (result.error === 0) {
 							good++;
 						} else {
-							console.log('Bad distance '+located[key].name+' to '+located[key].distances[i].system+': '+located[key].distances[i].distance+' should be '+eddist(located[key], located[key].distances[i], result.dp));
-							bad++;
+							var d = located[key].distances[i].distance;
+							var calc = eddist(located[key], located[key].distances[i], result.dp);
+							if (d === Math.round(calc*10)/10) {
+								// seems to be a correct 1 dp distances (probably from the nav panel)
+								onedp++;
+							} else {
+								console.log('  Bad distance '+located[key].name+' to '+located[key].distances[i].system+': '+d+' should be '+calc);
+								bad++;
+							}
 						}
 					} else {
 						unknown++;
 					}
 				}
 
-				if (bad > 0) console.log(s.name+': '+bad+' bad distances, '+unknown+' unknown distances, '+good+' good distances');
+				if (bad > 0) {
+					var txt = [];
+					if (bad > 0) txt.push(bad+' bad distances');
+					if (unknown > 0) txt.push(unknown+' unknown distances');
+					if (onedp > 0) txt.push(onedp+' matching one dp distances');
+					if (good > 0) txt.push(good+' good distances');
+					console.log(txt.join(', '));
+				}
 			}
 
 		} else if (key in toLocateMap) {
