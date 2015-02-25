@@ -66,6 +66,14 @@ var Trilateration = function () {
 
 	// dist is an object with properties x, y, z, distance
 	this.addDistance = function(dist) {
+		// check if dist has already been added - if so then don't add the distance
+		for (var i=0; i < this.distances.length; i++) {
+			var d = this.distances[i];
+			if (d.x == dist.x && d.y == dist.y && d.z == dist.z && d.distance == dist.distance) {
+				return;
+			}
+		}
+		
 		this.distances.push(dist);
 		if (this.distances.length >= 3) run();
 	};
@@ -136,11 +144,13 @@ var Trilateration = function () {
 		self.bestCount = 0;
 		self.best = [];
 		self.nextBest = 0;
+		self.next = [];
 
 		$.each(self.regions, function() {
 			this.bestCount = 0;
 			this.best = [];
 			this.nextBest = 0;
+			this.next = [];
 			for (var x = this.minx; x <= this.maxx; x+= 1/32) {
 				for (var y = this.miny; y <= this.maxy; y+= 1/32) {
 					for (var z = this.minz; z <= this.maxz; z+= 1/32) {
@@ -148,15 +158,20 @@ var Trilateration = function () {
 						var matches = checkDistances(p);
 						if (matches > this.bestCount) {
 							this.nextBest = this.bestCount;
+							this.next = this.best;
 							this.bestCount = matches;
 							this.best = [p];
 						} else if (matches === this.bestCount) {
 							this.best.push(p);
 						} else if (matches > this.nextBest) {
 							this.nextBest = matches;
+							this.next = [p];
+						} else if (matches === this.nextBest) {
+							this.next.push(p);
 						}
 						if (matches > self.bestCount) {
 							self.nextBest = self.bestCount;
+							self.next = self.best;
 							self.bestCount = matches;
 							self.best = [p];
 						} else if (matches === self.bestCount) {
@@ -170,6 +185,16 @@ var Trilateration = function () {
 							if (!found) self.best.push(p);
 						} else if (matches > self.nextBest) {
 							self.nextBest = matches;
+							self.next = [p];
+						} else if (matches === self.nextBest) {
+							var found = false;
+							$.each(self.best, function() {
+								if (this.x === p.x && this.y === p.y && this.z === p.z) {
+									found = true;
+									return false;
+								}
+							});
+							if (!found) self.next.push(p);
 						}
 					}
 				}

@@ -32,6 +32,10 @@ function getTGCData(callback, wantDists, refDists) {
 	});
 }
 
+function refreshTGCData(callback, wantDists, refDists) {
+	updateTGCData(wantDists ? function() {fetchTGCDistances(callback, refDists);} : callback);
+}
+
 function addDistances(distances, refDists) {
 	var count = 0;
 	$.each(distances, function() {
@@ -49,10 +53,12 @@ function addDistances(distances, refDists) {
 			count++;
 			if (systemsMap[s1key].calculated || refDists) {
 				if (!('distances' in systemsMap[s1key])) systemsMap[s1key].distances = [];
+				// TODO probably should check for duplicates
 				systemsMap[s1key].distances.push({system: systemsMap[s2key].name, distance: this.dist, creator: this.commandercreate, created: this.createdate});
 			}
 			if (systemsMap[s2key].calculated || refDists) {
 				if (!('distances' in systemsMap[s2key])) systemsMap[s2key].distances = [];
+				// TODO probably should check for duplicates
 				systemsMap[s2key].distances.push({system: systemsMap[s1key].name, distance: this.dist, creator: this.commandercreate, created: this.createdate});
 			}
 		});
@@ -67,16 +73,16 @@ function addSystems(systems) {
 		var key = nameKey(this.name);
 		if (!(key in systemsMap) || systemsMap[key].contributor !== 'FD') {
 			// we don't replace FD systems with new data
-			systemsMap[key] = {
-				x: this.coord[0],
-				y: this.coord[1],
-				z: this.coord[2],
-				name: this.name,
-				calculated: this.commandercreate !== 'FD',
-				cr: this.cr,
-				contributor: this.commandercreate ? this.commandercreate : '(unknown)',
-				contributed: this.createdate
-			};
+			
+			if (!(key in systemsMap)) systemsMap[key] = {};
+			systemsMap[key].x = this.coord[0];
+			systemsMap[key].y = this.coord[1];
+			systemsMap[key].z = this.coord[2];
+			systemsMap[key].name = this.name;
+			systemsMap[key].calculated = this.commandercreate !== 'FD' || this.cr < 5;
+			systemsMap[key].cr = this.cr;
+			systemsMap[key].contributor = this.commandercreate ? this.commandercreate : '(unknown)';
+			systemsMap[key].contributed = this.createdate;
 			count++;
 		} else {
 			rejected++;
@@ -101,6 +107,7 @@ function updateTGCData(callback) {
 		dataType: 'json',
 		success: function(data, status, xhr) {
 			data = data.d;
+			//lastFetch = data.date+'Z';
 			//console.log(JSON.stringify(data, null, 2));
 			if (data.status.input[0].status.statusnum !== 0) {
 				logAppend('Error from TGC server: '+data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg+'\n');
@@ -137,6 +144,7 @@ function fetchTGCDistances(callback, refDists) {
 		dataType: 'json',
 		success: function(data, status, xhr) {
 			data = data.d;
+			//lastDistFetch = data.date+'Z';
 			//console.log(JSON.stringify(data, null, 2));
 			if (data.status.input[0].status.statusnum !== 0) {
 				logAppend('Error from TGC server: '+data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg+'\n');

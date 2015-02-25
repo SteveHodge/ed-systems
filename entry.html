@@ -15,7 +15,6 @@
 // TODO dialog when submitting system with distances that won't be submitted
 // TODO load systems from system.json as well
 // TODO prepopulate distances for dupe systems
-// TODO suggest reference system to use
 // TODO optimisation
 // TODO consider not clearing the form if TGC can't trilaterate
 
@@ -25,8 +24,13 @@ var systemData = null;	// current system data
 var jsonOutput = "";
 var sqlOutput = "";
 
+var dataToSend = [];
+
 function sendToTGC(success, failure) {
 	if (!systemData) return;
+
+	// TGC seems to sometimes fail to process some of the distances sent. we check the response, remove any processed distances and resend the
+	// data until all distances are accepted.
 
 	var data = {
 		ver: 2,
@@ -37,43 +41,77 @@ function sendToTGC(success, failure) {
 	};
 	$.each(systemData.distances, function() {
 		if (this.gooddist || expertMode) {
-			data.refs.push({
-				name: this.system,
-				dist: this.distance
-			});
+			data.refs.push({name: this.system, dist: this.distance});
 		}
 	});
-	logAppend('Submitting '+systemData.name+' to TGC: ');
-	//console.log("Submitting:");
-	//console.log(JSON.stringify(data, null, 2));
 
-	$.ajax({
-		type: 'POST',
-		contentType: 'application/json; charset=utf-8',
-		url: 'http://edstarcoordinator.com/api.asmx/SubmitDistances',
-		data: JSON.stringify({data: data}),
-		dataType: 'json',
-		success: function(data, status, xhr) {
-			data = data.d;
-			//console.log("Response:");
-			//console.log(JSON.stringify(data, null, 2));
-			if (data.status.input[0].status.statusnum !== 0) {
-				logAppend('error: '+data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg);
-				failure(data.status.input[0].status.statusnum +' '+data.status.input[0].status.msg);
-			} else {
-				logAppend('successful\n');
-				success(data.status);
-			}
-		},
-		error: function(xhr, status, error) {
-			//console.log(xhr.responseText);
-			logAppend('error: '+error);
-			console.log(error);
-			console.log('Request was:');
-			console.log(JSON.stringify(data, null, 2));
-			failure(error);
+	var status = {input: [], system: [], dist: [], trilat: []};
+
+	sender();
+
+	function sender() {
+		if (data.refs.length < 1) {
+			// finished the queue, report success
+			success(status);
+			return;
 		}
-	});
+		
+		logAppend('Submitting '+systemData.name+' with '+data.refs.length+' distances to TGC: ');
+		console.log("Submitting:");
+		console.log(JSON.stringify(data, null, 2));
+
+		$.ajax({
+			type: 'POST',
+			contentType: 'application/json; charset=utf-8',
+			url: 'http://edstarcoordinator.com/api.asmx/SubmitDistances',
+			data: JSON.stringify({data: data}),
+			dataType: 'json',
+			success: function(resp, localstatus, xhr) {
+				resp = resp.d;
+				console.log("Response:");
+				console.log(JSON.stringify(resp, null, 2));
+				if (resp.status.input[0].status.statusnum !== 0) {
+					logAppend('error: '+resp.status.input[0].status.statusnum +' '+resp.status.input[0].status.msg);
+					failure(resp.status.input[0].status.statusnum +' '+resp.status.input[0].status.msg);
+				} else {
+					logAppend('successful\n');
+
+					// remove any processed distances
+					$.each(resp.status.dist, function() {
+						var other = this.system2;
+						if (other === systemData.name) other = this.system1;
+						// find the existing distance
+						for (var i = 0; i < data.refs.length; i++) {
+							if (data.refs[i].name === other && data.refs[i].dist == this.dist) {
+								console.log(this.system1 + ' to ' + this.system2 + ' ('+this.dist+'): '+this.status.statusnum+' found at '+i);
+								data.refs.splice(i, 1);
+								break;
+							}
+						}
+						if (i === data.refs.length) {
+							console.log(this.system1 +' to ' + this.system2 + ' ('+this.dist+'): '+this.status.statusnum+' not found');
+						}
+					});
+
+					// merge the status blocks
+					status.input = status.input.concat(resp.status.input);
+					status.system = status.system.concat(resp.status.system);
+					status.dist = status.dist.concat(resp.status.dist);
+					status.trilat = status.trilat.concat(resp.status.trilat);
+
+					sender(); // send any remaining distances
+				}
+			},
+			error: function(xhr, status, error) {
+				//console.log(xhr.responseText);
+				logAppend('error: '+error);
+				console.log(error);
+				console.log('Request was:');
+				console.log(JSON.stringify(data, null, 2));
+				failure(error);
+			}
+		});
+	}
 }
 
 function systemAutoComplete(req, res) {
@@ -87,10 +125,100 @@ function systemAutoComplete(req, res) {
 	res(options);
 }
 
+var recentSystems = {};
+
+// expects to be called with this set to an element containing a system attribute that identifies the system to be added.
+function addSystem() {
+	var s = systemsMap[$(this).attr('system')];
+	if (s) {
+		var tr = checkEmptyRow();
+		$(tr).find('input.system-name').val(s.name);
+		checkEmptyRow();
+		$(tr).find('input.distance').focus();
+	}
+}
+
+function addNewRecent(key, name, dists) {
+	recentSystems[key] = $('<tr>')
+		.click(addSystem)
+		.attr('system', key)
+		.append($('<td>').text(name))
+		.append($('<td>').text(dists))
+		.append($('<td>'));
+	recentSystems[key].appendTo($("#recent-systems tbody"));
+	return recentSystems[key];
+}
+
+function entryCompleted() {
+	if (systemData == null) return;
+
+	// add to output
+	jsonOutput = JSON.stringify(systemData, filterJSON, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput;
+	$("#json-output").text(jsonOutput);
+	sqlOutput = getSQL(systemData) + sqlOutput;
+	$("#sql-output").text(sqlOutput);
+
+	// add the new system to recents if necessary
+	var key = nameKey(systemData.name);
+	if (key in recentSystems) {
+		recentSystems[key].find('td:nth-child(2)').text(systemData.distances.length);
+	} else {
+		addNewRecent(key, systemData.name, systemData.distances.length);
+	}
+
+	systemsMap[key] = systemData;		// TODO do we need to merge existing systems?
+
+	// add any new systems from distances to recents as required
+	$.each(systemData.distances, function() {
+		var k = nameKey(this.system);
+		var s = systemsMap[k];
+		if (k in recentSystems) {
+			// TODO should probably check for dupe distances
+			s.distances.push({system: systemData.name, distance: this.dist});
+			recentSystems[k].find('td:nth-child(2)').text(s.distances.length);
+		} else if (!(k in systemsMap) || systemsMap[k].x == null) {
+			addNewRecent(k, this.system, '1');
+			systemsMap[k] = {
+				name: this.system,
+				calculated: true,
+				cr: 1,
+				contributor: systemData.contributor,
+				contributed: systemData.contributed,
+				x: null,
+				y: null,
+				z: null,
+				distances: [{system: systemData.name, distance: this.dist}]
+			};
+		}
+	});
+}
+
+function clearEntry() {
+	$("#distances input.distance").val("");
+	$("#distances tr:has(input.system-name) td:nth-child(3)").text("").next().text("");
+	$("#output").html("");
+	$("#tgc-button").attr('disabled', true);
+	$("#done-button").attr('disabled', true);
+	$("#unknown-name").val("").focus();
+	$('#dupe-warning').hide();
+	$("#json-output").text(jsonOutput);
+	$("#sql-output").text(sqlOutput);
+	$('#ref-warning').hide();
+	$('#no-name-warning').hide();
+	$('#nearby-systems tbody').empty();
+	systemData = null;
+}
+
 $(document).ready(function () {
 	getTGCData(function() {
+		$('#add-unfinished').attr('disabled', false);
 		updateCoords();
 	});
+
+	if (expertMode) {
+		$('#recent-systems').closest('div').toggle(true);
+		$('#add-unfinished').toggle(true);
+	}
 
 	$("input.system-name").autocomplete({source: systemAutoComplete});
 
@@ -98,6 +226,8 @@ $(document).ready(function () {
 	$('#distances').stupidtable({'optfloat': sortOptionalFloat})
 		.bind('aftertablesort', postSortDistances)
 		.bind('beforetablesort', preSortDistances);
+
+	$('#nearby-systems').stupidtable().bind('aftertablesort', updateSortArrow);
 
 	// add the event handlers
 	$('#cmdr-name').change(function() {
@@ -117,21 +247,27 @@ $(document).ready(function () {
 	$("#toggle-sql").click(getToggle(document.getElementById('sql-output'),'Hide SQL','Show SQL'));
 	$("#sql-output").click(selectAll);
 	$("#toggle-log").click(getToggle(document.getElementById('log-output'),'Hide Log','Show Log'));
+	$("#tgc-output").click(selectAll);
+	$("#toggle-tgc").click(getToggle(document.getElementById('tgc-output'),'Hide TGC Response','Show TGC Repsonse'));
+
+	$("#add-unfinished").click(function () {
+		var cmdr = $.trim($('#cmdr-name').val());
+		if (cmdr.length > 0) addUnfinished(cmdr);
+	});
 
 	$("#done-button").click(function() {
-		if (systemData !== null) {
-			jsonOutput = JSON.stringify(systemData, filterJSON, 2) + (jsonOutput.length > 0 ? ",\n" : "") + jsonOutput;
-			$("#json-output").text(jsonOutput);
-			sqlOutput = getSQL(systemData) + sqlOutput;
-			$("#sql-output").text(sqlOutput);
-		}
-		$("#cancel-button").click();
+		entryCompleted();
+		clearEntry();
 	});
 
 	$('#tgc-button').click(function() {
 		$("#tgc-button").attr('disabled', true);
 		$("#done-button").attr('disabled', true);
 		sendToTGC(function(status) {
+			$('#tgc-output').text(JSON.stringify(status, null, 2));
+			
+			entryCompleted();
+
 			// new system:
 			// system array: 201 added, 202 cr incremented (should have coord)
 			// dist array: 301 added for each distance
@@ -144,17 +280,34 @@ $(document).ready(function () {
 			$.each(status.system, function() {
 				logAppend('TGC: System '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
 			});
+			$.each(status.dist, function() {
+				logAppend('TGC: Distance '+this.system1+' to '+this.system2+' ('+this.dist+'): '+this.status.statusnum+' '+this.status.msg+'\n');
+			});
 			$.each(status.trilat, function() {
 				logAppend('TGC: Trilateration for '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
 				if (this.status.statusnum === 401 && this.system === systemData.name
 						&& (this.coord.x !== systemData.x || this.coord.y !== systemData.y || this.coord.z !== systemData.z)) {
 					logAppend('TGC calculated different coordinates: '+vectorToString(this.coord)+' vs '+vectorToString(systemData)+'\n');
 				}
+				// update any recent systems
+				var key = nameKey(this.system);
+				if (key in recentSystems) {
+					var tr = recentSystems[key];
+					if (this.status.statusnum === 401) {
+						var $td = $(tr).find('td:nth-child(3)');
+						$td.empty().append('<span class="ui-icon ui-icon-check inline-check">');
+						if (this.system !== systemData.name) {
+							// update coords if it's not the newly added system we've already trilaterated
+							var s = systemsMap[key];
+							s.x = this.coord.x;
+							s.y = this.coord.y;
+							s.z = this.coord.z;
+						}
+					}
+				}
 			});
 
-			systemsMap[nameKey(systemData.name)] = systemData;
-
-			$("#done-button").click();
+			clearEntry();
 		}, function(error) {
 			alert('Failed to submit the system to TGC:\n'+error);
 			$("#tgc-button").attr('disabled', false);
@@ -162,19 +315,7 @@ $(document).ready(function () {
 		});
 	});
 
-	$("#cancel-button").click(function() {
-		$("#distances input.distance").val("");
-		$("#distances tr:has(input.system-name) td:nth-child(3)").text("").next().text("");
-		$("#output").html("");
-		$("#tgc-button").attr('disabled', true);
-		$("#done-button").attr('disabled', true);
-		$("#unknown-name").val("").focus();
-		$("#json-output").text(jsonOutput);
-		$("#sql-output").text(sqlOutput);
-		$('#ref-warning').hide();
-		$('#no-name-warning').hide();
-		systemData = null;
-	});
+	$("#cancel-button").click(clearEntry);
 
 	$('#unknown-name').change(function() {
 		// check for duplicate name
@@ -200,7 +341,7 @@ $(document).ready(function () {
 	});
 	
 	$("#distances input").change(updateCoords);
-	$('input.system-name').change(checkEmptyRow);
+	$('input.system-name').change(function() {checkEmptyRow(this);});
 
 	addSystemRow();
 	$("#tgc-button").attr('disabled',true);
@@ -262,15 +403,28 @@ function updateJSON() {
 	}
 }
 
-function checkEmptyRow() {
-	var empty = false;
+// focused, if supplied, should be the currently focused element. if we delete a row containing this element
+// we'll set the focus to the next system name field
+function checkEmptyRow(focused) {
+	var rows = [];
 	$('input.system-name').each(function() {
 		if (!this.value || this.value.length === 0) {
-			empty = true
-			return false;
+			rows.push(this.closest('tr'));
 		}
 	});
-	if (!empty) addSystemRow();
+	if (rows.length === 0) return addSystemRow();
+
+	// delete all but the last
+	for (var i = 0; i < rows.length-1; i++) {
+		if (focused && $.contains(rows[i], focused)) {
+			// about to delete the focused row, move the focus to the next one
+			$(rows[i]).next('tr').find('input.system-name').select();
+		}
+
+		$(rows[i]).remove();
+	}
+
+	return rows[rows.length - 1];
 }
 
 function addSystemRow() {
@@ -278,8 +432,9 @@ function addSystemRow() {
 		.appendTo('#distances tbody');
 	tr.find('input').change(updateCoords);
 	tr.find('input.system-name')
-		.change(checkEmptyRow)
+		.change(function() {checkEmptyRow(this);})
 		.autocomplete({source: systemAutoComplete});
+	return tr;
 }
 
 function updateCoords() {
@@ -312,9 +467,9 @@ function updateCoords() {
 
 		if (isNaN(d)) {
 			inp.val("");
-		} else if (system !== undefined) {
+		} else {
 			if (d != (dist+0)) inp.val(d);	// parseFloat will parse anything starting with a valid float, so if that doesn't match the input then update the field
-			dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
+			if (system !== undefined && system.x != null) dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
 		}
 	});
 
@@ -332,7 +487,7 @@ function updateCoords() {
 		var sys = $(this).find('input.system-name').val();
 		var dist = $(this).find('input.distance').val();
 		var syskey = this.getAttribute('system');
-		if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap))) {
+		if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].x == null)) {
 			systemData.distances.push({
 				system: sys,
 				distance: dist,
@@ -366,18 +521,23 @@ function updateCoords() {
 				}
 
 				var sys = systemsMap[nameKey];
-				var calcDist = eddist(sys, bestCandidate);
-				var status;
-				if (enteredDist - calcDist !== 0) {
-					status = '<span class="ui-icon ui-icon-alert inline-alert"></span>'+"Distance doesn't match";
-				} else {
-					status = '<span class="ui-icon ui-icon-check inline-check"></span>Ok';
-					goodRefs++;
-				}
-				if (sys.calculated) status += " (not FD system)";
+				if (sys.x != null) {
+					var calcDist = eddist(sys, bestCandidate);
+					var status;
+					if (enteredDist - calcDist !== 0) {
+						status = '<span class="ui-icon ui-icon-alert inline-alert"></span>'+"Distance doesn't match";
+					} else {
+						status = '<span class="ui-icon ui-icon-check inline-check"></span>Ok';
+						goodRefs++;
+					}
 
-				$(this).children("td:nth-child(3)").text(calcDist.toFixed(2))
-						.next().html(status);
+					if (sys.calculated) status += " (not FD system)";
+
+					$(this).children("td:nth-child(3)").text(calcDist.toFixed(2))
+							.next().html(status);
+				} else {
+					status = '<span class="ui-icon ui-icon-alert inline-alert"></span>'+"No coordinates";
+				}
 			}
 		});
 
@@ -385,7 +545,7 @@ function updateCoords() {
 				+"<br/>Better than next candidate(s) by "+(trilat.bestCount - trilat.nextBest)+" distances"
 				+"<br/>Inconsistent distances: "+(dists.length - trilat.bestCount));
 		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
-		$("#output").append('<br/>Local Systems:').append(getLocalSystems(bestCandidate)).append('<br/>');
+		getLocalSystems(bestCandidate);
 		
 		// update stored system data
 		setVector(systemData, bestCandidate);
@@ -401,7 +561,7 @@ function updateCoords() {
 			var sys = $(this).find('input.system-name').val();
 			var dist = $(this).find('input.distance').val();
 			var syskey = this.getAttribute('system');
-			if (sys.length > 0 && dist.length > 0 && !(syskey in systemsMap)) {
+			if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].x == null)) {
 				if (syskey !== nameKey(systemData.distances[i].system)) {
 					alert('Error: expected '+syskey+' but existing data has '+systemData.distances[i].system);
 				}
@@ -424,12 +584,61 @@ function updateCoords() {
 		}
 
 	} else if (dists.length > 0) {
-		$("#output").html("Coordinates: found "+(trilat.best ? trilat.best.length : 'no')+" potential candidates");
+		$('#output').html('Coordinates: found '+(trilat.best ? trilat.best.length : 'no')+' potential candidates');
+		if (trilat.best && trilat.best.length > 0) {
+			// get suggestions. we're looking for systems that diffentiate the best candidates
+			$('#output').append(' matching '+trilat.bestCount+' distances.<br>');
+				
+			// create a map of distances already used so we can skip them
+			var used = {};
+			$.each(trilat.distances, function() {
+				used[vectorToString(this)] = true;
+			});
+
+			// check each system looking for the systems that differentiate the largest number of candidates
+			var best = [];	// list of the best systems found
+			var bestNum = 0;	// number of candidates differentiated by best systems
+			var debug = 10;
+			$.each(systemsMap, function(key, s) {
+				if (s.x == null) return;	// unlocated systems are of no use
+				if (used[vectorToString(s)]) return;	// skip distances already used
+				
+				var dists = {};
+				var diffDists = 0;
+				$.each(trilat.best, function() {
+					var d = eddist(s, this);
+					if (!(d in dists)) {
+						dists[d] = 1;
+						diffDists++;
+					}
+				});
+				if (diffDists > bestNum) {
+					best = [s];
+					bestNum = diffDists;
+				} else if (diffDists === bestNum) {
+					best.push(s);
+				}
+			});
+
+			best.sort(function(a, b) {
+				return a.name.length - b.name.length;
+			});
+
+			$('#output').append('Best suggestions (will differentiate '+bestNum+' candidates): ');
+			for (var i = 0; i < best.length && i < 5; i++) {
+				if (i > 0) $('#output').append(', ');
+				$('<a href="#output">').text(best[i].name)
+					.click(addSystem)
+					.attr('system', nameKey(best[i].name))
+					.appendTo($('#output'));
+			}
+		}
+		
 		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
 		$('#ref-warning').show();
 	}
 	
-	if (expertMode && dists.length > 0) {
+	if (expertMode && systemData.distances.length > 0) {
 		updateJSON();
 		systemData.cansubmit = true;
 	}
@@ -473,34 +682,68 @@ function getRegionTable(trilat) {
 }
 
 function getLocalSystems(coords) {
-	var table = document.createElement('table');
-	var row = document.createElement('tr');
-	$('<th data-sort="string-ins">System</th>').appendTo(row);
-	$('<th data-sort="float">X</th>').appendTo(row);
-	$('<th data-sort="float">Y</th>').appendTo(row);
-	$('<th data-sort="float">Z</th>').appendTo(row);
-	$('<th data-sort="float">Distance</th>').appendTo(row);
-	$('<thead/>').append(row).appendTo(table);
-	var tbody = document.createElement('tbody');
-	table.appendChild(tbody);
+	$('#nearby-systems tbody').empty();
 
 	var locals = [];
 	$.each(systemsMap, function(key, val) {
-		locals.push({system:val, distance:eddist(val,coords)});
+		locals.push({system:val.name, distance:eddist(val,coords)});
 	});
+
+	// add any entered distances to un-located systems
+	$('#distances tr[system]').each(function() {
+		var system = systemsMap[this.getAttribute('system')];
+		if (system !== undefined && system.x != null) return;
+
+		var name = system ? system.name : $(this).find('input.system-name').val();
+		var d = parseFloat($(this).find('input.distance').val());
+		if (!isNaN(d)) {
+			locals.push({system: name, distance: d});
+		}
+	});
+
 	locals.sort(function(a,b) {return a.distance-b.distance;});
 
-	for (i = 0; i < 5 && i < locals.length; i++) {
-		row = document.createElement('tr');
-		$('<td>').text(locals[i].system.name).appendTo(row);
-		$('<td>').text(locals[i].system.x).appendTo(row);
-		$('<td>').text(locals[i].system.y).appendTo(row);
-		$('<td>').text(locals[i].system.z).appendTo(row);
-		$('<td>').text((locals[i].distance).toFixed(2)).appendTo(row);
-		tbody.appendChild(row);
+	for (i = 0; i < locals.length && locals[i].distance < 20; i++) {
+		$('<tr>')
+			.append($('<td>').text(locals[i].system))
+			.append($('<td>').text((locals[i].distance).toFixed(2)))
+			.appendTo($('#nearby-systems tbody'));
 	}
-	$(table).stupidtable().bind('aftertablesort', updateSortArrow);
-	return table;
+}
+
+function addUnfinished(cmdr) {
+	// get all the systems for the specified commander that don't have coordinates
+	var unfinished = {};
+	$.each(systemsMap, function(key, sys) {
+		if (sys.contributor === cmdr && sys.x == null) unfinished[key] = sys;
+	});
+
+	// remove any systems already in the table
+	$('#distances tr[system]').each(function() {
+		delete unfinished[this.getAttribute('system')];
+	});
+
+	// get a list of systems to add in the order they were created (we'll add only the most recently created systems)
+	var toAdd = Object.keys(unfinished);
+	toAdd.sort(function(a, b) {
+		a = unfinished[a];
+		a = a ? new Date(a.contributed.replace(' ','T')).getTime() : 0;
+		b = unfinished[b];
+		b = b ? new Date(b.contributed.replace(' ','T')).getTime() : 0;
+		return b - a;
+	});
+
+	toAdd.length = 20;	// don't want to add too many systems
+
+	// add the remaining systems to the table in alphabetical order
+	$.each(toAdd.sort(), function() {
+		var s = unfinished[this];
+		var tr = checkEmptyRow();
+		$(tr).find('input.system-name').val(s.name);
+		$(tr).attr('system', this);
+		checkEmptyRow();
+		$(tr).find('input.distance').focus();
+	});
 }
 
 </script>
@@ -510,6 +753,7 @@ function getLocalSystems(coords) {
 		<div style="float: right">
 			<label for="cmdr-name">Commander Name (optional): </label>
 			<input id="cmdr-name"/>
+			<button id="add-unfinished" disabled="true" style="display: none">Add Unfinished</button>
 		</div>
 		<label for="unknown-name">Name of new system: </label>
 		<input id="unknown-name"/>
@@ -521,6 +765,37 @@ function getLocalSystems(coords) {
 		<div id="no-name-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
 			<strong>Warning:</strong> Please enter a name for this system!</p>
+		</div>
+
+		<div style="clear:both"></div>
+
+		<div style="float: right; display: none">
+			<h3>Systems Entered</h3>
+			<table id="recent-systems">
+				<thead>
+					<tr>
+						<th data-sort="string-ins">System</th>
+						<th data-sort="int">Distances</th>
+						<th>TGC</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+
+		<div style="float: right; margin-left: 10px; margin-right: 10px">
+			<h3>Nearby Systems</h3>
+			<table id="nearby-systems">
+				<thead>
+					<tr>
+						<th data-sort="string-ins">System</th>
+						<th data-sort="int">Distance</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
 		</div>
 
 		<h3>Distances</h3>
@@ -547,17 +822,23 @@ function getLocalSystems(coords) {
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
 			<strong>Warning:</strong> Need more distances to reference systems!</p>
 		</div>
+
 		<h3>Calculated</h3>
-		<div id="output"></div>
+		<div id="output" style="clear:both"></div>
 		<button id="tgc-button" disabled="true">Submit to TGC</button>
 		<button id="done-button" disabled="true">Add to output only</button>
 		<button id="cancel-button">Cancel</button>
 		<br>
-		<h3>Output</h3>
-		<button id="toggle-log">Hide Log</button><button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
-		<pre id="log-output" style="height: 180px; overflow: auto"></pre>
-		<pre id="sql-output" style="display:none"></pre>
-		<pre id="json-output" style="display:none"></pre>
+
+		<div style="float:clear">
+			<h3>Output</h3>
+			<button id="toggle-log">Hide Log</button><button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
+			<button id="toggle-tgc">Show TGC Response</button>
+			<pre id="log-output" style="height: 180px; overflow: auto"></pre>
+			<pre id="sql-output" style="display:none"></pre>
+			<pre id="json-output" style="display:none"></pre>
+			<pre id="tgc-output" style="display:none"></pre>
+		</div>
 	</div>
 </body>
 </html>
