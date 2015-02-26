@@ -172,5 +172,6 @@ function logAppend(str) {
 
 // move to trilateration.js??
 function nameKey(n) {
+	if (!n) return n;
 	return $.trim(n.toLowerCase());
 }

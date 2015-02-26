@@ -285,7 +285,7 @@ function applyFixups() {
 						var newKey = nameKey(newVal);
 						var existing = systemsMap[newKey];
 						var dist = distancesMap[key];
-						if (existing) {
+						if (existing && newKey !== key) {
 							// merge into existing system
 							//console.log(s.name+' will be merged and deleted');
 							if (dist) {

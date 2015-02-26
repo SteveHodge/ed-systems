@@ -302,7 +302,6 @@ function getRegionTable(trilat) {
 	return table;
 }
 
-// TODO should include any unresolved systems with known distances
 function updateLocalSystems(coords) {
 	$('#local-systems tbody').empty();
 	if (coords == null || coords.x == null) return;
@@ -311,7 +310,7 @@ function updateLocalSystems(coords) {
 	$.each(systemsMap, function(key, val) {
 		if (val === coords) return;
 		if (val.x == null) return;
-		locals.push({system:val, distance:eddist(val, coords)});
+		locals.push({system:val.name, distance:eddist(val, coords)});
 	});
 
 	// add any entered distances to un-located systems
@@ -330,9 +329,9 @@ function updateLocalSystems(coords) {
 
 	for (i = 0; i < locals.length && locals[i].distance < 20; i++) {
 		$('<tr>')
-			.attr('system', nameKey(locals[i].system.name))
+			.attr('system', nameKey(locals[i].system))
 			.click(selectSystem)
-			.append($('<td>').text(locals[i].system.name))
+			.append($('<td>').text(locals[i].system))
 			.append($('<td>').text((locals[i].distance).toFixed(2)))
 			.appendTo('#local-systems tbody');
 	}
