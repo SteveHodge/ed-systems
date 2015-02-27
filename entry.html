@@ -569,6 +569,34 @@ function updateCoords() {
 			}
 		});
 		
+		// get suggestions. we're looking for systems that confirm the best candidate but not any of the next best candidates
+		// create a map of distances already used so we can skip them
+		var used = {};
+		$.each(trilat.distances, function() {
+			used[vectorToString(this)] = true;
+		});
+
+		// check each system to see if the distance to that system from the best candidate is different to the distance from each of the next best canddiates
+		var good = [];	// list of the good systems found
+		var debug = 10;
+		$.each(systemsMap, function(key, s) {
+			if (s.x == null) return;	// unlocated systems are of no use
+			if (used[vectorToString(s)]) return;	// skip distances already used
+
+			var bestDist = eddist(s, bestCandidate);
+
+			var bad = false;
+			$.each(trilat.next, function() {
+				if (eddist(s, this) === bestDist) {
+					bad = true;
+					return false;
+				}
+			});
+			if (!bad) good.push(s);	// good suggestion
+		});
+
+		showSuggestions(good, '<br>Best suggestions to improve margin of calculated location: ');
+		
 		updateJSON();
 		$("#sql-output").text(getSQL(systemData) + sqlOutput);
 
@@ -598,7 +626,6 @@ function updateCoords() {
 			// check each system looking for the systems that differentiate the largest number of candidates
 			var best = [];	// list of the best systems found
 			var bestNum = 0;	// number of candidates differentiated by best systems
-			var debug = 10;
 			$.each(systemsMap, function(key, s) {
 				if (s.x == null) return;	// unlocated systems are of no use
 				if (used[vectorToString(s)]) return;	// skip distances already used
@@ -620,18 +647,7 @@ function updateCoords() {
 				}
 			});
 
-			best.sort(function(a, b) {
-				return a.name.length - b.name.length;
-			});
-
-			$('#output').append('Best suggestions (will differentiate '+bestNum+' candidates): ');
-			for (var i = 0; i < best.length && i < 5; i++) {
-				if (i > 0) $('#output').append(', ');
-				$('<a href="#output">').text(best[i].name)
-					.click(addSystem)
-					.attr('system', nameKey(best[i].name))
-					.appendTo($('#output'));
-			}
+			showSuggestions(best, 'Best suggestions (will differentiate '+bestNum+' candidates): ');
 		}
 		
 		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
@@ -644,6 +660,36 @@ function updateCoords() {
 	}
 	$("#tgc-button").attr('disabled', systemData.name.length === 0 || !systemData.cansubmit);
 	$("#done-button").attr('disabled', systemData.name.length === 0 || !systemData.cansubmit);
+}
+
+function showSuggestions(best, caption) {
+	// if any of the best suggestions are in the distances table without distances then mark them
+	$("#distances tr[system]").each(function(idx,row) {
+		var dist = $(row).find('input.distance').val();
+		var syskey = $(row).attr('system');
+		if (syskey in systemsMap && dist.length === 0) {
+			$.each(best, function(i, s) {
+				if (systemsMap[syskey] === s) {
+					$(row).children('td:nth-child(4)').text('Suggested reference');
+					best.splice(i, 1);	// remove the suggestion
+					return false;
+				}
+			});
+		}
+	});
+
+	best.sort(function(a, b) {
+		return a.name.length - b.name.length;
+	});
+
+	$('#output').append(caption);
+	for (var i = 0; i < best.length && i < 5; i++) {
+		if (i > 0) $('#output').append(', ');
+		$('<a href="#output">').text(best[i].name)
+			.click(addSystem)
+			.attr('system', nameKey(best[i].name))
+			.appendTo($('#output'));
+	}
 }
 
 function getRegionTable(trilat) {
