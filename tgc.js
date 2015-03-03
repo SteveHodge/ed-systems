@@ -83,6 +83,11 @@ function addSystems(systems) {
 			systemsMap[key].cr = this.cr;
 			systemsMap[key].contributor = this.commandercreate ? this.commandercreate : '(unknown)';
 			systemsMap[key].contributed = this.createdate;
+			if ('tgcunlocated' in this) {
+				systemsMap[key].tgcunlocated = this.tgcunlocated;
+			} else {
+				delete systemsMap[key].tgcunlocated;
+			}
 			count++;
 		} else {
 			rejected++;
