@@ -30,6 +30,7 @@ var distancesMap;	// map of nameKey -> distance
 // set useCache = true for debugging. doesn't contact the server, just uses tgc*-raw.json files. also enables some debugging options
 // such as consistent timestamps in the output.
 var useCache = false;
+var doCoords = true;
 
 fetchData('Systems', 'GetSystems', function(data) {
 	systemsResp = data;
@@ -95,7 +96,7 @@ function findDistance(name1, name2, dist) {
 function processData() {
 	applyFixups();
 
-	checkCoords();
+	if (doCoords) checkCoords();
 	
 	checkNames();
 
@@ -126,68 +127,57 @@ function processData() {
 }
 
 function checkNames() {
-	var validSectors = [
-		"Alrai Sector", "Antliae Sector", "Aries Dark Region", "Arietis Sector", "Aucofs", "Aucoks",
-		"Bei Dou Sector", "Blanco 1 Sector", "Bleae Thaa", "Blu Ain", "Blu Euq", "Blu Thua", "Bug Sector", "Byoi Thua",
-		"California Sector", "Capricorni Sector", "Cephei Sector", "Cepheus Dark Region B Sector", "Ceti Sector", "Chraichooe", "Chraufao",
-		"Coalsack Sector", "Col 70 Sector", "Col 285 Sector", "Col 359 Sector", "Core Sys Sector", "Corona Austr. Dark Region", "Crucis Sector", 
-		"Drojao", "Dryeae Aec", "Elephant's Trunk Sector", "Eskimo Sector",
-		"Herculis Sector", "Hyades Sector", "Hydrae Sector", "Hypiae Brue", 
-		"IC 1396 Sector", "IC 2602 Sector", "IC 4604 Sector", "ICZ", "Iorasp", "Jastreb Sector",
-		"LBN 623 Sector", "Lyncis Sector", "Lupus Dark Region B Sector",
-		"M7 Sector", "Mel 22 Sector", "Musca Dark Region",
-		"NGC 2632 Sector", "NGC 3199 Sector", "NGC 6124 Sector", "NGC 6231 Sector", "NGC 6820 Sector", "NGC 7822 Sector", "North America Sector",
-		"Outorst", 
-		"Pegasi Sector", "Pipe (stem) Sector", "Piscium Sector", "Pleiades Sector", "Plaa Eurk", "Praea Euq", "Pru Euq", "Pru Eurk", "Puppis Sector",
-		"Rosette Sector", "R CrA Sector", "Running Man Sector",
-		"Sadr Region Sector", "Scorpii Sector", "Sharru Sector", "Shudun Sector", "Shui Wei Sector", "Sifi",
-		"Smojai", "Smojooe", "Stock 2 Sector", "Steph 1 Sector", "Struve's Lost Sector", "Synuefai", "Synuefe",
-		"Tascheter Sector", "Taurus Dark Region", "Tr 24 Sector", "Trianguli Sector", "Tucanae Sector",
-		"Witch Head Sector", "Wredguia", "Wregoe", "Yin Sector"
-	];
+	fs.readFile('validsectors.json', {encoding:'utf8'}, function(err, data) {
+		if (err) {
+			console.log('Error reading "validsectors.json": '+err);
+		} else {
+			var validSectors = JSON.parse(data);
 
-	var names = [];
-	var recapitalised = 0;
-	_.each(systems, function(s) {
-		if (s.name.match(/\s([a-z][a-z]-[a-z])\s/i)) {
-			var matches;
-			if (matches = s.name.match(/^(.*)\s+([a-z][a-z]-[a-z])\s+([a-f]\d+)(-\d+)?$/i)) {
-				var sector = _.find(validSectors, function(sector) {return sector.toLowerCase() === matches[1].toLowerCase();});
-				if (!sector) {
-					names.push('Bad Sector: '+s.name);
-				} else {
-					var corrected = sector + ' ' + matches[2].toUpperCase() + ' ' + matches[3].toLowerCase() + (matches[4] ? matches[4] : '');
-					if (corrected !== s.name) {
-						// rename system and any distances
-						s.name = corrected;
-						var key = nameKey(s.name);
-						var dist = distancesMap[key];
-						if (dist) {
-							dist.name = corrected;
-						}
-						_.each(distances, function(from) {
-							_.each(from.refs, function(to) {
-								if (nameKey(to.name) === key) {
-									to.name = corrected;
+			var names = [];
+			var recapitalised = 0;
+			_.each(systems, function(s) {
+				if (s.name.match(/\s([a-z][a-z]-[a-z])\s/i)) {
+					var matches;
+					if (matches = s.name.match(/^(.*)\s+([a-z][a-z]-[a-z])\s+([a-g]\d+)(-\d+)?$/i)) {
+						var sector = _.find(validSectors, function(sector) {return sector.toLowerCase() === matches[1].toLowerCase();});
+						if (!sector) {
+							names.push('Bad Sector: '+s.name);
+						} else {
+							var corrected = sector + ' ' + matches[2].toUpperCase() + ' ' + matches[3].toLowerCase() + (matches[4] ? matches[4] : '');
+							if (corrected !== s.name) {
+								// rename system and any distances
+								s.name = corrected;
+								var key = nameKey(s.name);
+								var dist = distancesMap[key];
+								if (dist) {
+									dist.name = corrected;
 								}
-							});
-						});
-						recapitalised++;
+								_.each(distances, function(from) {
+									_.each(from.refs, function(to) {
+										if (nameKey(to.name) === key) {
+											to.name = corrected;
+										}
+									});
+								});
+								recapitalised++;
+							}
+						}
+					} else {
+						// something else (probably a typo in sector or the last element
+						names.push("Regex Failed: '"+s.name+"'");
 					}
 				}
-			} else {
-				// something else (probably a typo in sector or the last element
-				names.push("Regex Failed: '"+s.name+"'");
-			}
+			});
+		
+			console.log('\n----- Bad Sector Names -----');
+			_.each(names.sort(), function(s) {
+				console.log(s);
+			});
+			console.log('\n----------');
+			console.log('Corrected capitalisation for '+recapitalised+' systems');
+
 		}
 	});
-
-	console.log('\n----- Bad Sector Names -----');
-	_.each(names.sort(), function(s) {
-		console.log(s);
-	});
-	console.log('\n----------');
-	console.log('Corrected capitalisation for '+recapitalised+' systems');
 }
 
 // TODO refactor "update system"
@@ -536,6 +526,7 @@ function checkCoords() {
 				s.coord[0] = located[key].x;
 				s.coord[1] = located[key].y;
 				s.coord[2] = located[key].z;
+				s.tgcunlocated = true;
 				if (s.cr < 2) s.cr = 2;
 				// need to update any coordinates in distances too:
 				_.each(distances, function(d) {
