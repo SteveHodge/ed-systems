@@ -29,7 +29,7 @@ var distancesMap;	// map of nameKey -> distance
 
 // set useCache = true for debugging. doesn't contact the server, just uses tgc*-raw.json files. also enables some debugging options
 // such as consistent timestamps in the output.
-var useCache = false;
+var useCache = true;
 var doCoords = true;
 
 fetchData('Systems', 'GetSystems', function(data) {
@@ -94,6 +94,8 @@ function findDistance(name1, name2, dist) {
 }
 
 function processData() {
+	removeDupeDists();
+
 	applyFixups();
 
 	if (doCoords) checkCoords();
@@ -126,58 +128,84 @@ function processData() {
 	writeFile('Distances', 'tgcdistances.json', distancesResp);
 }
 
-function checkNames() {
-	fs.readFile('validsectors.json', {encoding:'utf8'}, function(err, data) {
-		if (err) {
-			console.log('Error reading "validsectors.json": '+err);
-		} else {
-			var validSectors = JSON.parse(data);
+function removeDupeDists() {
+	var count = 0;
+	_.each(distances, function(s) {
+		var keys = {};
+		var toDel = [];
+		_.each(s.refs, function(d, i) {
+			var k = nameKey(d.name)+','+d.dist;
+			if (keys[k]) {
+				toDel.push(i);
+			} else {
+				keys[k] = true;
+			}
+		});
 
-			var names = [];
-			var recapitalised = 0;
-			_.each(systems, function(s) {
-				if (s.name.match(/\s([a-z][a-z]-[a-z])\s/i)) {
-					var matches;
-					if (matches = s.name.match(/^(.*)\s+([a-z][a-z]-[a-z])\s+([a-g]\d+)(-\d+)?$/i)) {
-						var sector = _.find(validSectors, function(sector) {return sector.toLowerCase() === matches[1].toLowerCase();});
-						if (!sector) {
-							names.push('Bad Sector: '+s.name);
-						} else {
-							var corrected = sector + ' ' + matches[2].toUpperCase() + ' ' + matches[3].toLowerCase() + (matches[4] ? matches[4] : '');
-							if (corrected !== s.name) {
-								// rename system and any distances
-								s.name = corrected;
-								var key = nameKey(s.name);
-								var dist = distancesMap[key];
-								if (dist) {
-									dist.name = corrected;
-								}
-								_.each(distances, function(from) {
-									_.each(from.refs, function(to) {
-										if (nameKey(to.name) === key) {
-											to.name = corrected;
-										}
-									});
-								});
-								recapitalised++;
-							}
+		// assumes toDel is already sorted, which it should be
+		_.each(toDel.reverse(), function(i) {
+			var d = s.refs.splice(i, 1);
+			//console.log(s.name+': deleted '+d[0].name+' at '+i);
+			count++;
+		});
+	});
+	console.log('Deleted '+count+' duplicate distances');
+}
+
+function checkNames() {
+	var data;
+
+	try {
+		data = fs.readFileSync('validsectors.json', {encoding:'utf8'});
+	} catch (err) {
+		console.log('Error reading "validsectors.json": '+err);
+		return;
+	}
+
+	var validSectors = JSON.parse(data);
+
+	var names = [];
+	var recapitalised = 0;
+	_.each(systems, function(s) {
+		if (s.name.match(/\s([a-z][a-z]-[a-z])\s/i)) {
+			var matches;
+			if (matches = s.name.match(/^(.*)\s+([a-z][a-z]-[a-z])\s+([a-g]\d+)(-\d+)?$/i)) {
+				var sector = _.find(validSectors, function(sector) {return sector.toLowerCase() === matches[1].toLowerCase();});
+				if (!sector) {
+					names.push('Bad Sector: '+s.name);
+				} else {
+					var corrected = sector + ' ' + matches[2].toUpperCase() + ' ' + matches[3].toLowerCase() + (matches[4] ? matches[4] : '');
+					if (corrected !== s.name) {
+						// rename system and any distances
+						s.name = corrected;
+						var key = nameKey(s.name);
+						var dist = distancesMap[key];
+						if (dist) {
+							dist.name = corrected;
 						}
-					} else {
-						// something else (probably a typo in sector or the last element
-						names.push("Regex Failed: '"+s.name+"'");
+						_.each(distances, function(from) {
+							_.each(from.refs, function(to) {
+								if (nameKey(to.name) === key) {
+									to.name = corrected;
+								}
+							});
+						});
+						recapitalised++;
 					}
 				}
-			});
-		
-			console.log('\n----- Bad Sector Names -----');
-			_.each(names.sort(), function(s) {
-				console.log(s);
-			});
-			console.log('\n----------');
-			console.log('Corrected capitalisation for '+recapitalised+' systems');
-
+			} else {
+				// something else (probably a typo in sector or the last element
+				names.push("Regex Failed: '"+s.name+"'");
+			}
 		}
 	});
+
+	console.log('\n----- Bad Sector Names -----');
+	_.each(names.sort(), function(s) {
+		console.log(s);
+	});
+	console.log('\n----------');
+	console.log('Corrected capitalisation for '+recapitalised+' systems');
 }
 
 // TODO refactor "update system"
@@ -225,7 +253,7 @@ function applyFixups() {
 							if (!newd.to) {
 								newd.from.refs.push(d.to);
 							} else {
-								console.log('Duplicate distance from '+newd.from.name+' to '+d.to.name+' ('+fix.dist+' Ly) - ignored');
+								//console.log('Duplicate distance from '+newd.from.name+' to '+d.to.name+' ('+fix.dist+' Ly) - ignored');
 							}
 						} else {
 							console.log("  Couldn't find new system "+newVal);
@@ -490,7 +518,7 @@ function checkCoords() {
 				}
 			}
 
-			if (isGoodTrilat(trilat)) {
+			if (isGoodTrilat(trilat, s.name)) {
 				// 4. add newly located systems to map from 1.
 				found++;
 				setVector(s, trilat.best[0]);
@@ -552,6 +580,7 @@ function checkCoords() {
 				var bad = 0;
 				var unknown = 0;
 				var onedp = 0;
+				var output = [];
 				for (var i = 0; i < located[key].distances.length; i++) {
 					// set coordinates if they haven't already been set
 					var otherkey = nameKey(located[key].distances[i].system);
@@ -569,7 +598,7 @@ function checkCoords() {
 								// seems to be a correct 1 dp distances (probably from the nav panel)
 								onedp++;
 							} else {
-								console.log('  Bad distance '+located[key].name+' to '+located[key].distances[i].system+': '+d+' should be '+calc);
+								output.push('  Bad distance '+located[key].name+' to '+located[key].distances[i].system+': '+d+' should be '+calc);
 								bad++;
 							}
 						}
@@ -578,13 +607,14 @@ function checkCoords() {
 					}
 				}
 
-				if (bad > 0) {
+				if (bad > 2) {
 					var txt = [];
 					if (bad > 0) txt.push(bad+' bad distances');
 					if (unknown > 0) txt.push(unknown+' unknown distances');
 					if (onedp > 0) txt.push(onedp+' matching one dp distances');
 					if (good > 0) txt.push(good+' good distances');
-					console.log(txt.join(', '));
+					console.log(s.name+': '+txt.join(', ')+':');
+					_.each(output, function(t) {console.log(t);} );
 				}
 			}
 
@@ -615,17 +645,17 @@ function checkCoords() {
 	console.log('Total located systems: '+located);
 }
 
-function isGoodTrilat(trilat) {
+function isGoodTrilat(trilat, debug) {
 	if (!('best' in trilat) || trilat.best.length !== 1) return false;	// no result or multiple equally good results
-//	if (trilat.best[0].x === -314.03125 && trilat.best[0].y === -205.375) {
-//		console.log('------------- HD 25508 --------------');
-//		console.log('  distances: '+trilat.distances.length+', best: '+trilat.bestCount+', next: '+trilat.nextBest);
-//		console.log('  best: '+vectorToString(trilat.best[0]));
-//		for (var i = 0; i < trilat.distances.length; i++) {
-//			console.log('  '+trilat.distances[i].system+' '+vectorToString(trilat.distances[i])+': '+trilat.distances[i].distance
-//				+' (calculated: '+eddist(trilat.best[0], trilat.distances[i])+')');
-//		}
-//	}
+	if (false && debug && (debug.toLowerCase() === 'mel 22 sector jo-o b7-0'|| debug === 'HIP 14769')) {
+		console.log('------------- '+debug+' --------------');
+		console.log('  distances: '+trilat.distances.length+', best: '+trilat.bestCount+', next: '+trilat.nextBest);
+		console.log('  best: '+vectorToString(trilat.best[0]));
+		for (var i = 0; i < trilat.distances.length; i++) {
+			console.log('  '+trilat.distances[i].system+' '+vectorToString(trilat.distances[i])+': '+trilat.distances[i].distance
+				+' (calculated: '+eddist(trilat.best[0], trilat.distances[i])+')');
+		}
+	}
 	if (trilat.distances.length >= 5 && trilat.bestCount - trilat.nextBest >= 2) return true;	// 5 distances with margin of at least 2 for best candidate
 	if (trilat.distances.length >= 4 && trilat.bestCount === trilat.distances.length) return true;	// 4 or more unanimous distances (we test all distances if there are less than 11 so this should be safe)
 	return false;
