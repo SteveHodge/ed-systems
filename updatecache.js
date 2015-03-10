@@ -29,7 +29,7 @@ var distancesMap;	// map of nameKey -> distance
 
 // set useCache = true for debugging. doesn't contact the server, just uses tgc*-raw.json files. also enables some debugging options
 // such as consistent timestamps in the output.
-var useCache = true;
+var useCache = false;
 var doCoords = true;
 
 fetchData('Systems', 'GetSystems', function(data) {
