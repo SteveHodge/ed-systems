@@ -601,5 +601,9 @@
    {"action": "update distance", "system1": "WREGOE KT-Q C18-2", "system2": "HIP 34707", "dist": 164.4, "changes": {"system1": "HR 2543"}},
 	{"action": "delete system", "name": "Kawa Atius"},
    {"action": "update system", "name": "HIP  9316", "changes": {"name": "HIP 9316"}},
-   {"action": "update system", "name": "Pandamonium", "changes": {"name": "Pandemonium"}}
+   {"action": "update system", "name": "Pandamonium", "changes": {"name": "Pandemonium"}},
+   {"action": "update system", "name": "Blanco 1 Sector JR-T b4-0", "changes": {"commandercreate": "RedWizzard"}},
+   {"action": "update system", "name": "Blanco 1 Sector LM-T b4-0", "changes": {"commandercreate": "RedWizzard"}},
+   {"action": "update system", "name": "Blanco 1 Sector JR-V c2-0", "changes": {"commandercreate": "RedWizzard"}},
+   {"action": "update system", "name": "Blanco 1 Sector KR-V c2-0", "changes": {"commandercreate": "RedWizzard"}}
 ]
