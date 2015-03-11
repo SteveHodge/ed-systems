@@ -10,8 +10,9 @@ function getTGCData(callback, wantDists, refDists) {
 		systemsMap = {};
 		addSystems(data.systems);
 		logAppend('Loaded tgcsystems.json: data up to '+data.date+'. Total number of systems: '+Object.keys(systemsMap).length+'\n');
-	}).fail(function() {
-		logAppend('Failed to read from tgcsystems.json\n');
+	}).fail(function(xhr, txt, err) {
+		logAppend('Failed to read from tgcsystems.json:\n');
+		logAppend(err.message+'\n');
 	}).always(function() {
 		// update with any additional data from the server
 		updateTGCData(
