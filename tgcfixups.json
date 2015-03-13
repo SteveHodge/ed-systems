@@ -605,5 +605,10 @@
    {"action": "update system", "name": "Blanco 1 Sector JR-T b4-0", "changes": {"commandercreate": "RedWizzard"}},
    {"action": "update system", "name": "Blanco 1 Sector LM-T b4-0", "changes": {"commandercreate": "RedWizzard"}},
    {"action": "update system", "name": "Blanco 1 Sector JR-V c2-0", "changes": {"commandercreate": "RedWizzard"}},
-   {"action": "update system", "name": "Blanco 1 Sector KR-V c2-0", "changes": {"commandercreate": "RedWizzard"}}
+   {"action": "update system", "name": "Blanco 1 Sector KR-V c2-0", "changes": {"commandercreate": "RedWizzard"}},
+   {"action": "update system", "name": "HOANDCAN", "changes": {"name": "Hoandcan"}},
+   {"action": "update system", "name": "ROSS 271", "changes": {"name": "Ross 271"}},
+   {"action": "update system", "name": "Synuefe ZH-P c25-2", "changes": {"name": "Synuefe ZP-H c25-2"}},
+   {"action": "update system", "name": "Haydes Sector SU-N b7-0", "changes": {"name": "Hyades Sector SU-N b7-0"}},
+   {"action": "update system", "name": "LFT 16653", "changes": {"name": "LFT 1653"}}
 ]

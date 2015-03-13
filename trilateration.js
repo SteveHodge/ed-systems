@@ -1,5 +1,5 @@
 var Region = function(center) {
-	var regionSize = 1;	// 1/32 Ly grid locations to search around candidate coordinate
+	var regionSize = 2;	// 1/32 Ly grid locations to search around candidate coordinate
 
 	this.origins = [center];
 
