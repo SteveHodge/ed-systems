@@ -1,5 +1,5 @@
 var Region = function(center) {
-	var regionSize = 2;	// 1/32 Ly grid locations to search around candidate coordinate
+	var regionSize = 1;	// 1/32 Ly grid locations to search around candidate coordinate
 
 	this.origins = [center];
 
@@ -332,6 +332,11 @@ function setVector(o, v) {
 	o.x = v.x;
 	o.y = v.y;
 	o.z = v.z;
+}
+
+function identicalVectors(v1, v2) {
+	if (!('x' in v1) || !('x' in v2)) return false;
+	return v1.x === v2.x && v1.y === v2.y && v1.z === v2.z;
 }
 
 // p1 and p2 are objects that have x, y, and z properties

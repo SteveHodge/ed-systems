@@ -476,15 +476,16 @@ function checkCoords() {
 	var toLocate = _.values(toLocateMap);
 
 	var found;
+	var totalFound = 0;
 	do {
 		found = 0;
-		var stillToDo = [];	// list of systems we still can't locate
-		console.log('To locate: '+toLocate.length);
+		console.log('To locate: '+(toLocate.length-totalFound));
 		var done = 0;
 		_.each(toLocate, function(s) {
+			var sysKey = nameKey(s.name);
 			done++;
 			if (!('distances' in s)) return;
-			if (s.name === 'Sagittarius A*') return;	// TODO temporarily skipping Sag A* as it takes a long time
+			if (sysKey === 'sagittarius a*') return;	// TODO temporarily skipping Sag A* as it takes a long time
 
 			readline.clearLine(process.stdout);
 			readline.cursorTo(process.stdout, 0);
@@ -497,17 +498,35 @@ function checkCoords() {
 			var newCoords = false;
 			for (var i = 0; i < s.distances.length; i++) {
 				var key = nameKey(s.distances[i].system);
-				if (!('x' in s.distances[i]) && (key in located)) {
-					setVector(s.distances[i], located[key]);
-					newCoords = true;
+				// if the target system is located and we either don't have the location recorded or the location has changed...
+				if (key in located && (!('x' in s.distances[i]) || !identicalVectors(s.distances[i], located[key]))) {
+					setVector(s.distances[i], located[key]);					// add coordinates for new/changed distance
+					if (sysKey in located) {
+						// already located - only retrilaterate if the new distance does not match
+						var result = checkDist(s, s.distances[i], s.distances[i].distance);
+						if (result.error !== 0) {
+							//if (!newCoords) console.log('\nFound bad distance for '+s.name+' to '+s.distances[i].system+', rechecking location');
+							newCoords = true;
+						}
+					} else {
+						// no location, we have new coords
+						newCoords = true;
+					}
+				}
+				if ('x' in s.distances[i] && !(key in located)) {
+					// remove coords as target system no longer has a location
+					console.log('\nTarget system for '+s.name+' to '+s.distances[i].system+' no longer has coords, rechecking location');
+					delete s.distances[i].x;
+					delete s.distances[i].y;
+					delete s.distances[i].z;
+					newCoords = true;	// need to relocate
 				}
 			}
 
 			if (!newCoords) {
-				stillToDo.push(s);
 				return;		// can skip trying to trilaterate in this pass if we didn't set new coordinates
 			}
-
+			
 			for (var i = 0; i < s.distances.length; i++) {
 				var key = nameKey(s.distances[i].system);
 				if ('x' in s.distances[i]) {
@@ -522,15 +541,17 @@ function checkCoords() {
 				// 4. add newly located systems to map from 1.
 				found++;
 				setVector(s, trilat.best[0]);
-				located[nameKey(s.name)] = s;
-			} else {
-				stillToDo.push(s);
+				located[sysKey] = s;
+			} else if (sysKey in located) {
+				// location is no longer good, remove it from located
+				delete located[sysKey];
+				console.log('\n'+s.name+' no longer has good trilateration');
 			}
 		});
-		toLocate = stillToDo;
 		readline.clearLine(process.stdout);
 		readline.cursorTo(process.stdout, 0);
 		console.log('-- pass complete, found '+found+' coordinates');
+		totalFound += found;
 	} while (found > 0);		// 5. repeat 3-4 until no new systems can be located
 
 	// 6. check that there no systems from systems data missing or missing coordinates
