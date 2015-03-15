@@ -24,62 +24,72 @@
 		}
 	</style>
 	<script>
-var renderer, scene, camera, refCloud, pointCloud;
+var renderer, scene, camera, pointCloud;
 var axes;
 
 var systems = [];
+var validSectors = [];
 
-var cmdrColors = ['gray', 'aqua', 'teal', 'red', 'maroon', 'blue', 'navy', 'lime', 'green', 'fuchsia', 'purple', 'orange', 'yellow', 'olive','white'];
-var cmdrColorMap = {};
+var sectorColors = ['white', 'gray', 'aqua', 'teal', 'red', 'maroon', 'blue', 'navy', 'lime', 'green', 'fuchsia', 'purple', 'orange', 'yellow', 'olive','white'];
+var sectorColorMap = {};
 
 $(document).ready(function () {
 	getTGCData(function() {
-		var contribMap = {};
+		$.getJSON('validsectors.json', function(data) {
+			validSectors = data;
 		
-		$.each(systemsMap, function(k, v) {
-			systems.push(v);
-			if (v.contributor in contribMap) {
-				contribMap[v.contributor].names++;
-				if (v.x != null) {
-					contribMap[v.contributor].coords++;
+			var sectorMap = {};
+		
+			$.each(systemsMap, function(k, s) {
+				if (!('x' in s) || s.x == null) return;
+				
+				var matches;
+				if (matches = s.name.match(/^(.*)\s+([a-z][a-z]-[a-z])\s+([a-g]\d+)(-\d+)?$/i)) {
+					var sector;
+					// find the sector, if any:
+					$.each(validSectors, function(i, sect) {
+						if (sect.toLowerCase() === matches[1].toLowerCase()) {
+							sector = sect;
+							return false;
+						}
+					});
+					if (!sector) return;
+
+					s.sector = sector;
+					systems.push(s);
+					if (sector in sectorMap) {
+						sectorMap[sector]++;
+					} else {
+						sectorMap[sector] = 1;
+					}
 				}
-			} else {
-				contribMap[v.contributor] = {names:0, coords:0};
-			}
-		});
+			});
 		
-		var contribCount = [];
-		$.each(contribMap, function(cmdr, contrib) {
-			contribCount.push({name: cmdr, names: contrib.names, coords: contrib.coords});
+			var sectorCount = [];
+			$.each(sectorMap, function(sect, count) {
+				sectorCount.push({sector: sect, count: count});
+			});
+			sectorCount.sort(function(a,b) {
+				if (b.count !== a.count) return b.count-a.count;
+				if (a.sector) return a.sector.localeCompare(b.sector);
+				return b.sector ? -1 : 0;
+			});
+		
+			var i = 0;
+			var rest = 0, restNames = 0;
+			$.each(sectorCount, function() {
+				if (i < sectorColors.length-1 && this.sector !== '(unknown)') {
+					$('<tr>')
+						.append($('<td>').width('1.5em').css('background',sectorColors[i]))
+						.append($('<td>').text(this.sector+': '+this.count))
+						.appendTo('#legend tbody');
+					sectorColorMap[this.sector] = sectorColors[i];
+					i++;
+				}
+			});
+	
+			init();
 		});
-		contribCount.sort(function(a,b) {
-			if (b.coords !== a.coords) return b.coords-a.coords;
-			if (b.names !== a.names) return b.names-a.names;
-			if (a.name) return a.name.localeCompare(b.name);
-			return b.name ? -1 : 0;
-		});
-
-		var i = 0;
-		var rest = 0, restNames = 0;
-		$.each(contribCount, function() {
-			if (i < cmdrColors.length-1 && this.name !== '(unknown)') {
-				$('<tr>')
-					.append($('<td>').width('1.5em').css('background',cmdrColors[i]))
-					.append($('<td>').text(this.name+': '+this.coords+' ('+this.names+')'))
-					.appendTo('#legend tbody');
-				cmdrColorMap[this.name] = cmdrColors[i];
-				i++;
-			} else {
-				rest += this.coords;
-				restNames += this.names;
-			}
-		});
-		$('<tr>')
-			.append($('<td>').width('1.5em').css('background',cmdrColors[i]))
-			.append($('<td>').text('others: '+rest+' ('+restNames+')'))
-			.appendTo('#legend tbody');
-
-		init();
 	});
 });
 	
@@ -111,7 +121,7 @@ function init() {
 	controls.addEventListener( 'change', render );
 
 	var refMaterial = new THREE.PointCloudMaterial({
-		color: cmdrColors[0],
+		color: sectorColors[0],
 //		vertexColors: THREE.VertexColors,
 		size: 4,
 		sizeAttenuation: false,
@@ -132,21 +142,12 @@ function init() {
 	});
 	var geometry = new THREE.Geometry();
 
-	$.each(systems, function(i,v){
-		if (v.calculated) {
-			geometry.vertices.push(new THREE.Vector3( v.x, v.y, -v.z ));
-			geometry.colors.push(getColor(v));
-		} else {
-			refGeometry.vertices.push(new THREE.Vector3( v.x, v.y, -v.z ));
+	$.each(systems, function(i,s){
+		if (s.sector in sectorColorMap) {
+			geometry.vertices.push(new THREE.Vector3( s.x, s.y, -s.z ));
+			geometry.colors.push(new THREE.Color(sectorColorMap[s.sector]));
 		}
-//		var c = new THREE.Color();
-//    c.setHSL( Math.random(), 1.0, 0.5 );
-//		geometry.colors.push(c);
 	});
-
-	refCloud = new THREE.PointCloud(refGeometry, refMaterial);
-	refCloud.sortParticles = true;
-	scene.add(refCloud);
 
 	pointCloud = new THREE.PointCloud(geometry, material);
 	pointCloud.sortParticles = true;
@@ -171,32 +172,7 @@ function init() {
 	axes = new THREE.Line(geometry, material);
 	scene.add(axes);
 
-//	var redA = true;
-//	$('#switch-button').click(function() {
-//		redA = !redA;
-//		$.each(systems, function(i, v) {
-//			if ((v.name.substr(0,1) === 'A') === redA) {
-//				geometry.colors[i] = new THREE.Color(0xff0000);
-//			} else {
-//				geometry.colors[i] = new THREE.Color(0xffffff);
-//			}
-//		});
-//	});
-
-	refCloud.visible = $('#show-refs').prop('checked');
-	$('#show-refs').change(function() {
-		refCloud.visible = this.checked;
-	});
-
 	animate();
-}
-
-function getColor(s) {
-//	if (s.calculated) return new THREE.Color(0xffffff);
-//	return new THREE.Color(0xff0000);
-	var c = cmdrColorMap[s.contributor];
-	if (!c) c = cmdrColors[cmdrColors.length-1];
-	return new THREE.Color(c);
 }
 
 function animate() {
@@ -207,9 +183,6 @@ function animate() {
 
 function render() {
 	if ($('#autorotate').prop('checked')){
-		refCloud.rotation.x += 0.005;
-		refCloud.rotation.y += 0.005;
-		
 		pointCloud.rotation.x += 0.005;
 		pointCloud.rotation.y += 0.005;
 
@@ -223,9 +196,8 @@ function render() {
 	</script>
 </head>
 <body>
-	<div id="info">ED Known Systems<br>Left mouse: rotate - Right mouse: pan - Mouse wheel: zoom<br>
+	<div id="info">ED Known Sectors<br>Left mouse: rotate - Right mouse: pan - Mouse wheel: zoom<br>
 		<input type="checkbox" id="autorotate">Animate
-		<input type="checkbox" id="show-refs" checked>Show FD Supplied
 		<!--<input type="button" value="Switch" id="switch-button">-->
 	</div>
 	<div id="legend" style="position: absolute">

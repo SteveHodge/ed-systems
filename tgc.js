@@ -45,7 +45,7 @@ function addDistances(distances, refDists) {
 			console.log('Unknown system '+this.name+' in distance data');
 			return;
 		}
-		$.each(this.refs, function() {
+		$.each(this.refs, function(dist) {
 			var s2key = nameKey(this.name);
 			if (!(s2key in systemsMap)) {
 				console.log('Unknown system '+this.name+' in distance data');
@@ -54,13 +54,29 @@ function addDistances(distances, refDists) {
 			count++;
 			if (systemsMap[s1key].calculated || refDists) {
 				if (!('distances' in systemsMap[s1key])) systemsMap[s1key].distances = [];
-				// TODO probably should check for duplicates
-				systemsMap[s1key].distances.push({system: systemsMap[s2key].name, distance: this.dist, creator: this.commandercreate, created: this.createdate});
+				var found = false;
+				$.each(systemsMap[s1key].distances, function() {
+					if (this.name === systemsMap[s2key].name && this.dist === dist.dist) {
+						found = true;
+						return false;
+					}
+				});
+				if (!found) {
+					systemsMap[s1key].distances.push({system: systemsMap[s2key].name, distance: this.dist, creator: this.commandercreate, created: this.createdate});
+				}
 			}
 			if (systemsMap[s2key].calculated || refDists) {
 				if (!('distances' in systemsMap[s2key])) systemsMap[s2key].distances = [];
-				// TODO probably should check for duplicates
-				systemsMap[s2key].distances.push({system: systemsMap[s1key].name, distance: this.dist, creator: this.commandercreate, created: this.createdate});
+				var found = false;
+				$.each(systemsMap[s2key].distances, function() {
+					if (this.name === systemsMap[s1key].name && this.dist === dist.dist) {
+						found = true;
+						return false;
+					}
+				});
+				if (!found) {
+					systemsMap[s2key].distances.push({system: systemsMap[s1key].name, distance: this.dist, creator: this.commandercreate, created: this.createdate});
+				}
 			}
 		});
 	});

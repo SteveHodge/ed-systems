@@ -128,7 +128,7 @@ function checkEmptyRow() {
 }
 
 function addSystemRow() {
-	var tr = $('<tr><td><input class="system-name"></td><td><input class="distance" size="8"></td><td/><td/><td/><td/></tr>')
+	var tr = $('<tr><td><input class="system-name"></td><td/><td/><td/><td><input class="distance" size="8"></td><td/><td/><td/><td/></tr>')
 		.appendTo('#distances tbody');
 	tr.find('input').change(updateCoords);
 	tr.find('input.system-name')
@@ -146,8 +146,8 @@ function updateTrilateration() {
 			var $tr = addSystemRow();
 			$tr.find('input.system-name').val(this.system);
 			$tr.find('input.distance').val(this.distance);
-			$tr.children("td:nth-child(5)").text(this.created);
-			$tr.children("td:nth-child(6)").text(this.creator);
+			$tr.children("td:nth-child(8)").text(this.created);
+			$tr.children("td:nth-child(9)").text(this.creator);
 		});
 
 		updateCoords();
@@ -163,8 +163,16 @@ function updateCoords() {
 	$("#distances input.system-name").each(function() {
 		var n = nameKey(this.value);
 		if (n.length > 0) {
-			$(this).parentsUntil('table','tr').attr('system', n);
-			if ((n in systemsMap) && systemsMap[n].name !== this.value) $(this).val(systemsMap[n].name);
+			var $tr = $(this).parentsUntil('table','tr');
+			$tr.attr('system', n);
+			if (n in systemsMap) {
+				var s = systemsMap[n];
+				if (s.name !== this.value) $(this).val(s.name);	// update name if the capitalisation is different
+				// update coords:
+				$tr.children("td:nth-child(2)").text(s.x);
+				$tr.children("td:nth-child(3)").text(s.y);
+				$tr.children("td:nth-child(4)").text(s.z);
+			}
 		}
 	});
 
@@ -185,7 +193,7 @@ function updateCoords() {
 	});
 
 	// reset the calculated distances and errors.
-	$("#distances tr:has(input.system-name) td:nth-child(3)").text("").next().text("");
+	$("#distances tr:has(input.system-name) td:nth-child(6)").text("").next().text("");
 	$("#output").html("");
 
 	// TODO trilateration needs to be moved to timer callback
@@ -217,7 +225,7 @@ function updateCoords() {
 					if (enteredDist.length > 0) {
 						var nameKey = this.getAttribute('system');
 						if (!(nameKey in systemsMap)) {
-							$(this).children("td:nth-child(3)").text("")
+							$(this).children("td:nth-child(6)").text("")
 									.next().html('<span class="ui-icon ui-icon-alert inline-alert"></span>Unknown system');
 							return;
 						}
@@ -239,7 +247,7 @@ function updateCoords() {
 						}
 						if (!sys.calculated) status += " (ref)";
 			
-						$(this).children("td:nth-child(3)").text(sys.x == null ? '' : calcDist.toFixed(2)).next().html(status);
+						$(this).children("td:nth-child(6)").text(sys.x == null ? '' : calcDist.toFixed(2)).next().html(status);
 					}
 				});
 
@@ -383,6 +391,9 @@ function selectSystem() {
 			<thead>
 				<tr>
 					<th data-sort="string-ins">System</th>
+					<th data-sort="float">X</th>
+					<th data-sort="float">Y</th>
+					<th data-sort="float">Z</th>
 					<th data-sort="optfloat">Distance</th>
 					<th data-sort="optfloat">Calculated</th>
 					<th data-sort="string-ins" style="width:12em">Status</th>

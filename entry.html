@@ -696,6 +696,7 @@ function showSuggestions(best, caption) {
 
 function getRegionTable(trilat) {
 	var table = document.createElement('table');
+	if (!trilat.regions);
 	var row = document.createElement('tr');
 	$('<th data-sort="string">Corner 1</th>').appendTo(row);
 	$('<th data-sort="string">Corner 2</th>').appendTo(row);
@@ -723,6 +724,14 @@ function getRegionTable(trilat) {
 		$('<td>').text(this.best.length).appendTo(row);
 		$('<td>').text(this.nextBest).appendTo(row);
 		tbody.appendChild(row);
+
+		if (this.minx <= 25.21875 && this.maxx >= 25.21875
+			&& this.miny <= -20.90625 && this.maxy >= -20.90625
+			&& this.minz <= 25899.96875 && this.maxz >= 25899.96875) {
+				row.className = 'error';
+				console.log(row.className);
+		}
+
 	});
 
 	$(table).stupidtable().bind('aftertablesort', updateSortArrow);
@@ -846,46 +855,48 @@ function addUnfinished(cmdr) {
 			</table>
 		</div>
 
-		<h3>Distances</h3>
-		<table id="distances">
-			<thead>
-				<tr>
-					<th data-sort="string-ins" data-sort-desc="string-ins">System</th>
-					<th>Distance</th>
-					<th data-sort="optfloat">Calculated</th>
-					<th data-sort="optfloat" style="width:20em">Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr><td><input class="system-name" value="Sirius"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Privir"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Arug"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Nuwach"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Blende"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Zhuar"></td><td><input class="distance"></td><td/><td/></tr>
-				<tr><td><input class="system-name" value="Bastana"></td><td><input class="distance"></td><td/><td/></tr>
-			</tbody>
-		</table>
-		<div id="ref-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
-			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-			<strong>Warning:</strong> Need more distances to reference systems!</p>
-		</div>
-
-		<h3>Calculated</h3>
-		<div id="output" style="clear:both"></div>
-		<button id="tgc-button" disabled="true">Submit to TGC</button>
-		<button id="done-button" disabled="true">Add to output only</button>
-		<button id="cancel-button">Cancel</button>
-		<br>
-
-		<div style="float:clear">
-			<h3>Output</h3>
-			<button id="toggle-log">Hide Log</button><button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
-			<button id="toggle-tgc">Show TGC Response</button>
-			<pre id="log-output" style="height: 180px; overflow: auto"></pre>
-			<pre id="sql-output" style="display:none"></pre>
-			<pre id="json-output" style="display:none"></pre>
-			<pre id="tgc-output" style="display:none"></pre>
+		<div style="float: left">
+			<h3>Distances</h3>
+			<table id="distances">
+				<thead>
+					<tr>
+						<th data-sort="string-ins" data-sort-desc="string-ins">System</th>
+						<th>Distance</th>
+						<th data-sort="optfloat">Calculated</th>
+						<th data-sort="optfloat" style="width:20em">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr><td><input class="system-name" value="Sirius"></td><td><input class="distance"></td><td/><td/></tr>
+					<tr><td><input class="system-name" value="Privir"></td><td><input class="distance"></td><td/><td/></tr>
+					<tr><td><input class="system-name" value="Arug"></td><td><input class="distance"></td><td/><td/></tr>
+					<tr><td><input class="system-name" value="Nuwach"></td><td><input class="distance"></td><td/><td/></tr>
+					<tr><td><input class="system-name" value="Blende"></td><td><input class="distance"></td><td/><td/></tr>
+					<tr><td><input class="system-name" value="Zhuar"></td><td><input class="distance"></td><td/><td/></tr>
+					<tr><td><input class="system-name" value="Bastana"></td><td><input class="distance"></td><td/><td/></tr>
+				</tbody>
+			</table>
+			<div id="ref-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
+				<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+				<strong>Warning:</strong> Need more distances to reference systems!</p>
+			</div>
+	
+			<h3>Calculated</h3>
+			<div id="output" style="clear:both"></div>
+			<button id="tgc-button" disabled="true">Submit to TGC</button>
+			<button id="done-button" disabled="true">Add to output only</button>
+			<button id="cancel-button">Cancel</button>
+			<br>
+	
+			<div>
+				<h3>Output</h3>
+				<button id="toggle-log">Hide Log</button><button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
+				<button id="toggle-tgc">Show TGC Response</button>
+				<pre id="log-output" style="height: 180px; overflow: auto"></pre>
+				<pre id="sql-output" style="display:none"></pre>
+				<pre id="json-output" style="display:none"></pre>
+				<pre id="tgc-output" style="display:none"></pre>
+			</div>
 		</div>
 	</div>
 </body>
