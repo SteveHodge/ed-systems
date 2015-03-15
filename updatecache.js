@@ -27,9 +27,11 @@ var distances;	// distances array (= distancesResp.distances)
 var systemsMap;	// map of nameKey -> system
 var distancesMap;	// map of nameKey -> distance
 
-// set useCache = true for debugging. doesn't contact the server, just uses tgc*-raw.json files. also enables some debugging options
-// such as consistent timestamps in the output.
-var useCache = false;
+var useCache = false;		// set useCache = true for debugging. doesn't contact the server, just uses tgc*-raw.json files
+var timestamp = (new Date()).toISOString();
+timestamp = timestamp.substr(0,10) + ' ' + timestamp.substr(11,8);
+//timestamp = '2015-02-03 00:00:00';	// force timestamp so diffs are cleaner
+var updater = 'RW Correction';
 var doCoords = true;
 
 fetchData('Systems', 'GetSystems', function(data) {
@@ -210,11 +212,6 @@ function checkNames() {
 
 // TODO refactor "update system"
 function applyFixups() {
-	var timestamp = (new Date()).toISOString();
-	timestamp = timestamp.substr(0,10) + ' ' + timestamp.substr(11,8);
-	if (useCache) timestamp = '2015-02-03 00:00:00';	// force timestamp so diffs are cleaner
-	var updater = 'RW Correction';
-
 	// apply fixups (from tgcfixups.json)
 	var fixes;
 	try {
