@@ -27,7 +27,7 @@ var distances;	// distances array (= distancesResp.distances)
 var systemsMap;	// map of nameKey -> system
 var distancesMap;	// map of nameKey -> distance
 
-var useCache = false;		// set useCache = true for debugging. doesn't contact the server, just uses tgc*-raw.json files
+var useCache = true;		// set useCache = true for debugging. doesn't contact the server, just uses tgc*-raw.json files
 var timestamp = (new Date()).toISOString();
 timestamp = timestamp.substr(0,10) + ' ' + timestamp.substr(11,8);
 //timestamp = '2015-02-03 00:00:00';	// force timestamp so diffs are cleaner
@@ -100,6 +100,8 @@ function processData() {
 
 	applyFixups();
 
+	removeDupeDists();	// TODO shouldn't need to run twice but applyFixups doesn't check for duplicate distances when changing the distance (it probably should)
+
 	if (doCoords) checkCoords();
 	
 	checkNames();
@@ -154,6 +156,23 @@ function removeDupeDists() {
 	console.log('Deleted '+count+' duplicate distances');
 }
 
+function renameSystem(system, corrected) {
+	// rename system and any distances
+	system.name = corrected;
+	var key = nameKey(system.name);
+	var dist = distancesMap[key];
+	if (dist) {
+		dist.name = corrected;
+	}
+	_.each(distances, function(from) {
+		_.each(from.refs, function(to) {
+			if (nameKey(to.name) === key) {
+				to.name = corrected;
+			}
+		});
+	});
+}
+
 function checkNames() {
 	var data;
 
@@ -166,45 +185,89 @@ function checkNames() {
 
 	var validSectors = JSON.parse(data);
 
-	var names = [];
+	var validPrefix = [
+		"Feige", "Gliese", "Groombridge", "Kim", "Kruger", "Lacaille", "Lalande", "Lowne", "Luhman",
+		"Luyten", "Melotte 20", "Ross", "Smethells", "Stein", "StHA", "StKM", "Struve", "Wo", "Wolf"
+	];
+	var validNames = [
+		"SADR", "2MASS J07464256+2000321 A", "2MASS J16543745-4147071", "2MASS J19444913+2401342",
+		"2MASS J21371591+5726591", "BD+40 2905A", "BD+48 1845B", "BD-19 3629A", "CSI-21-22270",
+		"G146-60", "LDS 1503A", "MJD95 J194518.34+240059.7", "MJD95 J194547.54+240600.4", "NN 3086 A",
+		"SDSS J1416+1348", "VESPER-M4", "WISE J000517", "WISE J004945", "WISE J0254+0223"
+	];
+
+	var names = {};
 	var recapitalised = 0;
+	var matches;
+	var fixedCatalogs = {};
+	console.log('\n----- Suspect Names -----');
 	_.each(systems, function(s) {
 		if (s.name.match(/\s([a-z][a-z]-[a-z])\s/i)) {
-			var matches;
+			// a generated name
 			if (matches = s.name.match(/^(.*)\s+([a-z][a-z]-[a-z])\s+([a-g]\d+)(-\d+)?$/i)) {
-				var sector = _.find(validSectors, function(sector) {return sector.toLowerCase() === matches[1].toLowerCase();});
+				var sectMatch = matches[1].toLowerCase();
+				var sector = _.find(validSectors, function(sector) {return sector.toLowerCase() === sectMatch;});
 				if (!sector) {
-					names.push('Bad Sector: '+s.name);
+					if (sectMatch in names) {
+						names[sectMatch]++;
+					} else {
+						names[sectMatch] = 1;
+					}
 				} else {
 					var corrected = sector + ' ' + matches[2].toUpperCase() + ' ' + matches[3].toLowerCase() + (matches[4] ? matches[4] : '');
 					if (corrected !== s.name) {
-						// rename system and any distances
-						s.name = corrected;
-						var key = nameKey(s.name);
-						var dist = distancesMap[key];
-						if (dist) {
-							dist.name = corrected;
-						}
-						_.each(distances, function(from) {
-							_.each(from.refs, function(to) {
-								if (nameKey(to.name) === key) {
-									to.name = corrected;
-								}
-							});
-						});
+						renameSystem(s, corrected);
 						recapitalised++;
 					}
 				}
 			} else {
-				// something else (probably a typo in sector or the last element
-				names.push("Regex Failed: '"+s.name+"'");
+				// something else (probably a typo in sector or the last element)
+				console.log("Regex Failed: '"+s.name+"'");
+			}
+		} else if (matches = s.name.match(/^(.*)\s+(\d+([+-]\d+)*)$/i)) {
+			// ends in a number - probably a catalog name
+			var found = false;
+			
+			_.each(validPrefix, function(prefix) {
+				if (matches[1].toLowerCase() === prefix.toLowerCase()) {
+					if (matches[1] !== prefix) {
+						renameSystem(s, prefix+' '+matches[2]);
+						recapitalised++;
+					}
+					found = true;
+				}
+			});
+			if (!found && matches[1] !== matches[1].toUpperCase()) {
+				renameSystem(s, s.name.toUpperCase());
+				recapitalised++;
+				if (matches[1].toUpperCase() in fixedCatalogs) {
+					fixedCatalogs[matches[1].toUpperCase()]++;
+				} else {
+					fixedCatalogs[matches[1].toUpperCase()] = 1;
+				}
+			}
+			
+		} else {
+			// if it's all caps or all lowercase it's probably wrong
+			if (!s.name.match(/[A-Z]/)) {
+				if (validNames.indexOf(s.name) === -1) {
+					console.log('No caps: '+s.name);
+				}
+			} else if (!s.name.match(/[a-z]/)){
+				if (validNames.indexOf(s.name) === -1) {
+					console.log('All caps: '+s.name);
+				}
 			}
 		}
 	});
 
+	console.log('');
+	_.each(Object.keys(fixedCatalogs).sort(), function(s) {
+		console.log('Fixed Catalog: "'+s+'", '+fixedCatalogs[s]+' instances');
+	});
 	console.log('\n----- Bad Sector Names -----');
-	_.each(names.sort(), function(s) {
-		console.log(s);
+	_.each(Object.keys(names).sort(), function(s) {
+		console.log('Bad Sector: "'+s+'", '+names[s]+' instances');
 	});
 	console.log('\n----------');
 	console.log('Corrected capitalisation for '+recapitalised+' systems');
@@ -566,7 +629,7 @@ function checkCoords() {
 					//console.log(s.name+': coords missing in TGC, calculated '+vectorToString(located[key]));
 					extraLocated++;
 				} else {
-					console.log(s.name+': coords different: TGC ('+s.coord[0]+', '+s.coord[1]+', '+s.coord[2]+'), calculated '+vectorToString(located[key]));
+					//console.log(s.name+': coords different: TGC ('+s.coord[0]+', '+s.coord[1]+', '+s.coord[2]+'), calculated '+vectorToString(located[key]));
 				}
 				updated++;
 				s.coord[0] = located[key].x;
@@ -644,7 +707,7 @@ function checkCoords() {
 				}
 			}
 		} else {
-			console.log(s.name+': system not known from distances');
+			//console.log(s.name+': system not known from distances');
 		}
 	});
 

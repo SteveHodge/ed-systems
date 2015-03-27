@@ -32,6 +32,12 @@ div.table-div {
 	overflow:auto;
 	border:1px solid black;
 }
+input.system-name {
+	width: 15em;
+}
+input.distance {
+	width: 5em;
+}
 .inline-alert {
 	float: left;
 	margin-right: .3em;
