@@ -784,5 +784,8 @@
    {"action": "update system", "name": "ALYOTO", "changes": {"name": "Alyuto"}},
    {"action": "update system", "name": "ARIMA", "changes": {"name": "Arima"}},
    {"action": "delete system", "name": "crucis sector jc"},
-   {"action": "delete system", "name": "suchisha"}
+   {"action": "delete system", "name": "suchisha"},
+   {"action": "update system", "name": "LHS 3303", "changes": {"name": "LB 3303"}},
+   {"action": "update distance", "system1": "Maduma", "system2": "HIP 74023", "dist": 8.62, "changes": {"system2": "HIP 72043"}},
+   {"action": "update system", "name": "Maduma", "changes": {"name": "Muduma"}}
 ]
