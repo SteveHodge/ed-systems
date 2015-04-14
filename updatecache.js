@@ -22,19 +22,36 @@ include('./trilateration.js');
 
 var systemsResp;	// original response
 var systems;	// systems array (= systemsResp.systems)
+var systemsMap;	// map of nameKey -> system
 var distancesResp;	// orginal response
 var distances;	// distances array (= distancesResp.distances)
-var systemsMap;	// map of nameKey -> system
 var distancesMap;	// map of nameKey -> distance
 
-var useCache = true;		// set useCache = true for debugging. doesn't contact the server, just uses tgc*-raw.json files
+var useCache = false;		// set useCache = true for debugging. doesn't contact the server, just uses tgc*-raw.json files
 var timestamp = (new Date()).toISOString();
 timestamp = timestamp.substr(0,10) + ' ' + timestamp.substr(11,8);
 //timestamp = '2015-02-03 00:00:00';	// force timestamp so diffs are cleaner
 var updater = 'RW Correction';
 var doCoords = true;
 
-fetchData('Systems', 'GetSystems', function(data) {
+var distancesDataset = {
+	name: 'Distances',
+	cache: 'tgcdistances-raw.json',
+	api: 'GetDistances',
+	root: 'distances',
+	usecache: true	// if true then will use the data in the cache file and only fetch newer data from the server (provided useCache is false)
+};
+
+var systemsDataset = {
+	name: 'Systems',
+	cache: 'tgcsystems-raw.json',
+	api: 'GetSystems',
+	root: 'systems',
+	usecache: false	// if true then will use the data in the cache file and only fetch newer data from the server (provided useCache is false)
+};
+
+
+fetchData(systemsDataset, function(data) {
 	systemsResp = data;
 	systemsMap = {};
 	var toRemove = [];
@@ -58,7 +75,7 @@ fetchData('Systems', 'GetSystems', function(data) {
 	if (distances) processData();
 });
 
-fetchData('Distances', 'GetDistances', function(data) {
+fetchData(distancesDataset, function(data) {
 	distancesResp = data;
 	distancesMap = {};
 	_.each(data.distances, function(s) {
@@ -746,52 +763,99 @@ function nameKey(n) {
 	return n.toLowerCase().trim();
 }
 
-function fetchData(name, path, callback) {
-	if (useCache) {
-		fetchCachedData(name, path, callback);
+function fetchData(dataset, callback) {
+	var updated = '2014-09-09 12:13:14Z';
+	if (useCache || dataset.usecache) {
+		fs.readFile(dataset.cache, {encoding:'utf8'}, function(err, d) {
+			var data = {};
+			if (err) {
+				console.log(dataset.name+' cache: '+err);
+			} else {
+				data = JSON.parse(d);
+				var fetchDate = new Date(data.date.substr(0,10)+'T'+data.date.substr(11,8)+'Z');
+				fetchDate.setTime(fetchDate.getTime()-1000*60*60*24);	// subtract 1 day
+				updated = fetchDate.toISOString();
+				updated = updated.substr(0,10)+' '+updated.substr(11,8)+'Z';
+				console.log(dataset.name+' cache: ok');
+			}
+			if (!useCache) {
+				// update with newer data from server
+				fetchTGCData(dataset, updated, function(d) {
+					// merge d into data
+					data.ver = d.ver;
+					data.date = d.date;
+					data.status = d.status;
+					_.each(d[dataset.root], function(el) {
+						// try to find the element in data
+						var existing = _.find(data[dataset.root], function(e) {return e.name === el.name && e.id === el.id;});
+						if (existing) {
+							// replace the existing element's details:
+							existing.coord = el.coord;
+							existing.commandercreate = el.commandercreate;
+							existing.createdate = el.createdate;
+							existing.commanderupdate = el.commanderupdate;
+							existing.updatedate = el.updatedate;
+							if ('cr' in el) existing.cr = el.cr;
+							if ('refs' in el) {
+								// merge the distance list
+								_.each(el.refs, function(newdist) {
+									var olddist = _.find(existing.refs, function(dist) {return dist.name === newdist.name && dist.id === newdist.id && dist.dist === newdist.dist;});
+									if (olddist) {
+										// replace the distance details
+										olddist.coord = newdist.coord;
+										olddist.cr = newdist.cr;
+										olddist.commandercreate = newdist.commandercreate;
+										olddist.createdate = newdist.createdate;
+										olddist.commanderupdate = newdist.commanderupdate;
+										olddist.updatedate = newdist.updatedate;								
+									} else {
+										// add the new distance
+										existing.refs.push(newdist);
+									}
+								});
+							}
+						} else {
+							// append new element to data
+							data[dataset.root].push(el);
+						}
+					});
+					data[dataset.root].sort(function(a,b) {return a.name.toLowerCase().localeCompare(b.name.toLowerCase());});
+					callback(data);
+				});
+			} else {
+				callback(data);
+			}
+		});
 	} else {
-		fetchTGCData(name, path, callback);
+		fetchTGCData(dataset, updated, callback);
 	}
 }
 
-function fetchCachedData(name, path, callback) {
-	var filename = 'tgcsystems-raw.json';
-	if (name !== 'Systems') filename = 'tgcdistances-raw.json';
-	fs.readFile(filename, {encoding:'utf8'}, function(err, data) {
-		if (err) {
-			console.log(name+': '+err);
-		} else {
-			var d = JSON.parse(data);
-			console.log(name+': ok');
-			callback(d);
-		}
-	});
-}
+function fetchTGCData(dataset, since, callback) {
+	console.log(dataset.name+': Fetching data since '+since+' from server');
 
-
-function fetchTGCData(name, path, callback) {
 	var query = {
 		ver:2, 
 		outputmode:2, 
 		filter:{
-			date: '2014-09-09 12:13:14Z',
+			date: since,
 			cr: 0
 		}
 	};
 	
 	var reqOptions = {
 		hostname: 'edstarcoordinator.com',
-		path: '/api.asmx/'+path,
+		path: '/api.asmx/'+dataset.api,
 		method: 'POST'
 	};
 	
 	var req = http.request(reqOptions, function(res) {
 		res.setEncoding('utf8');
 		if (res.statusCode !== 200) {
-			console.log(name+': Response status: ' + res.statusCode);
-			console.log(name+': Headers: ' + JSON.stringify(res.headers), null, 2);
+			console.log(dataset.name+': Response status: ' + res.statusCode);
+			console.log(dataset.name+': Headers: ' + JSON.stringify(res.headers), null, 2);
 			res.on('data', function(chunk) {
-				console.log(name+': '+chunk);
+				console.log(dataset.name+': '+chunk);
 			});
 		} else {
 			var body = '';
@@ -799,9 +863,9 @@ function fetchTGCData(name, path, callback) {
 				body += chunk;
 			});
 			res.on('end', function() {
-				fs.writeFile('Debug'+name+'.txt', body, function(err) {
+				fs.writeFile('Debug'+dataset.name+'.txt', body, function(err) {
 					if (err) {
-						console.log(name+': Error writing debug file: '+err);
+						console.log(dataset.name+': Error writing debug file: '+err);
 					}
 				});
 				var data = JSON.parse(body).d;
@@ -811,7 +875,7 @@ function fetchTGCData(name, path, callback) {
 	});
 	
 	req.on('error', function(e) {
-		console.log(name+': Problem with request: ' + e.message);
+		console.log(dataset.name+': Problem with request: ' + e.message);
 	});
 	
 	req.setHeader('content-type','application/json; charset=utf-8');
@@ -819,7 +883,7 @@ function fetchTGCData(name, path, callback) {
 	// write data to request body
 	req.write(JSON.stringify({data: query})+'\n');
 	req.end();
-	console.log(name+': fetching...');
+	console.log(dataset.name+': fetching...');
 }
 
 function writeFile(name, filename, data) {
