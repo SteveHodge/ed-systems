@@ -955,5 +955,14 @@
    {"action": "update distance", "system1": "HIP 89589", "system2": "Alpha Scuti", "dist": 58.72, "changes": {"system1": "HIP 86992"}},
    {"action": "update distance", "system1": "HIP 89589", "system2": "Zeta Scuti", "dist": 47.2, "changes": {"system1": "HIP 86992"}},
    {"action": "update system", "name": "Vela Dark Region CR-L b24-5", "changes": {"name": "Col 173 Sector CR-L b24-5"}},
-   {"action": "update system", "name": "Vela Dark Region CL-L b24-7", "changes": {"name": "Col 173 Sector CR-L b24-7"}}
+   {"action": "update system", "name": "Vela Dark Region CL-L b24-7", "changes": {"name": "Col 173 Sector CR-L b24-7"}},
+   {"action": "update system", "name": "Vela Dark Region GX-J b25-2", "changes": {"name": "Col 173 Sector GX-J b25-2"}},
+   {"action": "update system", "name": "Vela Dark Region CT-F c12-28", "changes": {"name": "Col 173 Sector CT-F c12-28"}},
+   {"action": "update distance", "system1": "Shui Wei Sector BQ-Y d93", "system2": "Jeterait", "dist": 15.33},
+   {"action": "update distance", "system1": "Shui Wei Sector BQ-Y d93", "system2": "Luluwala", "dist": 11.77},
+   {"action": "update distance", "system1": "Shui Wei Sector BQ-Y d93", "system2": "Muspell", "dist": 12.16},
+   {"action": "update distance", "system1": "Shui Wei Sector BQ-Y d93", "system2": "Atfero", "dist": 5.02},
+   {"action": "update distance", "system1": "Shui Wei Sector BQ-Y d93", "system2": "Graudika", "dist": 15.27},
+   {"action": "update system", "name": "Alrai Sector JW-B A6-1", "changes": {"name": "Alrai Sector JW-N a6-1"}}
 ]
+
