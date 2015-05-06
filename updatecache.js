@@ -226,9 +226,12 @@ function checkNames() {
 				var sector = _.find(validSectors, function(sector) {return sector.toLowerCase() === sectMatch;});
 				if (!sector) {
 					if (sectMatch in names) {
-						names[sectMatch]++;
+						names[sectMatch].count++;
 					} else {
-						names[sectMatch] = 1;
+						names[sectMatch] = {
+							count: 1,
+							first: s.name
+						};
 					}
 				} else {
 					var corrected = sector + ' ' + matches[2].toUpperCase() + ' ' + matches[3].toLowerCase() + (matches[4] ? matches[4] : '');
@@ -284,7 +287,7 @@ function checkNames() {
 	});
 	console.log('\n----- Bad Sector Names -----');
 	_.each(Object.keys(names).sort(), function(s) {
-		console.log('Bad Sector: "'+s+'", '+names[s]+' instances');
+		console.log('Bad Sector: "'+s+'", '+names[s].count+' instances, first: "'+names[s].first+'"');
 	});
 	console.log('\n----------');
 	console.log('Corrected capitalisation for '+recapitalised+' systems');
@@ -487,7 +490,7 @@ function applyFixups() {
 			}
 
 		} else {
-			console.log('Unknown type of fix requested ('+fix.action+') or no changes requested');
+			console.log('Unknown type of fix requested or no changes requested: '+JSON.stringify(fix));
 		}
 	});
 	console.log('Applied '+applied+' fixes');
@@ -705,7 +708,7 @@ function checkCoords() {
 					}
 				}
 
-				if (bad > 2) {
+				if (bad > 3) {
 					var txt = [];
 					if (bad > 0) txt.push(bad+' bad distances');
 					if (unknown > 0) txt.push(unknown+' unknown distances');
