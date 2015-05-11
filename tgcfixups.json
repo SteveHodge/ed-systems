@@ -963,6 +963,16 @@
    {"action": "update distance", "system1": "Shui Wei Sector BQ-Y d93", "system2": "Muspell", "dist": 12.16},
    {"action": "update distance", "system1": "Shui Wei Sector BQ-Y d93", "system2": "Atfero", "dist": 5.02},
    {"action": "update distance", "system1": "Shui Wei Sector BQ-Y d93", "system2": "Graudika", "dist": 15.27},
-   {"action": "update system", "name": "Alrai Sector JW-B A6-1", "changes": {"name": "Alrai Sector JW-N a6-1"}}
+   {"action": "update system", "name": "Alrai Sector JW-B A6-1", "changes": {"name": "Alrai Sector JW-N a6-1"}},
+   {"action": "update system", "name": "\"SYNUEFAI PN-I C26-8\"",  "changes": {"name": "Synuefai PN-I c26-8"}},
+   {"action": "update system", "name": "capricorni sector cq-y c20 b",  "changes": {"name": "Capricorni Sector CQ-Y c20"}},
+   {"action": "update system", "name": "COL 285 SECTOR D0-V B0-17",  "changes": {"name": "Col 285 Sector DO-V b17-0"}},
+   {"action": "update system", "name": "COL 285 SECTOR D0-V B17-4",  "changes": {"name": "Col 285 Sector DO-V b17-4"}},
+   {"action": "update system", "name": "Col 285 Sector NP-S b 19-3",  "changes": {"name": "Col 285 Sector NP-S b19-3"}},
+   {"action": "update system", "name": "col 285 sector qj-m b22 4",  "changes": {"name": "Col 285 Sector QJ-M b22-4"}},
+   {"action": "update system", "name": "col 285 sector se-m b22 4",  "changes": {"name": "Col 285 Sector SE-M b22-4"}},
+   {"action": "update system", "name": "col 285 sector se-m b22 8",  "changes": {"name": "Col 285 Sector SE-M b22-8"}},
+   {"action": "update system", "name": "HIP 102.908",  "changes": {"name": "HIP 102908"}},
+   {"action": "update system", "name": "Vulpecula Dark Region HG-X B 1-7",  "changes": {"name": "Vulpecula Dark Region HG-X b1-7"}}
 ]
 

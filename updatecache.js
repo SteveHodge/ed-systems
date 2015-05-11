@@ -203,8 +203,9 @@ function checkNames() {
 	var validSectors = JSON.parse(data);
 
 	var validPrefix = [
-		"Feige", "Gliese", "Groombridge", "Kim", "Kruger", "Lacaille", "Lalande", "Lowne", "Luhman",
-		"Luyten", "Melotte 20", "Ross", "Smethells", "Stein", "StHA", "StKM", "Struve", "Wo", "Wolf"
+		"Cl Trumpler", "Feige", "F Puppis", "Gliese", "GMM2009 LkHA 101", "Groombridge", "Herschel",
+		"Kim", "Kruger", "Lacaille", "Lalande", "LkHA", "Lowne", "Luhman", "Luyten", "Melotte 20",
+		"Ross", "Shapely", "Smethells", "Stein", "StHA", "StKM", "Struve", "Wo", "Wolf"
 	];
 	var validNames = [
 		"SADR", "2MASS J07464256+2000321 A", "2MASS J16543745-4147071", "2MASS J19444913+2401342",
@@ -221,7 +222,7 @@ function checkNames() {
 	_.each(systems, function(s) {
 		if (s.name.match(/\s([a-z][a-z]-[a-z])\s/i)) {
 			// a generated name
-			if (matches = s.name.match(/^(.*)\s+([a-z][a-z]-[a-z])\s+([a-g]\d+)(-\d+)?$/i)) {
+			if (matches = s.name.match(/^(.*)\s+([a-z][a-z]-[a-z])\s+([a-h]\d+)(-\d+)?$/i)) {
 				var sectMatch = matches[1].toLowerCase();
 				var sector = _.find(validSectors, function(sector) {return sector.toLowerCase() === sectMatch;});
 				if (!sector) {
