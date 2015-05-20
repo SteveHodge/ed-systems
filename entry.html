@@ -220,6 +220,11 @@ $(document).ready(function () {
 	if (expertMode) {
 		$('#recent-systems').closest('div').toggle(true);
 		$('#add-unfinished').toggle(true);
+		$('#suggest-origin')
+			.toggle(true)
+			.autocomplete({source: systemAutoComplete})
+			.change(updateCoords);
+		$('#suggest-origin-label').toggle(true);
 	}
 
 	$("input.system-name").autocomplete({source: systemAutoComplete});
@@ -597,7 +602,7 @@ function updateCoords() {
 			if (!bad) good.push(s);	// good suggestion
 		});
 
-		showSuggestions(good, '<br>Best suggestions to improve margin of calculated location: ');
+		showSuggestions(good, '<br>Best suggestions to improve margin of calculated location:<br>');
 		
 		updateJSON();
 		$("#sql-output").text(getSQL(systemData) + sqlOutput);
@@ -649,7 +654,7 @@ function updateCoords() {
 				}
 			});
 
-			showSuggestions(best, 'Best suggestions (will differentiate '+bestNum+' candidates): ');
+			showSuggestions(best, 'Best suggestions (will differentiate '+bestNum+' candidates):<br>');
 		}
 		
 		//$('#output').append('<br/>Regions Searched:').append(getRegionTable(trilat)).append('<br/>');
@@ -681,6 +686,12 @@ function showSuggestions(best, caption) {
 	});
 
 	best.sort(function(a, b) {
+		var ref = systemsMap[nameKey($('#suggest-origin').val())];
+		if (ref) {
+			var d1 = dist(ref, a);
+			var d2 = dist(ref, b);
+			return d1 - d2;
+		}
 		return a.name.length - b.name.length;
 	});
 
@@ -696,7 +707,7 @@ function showSuggestions(best, caption) {
 
 function getRegionTable(trilat) {
 	var table = document.createElement('table');
-	if (!trilat.regions);
+	if (!trilat.regions) return;
 	var row = document.createElement('tr');
 	$('<th data-sort="string">Corner 1</th>').appendTo(row);
 	$('<th data-sort="string">Corner 2</th>').appendTo(row);
@@ -883,6 +894,7 @@ function addUnfinished(cmdr) {
 	
 			<h3>Calculated</h3>
 			<div id="output" style="clear:both"></div>
+			<label for="suggest-origin" class="display:none" id="suggest-origin-label">Suggestions sorted by distance from: </label><input id="suggest-origin" style="display:none"><br>
 			<button id="tgc-button" disabled="true">Submit to TGC</button>
 			<button id="done-button" disabled="true">Add to output only</button>
 			<button id="cancel-button">Cancel</button>
