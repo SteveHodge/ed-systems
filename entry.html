@@ -28,6 +28,51 @@ var sqlOutput = "";
 
 var dataToSend = [];
 
+function sendToTheTemple(success, failure) {
+//	return success();
+	if (!systemData) return;
+
+	var data = {
+		ver: 2,
+		//test: true,
+		commander: $('#cmdr-name').val(),
+		p0: {name: systemData.name},
+		refs: []
+	};
+	$.each(systemData.distances, function() {
+		if (this.gooddist || expertMode) {
+			data.refs.push({name: this.system, dist: this.distance});
+		}
+	});
+
+	logAppend('Submitting '+systemData.name+' with '+data.refs.length+' distances to The Temple: ');
+	console.log("Submitting:");
+	console.log(JSON.stringify(data, null, 2));
+
+	$.ajax({
+		type: 'GET',
+		contentType: 'application/json; charset=utf-8',
+		url: 'http://the-temple.de/public/posttest.php',
+		data: JSON.stringify({data: data}),
+		dataType: 'json',
+		success: function(resp, localstatus, xhr) {
+			resp = resp.d;
+			console.log("Response:");
+			console.log(JSON.stringify(resp, null, 2));
+			logAppend('the-temple.de responded: '+JSON.stringify(resp, null, 2));
+			success();
+		},
+		error: function(xhr, status, error) {
+			//console.log(xhr.responseText);
+			logAppend('error: '+error);
+			console.log(error);
+			console.log('Request was:');
+			console.log(JSON.stringify(data, null, 2));
+			failure(error);
+		}
+	});
+}
+
 function sendToTGC(success, failure) {
 	if (!systemData) return;
 
@@ -270,56 +315,65 @@ $(document).ready(function () {
 	$('#tgc-button').click(function() {
 		$("#tgc-button").attr('disabled', true);
 		$("#done-button").attr('disabled', true);
-		sendToTGC(function(status) {
-			$('#tgc-output').text(JSON.stringify(status, null, 2));
-			
-			entryCompleted();
 
-			// new system:
-			// system array: 201 added, 202 cr incremented (should have coord)
-			// dist array: 301 added for each distance
-			// trilat array: 401 successful, has coords
-			//
-			// existing (ref) system: Altair
-			// system array empty
-			// dist array: 303 used to identify coordinates
-			// trilat array: 401 successful for sol, has coords for sol
-			$.each(status.system, function() {
-				logAppend('TGC: System '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
-			});
-			$.each(status.dist, function() {
-				logAppend('TGC: Distance '+this.system1+' to '+this.system2+' ('+this.dist+'): '+this.status.statusnum+' '+this.status.msg+'\n');
-			});
-			$.each(status.trilat, function() {
-				logAppend('TGC: Trilateration for '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
-				if (this.status.statusnum === 401 && this.system === systemData.name
-						&& (this.coord.x !== systemData.x || this.coord.y !== systemData.y || this.coord.z !== systemData.z)) {
-					logAppend('TGC calculated different coordinates: '+vectorToString(this.coord)+' vs '+vectorToString(systemData)+'\n');
-				}
-				// update any recent systems
-				var key = nameKey(this.system);
-				if (key in recentSystems) {
-					var tr = recentSystems[key];
-					if (this.status.statusnum === 401) {
-						var $td = $(tr).find('td:nth-child(3)');
-						$td.empty().append('<span class="ui-icon ui-icon-check inline-check">');
-						if (this.system !== systemData.name) {
-							// update coords if it's not the newly added system we've already trilaterated
-							var s = systemsMap[key];
-							s.x = this.coord.x;
-							s.y = this.coord.y;
-							s.z = this.coord.z;
+		sendToTheTemple(function() {
+			sendToTGC(function(status) {
+				$('#tgc-output').text(JSON.stringify(status, null, 2));
+				
+				entryCompleted();
+	
+				// new system:
+				// system array: 201 added, 202 cr incremented (should have coord)
+				// dist array: 301 added for each distance
+				// trilat array: 401 successful, has coords
+				//
+				// existing (ref) system: Altair
+				// system array empty
+				// dist array: 303 used to identify coordinates
+				// trilat array: 401 successful for sol, has coords for sol
+				$.each(status.system, function() {
+					logAppend('TGC: System '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
+				});
+				$.each(status.dist, function() {
+					logAppend('TGC: Distance '+this.system1+' to '+this.system2+' ('+this.dist+'): '+this.status.statusnum+' '+this.status.msg+'\n');
+				});
+				$.each(status.trilat, function() {
+					logAppend('TGC: Trilateration for '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
+					if (this.status.statusnum === 401 && this.system === systemData.name
+							&& (this.coord.x !== systemData.x || this.coord.y !== systemData.y || this.coord.z !== systemData.z)) {
+						logAppend('TGC calculated different coordinates: '+vectorToString(this.coord)+' vs '+vectorToString(systemData)+'\n');
+					}
+					// update any recent systems
+					var key = nameKey(this.system);
+					if (key in recentSystems) {
+						var tr = recentSystems[key];
+						if (this.status.statusnum === 401) {
+							var $td = $(tr).find('td:nth-child(3)');
+							$td.empty().append('<span class="ui-icon ui-icon-check inline-check">');
+							if (this.system !== systemData.name) {
+								// update coords if it's not the newly added system we've already trilaterated
+								var s = systemsMap[key];
+								s.x = this.coord.x;
+								s.y = this.coord.y;
+								s.z = this.coord.z;
+							}
 						}
 					}
-				}
+				});
+	
+				clearEntry();
+			}, function(error) {
+				alert('Failed to submit the system to TGC:\n'+error);
+				$("#tgc-button").attr('disabled', false);
+				$("#done-button").attr('disabled', false);
 			});
 
-			clearEntry();
 		}, function(error) {
 			alert('Failed to submit the system to TGC:\n'+error);
 			$("#tgc-button").attr('disabled', false);
 			$("#done-button").attr('disabled', false);
 		});
+
 	});
 
 	$("#cancel-button").click(clearEntry);
