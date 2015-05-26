@@ -51,9 +51,8 @@ function sendToTheTemple(success, failure) {
 
 	$.ajax({
 		type: 'GET',
-		contentType: 'application/json; charset=utf-8',
-		url: 'http://the-temple.de/public/posttest.php',
-		data: JSON.stringify({data: data}),
+		contentType: 'application/x-www-form-urlencoded',
+		url: 'http://the-temple.de/public/posttest.php?'+encodeURIComponent(JSON.stringify({data: data})),
 		dataType: 'json',
 		success: function(resp, localstatus, xhr) {
 			resp = resp.d;
