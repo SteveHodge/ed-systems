@@ -29,7 +29,6 @@ var sqlOutput = "";
 var dataToSend = [];
 
 function sendToTheTemple(success, failure) {
-//	return success();
 	if (!systemData) return;
 
 	var data = {
@@ -55,7 +54,6 @@ function sendToTheTemple(success, failure) {
 		url: 'http://the-temple.de/public/posttest.php?'+encodeURIComponent(JSON.stringify({data: data})),
 		dataType: 'json',
 		success: function(resp, localstatus, xhr) {
-			resp = resp.d;
 			console.log("Response:");
 			console.log(JSON.stringify(resp, null, 2));
 			logAppend('the-temple.de responded: '+JSON.stringify(resp, null, 2));
