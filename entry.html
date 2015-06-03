@@ -28,25 +28,8 @@ var sqlOutput = "";
 
 var dataToSend = [];
 
-function sendToTheTemple(success, failure) {
-	if (!systemData) return;
-
-	var data = {
-		ver: 2,
-		//test: true,
-		commander: $('#cmdr-name').val(),
-		p0: {name: systemData.name},
-		refs: []
-	};
-	$.each(systemData.distances, function() {
-		if (this.gooddist || expertMode) {
-			data.refs.push({name: this.system, dist: this.distance});
-		}
-	});
-
-	logAppend('Submitting '+systemData.name+' with '+data.refs.length+' distances to The Temple: ');
-	console.log("Submitting:");
-	console.log(JSON.stringify(data, null, 2));
+function sendToTheTemple(data, success, failure) {
+	logAppend('Submitting '+systemData.name+' with '+data.refs.length+' distances to the-temple.de: ');
 
 	$.ajax({
 		type: 'GET',
@@ -54,10 +37,10 @@ function sendToTheTemple(success, failure) {
 		url: 'http://the-temple.de/public/posttest.php?'+encodeURIComponent(JSON.stringify({data: data})),
 		dataType: 'json',
 		success: function(resp, localstatus, xhr) {
+			logAppend('successful\n');
 			console.log("Response:");
 			console.log(JSON.stringify(resp, null, 2));
-			logAppend('the-temple.de responded: '+JSON.stringify(resp, null, 2));
-			success();
+			success(resp);
 		},
 		error: function(xhr, status, error) {
 			//console.log(xhr.responseText);
@@ -70,24 +53,9 @@ function sendToTheTemple(success, failure) {
 	});
 }
 
-function sendToTGC(success, failure) {
-	if (!systemData) return;
-
+function sendToTGC(data, success, failure) {
 	// TGC seems to sometimes fail to process some of the distances sent. we check the response, remove any processed distances and resend the
 	// data until all distances are accepted.
-
-	var data = {
-		ver: 2,
-		//test: true,
-		commander: $('#cmdr-name').val(),
-		p0: {name: systemData.name},
-		refs: []
-	};
-	$.each(systemData.distances, function() {
-		if (this.gooddist || expertMode) {
-			data.refs.push({name: this.system, dist: this.distance});
-		}
-	});
 
 	var status = {input: [], system: [], dist: [], trilat: []};
 
@@ -101,8 +69,8 @@ function sendToTGC(success, failure) {
 		}
 		
 		logAppend('Submitting '+systemData.name+' with '+data.refs.length+' distances to TGC: ');
-		console.log("Submitting:");
-		console.log(JSON.stringify(data, null, 2));
+//		console.log("Submitting:");
+//		console.log(JSON.stringify(data, null, 2));
 
 		$.ajax({
 			type: 'POST',
@@ -127,7 +95,7 @@ function sendToTGC(success, failure) {
 						// find the existing distance
 						for (var i = 0; i < data.refs.length; i++) {
 							if (data.refs[i].name === other && data.refs[i].dist == this.dist) {
-								console.log(this.system1 + ' to ' + this.system2 + ' ('+this.dist+'): '+this.status.statusnum+' found at '+i);
+//								console.log(this.system1 + ' to ' + this.system2 + ' ('+this.dist+'): '+this.status.statusnum+' found at '+i);
 								data.refs.splice(i, 1);
 								break;
 							}
@@ -188,6 +156,7 @@ function addNewRecent(key, name, dists) {
 		.attr('system', key)
 		.append($('<td>').text(name))
 		.append($('<td>').text(dists))
+		.append($('<td>'))
 		.append($('<td>'));
 	recentSystems[key].appendTo($("#recent-systems tbody"));
 	return recentSystems[key];
@@ -313,12 +282,61 @@ $(document).ready(function () {
 		$("#tgc-button").attr('disabled', true);
 		$("#done-button").attr('disabled', true);
 
-		sendToTheTemple(function() {
-			sendToTGC(function(status) {
+		if (!systemData) return;
+
+		var data = {
+			ver: 2,
+			//test: true,
+			commander: $('#cmdr-name').val(),
+			p0: {name: systemData.name},
+			refs: []
+		};
+		$.each(systemData.distances, function() {
+			if (this.gooddist || expertMode) {
+				data.refs.push({name: this.system, dist: this.distance});
+			}
+		});
+
+		entryCompleted();
+
+		console.log("Submitting:");
+		console.log(JSON.stringify(data, null, 2));
+
+		sendToTheTemple(data, function(status) {
+			$('#tgc-output').text(JSON.stringify(status, null, 2));
+
+			$.each(status.distances, function() {
+				if (this.msgnum != 200 && this.msgnum != 202 && this.msgnum != 203) {
+					logAppend('the-temple.de: Distance to '+this.name+' ('+this.dist+'): '+this.msgnum+' '+this.msg+'\n');
+				}
+			});
+			$.each(status.systems, function() {
+				logAppend('the-temple.de: Trilateration for '+this.name+': '+this.msgnum+' '+this.msg+'\n');
+				if (this.msgnum === 300 && this.name === systemData.name
+						&& (this.coords.x !== systemData.x || this.coords.y !== systemData.y || this.coords.z !== systemData.z)) {
+					logAppend('the-temple.de calculated different coordinates: '+vectorToString(this.coords)+' vs '+vectorToString(systemData)+'\n');
+				}
+				// update any recent systems
+				var key = nameKey(this.name);
+				if (key in recentSystems) {
+					var tr = recentSystems[key];
+					if (this.msgnum === 300) {
+						var $td = $(tr).find('td:nth-child(4)');
+						$td.empty().append('<span class="ui-icon ui-icon-check inline-check">');
+						if (this.name !== systemData.name) {
+							// update coords if it's not the newly added system we've already trilaterated
+							var s = systemsMap[key];
+							s.x = this.coords.x;
+							s.y = this.coords.y;
+							s.z = this.coords.z;
+						}
+					}
+				}
+			});
+			
+			sendToTGC(data, function(status) {
 				$('#tgc-output').text(JSON.stringify(status, null, 2));
-				
-				entryCompleted();
-	
+					
 				// new system:
 				// system array: 201 added, 202 cr incremented (should have coord)
 				// dist array: 301 added for each distance
@@ -329,10 +347,14 @@ $(document).ready(function () {
 				// dist array: 303 used to identify coordinates
 				// trilat array: 401 successful for sol, has coords for sol
 				$.each(status.system, function() {
-					logAppend('TGC: System '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
+					if (this.status.statusnum != 201 && this.status.statusnum != 202) {
+						logAppend('TGC: System '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
+					}
 				});
 				$.each(status.dist, function() {
-					logAppend('TGC: Distance '+this.system1+' to '+this.system2+' ('+this.dist+'): '+this.status.statusnum+' '+this.status.msg+'\n');
+					if (this.status.statusnum != 301) {
+						logAppend('TGC: Distance '+this.system1+' to '+this.system2+' ('+this.dist+'): '+this.status.statusnum+' '+this.status.msg+'\n');
+					}
 				});
 				$.each(status.trilat, function() {
 					logAppend('TGC: Trilateration for '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
@@ -366,7 +388,7 @@ $(document).ready(function () {
 			});
 
 		}, function(error) {
-			alert('Failed to submit the system to TGC:\n'+error);
+			alert('Failed to submit the system to the-temple.de:\n'+error);
 			$("#tgc-button").attr('disabled', false);
 			$("#done-button").attr('disabled', false);
 		});
@@ -873,6 +895,13 @@ function addUnfinished(cmdr) {
 			<label for="cmdr-name">Commander Name (optional): </label>
 			<input id="cmdr-name"/>
 			<button id="add-unfinished" disabled="true" style="display: none">Add Unfinished</button>
+			<div id="options">
+				<h3>Options</h3>
+				<button id="toggle-log">Hide Log</button>
+				<button id="toggle-json">Show JSON</button>
+				<button id="toggle-sql">Show SQL</button>
+				<button id="toggle-tgc">Show Server Response</button>
+			</div>
 		</div>
 		<label for="unknown-name">Name of new system: </label>
 		<input id="unknown-name"/>
@@ -896,6 +925,7 @@ function addUnfinished(cmdr) {
 						<th data-sort="string-ins">System</th>
 						<th data-sort="int">Distances</th>
 						<th>TGC</th>
+						<th>Temple</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -946,15 +976,13 @@ function addUnfinished(cmdr) {
 			<h3>Calculated</h3>
 			<div id="output" style="clear:both"></div>
 			<label for="suggest-origin" class="display:none" id="suggest-origin-label">Suggestions sorted by distance from: </label><input id="suggest-origin" style="display:none"><br>
-			<button id="tgc-button" disabled="true">Submit to TGC</button>
+			<button id="tgc-button" disabled="true">Submit System</button>
 			<button id="done-button" disabled="true">Add to output only</button>
 			<button id="cancel-button">Cancel</button>
 			<br>
 	
 			<div>
 				<h3>Output</h3>
-				<button id="toggle-log">Hide Log</button><button id="toggle-json">Show JSON</button><button id="toggle-sql">Show SQL</button>
-				<button id="toggle-tgc">Show TGC Response</button>
 				<pre id="log-output" style="height: 180px; overflow: auto"></pre>
 				<pre id="sql-output" style="display:none"></pre>
 				<pre id="json-output" style="display:none"></pre>
