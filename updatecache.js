@@ -203,15 +203,14 @@ function checkNames() {
 	var validSectors = JSON.parse(data);
 
 	var validPrefix = [
-		"Cl Trumpler", "Feige", "F Puppis", "Gliese", "GMM2009 LkHA 101", "Groombridge", "Herschel",
+		"2MASS", "Cl Trumpler", "Feige", "F Puppis", "Gliese", "GMM2009 LkHA 101", "Groombridge", "Herschel",
 		"Kim", "Kruger", "Lacaille", "Lalande", "LkHA", "Lowne", "Luhman", "Luyten", "Melotte 20",
-		"Ross", "Shapely", "Smethells", "Stein", "StHA", "StKM", "Struve", "Wo", "Wolf"
+		"Ross", "Shapely", "Smethells", "Stein", "StHA", "StKM", "Struve", "Wo", "Wolf", "WISE", "SDSS"
 	];
 	var validNames = [
-		"SADR", "2MASS J07464256+2000321 A", "2MASS J16543745-4147071", "2MASS J19444913+2401342",
-		"2MASS J21371591+5726591", "BD+40 2905A", "BD+48 1845B", "BD-19 3629A", "CSI-21-22270",
+		"SADR", "BD+40 2905A", "BD+48 1845B", "BD-19 3629A", "CSI-21-22270",
 		"G146-60", "LDS 1503A", "MJD95 J194518.34+240059.7", "MJD95 J194547.54+240600.4", "NN 3086 A",
-		"SDSS J1416+1348", "VESPER-M4", "WISE J000517", "WISE J004945", "WISE J0254+0223"
+		"VESPER-M4"
 	];
 
 	var names = {};
@@ -245,7 +244,7 @@ function checkNames() {
 				// something else (probably a typo in sector or the last element)
 				console.log("Regex Failed: '"+s.name+"'");
 			}
-		} else if (matches = s.name.match(/^(.*)\s+(\d+([+-]\d+)*)$/i)) {
+		} else if (matches = s.name.match(/^(.*)\s(J?\d+([+-]\d+)*)$/i)) {
 			// ends in a number - probably a catalog name
 			var found = false;
 			
@@ -566,7 +565,6 @@ function checkCoords() {
 			var sysKey = nameKey(s.name);
 			done++;
 			if (!('distances' in s)) return;
-			if (sysKey === 'sagittarius a*') return;	// TODO temporarily skipping Sag A* as it takes a long time
 
 			readline.clearLine(process.stdout);
 			readline.cursorTo(process.stdout, 0);
@@ -596,7 +594,7 @@ function checkCoords() {
 				}
 				if ('x' in s.distances[i] && !(key in located)) {
 					// remove coords as target system no longer has a location
-					console.log('\nTarget system for '+s.name+' to '+s.distances[i].system+' no longer has coords, rechecking location');
+					console.log(' has distance to '+s.distances[i].system+' which no longer has coords, rechecking location');
 					delete s.distances[i].x;
 					delete s.distances[i].y;
 					delete s.distances[i].z;
@@ -608,13 +606,23 @@ function checkCoords() {
 				return;		// can skip trying to trilaterate in this pass if we didn't set new coordinates
 			}
 			
-			for (var i = 0; i < s.distances.length; i++) {
-				var key = nameKey(s.distances[i].system);
-				if ('x' in s.distances[i]) {
-					trilat.addDistance(s.distances[i]);
+			var sorted = s.distances;
+			// if we have a lot of distances we add distances in order of length as it's likely that short distances will locate a system more quickly
+			if (sorted.length > 10) {
+				sorted = _.toArray(s.distances).sort(function(a,b) {return a.distance - b.distance;});
+			}
+			for (var i = 0; i < sorted.length; i++) {
+				var key = nameKey(sorted[i].system);
+				if ('x' in sorted[i]) {
+//					if (sysKey === 'sagittarius a*') console.log(JSON.stringify(sorted[i],null,2));
+					trilat.addDistance(sorted[i]);
 					// if we're over 10 distances and we've got a good result (all distances accurate or best candidate 2 distances better
 					// than next) stop trailatering to prevent poor performance:
-					if (isGoodTrilat(trilat) && i > 9) break;
+					if (isGoodTrilat(trilat) && trilat.distances.length > 9) break;
+					if (trilat.distances.length > 20) {
+						console.log(": couldn't trilaterate after 20 distances. 4th distance = "+trilat.distances[3].distance);
+						break;
+					}
 				}
 			}
 
@@ -626,7 +634,7 @@ function checkCoords() {
 			} else if (sysKey in located) {
 				// location is no longer good, remove it from located
 				delete located[sysKey];
-				console.log('\n'+s.name+' no longer has good trilateration');
+				console.log(' no longer has good trilateration');
 			}
 		});
 		readline.clearLine(process.stdout);
