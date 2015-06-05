@@ -1029,6 +1029,7 @@
    {"action": "update system", "name": "Hyades Sector OO-H b42-0", "changes": {"name": "Synuefe OO-H b42-0"}},
    {"action": "update system", "name": "Tau Ophiuchi", "changes": {"name": "Tau Ophiuchii"}},
    {"action": "update system", "name": "WISE 0410+ 1502", "changes": {"name": "WISE 0410+1502"}},
-   {"action": "update system", "name": "zeland", "changes": {"name": "Zelano"}}
+   {"action": "update system", "name": "zeland", "changes": {"name": "Zelano"}},
+   {"action": "update system", "name": "lhs2777", "changes": {"name": "LHS 2777"}}
 ]
 
