@@ -996,6 +996,7 @@
    {"action": "update distance", "system1": "Whamboi XP-V d3-503", "system2": "Froarks BC-S b22-20", "dist": 4204.98, "changes": {"system1": "Whamboi IH-U e3-507"}},
    {"action": "update distance", "system1": "Whamboi XP-V d3-503", "system2": "Byua Aim LN-S e4-25", "dist": 2658.42, "changes": {"system1": "Whamboi IH-U e3-507"}},
    {"action": "update distance", "system1": "Whamboi XP-V d3-503", "system2": "Ogaimy RY-P d6-3348", "dist": 1845.99, "changes": {"system1": "Whamboi IH-U e3-507"}},
+   {"action": "update system", "name": "Whamboi XP-V d3-503", "changes": {"coord": [null, null, null]}},
    {"action": "update system", "name": "Alrai Sector EL-Y c3-1", "changes": {"name": "Alrai Sector EL-Y c31"}},
    {"action": "update system", "name": "Arietis Sector JD-F a12-3", "changes": {"name": "Arietis Sector JO-F a12-3"}},
    {"action": "delete system", "name": "COL 285 SECTOR D0-V B0-17"},
