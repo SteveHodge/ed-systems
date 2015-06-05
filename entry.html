@@ -20,7 +20,20 @@
 // TODO optimisation
 // TODO consider not clearing the form if TGC can't trilaterate
 
-var expertMode = true;	// if true then allows submission of any data. use with care. also enables "recently added" list and "add unfinished button"
+var config = {
+	expertmode: false,
+	outputs: {
+		log: true,
+		json: false,
+		sql: false,
+		responses: false
+	},
+	'fetch-from': 'TGC',
+	'submit-to': {
+		'temple': true,
+		'TGC': true
+	}
+};
 
 var systemData = null;	// current system data
 var jsonOutput = "";
@@ -28,8 +41,11 @@ var sqlOutput = "";
 
 var dataToSend = [];
 
+var responses;	// stores status of submission to each server
+
 function sendToTheTemple(data, success, failure) {
-	logAppend('Submitting '+systemData.name+' with '+data.refs.length+' distances to the-temple.de: ');
+	logAppend('Submitting '+systemData.name+' with '+data.refs.length+' distances to the-temple.de:\n');
+	responses['temple'] = 'sent';
 
 	$.ajax({
 		type: 'GET',
@@ -37,15 +53,17 @@ function sendToTheTemple(data, success, failure) {
 		url: 'http://the-temple.de/public/posttest.php?'+encodeURIComponent(JSON.stringify({data: data})),
 		dataType: 'json',
 		success: function(resp, localstatus, xhr) {
-			logAppend('successful\n');
-			console.log("Response:");
-			console.log(JSON.stringify(resp, null, 2));
+			responses['temple'] = 'ok';
+			logAppend('the-temple.de: submission successful\n');
+//			console.log("the-temple.de: Response:");
+//			console.log(JSON.stringify(resp, null, 2));
 			success(resp);
 		},
 		error: function(xhr, status, error) {
+			responses['temple'] = 'error';
 			//console.log(xhr.responseText);
-			logAppend('error: '+error);
-			console.log(error);
+			logAppend('the-temple.de: error: '+error);
+			console.log('the-temple.de: error: '+error);
 			console.log('Request was:');
 			console.log(JSON.stringify(data, null, 2));
 			failure(error);
@@ -54,6 +72,7 @@ function sendToTheTemple(data, success, failure) {
 }
 
 function sendToTGC(data, success, failure) {
+	responses['TGC'] = 'sent';
 	// TGC seems to sometimes fail to process some of the distances sent. we check the response, remove any processed distances and resend the
 	// data until all distances are accepted.
 
@@ -63,12 +82,13 @@ function sendToTGC(data, success, failure) {
 
 	function sender() {
 		if (data.refs.length < 1) {
+			responses['TGC'] = 'ok';
 			// finished the queue, report success
 			success(status);
 			return;
 		}
 		
-		logAppend('Submitting '+systemData.name+' with '+data.refs.length+' distances to TGC: ');
+		logAppend('Submitting '+systemData.name+' with '+data.refs.length+' distances to TGC:\n');
 //		console.log("Submitting:");
 //		console.log(JSON.stringify(data, null, 2));
 
@@ -80,13 +100,13 @@ function sendToTGC(data, success, failure) {
 			dataType: 'json',
 			success: function(resp, localstatus, xhr) {
 				resp = resp.d;
-				console.log("Response:");
-				console.log(JSON.stringify(resp, null, 2));
+//				console.log("TGC: Response:");
+//				console.log(JSON.stringify(resp, null, 2));
 				if (resp.status.input[0].status.statusnum !== 0) {
 					logAppend('error: '+resp.status.input[0].status.statusnum +' '+resp.status.input[0].status.msg);
 					failure(resp.status.input[0].status.statusnum +' '+resp.status.input[0].status.msg);
 				} else {
-					logAppend('successful\n');
+					logAppend('TGC: successful\n');
 
 					// remove any processed distances
 					$.each(resp.status.dist, function() {
@@ -115,9 +135,10 @@ function sendToTGC(data, success, failure) {
 				}
 			},
 			error: function(xhr, status, error) {
+				responses['TGC'] = 'error';
 				//console.log(xhr.responseText);
-				logAppend('error: '+error);
-				console.log(error);
+				logAppend('TGC: error: '+error);
+				console.log('TGC: error: '+error);
 				console.log('Request was:');
 				console.log(JSON.stringify(data, null, 2));
 				failure(error);
@@ -222,21 +243,68 @@ function clearEntry() {
 	systemData = null;
 }
 
+function cleanup() {
+	// don't do anything until all responses have been received
+	var found = false;
+	$.each(responses, function(key, value) {
+		if (value === 'sent') {
+			found = true;	// there is an uncompleted request
+			return false;
+		}
+	});
+	if (found) return;
+
+	found = false;
+	$.each(responses, function(key, value) {
+		if (value !== 'ok') {
+			found = true;	// there is an uncompleted request
+			return false;
+		}
+	});
+	
+	if (!found) {
+		// if all responses were successful then clear the system
+		clearEntry();
+		
+	} else {
+		// otherwise allow resubmission
+		$("#tgc-button").attr('disabled', false);
+		$("#done-button").attr('disabled', false);
+	}
+}
+
 $(document).ready(function () {
 	getTGCData(function() {
 		$('#add-unfinished').attr('disabled', false);
 		updateCoords();
 	});
 
-	if (expertMode) {
-		$('#recent-systems').closest('div').toggle(true);
-		$('#add-unfinished').toggle(true);
-		$('#suggest-origin')
-			.toggle(true)
-			.autocomplete({source: systemAutoComplete})
-			.change(updateCoords);
-		$('#suggest-origin-label').toggle(true);
-	}
+	// config dialog
+	$('#options').dialog({
+		autoOpen: false,
+		resizable: false,
+		width: 500,
+		modal: true,
+		buttons: {
+			'Apply': function() {
+				storeConfig();
+				applyConfig();
+				$(this).dialog('close');
+			},
+			'Cancel': function() {
+				$(this).dialog('close');
+			}
+		}
+	});
+
+	$('input[name="expertmode"]').change(function() {
+		$('#add-unfinished').toggle($(this).prop('checked'));
+	});
+
+
+	$('#suggest-origin')
+		.autocomplete({source: systemAutoComplete})
+		.change(updateCoords);
 
 	$("input.system-name").autocomplete({source: systemAutoComplete});
 
@@ -260,13 +328,11 @@ $(document).ready(function () {
 		}
 	});
 
-	$("#toggle-json").click(getToggle(document.getElementById('json-output'),'Hide JSON','Show JSON'));
+	$('#open-options').click(openOptions);
+
 	$("#json-output").click(selectAll);
-	$("#toggle-sql").click(getToggle(document.getElementById('sql-output'),'Hide SQL','Show SQL'));
 	$("#sql-output").click(selectAll);
-	$("#toggle-log").click(getToggle(document.getElementById('log-output'),'Hide Log','Show Log'));
 	$("#tgc-output").click(selectAll);
-	$("#toggle-tgc").click(getToggle(document.getElementById('tgc-output'),'Hide TGC Response','Show TGC Repsonse'));
 
 	$("#add-unfinished").click(function () {
 		var cmdr = $.trim($('#cmdr-name').val());
@@ -292,7 +358,7 @@ $(document).ready(function () {
 			refs: []
 		};
 		$.each(systemData.distances, function() {
-			if (this.gooddist || expertMode) {
+			if (this.gooddist || config.expertmode) {
 				data.refs.push({name: this.system, dist: this.distance});
 			}
 		});
@@ -302,38 +368,49 @@ $(document).ready(function () {
 		console.log("Submitting:");
 		console.log(JSON.stringify(data, null, 2));
 
-		sendToTheTemple(data, function(status) {
-			$('#tgc-output').text(JSON.stringify(status, null, 2));
+		responses = {};
 
-			$.each(status.distances, function() {
-				if (this.msgnum != 200 && this.msgnum != 202 && this.msgnum != 203) {
-					logAppend('the-temple.de: Distance to '+this.name+' ('+this.dist+'): '+this.msgnum+' '+this.msg+'\n');
-				}
-			});
-			$.each(status.systems, function() {
-				logAppend('the-temple.de: Trilateration for '+this.name+': '+this.msgnum+' '+this.msg+'\n');
-				if (this.msgnum === 300 && this.name === systemData.name
-						&& (this.coords.x !== systemData.x || this.coords.y !== systemData.y || this.coords.z !== systemData.z)) {
-					logAppend('the-temple.de calculated different coordinates: '+vectorToString(this.coords)+' vs '+vectorToString(systemData)+'\n');
-				}
-				// update any recent systems
-				var key = nameKey(this.name);
-				if (key in recentSystems) {
-					var tr = recentSystems[key];
-					if (this.msgnum === 300) {
-						var $td = $(tr).find('td:nth-child(4)');
-						$td.empty().append('<span class="ui-icon ui-icon-check inline-check">');
-						if (this.name !== systemData.name) {
-							// update coords if it's not the newly added system we've already trilaterated
-							var s = systemsMap[key];
-							s.x = this.coords.x;
-							s.y = this.coords.y;
-							s.z = this.coords.z;
+		if (config['submit-to'].temple) {
+			sendToTheTemple(data, function(status) {
+				$('#tgc-output').text(JSON.stringify(status, null, 2));
+	
+				$.each(status.distances, function() {
+					if (this.msgnum != 200 && this.msgnum != 202 && this.msgnum != 203) {
+						logAppend('the-temple.de: Distance to '+this.name+' ('+this.dist+'): '+this.msgnum+' '+this.msg+'\n');
+					}
+				});
+				$.each(status.systems, function() {
+					logAppend('the-temple.de: Trilateration for '+this.name+': '+this.msgnum+' '+this.msg+'\n');
+					if (this.msgnum === 300 && this.name === systemData.name
+							&& (this.coords.x !== systemData.x || this.coords.y !== systemData.y || this.coords.z !== systemData.z)) {
+						logAppend('the-temple.de: calculated different coordinates: '+vectorToString(this.coords)+' vs '+vectorToString(systemData)+'\n');
+					}
+					// update any recent systems
+					var key = nameKey(this.name);
+					if (key in recentSystems) {
+						var tr = recentSystems[key];
+						if (this.msgnum === 300) {
+							var $td = $(tr).find('td:nth-child(4)');
+							$td.empty().append('<span class="ui-icon ui-icon-check inline-check">');
+							if (this.name !== systemData.name) {
+								// update coords if it's not the newly added system we've already trilaterated
+								var s = systemsMap[key];
+								s.x = this.coords.x;
+								s.y = this.coords.y;
+								s.z = this.coords.z;
+							}
 						}
 					}
-				}
+				});
+				cleanup();
+
+			}, function(error) {
+				alert('Failed to submit the system to the-temple.de:\n'+error);
+				cleanup();
 			});
-			
+		}
+	
+		if (config['submit-to'].TGC) {
 			sendToTGC(data, function(status) {
 				$('#tgc-output').text(JSON.stringify(status, null, 2));
 					
@@ -360,7 +437,7 @@ $(document).ready(function () {
 					logAppend('TGC: Trilateration for '+this.system+': '+this.status.statusnum+' '+this.status.msg+'\n');
 					if (this.status.statusnum === 401 && this.system === systemData.name
 							&& (this.coord.x !== systemData.x || this.coord.y !== systemData.y || this.coord.z !== systemData.z)) {
-						logAppend('TGC calculated different coordinates: '+vectorToString(this.coord)+' vs '+vectorToString(systemData)+'\n');
+						logAppend('TGC: calculated different coordinates: '+vectorToString(this.coord)+' vs '+vectorToString(systemData)+'\n');
 					}
 					// update any recent systems
 					var key = nameKey(this.system);
@@ -379,20 +456,14 @@ $(document).ready(function () {
 						}
 					}
 				});
+
+				cleanup();
 	
-				clearEntry();
 			}, function(error) {
 				alert('Failed to submit the system to TGC:\n'+error);
-				$("#tgc-button").attr('disabled', false);
-				$("#done-button").attr('disabled', false);
+				cleanup();
 			});
-
-		}, function(error) {
-			alert('Failed to submit the system to the-temple.de:\n'+error);
-			$("#tgc-button").attr('disabled', false);
-			$("#done-button").attr('disabled', false);
-		});
-
+		}
 	});
 
 	$("#cancel-button").click(clearEntry);
@@ -734,7 +805,7 @@ function updateCoords() {
 		$('#ref-warning').show();
 	}
 	
-	if (expertMode && systemData.distances.length > 0) {
+	if (config.expertmode && systemData.distances.length > 0) {
 		updateJSON();
 		systemData.cansubmit = true;
 	}
@@ -887,6 +958,38 @@ function addUnfinished(cmdr) {
 	});
 }
 
+function openOptions() {
+	// update options dialog:
+	$('input[name="expertmode"]').prop('checked', config.expertmode);
+	$('input[name="outputs"]').each(function() {$(this).prop('checked', config.outputs[$(this).attr('value')])});
+	$('input[name="fetch-from"][value="'+config['fetch-from']+'"]').prop('checked', true);
+	$('input[name="submit-to"]').each(function() {$(this).prop('checked', config['submit-to'][$(this).attr('value')])});
+
+	$('#options').dialog('open');
+}
+
+function storeConfig() {
+	// update config object from dialog:
+	config.expertmode = $('input[name="expertmode"]').prop('checked');
+	$('input[name="outputs"]').each(function() {config.outputs[$(this).attr('value')] = $(this).prop('checked')});
+	config['fetch-from'] = $('input:checked[name="fetch-from"]').prop('value');
+	$('input[name="submit-to"]').each(function() {config['submit-to'][$(this).attr('value')] = $(this).prop('checked')});
+}
+
+function applyConfig() {
+	// apply changes to page
+	if ($('#json-output').is(':visible') != config.outputs.json) $('#json-output').toggle('fast');
+	if ($('#sql-output').is(':visible') != config.outputs.sql) $('#sql-output').toggle('fast');
+	if ($('#log-output').is(':visible') != config.outputs.log) $('#log-output').toggle('fast');
+	if ($('#tgc-output').is(':visible') != config.outputs.responses) $('#tgc-output').toggle('fast');
+
+	$('#recent-systems').closest('div').toggle(config.expertmode);
+	$('#suggest-origin').toggle(config.expertmode);
+	$('#suggest-origin-label').toggle(config.expertmode);
+
+	// TODO reload data if necessary
+}
+
 </script>
 </head>
 <body>
@@ -894,13 +997,21 @@ function addUnfinished(cmdr) {
 		<div style="float: right">
 			<label for="cmdr-name">Commander Name (optional): </label>
 			<input id="cmdr-name"/>
-			<button id="add-unfinished" disabled="true" style="display: none">Add Unfinished</button>
-			<div id="options">
-				<h3>Options</h3>
-				<button id="toggle-log">Hide Log</button>
-				<button id="toggle-json">Show JSON</button>
-				<button id="toggle-sql">Show SQL</button>
-				<button id="toggle-tgc">Show Server Response</button>
+			<button id="open-options" style="position:relative; top:4px"><span class="ui-icon" style='width:22px; height:22px; background-image: url("external/images/gear.svg"); background-size:22px 22px'></span></button>
+			<div id="options" title="Options">
+				<input type="checkbox" name="expertmode" value="expertmode">Expert Mode<br>
+				<p>Expert mode allows submission of systems which have not been successfully located. As less checking is done, please use with care.</p>
+				<button id="add-unfinished" disabled="true" style="display: none">Add Unfinished Systems</button><br>
+				<h3>Outputs</h3>
+				<input type="checkbox" name="outputs" value="log">Log<br>
+				<input type="checkbox" name="outputs" value="json">JSON<br>
+				<input type="checkbox" name="outputs" value="sql">SQL<br>
+				<input type="checkbox" name="outputs" value="responses">Server Responses
+				<h3>Fetch From</h3>
+				<input type="radio" name="fetch-from" value="TGC">TGC
+				<h3>Submit To</h3>
+				<input type="checkbox" name="submit-to" value="temple">the-temple.de<br>
+				<input type="checkbox" name="submit-to" value="TGC">TGC
 			</div>
 		</div>
 		<label for="unknown-name">Name of new system: </label>
