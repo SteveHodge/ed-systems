@@ -234,6 +234,7 @@ function clearEntry() {
 	$("#tgc-button").attr('disabled', true);
 	$("#done-button").attr('disabled', true);
 	$("#unknown-name").val("").focus();
+	$('#dupe-highlight').hide();
 	$('#dupe-warning').hide();
 	$("#json-output").text(jsonOutput);
 	$("#sql-output").text(sqlOutput);
@@ -300,7 +301,6 @@ $(document).ready(function () {
 	$('input[name="expertmode"]').change(function() {
 		$('#add-unfinished').toggle($(this).prop('checked'));
 	});
-
 
 	$('#suggest-origin')
 		.autocomplete({source: systemAutoComplete})
@@ -468,28 +468,40 @@ $(document).ready(function () {
 
 	$("#cancel-button").click(clearEntry);
 
-	$('#unknown-name').change(function() {
-		// check for duplicate name
-		var dupe = false;
-		if (this.value && this.value.length > 0) {
-			if (nameKey(this.value) in systemsMap) {
-				dupe = true;
+	$('#unknown-name')
+		.autocomplete({source: systemAutoComplete})
+		.change(function() {
+			// check for duplicate name
+			if (this.value && this.value.length > 0) {
+				if (nameKey(this.value) in systemsMap) {
+					if (systemsMap[nameKey(this.value)].x == null) {
+						$('#dupe-highlight').show();
+						$('#dupe-warning').hide();
+					} else {
+						$('#dupe-highlight').hide();
+						$('#dupe-warning').show();
+					}
+				} else {
+					$('#dupe-highlight').hide();
+					$('#dupe-warning').hide();
+				}
+				$('#no-name-warning').hide();
+			} else {
+				$('#dupe-highlight').hide();
+				$('#dupe-warning').hide();
 			}
-			$('#no-name-warning').hide();
-		}
-		$('#dupe-warning').toggle(dupe);
-		
-		if (systemData !== null) {
-			systemData.name = this.value;
-			updateJSON();
-			$("#sql-output").text(getSQL(systemData) + sqlOutput);
-			$("#tgc-button").attr('disabled', this.value.length === 0 || !systemData.cansubmit);
-			$("#done-button").attr('disabled', this.value.length === 0 || !systemData.cansubmit);
-			if (this.value.length === 0) {
-				$('#no-name-warning').show();
+			
+			if (systemData !== null) {
+				systemData.name = this.value;
+				updateJSON();
+				$("#sql-output").text(getSQL(systemData) + sqlOutput);
+				$("#tgc-button").attr('disabled', this.value.length === 0 || !systemData.cansubmit);
+				$("#done-button").attr('disabled', this.value.length === 0 || !systemData.cansubmit);
+				if (this.value.length === 0) {
+					$('#no-name-warning').show();
+				}
 			}
-		}
-	});
+		});
 	
 	$("#distances input").change(updateCoords);
 	$('input.system-name').change(function() {checkEmptyRow(this);});
@@ -1015,11 +1027,15 @@ function applyConfig() {
 			</div>
 		</div>
 		<label for="unknown-name">Name of new system: </label>
-		<input id="unknown-name"/>
+		<input id="unknown-name" size="30"/>
 
+		<div id="dupe-highlight" class="ui-state-highlight ui-corner-all" style="margin: 0.5em; display:none">
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+			<strong>Info:</strong> A system with that name has already been entered, but does not have coordinates!</p>
+		</div>	
 		<div id="dupe-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-			<strong>Warning:</strong> A system with that name has already been entered!</p>
+			<strong>Warning:</strong> A system with that name has already been entered, and has coordinates!</p>
 		</div>
 		<div id="no-name-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>

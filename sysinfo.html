@@ -18,11 +18,13 @@ var systemData;
 function systemAutoComplete(req, res) {
 	var options = [];
 	var term = req.term.toLowerCase();
-	$.each(systemsMap, function(key, val) {
-		if (key.indexOf(term) > -1) {
-			options.push(val.name);
-		}
-	});
+	if (term.length > 2) {
+		$.each(systemsMap, function(key, val) {
+			if (key.indexOf(term) > -1) {
+				options.push(val.name);
+			}
+		});
+	}
 	res(options);
 }
 
@@ -196,7 +198,8 @@ function updateCoords() {
 	$("#distances tr:has(input.system-name) td:nth-child(6)").text("").next().text("");
 	$("#output").html("");
 
-	// TODO trilateration needs to be moved to timer callback
+	if (dists.length > 24) dists.sort(function(a, b) {return a.distance - b.distance});
+
 	var index = 0;
 	var trilat = new Trilateration();
 	var goodDists = 0;	// number of distances that match (reset if the best changes)
@@ -206,7 +209,7 @@ function updateCoords() {
 	
 	function doDistance() {
 		if (index >= dists.length) return;
-		if (index > 29) return;	// bail out before it gets too slow
+		if (index > 24) return;	// bail out before it gets too slow
 	
 		$("#output").html('Calculating coordinates with '+(index+1)+' distances...<br>');
 
@@ -360,7 +363,7 @@ function selectSystem() {
 <body>
 	<div class="ui-widget">
 		<label for="search-name">Name: </label>
-		<input id="search-name"/>
+		<input id="search-name" size="30"/>
 		<button id="search-go" disabled>Go</button>
 		<button id="refresh-tgc" style="float: right">TGC Refresh</button>
 

@@ -281,10 +281,10 @@ function checkNames() {
 		}
 	});
 
-	console.log('');
-	_.each(Object.keys(fixedCatalogs).sort(), function(s) {
-		console.log('Fixed Catalog: "'+s+'", '+fixedCatalogs[s]+' instances');
-	});
+//	console.log('');
+//	_.each(Object.keys(fixedCatalogs).sort(), function(s) {
+//		console.log('Fixed Catalog: "'+s+'", '+fixedCatalogs[s]+' instances');
+//	});
 	console.log('\n----- Bad Sector Names -----');
 	_.each(Object.keys(names).sort(), function(s) {
 		console.log('Bad Sector: "'+s+'", '+names[s].count+' instances, first: "'+names[s].first+'"');
