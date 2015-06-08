@@ -55,8 +55,8 @@ function sendToTheTemple(data, success, failure) {
 		success: function(resp, localstatus, xhr) {
 			responses['temple'] = 'ok';
 			logAppend('the-temple.de: submission successful\n');
-//			console.log("the-temple.de: Response:");
-//			console.log(JSON.stringify(resp, null, 2));
+			console.log("the-temple.de: Response:");
+			console.log(JSON.stringify(resp, null, 2));
 			success(resp);
 		},
 		error: function(xhr, status, error) {
@@ -373,7 +373,30 @@ $(document).ready(function () {
 		if (config['submit-to'].temple) {
 			sendToTheTemple(data, function(status) {
 				$('#tgc-output').text(JSON.stringify(status, null, 2));
-	
+
+				// check base system
+				logAppend('the-temple.de: Trilateration for '+status.basesystem.name+': '+status.basesystem.msgnum+' '+status.basesystem.msg+'\n');
+				if ((status.basesystem.msgnum === 102 || status.basesystem.msgnum === 104) && this.name === systemData.name
+						&& (status.basesystem.coords.x !== systemData.x || status.basesystem.coords.y !== systemData.y || status.basesystem.coords.z !== systemData.z)) {
+					logAppend('the-temple.de: calculated different coordinates: '+vectorToString(status.basesystem.coords)+' vs '+vectorToString(systemData)+'\n');
+				}
+				// update any recent systems
+				var key = nameKey(status.basesystem.name);
+				if (key in recentSystems) {
+					var tr = recentSystems[key];
+					if (status.basesystem.msgnum === 102 || status.basesystem.msgnum === 104) {
+						var $td = $(tr).find('td:nth-child(4)');
+						$td.empty().append('<span class="ui-icon ui-icon-check inline-check">');
+						if (status.basesystem.name !== systemData.name) {
+							// update coords if it's not the newly added system we've already trilaterated
+							var s = systemsMap[key];
+							s.x = status.basesystem.coords.x;
+							s.y = status.basesystem.coords.y;
+							s.z = status.basesystem.coords.z;
+						}
+					}
+				}
+
 				$.each(status.distances, function() {
 					if (this.msgnum != 200 && this.msgnum != 202 && this.msgnum != 203) {
 						logAppend('the-temple.de: Distance to '+this.name+' ('+this.dist+'): '+this.msgnum+' '+this.msg+'\n');
@@ -1024,6 +1047,11 @@ function applyConfig() {
 				<h3>Submit To</h3>
 				<input type="checkbox" name="submit-to" value="temple">the-temple.de<br>
 				<input type="checkbox" name="submit-to" value="TGC">TGC
+				<table style="margin-top:2em; font-size:0.66em; width:100%; border:none">
+					<tr><td style="border:none; text-align: left">Version: 2015-06-08</td>
+					<td style="border:none; text-align: center"><a href="https://github.com/SteveHodge/ed-systems">Source code</a></td>
+					<td style="border:none; text-align: right">Copyright &#169; 2014 Steve Hodge</td></tr>
+				</table>
 			</div>
 		</div>
 		<label for="unknown-name">Name of new system: </label>
