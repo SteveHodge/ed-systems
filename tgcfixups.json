@@ -1091,5 +1091,6 @@
    {"action": "update distance", "system1": "Col 285 Sector UZ-N c7-8", "system2": "Sirius", "dist": 159.97, "changes": {"system1": "Col 285 Sector QU-B b15-2"}},
    {"action": "update distance", "system1": "Col 285 Sector UZ-N c7-8", "system2": "Nuwach", "dist": 290.47, "changes": {"system1": "Col 285 Sector QU-B b15-2"}},
    {"action": "update distance", "system1": "Col 285 Sector UZ-N c7-8", "system2": "Privir", "dist": 237.7, "changes": {"system1": "Col 285 Sector QU-B b15-2"}},
-   {"action": "update system", "name": "Col 285 Sector UZ-N c7-8", "changes": {"coord": [null, null, null]}}
+   {"action": "update system", "name": "Col 285 Sector UZ-N c7-8", "changes": {"coord": [null, null, null]}},
+   {"action": "update system", "name": "'HIP 97487", "changes": {"name": "HIP 97487"}}
 ]
