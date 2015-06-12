@@ -1151,5 +1151,15 @@
    {"action": "update distance", "system1": "Crucis Sector AQ-P a5-0", "system2": "Blende", "dist": 145.14, "changes": {"system1": "Crucis Sector XU-P a5-0"}},
    {"action": "update distance", "system1": "Crucis Sector AQ-P a5-0", "system2": "Privir", "dist": 228.11, "changes": {"system1": "Crucis Sector XU-P a5-0"}},
    {"action": "update distance", "system1": "Crucis Sector AQ-P a5-0", "system2": "Arug", "dist": 224.29, "changes": {"system1": "Crucis Sector XU-P a5-0"}},
-   {"action": "update system", "name": "puelo qq-g b10-34", "changes": {"name": "Pueloe QQ-G b10-34"}}
+   {"action": "update system", "name": "puelo qq-g b10-34", "changes": {"name": "Pueloe QQ-G b10-34"}},
+   {"action": "update distance", "system1": "Hyades Sector UY-R b4-3", "system2": "Sirius", "dist": 204.16, "changes": {"system1": "Candhari"}},
+   {"action": "update distance", "system1": "Hyades Sector UY-R b4-3", "system2": "Privir", "dist": 266.22, "changes": {"system1": "Candhari"}},
+   {"action": "update distance", "system1": "Hyades Sector UY-R b4-3", "system2": "Bastana", "dist": 137.22, "changes": {"system1": "Candhari"}},
+   {"action": "update distance", "system1": "Hyades Sector UY-R b4-3", "system2": "Blende", "dist": 288.43, "changes": {"system1": "Candhari"}},
+   {"action": "update distance", "system1": "Hyades Sector UY-R b4-3", "system2": "Arug", "dist": 264.01, "changes": {"system1": "Candhari"}},
+   {"action": "update system", "name": "selkand", "changes": {"name": "Selkande"}},
+   {"action": "update system", "name": "Pru Euq OC-T d4-51054.86", "changes": {"name": "Pru Euq OC-T d4-5"}},
+   {"action": "update system", "name": "lah Lanitei", "changes": {"name": "Iah Lanitei"}},
+   {"action": "update system", "name": "shui wei sector UJ-QQ B5-4", "changes": {"name": "Shui Wei Sector UJ-Q b5-4"}},
+   {"action": "update system", "name": "Col 259 Sector MG-W c2-24", "changes": {"name": "Col 359 Sector MG-W c2-24"}}
 ]
