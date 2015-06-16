@@ -1187,6 +1187,12 @@
    {"action": "delete distance", "system1": "Oguninksmii", "system2": "Arug", "dist": 285.93},
    {"action": "delete distance", "system1": "Oguninksmii", "system2": "Bastana", "dist": 214.26},
    {"action": "delete distance", "system1": "Oguninksmii", "system2": "Blende", "dist": 118.25},
-   {"action": "delete distance", "system1": "Oguninksmii", "system2": "Zhuar", "dist": 180.95}
-
+   {"action": "delete distance", "system1": "Oguninksmii", "system2": "Zhuar", "dist": 180.95},   
+   {"action": "delete system", "name": "Bafo"},
+   {"action": "update system", "name": "Col 285 Sector ZJ-Y b140-1", "changes": {"name": "Col 285 Sector ZJ-Y b14-1"}},
+   {"action": "update system", "name": "Hyades Sector ZA-K b9-0", "changes": {"name": "Hyades Sector ZQ-K b9-0"}},
+   {"action": "update system", "name": "Piscium Sector YU-Y c171", "changes": {"name": "Piscium Sector YU-Y c17"}},
+   {"action": "update system", "name": "Sharru Sector IR-W c1-23", "changes": {"name": "Puppis Sector GW-W c1-23"}},
+   {"action": "update system", "name": "Scorpii Sector KB-X a1-01", "changes": {"name": "Scorpii Sector KB-X a1-0"}},
+   {"action": "update system", "name": "Col 285 Sectir IR-S B18-2", "changes": {"name": "Col 285 Sector IR-S b18-2"}}
 ]
