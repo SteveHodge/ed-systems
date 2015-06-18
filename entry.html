@@ -30,7 +30,7 @@ var config = {
 	},
 	'fetch-from': 'TGC',
 	'submit-to': {
-		'temple': true,
+		'EDSM': true,
 		'TGC': true
 	}
 };
@@ -43,9 +43,9 @@ var dataToSend = [];
 
 var responses;	// stores status of submission to each server
 
-function sendToTheTemple(data, success, failure) {
-	logAppend('Submitting '+systemData.name+' with '+data.refs.length+' distances to the-temple.de:\n');
-	responses['temple'] = 'sent';
+function sendToEDSM(data, success, failure) {
+	logAppend('Submitting '+systemData.name+' with '+data.refs.length+' distances to EDSM:\n');
+	responses['EDSM'] = 'sent';
 
 	$.ajax({
 		type: 'GET',
@@ -53,17 +53,17 @@ function sendToTheTemple(data, success, failure) {
 		url: 'http://the-temple.de/public/posttest.php?'+encodeURIComponent(JSON.stringify({data: data})),
 		dataType: 'json',
 		success: function(resp, localstatus, xhr) {
-			responses['temple'] = 'ok';
-			logAppend('the-temple.de: submission successful\n');
-			console.log("the-temple.de: Response:");
+			responses['EDSM'] = 'ok';
+			logAppend('EDSM: submission successful\n');
+			console.log('EDSM: Response:');
 			console.log(JSON.stringify(resp, null, 2));
 			success(resp);
 		},
 		error: function(xhr, status, error) {
-			responses['temple'] = 'error';
+			responses['EDSM'] = 'error';
 			//console.log(xhr.responseText);
-			logAppend('the-temple.de: error: '+error);
-			console.log('the-temple.de: error: '+error);
+			logAppend('EDSM: error: '+error);
+			console.log('EDSM: error: '+error);
 			console.log('Request was:');
 			console.log(JSON.stringify(data, null, 2));
 			failure(error);
@@ -370,15 +370,15 @@ $(document).ready(function () {
 
 		responses = {};
 
-		if (config['submit-to'].temple) {
-			sendToTheTemple(data, function(status) {
+		if (config['submit-to'].EDSM) {
+			sendToEDSM(data, function(status) {
 				$('#tgc-output').text(JSON.stringify(status, null, 2));
 
 				// check base system
-				logAppend('the-temple.de: Trilateration for '+status.basesystem.name+': '+status.basesystem.msgnum+' '+status.basesystem.msg+'\n');
+				logAppend('EDSM: Trilateration for '+status.basesystem.name+': '+status.basesystem.msgnum+' '+status.basesystem.msg+'\n');
 				if ((status.basesystem.msgnum === 102 || status.basesystem.msgnum === 104) && this.name === systemData.name
 						&& (status.basesystem.coords.x !== systemData.x || status.basesystem.coords.y !== systemData.y || status.basesystem.coords.z !== systemData.z)) {
-					logAppend('the-temple.de: calculated different coordinates: '+vectorToString(status.basesystem.coords)+' vs '+vectorToString(systemData)+'\n');
+					logAppend('EDSM: calculated different coordinates: '+vectorToString(status.basesystem.coords)+' vs '+vectorToString(systemData)+'\n');
 				}
 				// update any recent systems
 				var key = nameKey(status.basesystem.name);
@@ -399,14 +399,14 @@ $(document).ready(function () {
 
 				$.each(status.distances, function() {
 					if (this.msgnum != 200 && this.msgnum != 202 && this.msgnum != 203) {
-						logAppend('the-temple.de: Distance to '+this.name+' ('+this.dist+'): '+this.msgnum+' '+this.msg+'\n');
+						logAppend('EDSM: Distance to '+this.name+' ('+this.dist+'): '+this.msgnum+' '+this.msg+'\n');
 					}
 				});
 				$.each(status.systems, function() {
-					logAppend('the-temple.de: Trilateration for '+this.name+': '+this.msgnum+' '+this.msg+'\n');
+					logAppend('EDSM: Trilateration for '+this.name+': '+this.msgnum+' '+this.msg+'\n');
 					if (this.msgnum === 300 && this.name === systemData.name
 							&& (this.coords.x !== systemData.x || this.coords.y !== systemData.y || this.coords.z !== systemData.z)) {
-						logAppend('the-temple.de: calculated different coordinates: '+vectorToString(this.coords)+' vs '+vectorToString(systemData)+'\n');
+						logAppend('EDSM: calculated different coordinates: '+vectorToString(this.coords)+' vs '+vectorToString(systemData)+'\n');
 					}
 					// update any recent systems
 					var key = nameKey(this.name);
@@ -428,7 +428,7 @@ $(document).ready(function () {
 				cleanup();
 
 			}, function(error) {
-				alert('Failed to submit the system to the-temple.de:\n'+error);
+				alert('Failed to submit the system to EDSM:\n'+error);
 				cleanup();
 			});
 		}
@@ -623,6 +623,20 @@ function addSystemRow() {
 	return tr;
 }
 
+// parses the value of the input field as a float. sets the field to match the parsed value.
+// converts commas to periods.
+function getDistanceInput(inp) {
+	var dist = inp.val();
+	var d = parseFloat(dist.replace(/,/g, '.'));
+
+	if (isNaN(d)) {
+		inp.val("");
+	} else {
+		if (d != (dist+0)) inp.val(d);	// parseFloat will parse anything starting with a valid float, so if that doesn't match the input then update the field
+	}
+	return d;
+}
+
 function updateCoords() {
 	var dists = [];
 	systemData = {name: $('#unknown-name').val()};
@@ -645,17 +659,12 @@ function updateCoords() {
 	// TODO refactor: should be able to combine these next two loops, perhaps all three
 	// get the distances
 	$("#distances tr[system]").each(function() {
-		var inp = $(this).find("input.distance");
-		var dist = inp.val();
+		var d = getDistanceInput($(this).find('input.distance'));
 		var nameKey = this.getAttribute('system');
 		var system = systemsMap[nameKey];
-		var d = parseFloat(dist);
 
-		if (isNaN(d)) {
-			inp.val("");
-		} else {
-			if (d != (dist+0)) inp.val(d);	// parseFloat will parse anything starting with a valid float, so if that doesn't match the input then update the field
-			if (system !== undefined && system.x != null) dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
+		if (!isNaN(d) && system !== undefined && system.x != null) {
+			dists.push({name: system.name, distance: d, x: system.x, y: system.y, z: system.z});
 		}
 	});
 
@@ -671,7 +680,7 @@ function updateCoords() {
 	// add any unknown system data
 	$("#distances tr[system]").each(function() {
 		var sys = $(this).find('input.system-name').val();
-		var dist = $(this).find('input.distance').val();
+		var dist = $(this).find('input.distance').val();	// no need for getDistanceInput as we only need to know if there is a distance or not
 		var syskey = this.getAttribute('system');
 		if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].x == null)) {
 			systemData.distances.push({
@@ -697,7 +706,7 @@ function updateCoords() {
 		var goodRefs = 0;	// number of reference system distances that match
 
 		$("#distances tr[system]").each(function() {
-			var enteredDist = $(this).find("input.distance").val();
+			var enteredDist = $(this).find("input.distance").val();	// no need for getDistanceInput as we only need to know if there is a distance or not
 			if (enteredDist.length > 0) {
 				var nameKey = this.getAttribute('system');
 				if (!(nameKey in systemsMap)) {
@@ -745,7 +754,7 @@ function updateCoords() {
 		// update unknown distances
 		$("#distances tr[system]").each(function() {
 			var sys = $(this).find('input.system-name').val();
-			var dist = $(this).find('input.distance').val();
+			var dist = $(this).find('input.distance').val();	// no need for getDistanceInput as we only need to know if there is a value
 			var syskey = this.getAttribute('system');
 			if (sys.length > 0 && dist.length > 0 && (!(syskey in systemsMap) || systemsMap[syskey].x == null)) {
 				if (syskey !== nameKey(systemData.distances[i].system)) {
@@ -851,7 +860,7 @@ function updateCoords() {
 function showSuggestions(best, caption) {
 	// if any of the best suggestions are in the distances table without distances then mark them
 	$("#distances tr[system]").each(function(idx,row) {
-		var dist = $(row).find('input.distance').val();
+		var dist = $(row).find('input.distance').val();	// no need for getDistanceInput as we only want to know if there is a value
 		var syskey = $(row).attr('system');
 		if (syskey in systemsMap && dist.length === 0) {
 			$.each(best, function(i, s) {
@@ -942,7 +951,7 @@ function getLocalSystems(coords) {
 		if (system !== undefined && system.x != null) return;
 
 		var name = system ? system.name : $(this).find('input.system-name').val();
-		var d = parseFloat($(this).find('input.distance').val());
+		var d = getDistanceInput($(this).find('input.distance'));
 		if (!isNaN(d)) {
 			locals.push({system: name, distance: d});
 		}
@@ -1045,8 +1054,8 @@ function applyConfig() {
 				<h3>Fetch From</h3>
 				<input type="radio" name="fetch-from" value="TGC">TGC
 				<h3>Submit To</h3>
-				<input type="checkbox" name="submit-to" value="temple">the-temple.de<br>
-				<input type="checkbox" name="submit-to" value="TGC">TGC
+				<input type="checkbox" name="submit-to" value="EDSM">EDSM (the-temple.de)<br>
+				<input type="checkbox" name="submit-to" value="TGC">TGC (EDSC)
 				<table style="margin-top:2em; font-size:0.66em; width:100%; border:none">
 					<tr><td style="border:none; text-align: left">Version: 2015-06-08</td>
 					<td style="border:none; text-align: center"><a href="https://github.com/SteveHodge/ed-systems">Source code</a></td>
@@ -1080,7 +1089,7 @@ function applyConfig() {
 						<th data-sort="string-ins">System</th>
 						<th data-sort="int">Distances</th>
 						<th>TGC</th>
-						<th>Temple</th>
+						<th>EDSM</th>
 					</tr>
 				</thead>
 				<tbody>
