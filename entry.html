@@ -150,10 +150,40 @@ function sendToTGC(data, success, failure) {
 function systemAutoComplete(req, res) {
 	var options = [];
 	var term = req.term.toLowerCase();
+	var match = null;
 	$.each(systemsMap, function(key, val) {
-		if (key.indexOf(term) > -1) {
-			options.push(val.name);
+		//if (key.indexOf(term) > -1) {
+		if (key.startsWith(term)) {
+			options.push({label: val.name, value: val.name});
 		}
+	});
+	if (options.length > 30) {
+		// collapse common prefixes
+		var len = term.length;	// length of common prefixes we're currently using
+		var prefixes;
+		var last = {};
+		do {
+			len++;
+			prefixes = last;
+			last = {};
+			$.each(options, function(idx, opt) {
+				var name = opt.value;
+				if (name.length <= len) {
+					last[name.toLowerCase] = {label: name, value: name};
+				} else {
+					name = name.substr(0, len);
+					var key = name.toLowerCase()+'...';
+					last[key] = {label: name+'...', value: name};
+				}
+			});
+		} while (Object.keys(last).length <= 30);
+		options = [];
+		$.each(prefixes, function(key, val) {
+			options.push(val);
+		});
+	}
+	options.sort(function(a, b) {
+		return a.label.toLowerCase().localeCompare(b.label.toLowerCase());
 	});
 	res(options);
 }
@@ -494,6 +524,7 @@ $(document).ready(function () {
 	$('#unknown-name')
 		.autocomplete({source: systemAutoComplete})
 		.change(function() {
+			$('#nearby-systems tbody').empty();	// clear nearby systmes
 			// check for duplicate name
 			if (this.value && this.value.length > 0) {
 				if (nameKey(this.value) in systemsMap) {
@@ -503,6 +534,7 @@ $(document).ready(function () {
 					} else {
 						$('#dupe-highlight').hide();
 						$('#dupe-warning').show();
+						getLocalSystems(systemsMap[nameKey(this.value)]);
 					}
 				} else {
 					$('#dupe-highlight').hide();
