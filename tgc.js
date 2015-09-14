@@ -4,6 +4,16 @@ var systemsMap;		// reference system data
 var lastFetch = '2014-09-09 12:13:14Z';		// last system fetch time (default is before earliest TGC data)
 var lastDistFetch = '2014-09-09 12:13:14Z';	// last distance fetch time (default is before earliest TGC data)
 
+// system properties:
+// name - system name
+// x, y, z - coordinates if known
+// calculated - true if the system was not supplied by FD
+// cr - TGC "confidence rating" (5+ = FD supplied, 2 = coordinates, 1 = unlocated)
+// contributor - name of first person to submit the system
+// contributed - datetime system was first submitted
+// distances - array of distances to other systems
+// tgcunlocated - true if TGC doesn't have a location for this system
+
 function getTGCData(callback, wantDists, refDists) {
 	$.getJSON('tgcsystems.json', function(data) {
 		lastFetch = data.date+'Z';
@@ -32,6 +42,22 @@ function getTGCData(callback, wantDists, refDists) {
 		);
 	});
 }
+
+function getEDSMData(callback, wantDists, refDists) {
+	$.getJSON('edsmsystems.json', function(data) {
+//		lastFetch = data.date+'Z';
+		systemsMap = {};
+		addSystems(data.systems);
+		logAppend('Loaded edsmsystems.json: data up to '+data.date+'. Total number of systems: '+Object.keys(systemsMap).length+'\n');
+	}).fail(function(xhr, txt, err) {
+		logAppend('Failed to read from tgcsystems.json:\n');
+		logAppend(err.message+'\n');
+	}).always(function() {
+		// update with any additional data from the server
+		callback();
+	});
+}
+
 
 function refreshTGCData(callback, wantDists, refDists) {
 	updateTGCData(wantDists ? function() {fetchTGCDistances(callback, refDists);} : callback);

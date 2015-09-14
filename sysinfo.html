@@ -10,6 +10,7 @@
 	<script src="external/jquery-ui.js"></script>
 	<script src="trilateration.js"></script>
 	<script src="tgc.js"></script>
+	<script src="ed-systems.js"></script>
 <script>
 
 var currentSystem = null;
@@ -29,9 +30,9 @@ function systemAutoComplete(req, res) {
 }
 
 $(document).ready(function () {
-	getTGCData(function() {
+	EDSM.fetch(function() {
 		$('#search-go').prop('disabled', false);
-	}, true, true);
+	});
 
 	$('#search-name').autocomplete({source: systemAutoComplete});
 
@@ -47,12 +48,12 @@ $(document).ready(function () {
 		showSystem();
 	});
 
-	$('#refresh-tgc').click(function() {
-		$('#refresh-tgc').prop('disabled', true);
-		refreshTGCData(function() {
-			$('#refresh-tgc').prop('disabled', false);
+	$('#refresh-edsm').click(function() {
+		$('#refresh-edsm').prop('disabled', true);
+		EDSM.update(function() {
+			$('#refresh-edsm').prop('disabled', false);
 			showSystem();
-		}, true, true);
+		});
 	});
 
 //	$("#distances input").change(updateCoords);
@@ -365,7 +366,7 @@ function selectSystem() {
 		<label for="search-name">Name: </label>
 		<input id="search-name" size="30"/>
 		<button id="search-go" disabled>Go</button>
-		<button id="refresh-tgc" style="float: right">TGC Refresh</button>
+		<button id="refresh-edsm" style="float: right">EDSM Refresh</button>
 
 		<div id="not-found-warning" class="ui-state-error ui-corner-all" style="margin: 0.5em; display:none">
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
