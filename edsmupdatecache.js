@@ -36,48 +36,44 @@ var qs = require('querystring');
 // tgcunlocated - true if TGC doesn't have a location for this system
 
 var sysmap = {};
-
-var data = null; //loadSystems('edsmsystems.json');
-//mapSystems(data.systems);
-fetchSystems(null/*data.date*/, function(d) {
-	data = processSystems(d);
-	writeFile('Systems', 'edsmsystems.json', data);
-});
-
 var distances = null;
 var distMap = {};	// map of distKey(distance)->distance
+var useCache = false;
 
-var d1 = null; //loadDists('edsmdistances.json');
-//mergeDists(d1.distances);
-
-//var d2 = loadDists('edsmdistances-20150515.json');
-//mergeDists(d2.distances);
-
-//d1 = d1.date;
-//if (d1 == null || (d2.date && d1 < d2.date)) d1 = d2.date;
-
-fetchDists(d1, function(d2) {
-	mergeDists(d2.distances);
-	if (d1 == null || (d2.date && d1 < d2.date)) d1 = d2.date;
-
-	distances.sort(function(a,b) {
-		if (a.sys1 === b.sys1) return a.sys2.localeCompare(b.sys2);
-		else return a.sys1.localeCompare(b.sys1);
-	});
-	writeFile('Distances', 'edsmdistances.json', {'date': d1, 'distances': distances});
+var since = null;
+if (useCache) {
+	var data = loadSystems('edsmsystems.json');
+	mapSystems(data.systems);
+	since = data.date;
+}
+fetchSystems(since, function(d) {
+	writeFile('Systems', 'edsmsystems.json', processSystems(d));
 });
 
-/*
-fetchDists(null, function(d2) {
+if (useCache) {
+	var d1 = loadDists('edsmdistances.json');
+	mergeDists(d1.distances);
+	
+	//var d2 = loadDists('edsmdistances-20150515.json');
+	//mergeDists(d2.distances);
+	
+	since = d1.date;
+	//if (since == null || (d2.date && since < d2.date)) since = d2.date;
+}
+
+fetchDists(since, function(d2) {
 	mergeDists(d2.distances);
+	if (since == null || (d2.date && since < d2.date)) since = d2.date;
 
 	distances.sort(function(a,b) {
-		if (a.sys1 === b.sys1) return a.sys2.localeCompare(b.sys2);
-		else return a.sys1.localeCompare(b.sys1);
+		var c = a.sys1.localeCompare(b.sys1);
+		if (c != 0) return c;
+		c = a.sys2.localeCompare(b.sys2);
+		if (c != 0) return c;
+		return a.dist - b.dist;
 	});
-	writeFile('Distances', 'edsmdistances.json', {'date': d2.date, 'distances': distances});
+	writeFile('Distances', 'edsmdistances.json', {'date': since, 'distances': distances});
 });
-*/
 
 
 function loadSystems(filename) {
