@@ -38,7 +38,7 @@ var qs = require('querystring');
 var sysmap = {};
 var distances = null;
 var distMap = {};	// map of distKey(distance)->distance
-var useCache = false;
+var useCache = true;
 
 var since = null;
 if (useCache) {
