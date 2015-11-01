@@ -29,7 +29,7 @@ var axes;
 
 var systems = [];
 
-var cmdrColors = ['gray', 'aqua', 'blue', 'red', 'lime', 'fuchsia', 'yellow', 'orange', 'maroon', 'teal', 'navy', 'green', 'purple', 'olive','white'];
+var cmdrColors = ['gray', 'red', 'aqua', 'blue', 'lime', 'fuchsia', 'yellow', 'orange', 'maroon', 'teal', 'navy', 'green', 'purple', 'olive','white'];
 var cmdrColorMap = {};
 
 function logAppend(str) {
@@ -46,6 +46,8 @@ $(document).ready(function () {
 		var contribMap = {};
 		
 		$.each(systemsMap, function(k, v) {
+//			if (!(v.name.toLowerCase().contains('wolf'))) return;
+//			console.log(v.name);
 			systems.push(v);
 			if (v.contributor in contribMap) {
 				contribMap[v.contributor].names++;
@@ -70,19 +72,38 @@ $(document).ready(function () {
 
 		var i = 0;
 		var rest = 0, restNames = 0;
+		var redCmdr, redCmdrRow, rwRow;
 		$.each(contribCount, function() {
 			if (i < cmdrColors.length-1 && this.name !== '(unknown)' && this.name !== 'anonymous') {
-				$('<tr>')
+				var el = $('<tr>')
 					.append($('<td>').width('1.5em').css('background',cmdrColors[i]))
 					.append($('<td>').text(this.name+': '+this.coords+' ('+this.names+')'))
 					.appendTo('#legend tbody');
 				cmdrColorMap[this.name] = cmdrColors[i];
+				if (cmdrColors[i] === 'red') {
+					redCmdr = this.name;
+					redCmdrRow = el;
+				}
+				if (this.name === 'RedWizzard') {
+					rwRow = el;
+				}
 				i++;
 			} else {
 				rest += this.coords;
 				restNames += this.names;
 			}
 		});
+
+		// assign red to RedWizzard
+		if (('RedWizzard' in cmdrColorMap) && cmdrColorMap['RedWizzard'] !== 'red') {
+			if (redCmdr) {
+				cmdrColorMap[redCmdr] = cmdrColorMap['RedWizzard'];
+				redCmdrRow.children('td:first-child').css('background', cmdrColorMap['RedWizzard']);
+			}
+			cmdrColorMap['RedWizzard'] = 'red';
+			rwRow.children('td:first-child').css('background', 'red');
+		}
+
 		$('<tr>')
 			.append($('<td>').width('1.5em').css('background',cmdrColors[i]))
 			.append($('<td>').text('others: '+rest+' ('+restNames+')'))
