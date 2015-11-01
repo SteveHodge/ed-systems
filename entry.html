@@ -13,7 +13,7 @@
 	<script src="ed-systems.js"></script>
 <!--	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
 <script>
-// version: 20150228-1
+// version: 20151101-1
 
 // TODO dialog when submitting system with distances that won't be submitted
 // TODO load systems from system.json as well
@@ -32,7 +32,7 @@ var config = {
 	'fetch-from': 'EDSM',
 	'submit-to': {
 		'EDSM': true,
-		'TGC': true
+		'TGC': false
 	}
 };
 
@@ -310,6 +310,8 @@ $(document).ready(function () {
 		$('#add-unfinished').attr('disabled', false);
 		updateCoords();
 	});
+
+	applyConfig();
 
 	// config dialog
 	$('#options').dialog({
@@ -1090,7 +1092,7 @@ function applyConfig() {
 				<input type="checkbox" name="submit-to" value="EDSM">EDSM (the-temple.de)<br>
 				<input type="checkbox" name="submit-to" value="TGC">TGC (EDSC)
 				<table style="margin-top:2em; font-size:0.66em; width:100%; border:none">
-					<tr><td style="border:none; text-align: left">Version: 2015-09-15</td>
+					<tr><td style="border:none; text-align: left">Version: 2015-11-01</td>
 					<td style="border:none; text-align: center"><a href="https://github.com/SteveHodge/ed-systems">Source code</a></td>
 					<td style="border:none; text-align: right">Copyright &#169; 2014 Steve Hodge</td></tr>
 				</table>
