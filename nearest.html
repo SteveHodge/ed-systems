@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>E:D Nearest Systems</title>
+	<link href="external/jquery-ui.css" rel="stylesheet">
+	<link href="trilateration.css" rel="stylesheet">
+	<script src="external/jquery-2.1.1.js"></script>
+	<script src="external/stupidtable.min.js"></script>
+	<script src="trilateration.js"></script>
+	<script src="ed-systems.js"></script>
+<script>
+var systems = [];
+var selected = null;
+
+$(document).ready(function () {
+	$('#go-button').attr('disabled', true);
+
+	EDSM.fetchSystems(function() {
+		$.each(systemsMap, function(k, v) {
+			if (('x' in v) && v.x !== null) {
+				systems.push(v);
+			}
+		});
+
+		$('#nearby-systems table').stupidtable({"optfloat": sortOptionalFloat}).bind('aftertablesort', updateSortArrow);
+		$('#known-systems').text('Nearest Systems to Point ('+systems.length+' systems known)');
+		$('#go-button').attr('disabled', false);
+	});
+	
+	$('#go-button').click(function() {
+		var x = getDistanceInput($('#x-coord'));
+		var y = getDistanceInput($('#y-coord'));
+		var z = getDistanceInput($('#z-coord'));
+		if (!isNaN(x) && !isNaN(y) && !isNaN(z)) {
+			getLocalSystems({x: x, y: y, z: z});
+		}
+	});
+});
+
+// parses the value of the input field as a float. sets the field to match the parsed value.
+// converts commas to periods.
+function getDistanceInput(inp) {
+	var dist = inp.val();
+	var d = parseFloat(dist.replace(/,/g, '.'));
+
+	if (isNaN(d)) {
+		inp.val("");
+	} else {
+		if (d != (dist+0)) inp.val(d);	// parseFloat will parse anything starting with a valid float, so if that doesn't match the input then update the field
+	}
+	return d;
+}
+
+function getLocalSystems(coords) {
+	$('#nearby-systems tbody').empty();
+	selected = null;
+
+	$.each(systems, function() {
+		this.distance = eddist(this,coords);
+	});
+
+	systems.sort(function(a,b) {return a.distance-b.distance;});
+
+	for (i = 0; i < systems.length && i < 20; i++) {
+		$('<tr>')
+			.append($('<td>').text(systems[i].name))
+			.append($('<td>').text(systems[i].x))
+			.append($('<td>').text(systems[i].y))
+			.append($('<td>').text(systems[i].z))
+			.append($('<td>').text((systems[i].distance).toFixed(2)))
+			.appendTo($('#nearby-systems tbody'));
+	}
+
+	selectSystem($('#nearby-systems tr[system]')[0]);
+}
+
+
+function logAppend(str) {
+	console.log(str);
+}
+
+function nameKey(n) {
+	return $.trim(n.toLowerCase());
+}
+
+function nameFilter(name) {
+	var words = name.split(' ');
+//	if (words.length > 1 && words[0].charAt(0).toLowerCase() === 'e' && words[1].charAt(0).toLowerCase() === 'b') return true;
+	if (words.length === 1 && words[0].charAt(0).toLowerCase() === 'p') return true;
+	return false;
+}
+
+function selectSystem(row) {
+	if (selected === row) return;
+
+	if (selected) {
+		$(selected).removeClass('selected');
+	}
+	
+	selected = row;
+	$(selected).addClass('selected');
+}
+</script>
+</head>
+<body class="ui-widget">
+	<h2 id="known-systems">Nearest Systems to Point (loading systems, please wait)</h2>
+	<label for="x-coord">X: </label><input id="x-coord">
+	<label for="y-coord">Y: </label><input id="y-coord">
+	<label for="z-coord">Z: </label><input id="z-coord">
+	<button id="go-button" disabled="true">Go</button>
+	<div class="table-div" id="nearby-systems">
+		<table>
+			<thead>
+				<tr>
+					<th data-sort="string-ins">System</th>
+					<th data-sort="float">X</th>
+					<th data-sort="float">Y</th>
+					<th data-sort="float">Z</th>
+					<th data-sort="float">Dist</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
